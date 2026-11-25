@@ -1,0 +1,400 @@
+===== PDF PAGE 1 =====
+一种新的基于量子小波变换的图像水印算法
+苏永红, 夏婷, 王绪梅, 钱小红
+
+引用本文
+
+苏永红, 夏婷, 王绪梅, 钱小红.一种新的基于量子小波变换的图像水印算法[J]. 计算机科学, 2023,
+
+50(6A): 220300034-8.
+
+SU Yonghong, XIA Ting, WANG Xumei, QIAN Xiaohong. New Image Watermarking Algorithm Based on
+
+Quantum Wavelet Transform [J]. Computer Science, 2023, 50(6A): 220300034-8.
+
+
+
+
+
+相似文章推荐（请使用火狐或 IE 浏览器查看文章）
+
+Similar articles recommended (Please use Firefox or IE to view the article)
+
+一种面向脑疾病诊断的图卷积网络对抗攻击方法
+
+Graph Convolutional Network Adversarial Attack Method for Brain Disease Diagnosis
+
+计算机科学, 2022, 49(12): 340-345. https://doi.org/10.11896/jsjkx.220500185
+
+
+基于主动采样的深度鲁棒神经网络学习
+
+Robust Deep Neural Network Learning Based on Active Sampling
+
+计算机科学, 2022, 49(7): 164-169. https://doi.org/10.11896/jsjkx.210600044
+
+
+一种提高联邦学习模型鲁棒性的训练方法
+
+Training Method to Improve Robustness of Federated Learning
+
+计算机科学, 2022, 49(6A): 496-501. https://doi.org/10.11896/jsjkx.210400298
+
+
+静息态人脑功能超网络模型鲁棒性对比分析
+
+Comparative Analysis of Robustness of Resting Human Brain Functional Hypernetwork Model
+
+计算机科学, 2022, 49(2): 241-247. https://doi.org/10.11896/jsjkx.201200067
+
+
+一种基于Logistic-Sine-Cosine映射的彩色图像加密算法
+
+Color Image Encryption Algorithm Based on Logistic-Sine-Cosine Mapping
+
+计算机科学, 2022, 49(1): 353-358. https://doi.org/10.11896/jsjkx.201000041
+
+===== PDF PAGE 2 =====
+http://www．jsjkx．com
+                                                                                 DOI:１０．１１８９６/jsjkx．２２０３０００３４
+
+一种新的基于量子小波变换的图像水印算法
+
+苏永红  夏　婷  王绪梅  钱小红
+武汉华夏理工学院　武汉４３０２２３
+ 　(４６１７８２６４０＠qq．com)
+　
+摘　要　图像水印是一种将特定信息嵌入载体图像中的技术,用于版权保护.研究了一种新的基于量子小波变换的图像水印
+方案,包括置乱过程、嵌入过程和提取过程.其中采用改进的量子Arnold置乱方法对二值图像进行置乱,置乱后的水印图像应
+用于载体图像的最低有效分块量子位,对载体灰度图像采用量子Haar小波变换和量子最低有效位(LSB)分块技术,将置乱后
+的水印图像嵌入量子小波系数.首先从嵌入图像中提取置乱水印图像,然后利用改进的量子Arnold逆置乱方法进行逆置乱,
+获取原始水印图像.仿真技术验证了基于该量子图像水印方法水印的不可见性和高鲁棒性.通过峰值信噪比(PSNR)检验证
+明了该方案的不可见性.通过误码率(BER)检验和归一化相关系数(NC)检验了该方案的高鲁棒性.仿真结果表明,该水印方案不仅具有可接受的视觉质量,而且对不同类型的攻击具有良好的抵抗能力.
+关键词:量子小波变换;图像水印;置乱;量子最低有效位分块;不可见性;鲁棒性
+中图法分类号　TP３１９
+　
+NewImageWatermarkingAlgorithmBasedonQuantum WaveletTransform
+SU Yonghong,XIA Ting,WANGXumeiandQIAN Xiaohong
+ WuhanHuaxiaInstituteofTechnology,Wuhan４３０２２３,China
+　
+Abstract　ImagewatermarkingisatechnologythatembedsspecificinformationintothecarrierimageforthepurposeofcopyＧ
+rightprotection．A newimage watermarkingschemebasedonquantum wavelettransform isstudied,includingscrambling
+process,embeddingprocessandextractionprocess．Theimprovedquantum ArnoldscramblingmethodisusedtoscramblethebiＧ
+naryimage．Thescrambledwatermarkimageisappliedtotheleasteffectiveblockqubitofthecarrierimage．Forthecarriergray
+image,thequantum Haarwavelettransformandquantumleastsignificantbit(LSB)blockingtechnologyareusedtoembedthe
+scrambledwatermarkimageintothequantum waveletcoefficient．Intheextractionprocess,firstly,thescrambled watermark
+imageisextractedfromtheembeddedimage,andthentheimprovedquantum Arnoldinversescramblingmethodisusedtoobtain
+theoriginalwatermarkimage．Simulationtechnologyverifiestheinvisibilityandhighrobustnessofthewatermarkbasedonthe
+quantumimagewatermarking method．TheinvisibilityoftheschemeisprovedbypeaksignalＧtoＧnoiseratio(PSNR)test．The
+highrobustnessoftheschemeistestedbybiterrorrate(BER)testandnormalizedcorrelationcoefficient(NC)．Simulationresults
+showthatthewatermarkingschemenotonlyhasacceptablevisualquality,butalsohasgoodresistancetodifferenttypesofatＧ
+tacks．
+Keywords　Quantum wavelettransform,Imagewatermarking,Scrambling,Quantumleastsignificantbitblocking,Invisibility,
+Robustness
+　
+                            的某些特定的像素数中,这些特定的像素数量是由其中每一１　引言                                   个比特数私钥决定的.Jiang等[４]提出基于Moiré条纹的量
+  自推出第一个量子密钥分发协议以来,许多研究人员对  子信息隐藏方案,该方案使用形变操作处理原始载体图像和
+经典媒体的量子力学表示和处理做出了贡献[１].包括数字水  待隐藏的消息图像,获得莫尔模式,使用去噪操作将莫尔模式
+印在内的量子信息隐藏和隐写术是安全数字信息传输和处理                                  转变为含有隐藏信息的载体图像.２０１８年,Li等[５]利用新型
+的有效工具.２０１５年,Mou等[２]提出基于量子Haar小波变  增强量子图像表示法,提出一种基于含水印量子图像的自适
+换的量子水印算法,其算法思路首先考虑了将文本的经典图  应量子隐写算法.Ji等[６]在基于量子图像的柔性表示法中,
+像信息用量子图像信息的矩阵形式表示出来,然后对量子化  提出一种大容量量子图像水印协议,借助连分式算法来加强
+后的矩阵做量子Haar小波变换,最后将文本水印信息嵌入  水印图像的不可见性.２０２０年,Qu等[７]提出了一种安全可
+量子小波系数中.Wang等[３]提出了一套基于最低有效位的  控的量子图像隐写算法,该方案采用一种新的受控量子图像
+量子图像水印方案,在实现该图像水印方案的过程中,嵌入者  柔性表示的受控量子访问机制,帮助发送方控制信息传输的
+将首先通过置换某量子载体图像灰度值中的至少某一个                            整个过程.综合以上量子水印的研究现状,量子水印技术的
+比特数而把该水印图像嵌入包含该量子载体图像上信息                            研究有非常广阔的前景,且目前处在起步阶段.本文提出了
+基金项目:湖北省教育厅科学技术计划指导性项目(B２０１７３９７)
+ThisworkwassupportedbytheGuidingProjectofScienceandTechnologyPlanofHubeiProvincialDepartmentofEducation(B２０１７３９７)．
+ 通信作者:夏婷(２９４４６０７４＠qq．com)
+                                                      ２２０３０００３４Ｇ１
+
+===== PDF PAGE 3 =====
+ComputerScience 计算机科学  Vol．５０,No．６A,June２０２３
+一种新的基于量子小波变换的图像水印算法,包括置乱过程、  NEQR 表示,其中８个量子位用于表示０~２５５之间可能值的
+嵌入过程和提取过程.通过仿真分析,不仅验证了该方案的  灰度范围的颜色信息.
+不可见性,而且验证了该方案的鲁棒性.                 |I›＝１  本文第２节介绍了方案中使用的预备知识;第３节介绍            ２[|００００００００›􀱋|００›＋０１１００１１０›􀱋|０１›＋
+了量子小波变换水印方案;第４节对方案进行了软件仿真和           |１００１１００１›􀱋|１０›＋|１１００１１００›􀱋|１１›]
+分析;最后总结全文并展望未来.
+２　预备知识
+２．１　数字图像的量子表示
+  一种新的数字图像增强量子表示方法(New Enhanced
+                                                         表示Quantum Representation,NEQR)由Zhangn  n等于２０１３年提        图１　一个简单的图像示例及其NEQR                   大小的量子图出[８].基于NEQR 方案,给出了一个２ ×２                     Fig．１　AsimpleimageexampleanditsNEQRrepresentation
+像,如式(１)所示:            ２２n－１                     k       ２．２　量子加法器
+                        i                                 i                   􀆺cic１                              i０ ›,c   |I›＝１n　∑i＝０|ci›􀱋|i›,|ci›＝|cq－１                                  ∈{０,１},    Arnold图像置乱用到模N 加法.量子模N     ２                                            加法器的实                              现是在量子计算机中实现这两种置乱变换的基础.Vedral      k＝q－１,􀆺,１,０,i＝０,１,􀆺,２２n－１－１      (１)                                等[９]已经给出了量子模N 加法器的实现方法.为了给出量   此处|ci›和|i›指示颜色和对应的各个颜色位置,而且                          子模N 加法器,首先我们简要地介绍量子加法器.量子加法|i›包括两部分:垂直和水平部分.
+    |i›＝|y›|x＝yn－１,yn－２,􀆺,y０›|xn－１,xn－２,􀆺,x０›,    器是一个用于量子计算过程的逻辑线路,它可以计算存储在
+       yjxj∈{０,１}                       (２)  两个量子寄存器中的数据的值的和.假如这两个量子寄存器
+   第一个n量子位|yn－１›,|yn－２›,􀆺,|y０›沿垂直轴编码,  分别为|a›和|b›,则量子加法器实现的加法运算的功能为
+第二个n量子位|xn－１›,|xn－２›,􀆺,|x０›沿水平轴编码.因   |a›,b›®|a,a＋b›,即a 和b是两个加数,计算出的和存储在
+此,NEQR 模型需要q＋２n个量子位来表示灰度范围为２q的  原来b的位置.量子加法器(ADDER)如图２所示,其中的
+２n×２n大小的灰度图像.图１给出了一个２×２的图像及其  SUM 表示加电路模块,CARRY 表示进位电路模块.
+
+
+
+
+
+                        图２　量子加法器和其中的电路模块
+                                        Fig．２　Quantumadderanditscircuitmodule
+                                                     ２２０３０００３４Ｇ２
+
+===== PDF PAGE 4 =====
+苏永红,等:一种新的基于量子小波变换的图像水印算法
+　　无论SUM 还是CARRY,表示模块的矩形中都有一个黑  是控制非门(CNOT),控制非门中一个量子比特称为控制位,
+色的竖条,它表示模块中逻辑门的排列顺序.竖条在左侧的  另一个量子比特称为目标位,当且仅当控制位处在态|１›时,
+模块与竖条在右侧的模块中逻辑门的排列顺序方式是相反                              将目标位取非,即:
+的.由于量子线路的幺正性,逻辑门排列顺序相反时意味着      CNOT|００›＝|００›,CNOT|０１›＝|０１›                            模                                          (５)其逻辑功能正好相反.例如代表量子加法器的ADDER        CNOT|１０›＝|１１›,CNOT|１１›＝|１０›
+块,如果其中的黑色竖条在左侧,则其功能变为与量子加法相    控制非门如图７所示,控制非门的矩阵表示为:
+                                                                                   é             ù反的功能,即变为一个量子减法器.当b≥a时,量子减法器                   ê１０００ú
+可以被简单地描述为:                                                          ê０１００                                       CNOT＝ ê             úú   |a,b›→|a,b－a›                                                           ê０００１ú
+                                                                                   ë００１０û  当b＜a时,量子减法器可以描述为:
+   |a,b›→|a,２n＋b－a)›
+  量子模N 加法器可以对两个数的和进行模运算:
+   |a,b›→|a,(a＋b)modN›                             图７　控制非门(CNOT 门)
+   Vedral等[９]提出的量子模N 加法器是基于量子加法器                Fig．７　Controlnongate(CNOTgate)
+实现的,原理是当a＋b的结果大于N 时,从a＋b中减去N.     一个重要的三位门是Toffoli门,又称“控Ｇ控Ｇ非”门,如图
+２．３　量子逻辑门                     ８所示.它有两个控制位,一个目标位,当且仅当两个逻辑控
+  对量子位的态进行变换可以实现一些逻辑功能,变换所  制位都处在态|１›时,才对目标位执行逻辑非操作,相当于目
+起的作用相当于逻辑门所起的作用,通常把在一个时间间隔  标位和控制位的与进行异或操作.从CNOT 门到Toffoli
+内实现逻辑变换的量子装置称为量子逻辑门[１０].在数学描  门,控制位个数从１增加到２,实际上,控制位个数还可以继
+                            续增加到n述上,量子逻辑门对应的就是一个酉矩阵,对用向量空间描述        个,我们称有n个控制位的逻辑非门为nＧCNOT
+的量子态实现幺正变换,这样的计算过程是可逆的.根据量   门.nＧCNOT 门的控制位,可以是零控制,也可以是１控制,
+子门中量子位数目的不同,可分为一位门、二位门和多位门.  量子线路中分别用“.”和“􀅰”表示.用１比特位对“.”和“􀅰”
+                                                 门中所有控制  一位门U 作用到一个量子位态|φ›上,输出态U|φ,量子   编码.“.”编码为０,“􀅰”编码为１,将nＧCNOT
+线路如图３所示.其中,水平线表示一个量子位,方框中的U  位对应的编码按照从上到下的顺序连接成一个二进制数,这
+表示对这个量子位进行幺正变换.线从左到右并不代表量子  个二进制数就是该nＧCNOT 门的控制值.例如一个５ＧCNOT
+位的空间移动,而是表示时间进行方向.量子计算机中有多  门,从上到下,它的５个控制位分别为“􀅰..􀅰􀅰”,对应的编
+个量子一位U 门,数学上用２×２的幺正矩阵表示,如恒等门  码为“１００１１”,将该编码看成一个二进制数,则控制值为二进
+(I门)、非门(NOT 门)、Hadamard门(H 门),如图４－图６所   制的１００１１,即十进制的１９.
+                    １  １  门对示.Hadamard门简称H 门,其中,H＝１ [         ] ,H                   ２ １ －１
+两个基矢|０›和|１›的作用为:
+   H|０›＝１ [１ １] [１] ＝１ [１] ＝１ (|０›＋|１›) (３)                     图８　Toffoli门      ２ １－１ ０  ２ １  ２                                                                                 Fig．８　Toffolidoor
+   H|１›＝１ [１ １] [０] ＝１ [ １] ＝１ (|０›－|１›) (４)  ２．４　量子小波变换      ２ １－１ １  ２ －１  ２          傅里叶变换在许多科学领域都是一种有用且强大的工
+  即当H 门作用于|０›态时,会使得|０›和|１›以相同得概                             具,小波变换与傅里叶变换一样有用,可用于揭示信号的多尺率出现.                            度结构,对图像处理和数据压缩都非常有用.为了分析连续
+                            波,需要将连续波转换为数字信号并对其进行分析.有３种
+            图３　量子一位门            变换:傅里叶变换、短时傅里叶变换和小波变换.从变换对象
+               Fig．３　Quantumonebitgate         本质定义上讲,小波定义的变换对象是在信号时间频率的范
+                            围内进行的一个局部变化信号分析,它也能同时通过伸缩运
+                            算与平移计算两种基本运算处理手段达到对信号空间的一个
+            图４　恒等门(I门)           逐步的多维尺度上的进一步细化,最终它将达到一个对信号
+                 Fig．４　Identitygate(gateI)          高频处时间范围的逐步细分,低频处频率范围的逐渐细分,能
+                            够更加自动快速地适应一个多时频信号分析的要求,从而信
+                            号可被自动地聚集到信号分析中的各个任意方向的细节,解
+            图５　非门(NOT 门)           决了傅里叶变换应用中常见的各种分析困难问题.                 Fig．５　nongate(notgate)                                     信号处理中两类有用的小波是Haar小波和Daubechies
+                                     小波.参考文献[１１]中提出了量子Haar和Daubenchies小
+                             波电路,量子Haar小波变换的整个量子电路如图９所示,
+             图６　Hadamard门(H 门)           其中给出了量子Haar小波变换的完整实现逻辑过程[１２].              Fig．６　Hadamarddoor(Hdoor)                               n                          W＝１ [１１   ] ,∏２ ＝(I２n－２􀱋∏４)(∏２n－１􀱋I２),  量子二位门需要两个量子比特参与.一个重要的二位门       ２ １ －１
+                                                     ２２０３０００３４Ｇ３
+
+===== PDF PAGE 5 =====
+ComputerScience 计算机科学  Vol．５０,No．６A,June２０２３
+
+       é      ù       ê１０ú
+       ê      ú   ００        １０∏４＝ ê      ú ,称为XOR 门,I２＝ [      ] .       ê０１ú        ０１
+       ë００û
+
+
+
+
+
+                                                        图１０　|xA›线路上
+                                                                              Fig．１０　|xA›line        图９　量子Haar小波变换的逻辑实现[１２]
+  Fig．９　Logicalimplementationofquantum Haarwavelettransform[１２]
+３　量子小波变换水印
+  本节提出了一种基于量子小波变换的量子水印算法,该
+方法将一幅２n×２n大小的二值图像嵌入到灰度图像中.该方
+案包括３个步骤:置乱、嵌入、提取.
+３．１　量子置乱
+  在大多数图像处理算法中,置乱方法被视为预处理,一个
+图像被转换成另一个无序的图像.在提出的水印方案中,为
+了提高所提方法的安全性,采用了改进的量子Arnold置乱方                  图１１　|yA›线路
+ 法[１３].                                                                          Fig．１１　|yA›line
+   假设图像采用NEQR 表示方法,因为图像置乱只对位置                 表示方法中的坐标信  ３．２　嵌入程序信息进行操作,所以仅需要改变NEQR                       表示原    考虑一个２n×２n大小的灰度载波图像,使用数字图像的息|YX›.我们定义A 表示Arnold图像置乱操作,I                              新型增强量子表示NEQR 模型,载体图像表示为:始的量子图像,置乱后的量子图像用IA 表示,图像大小为                      ２２n－１                                       |C›＝１n　∑i＝０|ciÄ|i›２n×２n,则:                              ２       k
+                           ２n－１ ２n－１                               n－１ iYX                    |ci›＝|ci􀆺c７  ic１ i›,０ ci∈{０,１},k＝７,􀆺,１,０,i＝０,１,􀆺,   |IA›＝A|I›＝１２n(∑Y＝０　∑X＝０􀱋i＝０|C ›A|YX›)   (６)          ２                         ２２n－１                           (１１)
+其中,A|YX›＝A|Y›A|X›.                           为了嵌入,采用LSB(LeastSignificantBit,最低有效位)
+   假设I(x,y)代表原始图像,(x,y)是像素的位置坐标,x,  分块技术和载波图像的量子小波变换.图１２给出了嵌入方
+y＝０,１,􀆺,２n －１,图像大小为２n ×２n,一个二维的Arnold  案的概要设计.
+表示:
+    xA  １１ x       [                              ] (mod２n)    yA            ] ＝ [      ] [y     １２
+                n                                       (７)   xA＝(x＋y)mod２
+   yA＝(x＋２y)mod２n
+其中,(xA,yA)是Arnold置乱后的坐标信息.根据式(７)有:
+   |xA›＝A|X›＝|x＋y›mod２n                       n                                       (８)   |yA›＝A|Y›＝|x＋２y›mod２                         图１２　嵌入程序的概要图
+   根据式(８)和二进制运算的特殊性:如果a＋b＝c,c是一               Fig．１２　Overviewofembeddedprogram
+个(n＋１)bit的二进制数,c＝cncn－１cn－２􀆺c０,ci∈{０,１},则:                               LSB信息隐藏的原理是用待隐藏的信息去替代载体的最
+   (a＋b)mod２n＝cn－１cn－２􀆺c０                (９)  低比特,比较简单,但鲁棒性不好,许多常见的处理方法如滤
+          可以通过忽略和的最高位的进位来                              波、加噪、压缩等,都可以很容易将隐藏的信息去掉.为了提  该定理表明,模２n
+实现.                           高LSB的健壮性和不可检测性,量子LSB分块信息隐藏将载
+   基于定理７－定理９,改进的Arnold置乱可表示为:   体图像分为图像块,每个图像块中隐藏一个比特的消息.
+   |xA›＝|x０x１􀆺xn－１＋y０y１􀆺yn－１›mod２n          基于NEQR 量子图像的表示方法,能方便地对图像进行分                               n                                         (１０)   |yA›＝|x０x１􀆺xn－１＋y１y２􀆺yn－１０›mod２        块.如果部分位置信息被设定为特定的值,则一些像素将被
+   因此,改进的Arnold置乱线路如图１０和图１１所示.   挑选出来.以图１为例,这是一个２n×２n的NEQR 图像,每个
+                                                      ２２０３０００３４Ｇ４
+
+===== PDF PAGE 6 =====
+苏永红,等:一种新的基于量子小波变换的图像水印算法
+像素中第一行数字表示该像素的二进制颜色,第二行像素表  其中,(０＜φ＜１)由嵌入方确定,在嵌入和提取过程中不变.
+示该二进制的坐标.量子LSB分块信息隐藏方案中,将２n×２n  用于嵌入的量子电路图如图１３所示.
+的图像分成２n－p１×２n－p２个大小为２p１×２p２的块,其中p１,p２∈
+{０,１,􀆺,n},且定义p＝p１＋p２.相应地,将图像的位置信息
+|Y›和|X›均分割成两部分,即|yn－１yn－２􀆺yp１›和|yp１－１􀆺
+y１y０›、|xn－１xn－２􀆺xp２›和|xp２－１􀆺x１x０›.我们将|yn－１yn－２􀆺
+yp１›和|xn－１xn－２􀆺xp２›称为外部坐标,将|yp１－１􀆺y１y０›和
+|xp２－１􀆺x１x０›称为内部坐标,或块内坐标.
+  块嵌入过程是将载体图像分割成２n－p１×２n－p２个大小为
+２p１×２p２的块,每一个图像块中隐藏一个比特的消息,该消息
+被重复２p１×２p２＝２p次嵌入图像块的每一个像素中.嵌入程
+序过程分为３步.
+  第１步　定义空的二值图像T.该图像用于对载体图像
+的QWT 进行估值处理.
+                ２２n－１
+        n   |T›＝１           i＝０|t∑  i›􀱋|i›;ti＝０;i＝０,１,􀆺,２２n－１   (１２)           图１３　嵌入过程的量子电路     ２                                                         Fig．１３　Quantumcircuitofembeddingprocess
+  第２步　使用图１０和图１１中的量子置乱电路,将水印                        量子  ３．３　提取程序图像置乱,置乱后的水印图像应用于载体图像的LSB                                从嵌入的图像中提取水印图像、原始载体图像、其量子小位.如果载体图像|C›的位置信息|yn－１yn－２􀆺yp１xn－１xn－２􀆺                             波变换形式和比例φ.xp２›与水印图像|W›的位置信息相同,则交换|C›的最低比特    ０                            第１步　从嵌入图像中提取置乱水印图像.一个QWT位|ci›和|W›的信息位|wkl›.   当t t                            应用于两个原始载体图像|C›和带水印的图像|Wout›,提取过     i(i＝０)的值必须设置为１时,以下酉变换应用于空                             程如下:图像|t›.                                                                                                           ２２n－１                                               １n                                        ２２n－１                                                                                                                                           )                                          |WC›＝QWT(|C›)＝QWT(                                                                                 i＝０|ci›􀱋|i›∑   Ωi＝I 􀱋Ω 􀱋|i›|i›＋I􀱋(j＝０,j≠i|j›|j›)∑              (１３)                 ２                                                                                               ２２n－１
+                                                    n     ０１                         ＝１ i＝０|wci›|􀱋|i›∑在这里,Ω＝ [      ] .                          ２     １０                                                                                                     ２２n－１                                                 １n                                                                                                                                                  )                                                                                    i＝０|Wout›􀱋|i›∑   上述酉变换是CNOT 门,需要初始化空图像|T›.       |WW›＝QWT(|Wout›)＝QWT                                                                                                                          ( ２
+     |ci›􀱋|c０   i＝０and|wi›＝１１                                         n                                 ＝１ ２２n－１i＝０|wwi›|􀱋|i›∑                          (１５)   If       { 　　　　or                           ２
+     |ci›􀱋|c０   i＝１and|wi›＝０１                            假设Δ＝|wwi›－|wci›,使用原始载体图像的两个LSBi   i
+    Then                                  (如|c０›,|c１›)水印位可按如下方式提取:i   i              i
+   |ti›＝１                                   i 如果Δ＝０,水印位为(c０⊕c１),否则水印位为~ (c０⊕
+   此外,当|ti›＝０时,使用以下酉变换:        c１).
+                 ２２n－１                               第２步　先预处理一个空的二值图像,在这里:   Ωj＝I Ä(∑j＝０|j›|j›|)                                                              ２２n－１
+                         ２２n－１                                    n                                            |Wex›＝１ i＝０|wexi∑     ›􀱋|i›,wexi ＝０,i＝０,１,􀆺,２２n－１                                     ２  通过应用该操作∏i＝０Ωi到图像|T›,置乱水印图像|w′›被
+                                                                                       (１６)复制到初始的纯空图像|T›.
+  第３步　载体图像的量子小波变换.             为了提取水印图像,酉变换χi定义如下:
+  定义如下:                                 　χi＝I􀱋χ􀱋|i›‹i|＋I􀱋(j＝０,j≠１|j›‹j|)２２n－１∑                 (１７)
+   |WC›＝QWT(|C›)
+                                                 应用酉变换                           ０１                                                                                                  ] .然后,通过对空二值图像Wex                                    其中,χ＝ [          １n２２n－１                                           )                           １０      ＝QWT(                  i＝０ci›􀱋|i›∑          ２                                                                                                               ２２n－１
+
+          n                                 (χi),将提取的水印位嵌入到Wex上.通过应用操作∏i＝０χi     ＝１ ２２n－１                                                 到             i＝０wci›􀱋|i›∑                           (１４)      ２                                 图像|Wex›,可以提取置乱后的水印图像.   在该步骤中,嵌入器嵌入置乱的量子水印图像|W′›进入                              第３步　第１步完成后,置乱后的水印图像被提取.因小波系数|WC›:                              此,为了获得原始水印图像,需要对提取的图像运行逆置乱程   Fori＝０toi＝２２n－１;                                  序.采用量子Arnold逆置乱.   If|ti›＝１then:                                       根据前面介绍的Arnold置乱过程,其中(xA,yA )是置乱  载波图像的量子小波变换修改为:
+      ２２n－１            ２２n－１                           后的坐标信息,１１[      ] 称为置乱矩阵.Arnold的逆置乱可以    i＝０w′ci′|i›＝∑∑         i＝０(wci＋φ)|i›                １２
+   EndFor                       写为:
+                                                      ２２０３０００３４Ｇ５
+
+===== PDF PAGE 7 =====
+ComputerScience 计算机科学  Vol．５０,No．６A,June２０２３
+  x  １１ －１xA       [                                 ] (mod２n)  y           ] ＝ [      ]    [yA     １２
+       ２ －１ xA                                   ] (mod２n)           (１８)     ＝ [            ] [yA       －１  １
+  即:
+   x＝(２xA－yA)mod２n
+                  n                                         (１９)   y＝(－xA＋yA)mod２                                                图１６　水印图像   对于Arnold逆置乱中的|x›,分为３个步骤实现:                                                                         Fig．１６　Watermarkimage    |xA,xA›→|xA,２xA ›→|yA,２xA ›→|yA,(２xA －yA )
+   mod２n›                          ４．１　不可见性
+                         代替    不可见性表示原始图像与嵌入了水印的图像之间的相似   第１步使用量子加法器计算得到２xA;第２步用yA
+xA;第３步使用量子模N 减法器得到(２xA－yA)mod２n.   性.为了比较水印图像与原始图像的清晰度,通过峰值信噪
+   对于Arnold逆置乱中的|y›,              比(PSNR)进行不可见性分析.峰值信噪比的定义如下:
+                                                                                           æç MAXC ö÷   |xA,yA›→|xA,(yA－xA)mod２n                                                    PSNR＝２０log１０ è MSE ø                  (２０)  它对应于一个量子模N    提取程序的过程如             减法器.
+                                     其中,MAXC 是图像C 的最大像素值,而MSE 是均方误差.图１４所示.
+                              对于两幅m×n单色图像,定义如下:
+                                  MSE＝１mn∑m－１i＝０　∑n－１j＝０[(C(i,j)－CW(i,j)２)]       (２１)
+                                                    越接                                  其中,C 表示载体图像,CW 表示水印图像.C 和CW
+                                     近,MSE 越小,则PSNR 越大.
+                                            分别表示隐藏信息前                               具体到嵌入算法中,如果C 和CW
+                                  后的载体,则(C(i,j)－CW(i,j))２的取值只有两种可能:要
+                                         可以看作是在嵌入操作中被改                                 么为０,要么为１.此时,MSE
+             图１４　提取过程            变的像素的数量与像素总数的比率.假定一个像素的比特位
+                  Fig．１４　Extractionprocess           被改变和不被改变的概率各为０．５,则MSE＝０．５,即载体图
+                            像中有一半的像素被改变.而对于一个８比特的图像来说,
+４　仿真与分析                              MAXC»２５５,则:
+                                                                                           æç       ö÷  这里要分析两个关键特性:不可见性和健壮性.从目前                   ２５５                                                   PSNR＝２０log１０ è       ø ＝５１．１４１１的量子硬件情况来看,无法使用量子计算机验证.为了分析                    ０．５
+                             即使最极端的情况,载体的每个像素都改变了,此时 这两个特性,我们在MatlabR２０１８b环境下,以Intel(R)Core
+                     的计算机为                                      MSE＝１,PNSR 仍然可以达到４８．１３０８.实际的测试结果与(TM)i７－４５００uCPU２．４０GHz、１６．００GBRam
+例,对该方案进行了仿真.                  理论分析结果相符,如图１７和表１所示.
+  图１５给出了模拟中使用的载体图像,图１６给出了模拟
+中使用的水印图像.
+
+
+
+
+                                  　　注:第一行是原始载体,第二行是含有隐藏信息的载体               (a)lenna                        (b)mandrill　
+                                           图１７　嵌入水印后的视觉效果
+                                                                       Fig．１７　Visualeffectafterembeddingwatermark
+                                                         表１　PSNR
+                                                                    Table１　PSNR
+                                                                                      Carrier    lenna     mandrill   peppers  cameraman
+                                                  PSNR   ５０．８４２６   ５０．３７８６   ５０．８８５２   ５１．６１６９
+                                   ４．２　鲁棒性            (c)peppers　                     (d)cameraman                                   鲁棒性指水印在攻击中生存的能力.误码率(BitError
+             图１５　载体图像                   Rate,BER)和归一化相关系数(NormalizedCorrelation,NC)
+                   Fig．１５　Carrierimages          是较为常用的衡量鲁棒性的两个值.
+                                                      ２２０３０００３４Ｇ６
+
+===== PDF PAGE 8 =====
+苏永红,等:一种新的基于量子小波变换的图像水印算法
+４．２．１误码率                         分析图１８和图１９给出的结果,可以判断建议的水印方
+   误码率(BER)定义为PSNR 的倒数.          案具有良好的抗干扰能力.图２０给出了攻击后提取的水印
+       １                      图像,表明该水印可以识别并且该算法具有良好的抗攻击性.   BER＝PSNR                           (２２)
+   BER 决定原始图像在水印过程中的更改.例如PSNR
+为５０dB,则BER 将为０．０２,即在水印过程中２％位已改变.
+表２列出了模拟误码率值的计算结果.
+                表２　BER
+                   Table２　BER
+     Carrier     lenna        mandrill     peppers      School４
+   BER    ０．０１９６６８５４  ０．０１９８４９７  ０．０１９６５２０８  ０．０１９３７３５０
+４．２．２　归一化相关系数
+  为定量地评价提取水印与原始水印信号的相似性,可采
+用归一化相关系数作为评价标准.假设原始的水印为W,提
+取的水印为W′,其定义为:                                            图２０　攻击后提取的水印                      ２n－p１ ２n－p２－１                                          k,                          Fig．２０　Extractingwatermarkafterattack                   k＝０　∑  l＝０(２wk,∑     l－１)×(２w′l－１)   NC(W,W′)＝                 ２n－p１－p２               ２              ４．３　算法复杂度与安全性分析
+          ＝１－２BER(W,W′)             (２３)    量子计算的复杂性取决于基本量子门的个数,忽略复杂
+其中,wk,l－１的作用是将水印比特０和１分别转换为－１和  度的系数以及计算准备工作的复杂度,对大小为N＝２n的矢
+                  k,                                      k,＋１.因此当wk,l＝w′               l时,(２wk,l－１)(２w′                       l－１)的值为１;  量而言,传统离散小波变换的计算复杂度为O(２n),量子小波
+         k,                             k,当wk,l≠w′        l时,(２wk,l－１)(２w′                 l－１)的值为－１,因此有  变换的计算复杂度为O(n２),大大提升了算法的时间复杂度.
+NC＝１－２BER 这个关系.                  基于量子小波变换的图像水印算法可用于嵌入水印,达
+  在本文的仿真中,为了分析算法对攻击的抵抗力,我们考  到版权保护的目的.如果是图像作为水印,则嵌入水印前还
+虑了用于水印图像上的５种不同类型的攻击(Crop攻击、FilＧ  需要对水印图像进行置乱操作,置乱算法是可知的,但置乱所
+ter攻击、Noise攻击、Resize攻击、Rotate攻击).提取攻击后  需要的密码只有嵌入者或版权所有者拥有,提取出来的水印
+的标记图像并计算对应的NC,可以获取初始和提取的水印  也是乱码,只有经过置乱的逆操作才能恢复水印图片.
+图像之间的相似性.攻击后提取水印的归一化相关系数如  ４．４　与其他算法的对比分析
+                              一个较好的水印算法应该能够在给定条件下嵌入更多的图１８所示,攻击后的图像如图１９所示.
+                             隐秘信息.为了保证嵌入容量,设置量子小波变换级数为２,
+                            阈值为５,则经过一次嵌入后即可达到图像尺寸大小的嵌入
+                                                          值                              量,表３列出了测试图像在该条件下嵌入水印后的PSNR
+                                  与Mou等[２]在相同嵌入容量下的PSNR 值的对比结果.
+                                          表３　相同嵌入率下的PSNR 对比
+                                                          Table３　ComparisonofPSNRunderthesameembeddingrate
+                                                                                      (单位:dB)
+      图１８　攻击后提取水印的归一化相关系数图                         Picturename   Mouetal   Algorithminthispaper
+  Fig．１８　Normalizedcorrelationcoefficientofextractedwatermark                 lenna      ４６．３９７６         ５０．８４２６                                                                                         mandrill     ４１．５７２９         ５０．３７８６                          afterattack                                                                                 peppers     ４５．３３６６         ５０．８８５２
+                                                                          cameraman    ４６．３０３６         ５１．６１６９
+                               从表３可以看出,在相同的嵌入率条件下,同样的图片,
+                          本文基于新的量子小波变换的图像水印算法具有更高的
+                                  PSNR 值,即含水印的载体图像与原载体图像的匹配度
+                             更高.
+                             结束语　任何适用的水印方案都必须具有两个关键特
+                            性:不可见性和鲁棒性.不可见性意味着在原始图像和带水
+                            印的图像之间存在可接受的相似性.鲁棒性指方案对攻击的
+                            抵抗力.在这里,我们介绍了一种新的基于量子小波变换的
+                             图像水印方案,其具有可接受的不可见性.在该方案中,采用
+                             量子小波变换,在灰度图像中嵌入一幅２n×２n大小的二值图
+                            像,为了获得更好的安全性,在嵌入之前对水印图像进行置
+          图１９　遭受攻击后的图像           乱,然后采用量子LSB分块技术和对载体图像进行量子小波
+                  Fig．１９　Imageafterattack         变换,将水印图像嵌入载体图像.通过对嵌入和置乱过程
+                                                     ２２０３０００３４Ｇ７
+
+===== PDF PAGE 9 =====
+ComputerScience 计算机科学  Vol．５０,No．６A,June２０２３
+进行版本设置,版权所有者可以简单地提取水印图像.        [６] JIS,CHENSY,ZHAIZG．Asecurelargecapacityquantum
+  为了评估该方案的性能,对其进行了仿真,其中通过计算         imagewatermarkingprotocol[J]．ComputerEngineering,２０１８,
+峰值信噪比(PSNR)确认了方案的不可见性特征,通过检查         ４４(５):２３４Ｇ２３９．
+误码率(BER)数量和归一化相关系数(NC)证明了该方案的    [７] QUZG,CHENSY,WANGXJ．Asecurecontrolledquantum                                                                 imagesteganographyalgorithm[J]．QuantumInformationProＧ鲁棒性.利用量子计算的量子并行性使小波算法的时间复杂                                                                    cessing,２０２０,１９(１０):１５３１Ｇ１５４０．度大大提升了,从经典计算的指数级到现在的(n２).                                                  [８] ZHANG Y,LU K,GAO Y H,etal．NEQR:anovelenhanced  综上所述,与之前的水印方案相比,本文方案的优点和有                                                                    quantumrepresentationofdigitalimages[J]．QuantumInformaＧ效性可总结为两点.１)通过引入置乱方法,将水印图像转换                                                                    tionProcessing,２０１３,１２(２６):２８３３Ｇ２８６０．为置乱后的图像,该置乱后的图像具有良好的鲁棒性,表明原                                                  [９] VEDRALV,BARENCO A,EKERT A．Quantumnetworksfor
+始水印图像不会被任何攻击者恢复,即使他提取了被扰乱的                                                                       elementaryarithmeticoperations[J]．PhysicalReview A,１９９６,
+二进制图像.２)与之前的方案相比,我们的方案不仅满足不         ５４(１):１４７Ｇ１５３．
+可见性,而且含水印的载体图像与原载体图像具有较高的匹    [１０]NIELSEN M A,CHUANGTL,ZHAO QC．QuantumcompuＧ
+配度.                                                           tingandquantuminformation(I)Ｇquantumcomputingpart[M]．
+  本文只是对基于量子小波变换的图像水印算法进行初步                                                                     Beijing:TsinghuaUniversityPress,２００９．
+探讨,还有许多算法需要进一步探索,如量子进化算法、量子    [１１]FIJANY A,WILLIAMS C P．Quantum Wavelet Transform:
+                                                                FastAlgorithmandCompleteCircuit[C]∥QuantumComputing进化算法与遗传算法相结合、量子进化算法与量子粒子群优                                                     and Quantum Communications．Berlin,Heidelberg:Springer,化算法等.除此之外,还可以对现有算法进行改进,如改进量                                                               １９９９:１０Ｇ３３．子进化算法的进化策略、改进量子图像表达策略等都是改进                                              [１２]ZHANG Z L,SUN L．Design and application of quantum现有基于量子小波变换的图像水印算法的不错选择.                                                                  Haarwavelettransform algorithm[J]．ComputerEngineering
+      参考文献                              andDesign,２００８,２９(１１):２８１６Ｇ２８２０．
+                                                   [１３]JIANG N,WANGL．Analysisandimprovementofthequantum
+[１] ZHUJN．ResearchstatusandProspectofquantum watermarＧ         Arnoldimagescrambling[J]．QuantumInformationProcessing,
+     kingtechnology[J]．JournalofHigherCorrespondenceEducaＧ        ２０１４,１３(７):１５４５Ｇ１５５１．
+     tion(NaturalScienceEdition),２０１１,２４(５):８Ｇ１０．
+[２] MOU Q G,JIANG TF,LIUJ．Imagewatermarkingalgorithm                    SUYonghong,bornin１９８０,master,lecＧ
+    basedonquantum Haarwavelettransform[J]．InformationNetＧ                   turer．Her mainresearchinterestsinＧ
+     workSecurity,２０１５,(６):５５Ｇ６０．                                                                        cludenetworkinformationsecurityand[３] WANGN,LINS．QuantumimagewatermarkingbasedonquanＧ                                                                              informationretrieval．    tumleastsignificantbit[J]．JournalofQuantum Electronics,
+    ２０１５,３２(３):２６３Ｇ２６９．
+[４] JIANG N,WANG L．AnovelstrategyforquantumimagesteＧ                XIA Ting,bornin１９８３,master,assoＧ
+     ganographybasedonMoirepattern[J]．InternationalJournalof                    ciateprofessor．Her mainresearchinＧ
+     TheoreticalPhysics,２０１５,５４(３):１０２１Ｇ１０３２．                                    terests include embedded technology
+[５] LIT,HE H X,ZHAIZG．Anadaptivequantumsteganography                       andartificialintelligence．     algorithm basedon watermarkquantumimage[J]．Computer
+     ApplicationResearch,２０１８,３５(２):５０３Ｇ５０６,５２６．
+
+
+
+
+
+                                                     ２２０３０００３４Ｇ８

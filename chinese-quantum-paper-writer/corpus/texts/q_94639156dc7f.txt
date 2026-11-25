@@ -1,0 +1,1354 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２１．２０２１０２６６
+ JournalofComputerResearchandDevelopment                                    ５８(９):１８９７１９０５,２０２１
+
+
+两硬币量子游走模型中的相干动力学
+
+李　萌１,２ 　　　尚　云１,３,４１(中国科学院数学与系统科学研究院　北京　１００１９０)
+２(中国科学院大学数学科学学院　北京　１０００４９)
+３(中国科学院数学与系统科学研究院国家数学与交叉科学中心　北京　１００１９０)
+４(中国科学院数学与系统科学研究院管理决策与信息系统重点实验室　北京　１００１９０)
+ (limeng１６２＠mails．ucas．ac．cn)
+DynamicsofCoherenceinQuantum WalkwithTwoCoins
+
+LiMeng１,２andShangYun１,３,４
+１(AcademyofMathematicsandSystemsScience,ChineseAcademyofSciences,Beijing１００１９０)
+２(SchoolofMathematicalSciences,UniversityofChineseAcademyofSciences,Beijing１０００４９)
+３(NCMIS,AcademyofMathematicsandSystemsScience,ChineseAcademyofSciences,Beijing１００１９０)
+４(MDIS,AcademyofMathematicsandSystemsScience,ChineseAcademyofSciences,Beijing１００１９０)
+  Abstract　Quantum walkisanimportant modelofquantum computing,andquantum walk with
+  multiplecoinshasattractedmoreandmoreattentionduetoitsoutstandingperformanceinquantum
+  communicationprotocols．Quantum coherencecannotonlydescribethecharacteristicsofquantum
+  states,butalsoreflectthepropertiesofquantum evolution process．Inthispaper,weanalyze
+  quantumcoherenceforthemodelofquantum walkwithtwocoinsontheonedimensionalcircle．On
+  theonehand,wediscusstheinfluenceofthechoiceofinitialquantumstateandcoinoperatorson
+  quantumcoherence．Whenthecoinoperatoris Hadamardoperator,aslongastheinitialstatein
+  subspaceisequalsuperposition,thewholeevolutionaryprocessofquantum walkisperiodic,and
+  quantumcoherenceonlydependsonthenumberofvertexesofthecircleandsteps;Whentheinitial
+  stateisequalsuperpositionandtherearenolimitsonthecoinoperators,theevolutionofthequantum
+  stateisalsoextremelyregular．Ontheotherhand,wefindthatintheprocessofperfectstatetransfer
+  byquantum walk,thecoinoperatorwilldeterminethequantumcoherencedirectly．Inaddition,we
+  alsodiscusstheequivalencebetweenthetwoquantum walkmodels,andbasedonthis,wepointout
+  thepossibilityofapplicationandimprovementinquantumteleportation．
+  Keywords　quantum walk;twocoins;quantumcoherence;statetransfer;quantumteleportation
+ 摘　要　量子游走是量子计算的重要模型,而多硬币量子游走模型由于在量子通讯协议中表现突出也越
+ 来越受到人们的关注．量子相干不仅可以刻画量子态的特点,也可以反映量子演化过程的性质．主要对
+　收稿日期:２０２１－０３－２９;修回日期:２０２１－０５－１４
+　基金项目:国家重点研发计划项目(２０１６YFB１０００９０２);国家自然科学基金项目(６１８７２３５２,６１４７２４１２);国家自然科学基金创新群体项目
+           (６１６２１００３)
+          ThisworkwassupportedbytheNationalKeyResearchandDevelopmentProgram ofChina (２０１６YFB１０００９０２),theNational
+           NaturalScienceFoundationofChina (６１８７２３５２,６１４７２４１２),andtheProgramforCreativeResearch Groupofthe National
+           NaturalScienceFoundationofChina(６１６２１００３)．
+　通信作者:尚云(shangyun＠amss．ac．cn)
+
+===== PDF PAGE 2 =====
+８
+９
+８
+１
+计算机研究与发展　２０２１,５８(９)
+一维圆上两硬币量子游走模型的量子相干性进行了分析．一方面,讨论了初始量子态和硬币算子的选取
+对量子相干的影响．当硬币算子为Hadamard算子且初态只要在位置子空间上是均衡叠加态,整个量子
+游走演化过程是具有周期性的,且量子相干仅依赖于步数和圆上顶点的个数;当初始态是均衡叠加态而
+对硬币算子没有任何限制时,量子相干的演化也极具规律性．另一方面,发现在利用量子游走实现完美
+状态转移(perfectstatetransfer)的过程中,硬币算子的选取直接影响量子相干的值．最后,探讨了２种
+量子游走模型之间的等价性,并基于此指出了其在量子隐形传输(quantumteleportation)中的应用和改
+进的可能性．
+中图法分类号　TP３８
+量子游走是经典随机游走在量子世界的对应
+物,它描述了微观世界中粒子的随机演化过程．经典
+随机游走本身应用十分广泛,比如kＧSAT 问题[１]、
+图像分割问题[２]、图匹配算法[３Ｇ４]等．量子游走也有
+广泛的用途:实现通用量子计算[５Ｇ８];完成量子通讯
+协议[９Ｇ１１];制备纠缠量子态[１２]等．另外,由于量子纠
+缠、量子干涉和量子非定域性,量子游走可以更快地
+搜索目标标记点,因此量子游走可以用来设计量子
+算法,像搜索标记点问题[１３Ｇ１６]、元素区分问题[１７]、搜
+索三角形问题[１８]等．当前基于量子游走的量子模拟
+或展示各种量子游走模型自身性质的实验已经在许
+多不同的物理系统上进行了实施,比如光子[１９]、离
+子阱[２０]、超导处理器[２１]等．量子游走包含离散时间
+量子游走[２２]和连续时间量子游走[２３],这里我们主
+要研究离散时间量子游走．
+量子游走可以定义在任意给定的图上,其中一
+维圆是一种最为基础且常见的图,它可以作为实现
+大规模量子网络的一个基本模块．对于圆上的量子
+游走,许多学者也已经进行了广泛研究[２４Ｇ２６]．
+量子相干起源于量子叠加原理,它不仅可以描
+述量子信息处理的状态演变过程,而且可以反映和
+解释量子力学中的许多关键核心问题．因此,量子相
+干被应用到量子计算和量子信息的许多方面,比如
+量子搜索算法[２７]、量子密钥分发[２８]、量子计量学[２９]
+等．量子相干的量化方式[３０]有很多种,像基于相对
+熵的、基于skew 信息的以及l１范数相干等．由于量
+子态的l１范数相干[３１]形式简单、便于计算,我们这
+里将采用l１范数相干．
+由于两硬币量子游走模型近年来在量子通讯协
+议中的突出表现[９Ｇ１２],本文主要讨论了在一维圆上
+两硬币量子游走过程中量子相干的动力学行为,并
+基于此考虑了其在完美状态转移等量子通讯协议中
+的演变规律．
+１　预备知识
+量子游走是经典随机游走在量子世界的对应
+物．由于硬币已经变成了系统的内部自由度,游走者
+依据硬币状态来决定在给定的图上如何行走,而硬
+币的状态是由硬币算子来调节控制的．因此,整个演
+化是发生在位置空间和硬币空间的复合希尔伯特空
+间上．我们将含有N 个点的一维圆记作NＧcircle．下
+面,我们将主要讨论在NＧcircle上的量子游走．
+１．
+１　在圆上的两硬币量子游走模型
+多硬币量子游走是由Brun等人于２００３年首次
+提出[３２]．我们这里主要考虑两硬币量子游走模型．对
+于两硬币游走模型,粒子是按顺时针行走还是逆时
+针行走,是通过交替地使用２枚硬币算子来决定的．
+也就是说,在奇数步,它由第１个硬币操作C１决定;
+在偶数步,它由第２个硬币操作C２决定．因此,NＧ
+circle上的两硬币量子游走在奇数步(翻转第１枚硬
+币的结果)的酉变换可以写成:
+U１＝(∑
+N－１
+(x ＋１)modN􀎯􀎮x 􀱋０􀎯􀎮０􀱋I２＋
+x＝０
+(x －１)modN􀎯􀎮x 􀱋１􀎯􀎮１􀱋I２)􀅰
+N－１
+∑
+x＝０
+(IN 􀱋C１􀱋I２),
+在偶数步(翻转第２枚硬币的结果)的酉变换可以
+写成:
+U２＝(∑
+N－１
+(x ＋１)modN􀎯􀎮x 􀱋I２􀱋０􀎯􀎮０＋
+x＝０
+(x －１)modN􀎯􀎮x 􀱋I２􀱋１􀎯􀎮１)􀅰
+N－１
+∑
+x＝０
+(IN 􀱋I２􀱋C２),
+其中,
+I２是２×２的单位矩阵,IN 是N ×N 的单位
+矩阵．
+关键词　量子游走;两硬币;量子相干;状态转移;量子隐形传输
+
+===== PDF PAGE 3 =====
+９
+９
+８
+１
+李　萌等:两硬币量子游走模型中的相干动力学
+如果我们总共走t 步,那么相应的酉算子可以
+表示为(k＝１,２,􀆺):
+(U２U１)
+k,t＝２k;
+U＝
+U１(U２U１)
+k－１,t＝２k－１．
+{
+经过t 步量子游走之后,游走者的量子态可以
+写为
+N－１
+１
+１
+ψ(
+t)􀎯＝∑
+x＝０∑
+c１＝０∑
+c２＝０fx,
+c１,
+c２(
+t)x,
+c１,
+c２􀎯,
+其中振幅fx,
+c１,
+c２(
+t)满足:
+N－１
+１
+１
+x＝０∑
+∑
+c１＝０∑
+c２＝０fx,
+c１,
+c２(
+t)２＝１．
+１．
+２　在圆上的两纠缠硬币量子游走模型
+对于单硬币量子游走最直接的一种推广就是对
+硬币空间进行高维推广,另外可以结合量子纠缠这
+一典型的量子资源来扩展量子游走的演化并发掘它
+的非经典性．两纠缠硬币量子游走模型于２００５年首
+次被提出[３３],并在后来得到在数值[３４Ｇ３５]和理论[３６Ｇ３７]
+等方面的更深入研究．
+区别于１．
+１节所介绍的两硬币量子游走模型,
+该模型中的２枚硬币在每一步游走时均会作用而非
+轮流交替作用,另外游走者每一步游走均有３种类
+型的移动,向前、向后和保持不动．具体地,在NＧcircle
+上的一步两纠缠硬币量子游走的酉变换可以写成:
+V ＝(∑
+N－１
+(x ＋１)modN􀎯􀎮x 􀱋００􀎯􀎮００＋
+x＝０
+N－１
+∑
+x􀎯􀎮x 􀱋０１􀎯􀎮０１＋
+x＝０
+N－１
+∑
+x􀎯􀎮x 􀱋１０􀎯􀎮１０＋
+x＝０
+(x －１)modN􀎯􀎮x 􀱋１１􀎯􀎮１１)􀅰
+N－１
+∑
+x＝０
+(IN 􀱋C１􀱋C２)．
+１．
+３　量子游走的l１范数相干
+量子相干可以衡量量子态具有的量子关联,并
+可以刻画其更具一般意义的性质,甚至反过来也能
+够启发更丰富的物理意义．量子相干的度量有很多
+种,鉴于l１范数相干形式的简便性,我们主要考虑
+在量子游走中的l１范数相干．
+对于给定的密度算子ρ,它的l１范数相干[３１]定
+义为
+C(ρ)＝∑
+i≠j ρij ＝∑
+􀎮iρ j􀎯．
+i≠j
+从而,对于经过t 步量子游走之后的量子态
+ψ(
+t)􀎯,它相应的密度矩阵ρt,即ψ(
+t)􀎯􀎮ψ(
+t) 为
+N－１
+１
+x,x′＝０
+∑
+∑
+c１,
+c′
+１,
+c２,
+c′
+２＝０fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c′
+１,
+c′
+２(
+t)x,
+c１,
+c２􀎯
+􀎮x′,
+c′
+１,
+c′
+２,
+∗表示f 的复共轭．当然,位置子空间的密度
+其中f
+矩阵ρ′
+t,即
+trC(|ψ(
+t)􀎯􀎮ψ(
+t)|)＝
+∑
+x,x′∑
+fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c１,
+c２(
+t)x􀎯􀎮x′ ．
+c１,
+c２
+根据l１范数相干的定义,我们可以直接知道:
+经过t步量子游走之后的量子态|ψ(
+t)􀎯在整个空间
+的量子相干和在位置子空间的量子相干分别为
+C(ρt)＝∑
+x≠x′
+∑
+(c１,
+c２)＝(c′
+１,
+c′
+２) fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c′
+１,
+c′
+２(
+t)＋
+∑
+x,x′
+∑
+(c１,
+c２)≠(c′
+１,
+c′
+２) fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c′
+１,
+c′
+２(
+t) ,
+C(ρ′
+t)＝∑
+x≠x′ ∑
+fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c１,
+c２(
+t) ．
+c１,
+c２
+下面我们将主要依据这２个公式对两硬币量子
+游走和其实现完美状态转移这一过程进行量子相干
+的相关分析．
+２　主要结果
+在本节中,我们将给出主要结果,即初始量子态
+和不同的硬币算子的选择对在一维圆上两硬币量子
+游走过程中量子相干的影响,并基于此来考虑它在
+完美状态转移这一量子通讯协议中的演变规律．
+２．
+１　硬币算子为Hadamard算子的相干性定理
+对于在NＧcircle上的两硬币量子游走,我们选
+取２个硬币算子均为无偏的Hadamard算子H,即
+C１＝H 且C２＝H．我们发现对于初态,只要位置空
+间的量子态是均衡叠加态(硬币状态可以是任意
+的),整个量子相干演化就极其有规律,具体如下:
+定理１．如果量子游走的初态为ϕ(０)􀎯＝
+N－１
+１
+N ∑
+x􀎯(a ００􀎯＋b ０１􀎯＋c １０􀎯＋d １１􀎯),其
+x＝０
+中a,
+b,
+c,d 均为复数且|a|
+２＋|b|
+２＋|c|
+２＋|d|
+２＝
+１,那么整个演化过程是以４为周期,且
+１)在任一时刻t,粒子处于位置x 的概率P(x,
+t)均为１
+N ．其中,
+t＝０,１,􀆺;x＝０,１,􀆺,N－１．
+２)经过t步量子游走之后的量子态|ϕ(
+t)􀎯在
+整个空间的量子相干为(k＝０,１,􀆺):
+
+===== PDF PAGE 4 =====
+０
+０
+９
+１
+计算机研究与发展　２０２１,５８(９)
+(２(|ab|＋|ac|＋|ad|＋|bc|＋|bd|＋|cd|)＋１)N－１,t＝４k,
+ì
+ï
+ï
+ï
+ï
+ïï
+N－１＋N
+C(ρt)＝
+í
+ï
+ï
+ï
+ï
+ïï
+î
+３)经过t 步量子游走之后的量子态|ϕ(
+t)􀎯在
+位置子空间的量子相干为N－１．
+证明．根据两硬币量子游走模型知,对于量子
+初态
+N－１
+ϕ(０)􀎯＝１
+N ∑
+x􀎯(a ００􀎯＋b ０１􀎯＋
+x＝０
+c １０􀎯＋d １１􀎯),
+经过４步量子游走该量子态会依次演化为
+N－１
+ϕ(１)􀎯＝
+１
+２N ∑
+x􀎯((a＋c)００􀎯＋
+x＝０
+(b＋d)０１􀎯＋(a－c)１０􀎯＋(b－d)１１􀎯),
+N－１
+ϕ(２)􀎯＝
+１
+２
+N ∑
+x􀎯((a＋b＋c＋d)００􀎯＋
+x＝０
+(a－b＋c－d)０１􀎯＋(a＋b－c－d)１０􀎯＋
+(a－b－c＋d)１１􀎯),
+N－１
+ϕ(３)􀎯＝
+１
+２N ∑
+x􀎯((a＋b)００􀎯＋
+x＝０
+(a－b)０１􀎯＋(
+c＋d)１０􀎯＋(
+c－d)１１􀎯),
+N－１
+ϕ(４)􀎯＝１
+N ∑
+x􀎯(a ００􀎯＋b ０１􀎯＋
+x＝０
+c １０􀎯＋d １１􀎯)．
+由以上具体的演化过程,我们可以直接发现量
+子游走是具有周期性的且周期是４．
+同时对于圆上的任意一点x,根据初态的归一
+性,即|a|
+２＝１,我们可以直接
+２＋|b|
+２＋|c|
+２＋|d|
+计算得出P(x,０)＝P(x,１)＝P(x,２)＝P(x,３)＝
+１
+N ．结合该量子游走演化过程是以４为周期的这一
+性质,我们可以知道在任一时刻t,粒子处于位置x
+的概率P(x,
+t)均为１
+N ．其中,
+t＝０,１,􀆺;x＝０,１,
+􀆺,N－１．
+根据量子相干的定义,通过计算可知量子游走
+之后的量子态在整个空间的量子相干依次为
+１
+N
+C(ρ０)＝∑
+(a
+２)＋
+２＋b
+２＋c
+２＋d
+(１)
+１
+N
+∑
+x,x′
+(a (b ＋c ＋d )＋b (a ＋
+c ＋d )＋c (a ＋b ＋d )＋
+d (a ＋b ＋c ))＝N －１＋
+２N(ab ＋ac ＋ad ＋bc ＋
+bd ＋cd )＝(２(ab ＋ac ＋ad ＋
+bc ＋bd ＋cd )＋１)N －１,
+１
+２N
+C(ρ１)＝∑
+(a＋c
+２＋b＋d
+２＋
+x≠x′
+２)＋
+２＋b－d
+a－c
+１
+２N
+∑
+x,x′
+(a＋c (b＋d ＋a－c ＋
+b－d )＋b＋d (a＋c ＋a－c ＋
+b－d )＋a－c (a＋c ＋b＋d ＋
+b－d )＋b－d (a＋c ＋b＋d ＋
+a－c ))＝N(１＋
+(a＋c)(b＋d)＋
+(a＋c)(a－c)＋
+(a＋c)(b－d)＋
+(b＋d)(a－c)＋
+(b＋d)(b－d)＋
+(a－c)(b－d) )－１,
+１
+４N
+C(ρ２)＝∑
+(a＋b＋c＋d
+２＋
+x≠x′
+２＋a＋b－c－d
+２＋
+a－b＋c－d
+２)＋
+a－b－c＋d
+２
+４N
+∑
+x,x′
+( (a＋b＋c＋d)(a－b＋c－d)＋
+(a＋b＋c＋d)(a＋b－c－d)＋
+(a＋b＋c＋d)(a－b－c＋d)＋
+(a－b＋c－d)(a＋b－c－d)＋
+(a－b＋c－d)(a－b－c＋d)＋
+(a＋b－c－d)(a－b－c＋d) )＝N －１＋
+N
+( (a＋b＋c＋d)(a－b＋c－d)＋
+２
+(a＋b＋c＋d)(a＋b－c－d)＋
+(a＋b＋c＋d)(a－b－c＋d)＋
+(a－b＋c－d)(a＋b－c－d)＋
+(a－b＋c－d)(a－b－c＋d)＋
+(a＋b－c－d)(a－b－c＋d) ),
+N－１＋N(|(a＋c)(b＋d)|＋|(a＋c)(a－c)|＋|(a＋c)(b－d)|＋|(b＋d)(a－c)|＋
+|(b＋d)(b－d)|＋|(a－c)(b－d)|),t＝４k＋１,
+２(|(a＋b＋c＋d)(a－b＋c－d)|＋|(a＋b＋c＋d)(a＋b－c－d)|＋
+|(a＋b＋c＋d)(a－b－c＋d)|＋|(a－b＋c－d)(a＋b－c－d)|＋
+　|(a－b＋c－d)(a－b－c＋d)|＋|(a＋b－c－d)(a－b－c＋d)|),t＝４k＋２,
+N－１＋N(|(a＋b)(a－b)|＋|(a＋b)(
+c＋d)|＋|(a＋b)(
+c－d)|＋|(a－b)(
+c＋d)|＋
+　|(a－b)(
+c－d)|＋|(
+c＋d)(
+c－d)|)),t＝４k＋３．
+
+===== PDF PAGE 5 =====
+１
+０
+９
+１
+李　萌等:两硬币量子游走模型中的相干动力学
+１
+２N
+C(ρ３)＝∑
+(a＋b
+２＋a－b
+２＋
+x≠x′
+２)＋
+２＋c－d
+c＋d
+１
+２N
+∑
+x,x′
+(a＋b (a－b ＋c＋d ＋
+c－d )＋a－b (a＋b ＋c＋d ＋
+c－d )＋c＋d (a＋b ＋a－b ＋
+c－d )＋c－d (a＋b ＋a－b ＋
+c＋d ))＝N －１＋N( (a＋b)(a－b)＋
+(a＋b)(
+c＋d)＋
+(a＋b)(
+c－d)＋
+(a－b)(
+c＋d)＋
+(a－b)(
+c－d)＋
+(
+c＋d)(
+c－d) )．
+结合周期性可知,该定理的结论(２)成立．
+量子游走之后的量子态在位置空间的量子相干为
+１
+N
+C(ρ′
+０)＝∑
+(a
+２＋b
+２＋
+x≠x′
+２)＝N －１,
+２＋d
+c
+１
+２N
+C(ρ′
+１)＝∑
+(a＋c
+２＋b＋d
+２＋
+x≠x′
+２)＝N －１,
+２＋b－d
+a－c
+１
+４N
+C(ρ′
+２)＝∑
+(a＋b＋c＋d
+２＋
+x≠x′
+２＋a＋b－c－d
+２＋
+a－b＋c－d
+２)＝N －１,
+a－b－c＋d
+１
+２N
+C(ρ′
+３)＝∑
+(a＋b
+２＋a－b
+２＋
+x≠x′
+２)＝N －１．
+２＋c－d
+c＋d
+结合周期性可知,经过t 步量子游走之后的量
+子态|ϕ(
+t)􀎯在位置子空间的量子相干为N－１．
+证毕．
+注１．定理１中初态的选择只要求位置子空间
+上是均衡叠加态,而对两硬币态并没有任何限制,可
+以是可分态也可以是纠缠态．即两硬币量子态的选
+取对于量子游走演化的周期和概率分布并没有影
+响．其中,由于均衡叠加状态本身体现的无偏性,在
+量子游走搜索问题中它经常被选为量子游走的初
+态．特别地,当量子游走的初态为全空间的均衡叠加
+态,即
+ϕ(０)􀎯＝
+１
+４N ∑
+x,
+c１,
+c２􀎯＝
+x,
+c１,
+c２
+N－１
+１
+４N ∑
+x􀎯(００􀎯＋０１􀎯＋１０􀎯＋１１􀎯),
+x＝０
+整个演化过程的周期为４,且在任一时刻t,粒子处
+于位置x 的概率P(x,
+t)均为１
+N ．其中,
+t＝０,１,􀆺;
+x＝０,１,􀆺,N－１．经过t步量子游走之后的量子态
+|ϕ(
+t)􀎯在整个空间的量子相干为
+２N－１,t＝４k＋１,４k＋３
+ì
+í
+ïï
+C(ρt)＝
+４N－１,t＝４k
+ïï
+N－１,t＝４k＋２,
+î
+其中k＝０,１,􀆺,在位置子空间的量子相干为N－１．
+注２．事实上,关于在一维NＧcircle上单硬币
+量子游走的量子相干演化[３８],若硬币算子选为
+Hadamard算子且初态为均衡叠加量子态时,整个
+演化过程也是具有周期性的且周期为２,位置空间
+的量子相干一直恒为N －１．结合注１的分析,我们
+可知对于在圆上的量子游走,只要使用Hadamard
+算子为硬币算子且选取全空间的均衡叠加态为初
+态,那么整个演化过程就会具有周期性,这并不依赖
+于硬币的个数;但是周期会依赖于硬币个数,即在一
+维圆上的k 硬币量子游走的周期为２k．
+２．
+２　含参coin的量子相干性
+在２．
+１节,我们讨论了当２个硬币算子均为固
+定的Hadamard阵时,两硬币子空间的初态的任意
+选择在演化过程中对量子相干的影响．这里,我们假
+定量子初态为均衡叠加态
+ϕ(０)􀎯＝
+１
+４N ∑
+x,
+c１,
+c２􀎯＝
+x,
+c１,
+c２
+N－１
+１
+４N ∑
+x􀎯(００􀎯＋０１􀎯＋１０􀎯＋１１􀎯),
+x＝０
+下面来考虑硬币算子的选取对量子相干性带来的影
+a c
+æ
+è
+ç
+ö
+响．为书写简便,我们假定硬币算子C１＝
+ø
+÷ ,
+b d
+m s
+æ
+è
+ç
+ö
+ø
+÷ ,这里的参数是满足矩阵为酉阵这一条
+C２＝
+n t
+件的任一复数．那么,在两硬币量子游走下量子态演
+化为
+N－１
+ϕ(１)􀎯＝
+１
+４N ∑
+x􀎯((a＋c)００􀎯＋
+x＝０
+(a＋c)０１􀎯＋(b＋d)１０􀎯＋(b＋d)１１􀎯),
+N－１
+ϕ(２)􀎯＝
+１
+４N ∑
+x􀎯((a＋c)(m ＋s)００􀎯＋
+x＝０
+(a＋c)(n＋t)０１􀎯＋(b＋d)(m ＋s)１０􀎯＋
+(b＋d)(n＋t)１１􀎯),
+N－１
+ϕ(３)􀎯＝
+１
+４N ∑
+x􀎯(((a＋c)a＋
+x＝０
+(b＋d)
+c)(m ＋s)００􀎯＋((a＋c)a＋
+(b＋d)
+c)(n＋t)０１􀎯＋((a＋c)b＋
+
+===== PDF PAGE 6 =====
+２
+０
+９
+１
+计算机研究与发展　２０２１,５８(９)
+(b＋d)d)(m ＋s)１０􀎯＋((a＋c)b＋
+(b＋d)d)(n＋t)１１􀎯),
+可以发现该演化过程是十分有规律的．我们记:
+N－１
+ϕ(
+t)􀎯＝
+１
+４N ∑
+x􀎯􀱋pt􀎯􀱋qt􀎯,
+x＝０
+其中
+pt􀎯＝p
+(０)
+t
+０􀎯＋p
+(１)
+t
+１􀎯＝(p
+(０)
+t ,p
+(１)
+t )
+T
+且
+qt􀎯＝q
+(０)
+t
+０􀎯＋q
+(１)
+t
+１􀎯＝(q
+(０)
+t ,
+q
+(１)
+t )
+T,
+T 为转置符号,另记
+e１􀎯＝(a,
+c)
+T,e２􀎯＝(b,d)
+T,g􀎯＝(１,１)
+T,
+f１􀎯＝(m,
+s)
+T,f２􀎯＝(n,
+t)
+T,
+并规定(a,
+c)
+T􀳱(b,d)
+T＝ab＋cd,不难通过数学归
+纳法得知(k＝１,２,􀆺):
+p２k－１􀎯􀱋q２k－１􀎯＝(e１􀎯􀳱p２k－２􀎯,e２􀎯􀳱
+p２k－２􀎯)
+T􀱋q２k－２􀎯p２k􀎯􀱋q２k􀎯＝
+p２k－１􀎯􀱋(f１􀎯􀳱q２k－１􀎯,f２􀎯􀳱q２k－１)
+T．
+根据１．
+３节给出的量子相干公式,可以计算出
+该演化过程中时刻t全空间和位置子空间的量子相
+干分别为
+C(ρt)＝∑
+x≠x′
+∑
+(c１,
+c２)＝(c′１,
+c′２) fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c′１,
+c′２(
+t)＋
+∑
+x,x′
+∑
+(c１,
+c２)≠(c′１,
+c′２) fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c′１,
+c′２(
+t)＝
+１
+４N [N(N－１)|pt􀎯􀱋|qt􀎯
+２
+２＋
+２(|p１􀎯
+２
+１× |q１􀎯
+２
+１－|pt􀎯􀱋|qt􀎯
+２
+２)]＝
+N
+１
+４(N |p１􀎯
+２
+１× |q１􀎯
+２
+１－|pt􀎯􀱋|qt􀎯
+２
+２),
+C(ρ′
+t)＝∑
+x≠x′ ∑
+fx,
+c１,
+c２(
+t)f
+∗
+x′,
+c１,
+c２(
+t)＝
+c１,
+c２
+１
+４NN(N－１)|pt􀎯􀱋|qt􀎯
+２
+２＝
+N－１
+４
+|pt􀎯
+２
+２× |qt􀎯
+２
+２．
+特别地,若硬币算子为行和相同的二阶酉矩阵,
+iθ
+r
+i １－r
+２
+æ
+ö
+ø
+÷÷ 的酉算子,其中r∈
+像形如e
+è
+çç
+i １－r
+２
+r
+[０,１]且θ∈[０,２π],不妨记２个硬币算子C１和C２
+的行和分别为复数i和j,则同样利用数学归纳法可
+知:对于k＝１,２,􀆺,有
+|p２k－１􀎯
+１＝２|i
+k|,
+|p２k－１􀎯
+２＝２|i
+２,
+k|
+|q２k－１􀎯
+１＝２|j
+k－１|,
+|q２k－１􀎯
+２＝２|j
+２;
+k－１|
+|p２k􀎯
+１＝２|i
+k|,|p２k􀎯
+２＝２|i
+２,
+k|
+|q２k􀎯
+１＝２|j
+k|,|q２k􀎯
+２＝２|j
+２;
+k|
+从而,时刻t全空间和位置子空间的量子相干分别为
+t
+２|
+t
+２
+２,
+C(ρt)＝(４N－１)i
+２|j
+t
+２|
+C(ρ′
+t)＝(N－１)i
+t
+２
+２．
+２|j
+此时量子相干仅依赖于２个硬币算子的行和,
+且呈正相关的关系．此外,全空间的量子相干和位置
+子空间的量子相干这二者的比值固定,严格取决于
+一维圆的顶点个数．
+２．
+３　完美状态转移协议中的量子相干
+量子游走可以用来实现量子通讯,比如完美状
+态转移,即将量子态从一点转移至另一点且保真度
+为１．文献[３９]提出了用单硬币量子游走模型实现在
+含偶数个点的一维圆上将量子态从一点完美传输到
+对点的通讯协议．基于此,我们利用两硬币量子游走
+模型在任意NＧcircle上可完美传输量子态至圆上的
+任意位置[１０],这大大改善了文献[３９]中完美状态转
+移协议的局限性．下面我们来分析这２种方案里状
+态完美转移过程中量子相干的变化．假定要传输的
+量子态为α|０􀎯＋β|１􀎯,其中复数α 和β 满足|α|
+２＋
+|β|
+２＝１．
+文献[１０]提出的在NＧcircle上完美状态转移的
+方案所用的硬币算子依赖于步数,其中至多有２步
+会用到Pauli阵X,其余步数均选取单位阵I 为硬
+币算子．由１．
+３节中量子相干的式(１)可知,用来实
+现完美状态转移的t 步量子游走内,全空间的量子
+相干一直恒为２|αβ|,在位置空间的量子相干为０．
+文献[３９]使用单硬币量子游走来实现完美状态
+转移,该模型的量子相干演化在文献[３８]中已经有
+所探讨．文献[３９]具体是从硬币算子的角度出发研
+究了２种情况,其中任意二阶酉算子可以写为
+λ
+１－λe
+iθ
+æ
+ö
+C(λ,
+θ,φ)＝
+ø
+÷÷ ．
+è
+çç
+１－λe
+iφ
+－λe
+i(θ＋φ)
+第１种情况是研究了λ≠１的硬币算子在特定
+圆上的完美状态转移,比如在４Ｇcircle上进行４步硬
+币算子为C １
+２,π,０
+æ
+è
+ç
+ö
+ø
+÷ 的单硬币量子游走,只需一个
+简单的矫正算子就可以使得量子态α|０􀎯＋β|１􀎯从
+位置x＝１传到目标位置x＝３．那么根据量子相干
+的定义可知,在这４步量子游走中,全空间的量子相
+干具体演化为
+C(ρ０)＝２|αβ|,
+C(ρ１)＝|α＋β|×|α－β|,
+
+===== PDF PAGE 7 =====
+３
+０
+９
+１
+李　萌等:两硬币量子游走模型中的相干动力学
+C(ρ２)＝２|α＋β|×|α－β|＋|α＋β|
+２＋|α－β|
+２
+２
+,
+C(ρ３)＝４|αβ|＋１,
+C(ρ４)＝C(ρ０)＝２|αβ|．
+在位置空间的量子相干为
+C(ρ′
+０)＝C(ρ′
+１)＝０,
+C(ρ′
+２)＝|Im(α＋β)
+∗×(α－β)|,
+C(ρ′
+３)＝C(ρ′
+４)＝０．
+第２种情况研究了使用λ＝１的硬币算子进行
+N
+２步量子游走来实现在NＧcircle上的完美状态转
+移,其中N 为偶数且θ,φ≠０．同样地,根据量子相干
+的定义可知在这N
+２步量子游走过程中,全空间的量
+子相干一直恒为２|αβ|,在位置空间的量子相干为０．
+这与我们文献[１０]使用两硬币量子游走来实现完美
+状态转移过程中量子相干的演变规律是相同的．
+根据以上情形的量子相干对比分析,我们可以
+看出在利用量子游走来实现完美状态转移的过程
+中,硬币算子的选取是会直接影响到量子相干的．具
+体来说,如果硬币算子是对角或反对角形式的,即将
+一个基态映射到另一个基态上去的(计算基),那么
+量子相干在演化过程中会保持不变,恒为定值．否
+则,若硬币算子将一个基态映射到一些基态的叠加
+态上(计算基),比如无偏的Hadamard算子等,此时
+量子相干在量子游走过程中不会保持不变,而是会
+依赖于量子游走的步数,随时间变化而变化．
+３　模型等价性及在隐形传输上的应用
+对于由２枚硬币控制的量子游走,我们在１．
+１
+节和１．
+２节分别介绍了２种模型．这里不考虑初态的
+选取,二者最主要的区别就是硬币算子的作用方式．
+模型１是通过２枚硬币交替作用,每一步仅有一枚
+硬币算子在起作用,经过这枚硬币的翻转作用后游
+走者依据硬币的当前状态进行移动(向前或向后移
+动一个单位);模型２是２枚硬币在每一步游走中均
+起作用,基于此,游走者向前移动、向后移动一个单
+位或者保持不动．在本节中,我们将说明这２种模型
+在一定意义下是等价的,并给出量子相干的比较和
+具体的应用来详细说明这一点．
+对于两硬币量子游走,在奇数步和偶数步量子
+游走的酉算子分别是U１和U２,因此每２步量子游
+N－１
+􀭾
+U ＝U２U１＝(∑
+(x ＋２)modN􀎯􀎮x 􀱋
+x＝０
+N－１
+００􀎯􀎮００＋∑
+x􀎯􀎮x 􀱋０１􀎯􀎮０１＋
+x＝０
+N－１
+N－１
+∑
+x􀎯􀎮x 􀱋１０􀎯􀎮１０＋∑
+(x －２)mod
+x＝０
+x＝０
+N􀎯􀎮x 􀱋１１􀎯􀎮１１)􀅰(IN 􀱋C１􀱋C２),
+即每２步量子游走,２枚硬币均起作用,且游走者依
+据经硬币翻转操作之后的量子态向前、向后移动
+２个单位或者保持不动．而对于两纠缠硬币量子游
+走具体形式已在１．
+２节由酉算子V 给出,可以直接
+看出,每２步两硬币量子游走相当于一步两纠缠硬
+币量子游走,差别仅仅是在游走者发生移动的前提
+下二者相差一个单位．在这个意义下,从量子游走酉
+算子的角度来看,这２个模型是等价的．
+下面,我们从量子相干的角度与注１中的结果
+进行对比来说明２种模型就上面指出的不同之处所
+造成的影响．同样地,当量子游走的初态为全空间的
+均衡叠加态时,即
+ϕ(０)􀎯＝
+１
+４N ∑
+x,
+c１,
+c２􀎯＝
+x,
+c１,
+c２
+N－１
+１
+４N ∑
+x􀎯(００􀎯＋０１􀎯＋１０􀎯＋１１􀎯),
+x＝０
+在两纠缠硬币量子游走下(C１＝C２＝H),量子态演
+化依次为
+N－１
+ϕ(１)􀎯＝１
+N ∑
+x,０,０􀎯,
+x＝０
+ϕ(２)􀎯＝ϕ(０)􀎯＝
+１
+４N ∑
+x,
+c１,
+c２􀎯．
+x,
+c１,
+c２
+从而,整个演化过程的周期为２,且在任一时刻
+t,粒子处于位置x 的概率P(x,
+t)均为１
+N ．其中,
+t＝
+０,１,􀆺;x＝０,１,􀆺,N －１．经过t 步量子游走之后
+的量子态|ϕ(
+t)􀎯在整个空间的量子相干为
+４N－１,t＝２k
+C(ρt)＝
+N－１,t＝２k＋１
+{
+,
+其中k＝０,１,􀆺．在位置子空间的量子相干为N －
+１．事实上,该演化过程的周期性和全空间量子相干
+与注１结果的区别是因为这２种量子游走模型(􀭾
+U
+和V)移动时相差一个单位．
+我们接下来通过量子游走实现隐形状态传输[９]
+这一应用来说明二者的这种等价性．我们以在４Ｇ
+circle上对单量子比特隐形传输为例．在该协议中,
+量子初态为|ϕ(０)􀎯＝|０􀎯(a|０􀎯＋b|１􀎯)|０􀎯,经过
+
+===== PDF PAGE 8 =====
+４
+０
+９
+１
+计算机研究与发展　２０２１,５８(９)
+２步量子游走,分别选取C１＝I 和C２＝H,量子态演
+化为
+|ϕ(２)􀎯＝１
+２[|０􀎯|＋􀎯(a|１􀎯＋b|０􀎯)＋
+|０􀎯|－􀎯(a|１􀎯－b|０􀎯)＋|２􀎯|＋􀎯(a|０􀎯＋b|１􀎯)＋
+|２􀎯|－􀎯(a|０􀎯－b|１􀎯)],
+其中|＋􀎯＝|０􀎯＋|１􀎯
+且|－􀎯＝|０􀎯－|１􀎯
+．接下来只
+２
+２
+需对位置空间和第１个硬币空间分别选取测量基
+{|０􀎯,|１􀎯,|２􀎯,|３􀎯}和{|＋􀎯,|－􀎯}来测量,再根据
+测量结果用相应的矫正算子来矫正就可以完成状态
+的隐形传输．
+事实上,基于２种量子游走模型的等价性,对于
+同样的初态,利用两纠缠硬币量子游走模型同样可
+以实现隐形状态传输．具体如下:选取硬币算子为
+C＝C１􀱋C２＝I􀱋H,只需一步量子游走(V),就可以
+得到量子态:
+１
+[|１
+~􀎯|＋􀎯(a|０􀎯＋b|１􀎯)＋
+２２
+~􀎯|－􀎯(a|０􀎯－b|１􀎯)＋|３
+~􀎯|＋􀎯(a|０􀎯－b|１􀎯)＋
+|１
+~􀎯|－􀎯(a|０􀎯＋b|１􀎯)＋|０􀎯|＋􀎯(a|１􀎯＋b|０􀎯)＋
+|３
+|０􀎯|－􀎯(a|１􀎯－b|０􀎯)],
+~􀎯＝|１􀎯＋|３􀎯
+~􀎯＝|１􀎯－|３􀎯
+其中|１
+且|３
+．然后对位置
+２
+２
+空间和第１个硬币空间分别选取测量基{|０􀎯,|１
+~􀎯,
+|２􀎯,|３
+~􀎯}和{|＋􀎯,|－􀎯}来进行测量,再通过合适的
+矫正算子进行矫正即可．因此,基于量子游走模型的
+等价性,可以启发我们设计出更加简单高效的量子
+通讯协议．
+４　结　　论
+量子游走是经典随机游走的量子对应物,由于
+它在量子计算领域的广泛应用,其本身的性质研究
+也备受关注．本文针对一维圆上的两硬币量子游走
+的量子相干进行了分析．我们具体地讨论了初始量
+子态和硬币算子的选取对量子相干的影响,以及它
+在量子通讯协议———完美状态转移———中的演变．
+另外,我们也探讨了２种两硬币量子游走模型之间
+的等价性,并基于此阐述了其在量子隐形传输中的
+作用．我们这里仅探讨了量子游走过程中量子相干
+性质的变化如何受影响,反之,量子相干的变化如何
+影响量子游走的各种性质是未来值得探索的问题．
+进一步,它在量子计算或量子密码中的作用也值得
+探索[４０]．
+参
+考
+文
+献
+[１] WeiWei,ErenrichJ,SelmanB．Towardsefficientsampling:
+Exploitingrandom walkstrategies [C]∕∕Procofthe１９th
+NationalConfon ArtificialIntelligence．Palo Alto,CA:
+AAAI,２００４:６７０６７６
+[２] GradyL．Random walksforimagesegmentation[J]．IEEE
+TransactionsonPattern Analysisand MachineIntelligence,
+２００６,２８(１１):１７６８１７８３
+[３] Cho M,LeeJ,Lee K M．Reweightedrandom walksfor
+graphmatching [C]∕∕ProcofEuropeanConfonComputer
+Vision．Berlin:Springer,２０１０:４９２５０５
+[４] Lee J, Cho M, Lee K M．HyperＧgraph matching via
+reweighted random walks [C]∕∕Proc of CVPR ２０１１．
+Piscataway,NJ:IEEE,２０１１:１６３３１６４０
+[５] ChildsA M．Universalcomputationbyquantum walk [J]．
+PhysicalReviewLetters,２００９,１０２(１８):１８０５０１
+[６] ChildsA M,GossetD,WebbZ．Universalcomputationby
+multiparticlequantum walk[J]．Science,２０１３,３３９(６１２１):
+７９１７９４
+[７] LovettNB,CooperS,EverittM,etal．Universalquantum
+computation using the discreteＧtime quantum walk [J]．
+PhysicalReview A,２０１０,８１(４):０４２３３０
+[８] UnderwoodMS,FederDL．Universalquantumcomputation
+by discontinuousquantum walk [J]．Physical Review A,
+２０１０,８２(４):０４２３０４
+[９] WangYu,ShangYun,XuePeng．Generalizedteleportation
+byquantum walks [J]．Quantum Information Processing,
+２０１７,１６(９):１１３
+[１０] Shang Yun, Wang Yu, Li Meng, et al．Quantum
+communicationprotocolsbyquantum walkswithtwocoins
+[J]．EPL (EurophysicsLetters),２０１９,１２４(６):６０００９
+[１１] Shang Yun,Li Meng．Experimentalrealization of state
+transferbyquantum walks withtwocoins [J]．Quantum
+ScienceandTechnology,２０１９,５(１):０１５００５
+[１２] Li Meng, Shang Yun．Entangled state generation via
+quantum walks with multiple coins [J]．npj Quantum
+Information,２０２１,７(１):１８
+[１３] ShenviN,KempeJ,Whaley K B．Quantum randomＧwalk
+searchalgorithm [J]．PhysicalReview A,２００３,６７(５):
+０５２３０７
+[１４] SanthaM．Quantum walkbasedsearchalgorithms[C]∕∕Proc
+ofInt Conf on Theory and Applications of Models of
+Computation．Berlin:Springer,２００８:３１４６
+[１５] PortugalR．Quantum WalksandSearch Algorithms [M]．
+Berlin:Springer,２０１８
+[１６] LiMeng,ShangYun．Generalizedexceptionalquantum walk
+
+===== PDF PAGE 9 =====
+５
+０
+９
+１
+李　萌等:两硬币量子游走模型中的相干动力学
+[１７] Ambainis A．Quantum
+walk algorithm for element
+distinctness[J]．SIAMJournalonComputing,２００７,３７(１):
+２１０２３９
+[１８] MagniezF,SanthaM,Szegedy M．Quantumalgorithmsfor
+thetriangle problem [J]．SIAM Journalon Computing,
+２００７,３７(２):４１３４２４
+[１９] Schreiber A,Cassemiro K N,PotoekV,etal．Photons
+walkingtheline: A quantum walk with adjustable coin
+operations[J]．Physical Review Letters,２０１０,１０４(５):
+０５０５０２
+[２０] ZähringerF,KirchmairG,GerritsmaR,etal．Realizationof
+aquantum walkwithoneandtwotrappedions[J]．Physical
+ReviewLetters,２０１０,１０４(１０):１００５０３
+[２１] YanZhiguang,Zhang Yuran,Gong Ming,etal．Strongly
+correlatedquantum walks witha１２Ｇqubitsuperconducting
+processor[J]．Science,２０１９,３６４(６４４２):７５３７５６
+[２２] Aharonov Y,Davidovich L,Zagury N．Quantum random
+walks[J]．PhysicalReview A,１９９３,４８(２):１６８７
+[２３] FarhiE,Gutmann S．Quantum computationand decision
+trees[J]．PhysicalReview A,１９９８,５８(２):９１５
+[２４] Bednarska M,Grudka A,KurzyńskiP,etal．Quantum
+walksoncycles[J]．PhysicsLetters A,２００３,３１７(１Ｇ２):
+２１２５
+[２５] SolenovD,FedichkinL．ContinuousＧtimequantum walkson
+acyclegraph[J]．PhysicalReview A,２００６,７３(１):０１２３１３
+[２６] SadowskiP,MiszczakJA,OstaszewskiM．Livelyquantum
+walksoncycles[J]．JournalofPhysicsA:Mathematicaland
+Theoretical,２０１６,４９(３７):３７５３０２
+[２７] ShiHailong,LiuSiyuan,Wang Xiaohui,etal．Coherence
+depletionin the Grover quantum search algorithm [J]．
+PhysicalReview A,２０１７,９５(３):０３２３０７
+[２８] Ma Jiajun, Zhou You, Yuan Xiao,et al．Operational
+interpretationofcoherenceinquantum keydistribution[J]．
+PhysicalReview A,２０１９,９９(６):０６２３２５
+[２９] PiresD P,SilvaI A,deAzevedo E R,etal．Coherence
+orders,decoherence,andquantum metrology [J]．Physical
+Review A,２０１８,９８(３):０３２１０１
+[３０] StreltsovA,AdessoG,Plenio M B．Colloquium:Quantum
+coherenceasaresource [J]．Reviewsof Modern Physics,
+２０１７,８９(４):０４１００３
+[３１] BaumgratzT,CramerM,PlenioMB．Quantifyingcoherence
+[J]．PhysicalReviewLetters,２０１４,１１３(１４):１４０４０１
+[３２] Brun T A,Carteret H A,Ambainis A．Quantum walks
+drivenbymanycoins[J]．PhysicalReview A,２００３,６７(５):
+０５２３１７
+[３３] VenegasＧAndracaSE,BallJL,BurnettK,etal．Quantum
+walks withentangledcoins [J]．New JournalofPhysics,
+２００５,７(１):２２１
+[３４] PanahiyanS,FritzscheS．OneＧdimensionalquantum walks
+drivenbytwoＧentangledＧqubitcoins[J]．PhysicsLettersA,
+２０２０,３８４(２６):１２６６７３
+[３５] Panahiyan S, Fritzsche S．Increasing the efficiency of
+quantum walk with entangled qubits [J]．arXiv preprint
+arXiv:１９０５．
+１１０７６,２０１９
+[３６] LiuChaobin,PetulanteN．OneＧdimensionalquantumrandom
+walkswithtwoentangledcoins [J]．Physical Review A,
+２００９,７９(３):０３２３１２
+[３７] LiuChaobin．Asymptoticdistributionsofquantum walkson
+thelinewithtwoentangledcoins[J]．QuantumInformation
+Processing,２０１２,１１(５):１１９３１２０５
+[３８] HeZhimin,HuangZhiming,LiLüzhou,etal．Coherenceof
+oneＧdimensional quantum walk on cycles [J]．Quantum
+InformationProcessing,２０１７,１６(１１):１１４
+[３９] Yalçınkaya ,GedikZ．QubitstatetransferviadiscreteＧtime
+quantum walks[J]．JournalofPhysicsA:Mathematicaland
+Theoretical,２０１５,４８(２２):２２５３０２
+[４０] WangYongli,Xu Qiuliang．Principleandresearchprogress
+ofquantum computation and quantum cryptography [J]．
+JournalofComputerResearchand Development,２０２０,５７
+(１０):２０１５２０２６(inChinese)
+(王永利,徐秋亮．量子计算与量子密码的原理及研究进展综
+述[J]．计算机研究与发展,２０２０,５７(１０):２０１５２０２６)
+Li Meng,born in １９９５．PhD．Her main
+researchinterestsincludequantum computing
+andquantum walks．
+李　萌,１９９５年生．博士．主要研究方向为量
+子计算与量子游走．
+ShangYun,bornin１９７２．ProfessorandPhD
+supervisor．Senior member of CCF．Her
+main research interests include quantum
+computing and its fundamental theory,
+quantumlogic,quantumdotcellularautomata
+andcomplexnetwork．
+尚　云,１９７２年生．研究员,博士生导师．CCF
+高级会员．主要研究方向为量子计算及其基
+础理论、量子逻辑、量子点元胞自动机和复杂
+网络等．

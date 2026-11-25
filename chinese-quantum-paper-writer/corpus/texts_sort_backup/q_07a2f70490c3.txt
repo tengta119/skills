@@ -1,0 +1,423 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２１．２０２１０２７６
+ JournalofComputerResearchandDevelopment                                    ５８(９):１８２３１８３４,２０２１
+
+
+量子优化算法综述
+
+何键浩　　　李绿周(中山大学计算机学院　广州　５１０００６)
+(hejh９＠mail２．sysu．edu．cn)
+AnOverviewofQuantum Optimization
+
+HeJianhaoandLiLüzhou
+(SchoolofComputerScienceandEngineering,SunYatＧsenUniversity,Guangzhou５１０００６)
+  Abstract　Quantumoptimizationhasattractedmuchattentioninrecentyears．Itmainlystudieshow
+  toacceleratethesolutionofoptimizationproblems withquantum computing．Thisoverview will
+  classifythe quantum optimization algorithm according to whetherthe optimization variableis
+  continuous,andfocusonintroducingthecontinuousvariableoptimizationalgorithm．Throughthe
+  investigationofexistingwork,thisarticleobtainsthefollowingobservations:１)Theworksofdiscrete
+  variablequantumoptimizationweredistributedfiveyearsago,whiletheworksofcontinuousvariable
+  quantum optimization has attracted more attentionin thelastfive years;２)The main basic
+  technologiesusedinquantumoptimizationweremainlyproposedtentotwentyyearsago,andbasic
+  innovationsareneeded;３)In mostworksofquantum optimization,theoreticalaccelerationoftime
+  complexityorquerycomplexityisachieved,butmorerigoroustheoreticalanalysisisstillneeded;４)
+  Therearestill many problems worthy ofexploration by quantum computingresearchersinthe
+  optimizationfield,especiallyinthefield ofnonＧconvex optimization,whichisconsideredto be
+  difficultinclassicalcomputing．
+  Key words　quantum computing;quantum optimization; mathematical programming;discrete
+  variableoptimization;continuousvariableoptimization
+ 摘　要　量子优化是量子计算领域近年来颇受关注的一个研究分支,主要研究如何利用量子计算加速优
+ 化问题的求解．根据优化问题的变量是否连续分类梳理量子优化算法,侧重介绍连续变量优化算法．通
+ 过对现存工作的调研梳理得到一些观察:１)５~２０年前的研究主要集中在离散变量的量子优化技术,近
+ ５年的研究则更关注连续变量的量子优化技术;２)量子优化使用的主要基础技术都是１０~２０年前提出
+ 的,在基础技术方面需要进一步革新;３)量子优化算法相比于对应的经典算法通常在理论上有加速优
+ 势,既有体现在时间复杂度的加速,也有体现在查询复杂度的加速,但仍然有待更为严格的理论分析;４) 优化领域依然存在许多值得量子计算研究人员探索的问题,特别是非凸优化领域,亦即经典计算上认为
+ 较难的优化问题．
+　收稿日期:２０２１－０３－２９;修回日期:２０２１－０６－０９
+　基金项目:国家自然科学基金项目(６１７７２５６５);广东省基础与应用基础研究基金项目(２０２０B１５１５０２００５０);广东省重点研发项目
+           (２０１８B０３０３２５００１)
+           ThisworkwassupportedbytheNationalNaturalScienceFoundationofChina(６１７７２５６５),theBasicandAppliedBasicResearch
+           FoundationofGuangdongProvince(２０２０B１５１５０２００５０),andtheKeyResearchandDevelopmentProjectofGuangdongProvince
+           (２０１８B０３０３２５００１)．
+　通信作者:李绿周(lilvzh＠mail．sysu．edu．cn)
+
+===== PDF PAGE 2 =====
+１８２４                                               计算机研究与发展　２０２１,５８(９)
+ 关键词　量子计算;量子优化;数学规划;离散变量优化;连续变量优化
+  中图法分类号　TP３Ｇ０;O２２４
+　　优化(optimization)是计算机科学与数学领域     ①Grover算法以及量子随机游走．这２个基础
+十分重要的基础研究之一,同时也是机器学习的核  算法后续还有不少改进与扩展,多被用于加速搜索
+心工具[１]．相关理论与方法广泛应用于各类工业生  过程．
+产[２]、工程设计与管理[３Ｇ５]、交通运输[６]、经济决    ②量子退火法．量子退火法无需使用纠缠态,
+策[７]、市场管理[８]等关乎国计民生的重要领域．一个  实现较简单,因此已经有了DＧWave这样的大型专
+具体的优化问题由３个基本要素组成:１)目标函数  用量子计算机可供实验研究．
+(或损失函数),即决策者需要优化的指标,如总消                          ③量子近似优化技术．量子近似优化算法虽然耗、总收益等,数学形式表现为由优化变量到指标的                        还没有关于理论优势的严格分析,但被认为适合近
+函数∕映射．２)优化变量,即决策者可以调整且会影                                     期的含噪中等规模量子(noisyintermediateＧscale响到目标函数的变量,如产品工艺、资金分配等．３)                               quantum,NISQ)计算设备,因此得到不少关注．约束条件,即在决策过程中必须遵守的限制,如安全                                ２)２０１５—２０２１年．此阶段的量子优化算法主要标准、资源储备总量等．优化过程就是在约束条件的                        针对连续变量优化问题而设计．连续变量优化问题限制下,寻找能最小化或最大化目标函数的优化变                        的解法以迭代算法为主,迭代开销以及收敛速度是量的赋值．优化有时候也被称为数学规划,下文中优                        影响算法效率的主要因素．此阶段的量子算法主要化与规划意义等价,具体使用的词汇将根据该细分                        得益于４类量子技术的发展:方向的用词习惯决定．                          ①解线性方程量子算法的设计思想．此类方法  根据优化问题的变量是否连续,优化技术可以                        可用于加速与矩阵操作相关问题的求解．分为离散变量优化(也称为组合优化)和连续变量优                          ②哈密顿模拟技术．此类方法的发展为量子态化两大类．其中,根据目标函数是否是凸的,连续变                        演化提供了高效的实现方案．量优化又可分为凸优化和非凸优化．凸优化主要研究的是目标函数为凸函数且优化变量可行域为凸集    ③量子随机存储器．借助量子随机存储技术对
+                         数据进行预处理,可以使算法的效率得到提升,不过的优化问题,由于凸集凸函数有许多优秀的性质(例  量子随机存储的搭建仍然需要进一步的优化来保证
+如极小值即最小值),使得凸优化问题有很多高效的                         整体的优势．解法,在应用迭代方法求解时也能获得良好的收敛                          ④量子梯度估计法．计算梯度是许多优化问题速度．因此,凸优化技术方面已有成体系的方法且有                       的核心步骤,量子梯度估计法的提出为此提供了广泛的应用．相对而言,非凸优化还有很大的发展空                        便利．间．另外,许多非凸优化问题,目前有效的办法仍然                          连续变量量子优化算法是近年的研究趋势,研是转化为凸优化问题求解．                         究内容涵盖了优化领域中梯度下降、牛顿法、内点法   与此同时,自从Shor快速整数分解量子算法[９]、               量子解线性方  等常用的传统迭代方法,也有针对具体优化问题的持Grover量子搜索算法[１０]以及HHL                        续研究,因此本文将重点介绍连续变量量子优化算程算法[１１]的提出,量子计算就因其与生俱来的并行
+性而受到广泛关注,近年来量子计算理论方面的研  法,该方向的研究目前主要集中在量子凸优化方面．
+究进展可参考文献[１２Ｇ１３]．因此,如何利用量子计
+算技术来加速优化问题的求解、提高优化效果成为  １　基本量子算法简介
+受关注的问题,逐渐形成了量子优化这一研究方向．
+量子优化算法的研究从时间上大致分为１９９６—    本节介绍在量子优化算法中使用频率较高的基
+２０１５年和２０１５—２０２１年这２个阶段．        本量子算法∕技术．关于量子计算的基本知识以及更
+  １)１９９６—２０１５年．此阶段的量子优化算法主要  全面的介绍可参考文献[１４Ｇ１６]．本节主要介绍一些
+是针对离散变量优化问题而设计,且有较多的启发  相对底层的核心算法∕技术,它们最初设计时并不是
+式算法．此阶段的量子算法主要得益于当时３类基  为了优化算法,可广泛应用于不同的领域,其中当然
+础离散量子技术:                也包括优化领域．
+
+===== PDF PAGE 3 =====
+何键浩等:量子优化算法综述                                          １８２５
+１．１　Grover算法与量子随机游走(Groveralgorithm  计所需结果的概率．在量子优化算法中,不完美的演
+     &quantumrandomwalk)           化产生的垃圾信息,以及算法本身产生的无用信息
+  Grover算法与量子随机游走已经被应用在许  一般都通过振幅放大过滤掉．该工作与Grover算
+                  算法于                         于多领域,其中就有离散优化领域．Grover        法[１０]以及量子计数[３２]有密切联系．Ambainis
+１９９６年被提出[１０],用于无序数据库搜索,其方法是  ２０１２年提出了量子振幅放大算法的时变版本[３３],并
+通过迭代利用一个可识别搜索目标的黑盒来提高搜  用于求解线性代数问题．量子振幅估计算法近期还
+                           有针对非布尔函数的推广[３４]以及无需使用量子相索目标在量子叠加态中的振幅,从而提高测量获得
+搜索目标的概率．后续有多个相关的改进结果,如由   位估计算法的变种[３５]．
+                             １．清华大学的Long提出的Grover算法的精确版本[１７]．   ４　解线性方程量子算法(quantumlinearsystem
+                                                   algorithm)原始的Grover算法需要确切知道搜索空间中目标
+的数量才能确定最优的迭代次数,过少的迭代次数                                解线性方程量子算法最早在２００９年由Harrow,达不到效果,过多的迭代也会降低搜索的成功率,迭                                  Hassidim,Lloyd三名学者提出[１１],所以也被称为代次数增多并不能保证一直趋向搜索目标．该问题                         HHL算法．解线性方程即给定矩阵A 与向量b,求在文献[１８]中被称为“souffléproblem”．因此,对于        的x．此类算法也可以用来处理矩阵与                           满足Ax＝b搜索空间中目标数量未知的情形,算法需要改进,                         向量乘积、矩阵求逆等操作,因此也常见于量子优化Grover和Mizel先后对此作过讨论,并给出了随着迭代次数增加能一直增加搜索成功率的改进版  技术的迭代算法中．需要注意的是,解线性方程量子
+                        算法求解的是量子版本的问题,即输入输出均为量本[１９Ｇ２１],但这几项工作都一定程度上牺牲了算法效                         子态,无法直接得到解的每一个分量,因此在进一步率．最终Yoder等人给出了进一步改进[２２],既保留                        应用时需要经过巧妙设计,一般在利用方程解的全了平方加速,也保证了迭代最终会一直趋向搜索目                            局信息时才能体现量子算法的加速效果．Ambainis标．此系列改进工作被称为固定点量子搜索(fixedＧ                        于次年提出了改进版本,减少了算法复杂度对矩阵pointquantumsearch)．若搜索前对答案有一定的                                条件数的依赖[３６]．２０１７年,Childs等３名学者用其先验知识,He等人给出了相应最优算法[２３]．                            他思路给出了解线性方程量子算法[３７],减少了计算  量子随机游走于１９９３年由新墨西哥大学的                        复杂度中对精度的依赖．２０１８年,Wossnig等３名学Aharonov等３名学者提出[２４]．不同时期量子随机游                        者利用量子奇异值估计算法,去除了计算复杂度中走的工作梳理可参见文献[２５Ｇ２８]．Grover算法可以                            对矩阵稀疏度的依赖[３８]．关于此系列工作的梳理可看作是在一种特殊图上的量子随机游走,因此量子                               以参见文献[３９]．随机游走是一种更一般化的量子搜索技术,已经成                             １．５　量子随机存取存储(quantumrandom access为一类重要的量子算法设计模型．                                            memory)
+１．２　量子傅里叶变换与量子相位估计算法(quantum     Fouriertransform & quantumphaseestimation    要在经典问题上使用量子算法,经典数据编码
+    algorithm)                 成量子态是必不可少的重要步骤,量子随机存取存
+                           储(简称QRAM)则是这一过程的主要辅助技术．同  作为量子算法里提供加速的最为核心的２个基                                       与经典的随机存                          为实现数据的存储和提取,QRAM本工具,量子傅里叶变换最早可追溯到１９９４年[２９],                                    可以被量子叠加态地址                           储器最大的区别是:QRAM而量子相位估计算法最早可追溯到１９９５年[３０]．利
+用量子解线性方程思想以及量子梯度估计法的量子                         访问,返回与地址相纠缠的叠加态数据,这为量子优
+优化算法都直接或间接地使用了量子傅里叶变换或  化算法以及量子机器学习的初态制备提供了有力工
+量子相位估计算法．读者可以在任一量子计算教材  具．在量子优化中使用得较多的为２００８年Lloyd等
+中找到这２个基本工具的详细介绍[１４Ｇ１６]．        ３名学者提出的BucketＧBrigade结构的QRAM[４０Ｇ４１],
+１．３　量子幅值放大∕幅值估计(quantumamplitude  利用此结构在对数时间复杂度内可实现初态制备．
+     ampＧlificationandamplitudeestimation)    值得注意的是搭建QRAM 的时间复杂性仍然较高,
+                                             搭建   ２００２年,Brassard等４名学者提出了量子振幅  整体上会抵消掉量子算法带来的加速,QRAM
+放大以及量子振幅估计算法[３１]．前者通过一系列的  技术仍然需要进一步优化．２０１８年,Chakraborty等
+反射操作,达到放大所需结果概率的目的;而后者则   ３名学者提出了块编码技术,并证明与BucketＧBrigade
+是在前者的基础上结合量子相位估计算法,从而估   结构在矩阵编码上等价[４２]．
+
+===== PDF PAGE 4 =====
+１８２６                                               计算机研究与发展　２０２１,５８(９)
+１．６　哈密顿量模拟(Hamiltoniansimulation)     数．由于量子隧穿效应的存在,使得量子退火法更容
+  哈密顿量是与量子系统总能量有关的运算符,  易跳出局部最优解,获得全局最优解,从而体现出超
+根据薛定谔方程可知,它可用于描述量子系统随时  越经典模拟退火的优势．２)量子退火不需要运用量
+间的演化,通过操作哈密顿量可以实现量子态的演  子纠缠,因此易于实现,DＧWave公司生产的专用量
+化．在部分量子优化算法中(特别是用到解线性方程  子计算机即可运行量子退火算法．关于量子退火的
+量子算法思想的算法),矩阵被编码成哈密顿量的形   早期工作可参阅文献[６０Ｇ６１],关于DＧWave计算机
+式,进而作用到量子态上．哈密顿量模拟就是寻找能  与量子退火的综合介绍可参阅文献[６２]．
+高效逼近目标哈密顿演化的酉演化,从而在有效时  ２．３　量子近似优化算法(quantum approximate
+间内完成演化(亦即实现了量子算法的过程)．关于          optimizationalgorithm)
+哈密顿量模拟的正式结果最早可追溯到１９９６年    一般我们说的量子近似优化算法,都习惯特指
+                       本节所述的求解组合优化问题的量子近似优化算Lloyd发表在«Science»上的文章[４３],并随后被推广
+到稀疏哈密顿量的模拟上[４４Ｇ４５],且效率得到逐步提  法,关于该算法的入门介绍可参照文献[６３Ｇ６４]．
+升[４６Ｇ４９]．以上的工作针对的都是时间无关哈密顿量,    量子近似优化算法(简称QAOA)于２０１４年由
+而其后还有针对时间相关哈密顿量的推广工                              麻省理工学院的Farhi等３位学者提出[６５],最初的
+作[５０Ｇ５１]．除研究时间复杂度与查询复杂度外,近年也  设计是用于求解组合优化问题．该工作的量子电路
+出现了研究哈密顿量模拟采样复杂度的工作[５２]．   深度依赖于一个与精度有关的参数,最坏情况下电
+                        路深度随着该参数与约束条件数量的乘积呈线性增
+２　离散变量量子优化技术            长．该工作给出了使用QAOA 解决pＧ正则图最大
+                               割(MaxＧCut)问题的例子(p≤３),而传统做法是把
+  本节简要介绍离散变量量子优化技术．主要离   最大割问题转化为圆锥线性优化问题(coniclinear
+散变量量子优化技术的提出时间距今较长,因此本   optimizationproblem)解决．相较于经典算法,初期
+节只简单介绍各技术的历史以及给出重要工作的引                            的QAOA 并没有显示出明显的优势,直到２０１６年
+文供读者进一步了解．                 麻省理工学院的Harrow 等２名学者指出QAOA
+２．１　基于Grover算法与量子随机游走的优化算法   是实现量子霸权(quantum supremacy)的方法之
+      (optimization basedon Groveralgorithm &  一[６６],热度才有所上升,近年也有理论分析的尝
+                                  算法实现时对相干时长要    quantumrandomwalk)                试[６７]．另一方面,QAOA
+  经典离散优化的算法往往离不开搜索,而  求低,或许是现有的小规模量子计算机理想的实验
+Grover算法与量子随机游走则正是加速搜索的量  内容之一,因此受到了量子计算实验研究者的关注,
+子算法,因此十分适合用于加速离散优化问题的求  陆续有实验文章出现[６８]．另外,近年也出现了用
+解．用Grover算法解决的离散优化问题有:无序数  QAOA 算法解决连续优化问题的研究,见３．５节．
+据最小值寻找[５３]、最小生成树与最短路问题[５４]、最
+大整数网络流查找[５５]等．作为Grover算法推广的振  ３　连续变量量子优化技术
+幅放大算法也有相应的离散优化应用[５６]．量子随机
+游走则被用于加速基于Markov链的技术[５７]等．近    本节将详细介绍连续变量量子优化技术．连续
+年也有用连续时间量子随机游走解决组合优化问题                        变量量子优化技术是近５年的研究热点,因此本节
+的工作[５８]．                   将详细给出各工作所针对的具体问题、算法复杂度,
+２．２　量子退火∕量子随机优化(quantumannealing∕  以及所采用技术的直观描述．对于与经典模型有关
+     quantumstochasticoptimization)       的量子算法,本文还会给出该经典模型的框架介绍
+  量子退火法于１９８９年由比勒费尔德大学的  以便读者理解．问题和模型都将列在方框内．
+Carvalho等３位学者提出[５９],也称为量子随机优  ３．１　量子梯度估计法(quantumgradientestimation)
+化．如遗传算法、蚁群算法与模拟退火等仿生算法都    在许多优化方法中,特别是迭代方法的梯度下
+是非常实用的启发式优化技术,其中模拟退火法是  降法与牛顿法,都需要目标函数的梯度信息,因此梯
+出现得较早的经典技术,研究较深入．１)量子退火法  度估计是这类方法的核心技术之一．量子梯度估计
+中使用隧道场强度作为经典模拟退火法的温度参                                法于２００５年由麻省理工学院的Jordan提出[６９]．
+
+===== PDF PAGE 5 =====
+何键浩等:量子优化算法综述                                          １８２７
+ 　　梯度估计问题(查询模型):            ２０１９年由MIT 的Lloyd等学者提出[７１]．该方法对
+   给定:函数f:Rd→R 的查询黑盒Of(查询返  数据维度较大的情况有优势,且把量子计算技术推
+ 回询问点的函数值),点x＝(x１,x２,􀆺,xd)∈Rd．  进到了非二次优化甚至非凸优化问题上．
+   求:函数f 的梯度f(x),其中          　　多项式优化(带单位范数约束)问题:
+                         æ                      ö                          为正整数．                         ç                      ÷      f(x)＝∂fè  ,∂f ,􀆺,∂f ø ．          给定:N２p个系数Ai１􀆺i２pN    ∈R,其中p               ∂x１ ∂x２   ∂xd                                 １        xTx  ．                                                                    {                                                                                                     }                                                                                  Ai１􀆺i２pxi１􀆺i２p   ＝１                                     求:minx∈Rn                                                                        i１,􀆺,i２p＝１  该工作研究的是查询模型,在给定目标函数黑                  ２∑
+盒的情况下,量子梯度估计算法只需要调用O(１)次    该工作为了解决每一步由于不完美设备带来
+查询黑盒,即可近似计算出目标函数在某点的梯度,                       的潜在演化失败,算法从一开始就需要准备多个与优化变量的维度无关．当目标函数估值较困难、优                       副本一起迭代计算,过程中舍弃掉演化失败的副化变量维度较大时,量子梯度估计法有一定的优势．                        本,这导致了一个明显的不足:算法的运行消耗随美中不足的是,该算法无法通过递归求解目标函数                   ∗次共需要                                n 次查询来计  迭代次数的增加呈指数增长,迭代T
+                                                               T∗的高阶导数,求n阶导数需要额外的２                        æ      æ            ö                                                                                               ö
+                                                                       ç      ç            ÷    ÷算所需要的相位信息,因而失去了量子优势．此工作  O􀭾 èpolyp,è sA,ΛAδ ø    ø 组初始态的拷贝,以及相应
+                                                                  T∗主要使用了量子相位估计技术．２０１９年,来自荷兰            æ      æ            ö           ö                     O国家数学与计算机中心与微软研究院的研究人员合  的􀭾 ç      ç            ÷           ÷                                                                           èpoly èp,sA,ΛAδ ø logNø 个量子门,其中sA
+作改进了量子梯度估计法[７０],并指出原有的量子梯  为A      为A    δ 为最终误差．                                的稀疏度,ΛA  的范数上界,度估计法采取的黑盒输入模型过强,实际上难以达                        因此,该算法需要很好地对初始解的猜测以减少所到所需精度,因此改而研究相位黑盒输入模型与概  需迭代次数．该工作的主要技术遵循经典的投影梯
+率输入模型,并给出了这２种输入模型的转化关系．                        度下降法的思路,采用可查询矩阵指定位置元素的在该输入模型下,改进算法估计平滑函数的梯度时                        黑盒模型,使用哈密顿模拟技术实现梯度算子的量在查询复杂度上有二次(quadratic)加速,并且证明  子化．
+了量子优化产生的大多数目标函数会满足必要的平
+                          针对线性系统与最小二乘问题的量子梯度下降
+滑条件．３．                            法于２０２０年由巴黎第七大学的２名学者Kerenidis ２　量子梯度下降法(quantumgradientdescent)  迭代方法在无闭式解的优化问题中有非常广泛   与Prakash提出[７２]．该文主要研究的是目标函数的
+                        梯度为仿射函数的无约束优化问题,即梯度具有如的应用,梯度下降法就是其中一种迭代方法．梯度下                         的                              下形式:f(x)＝L(x)＋b,其中L(x)是关于x降法从初始的、未经优化的解开始,每轮根据与目标                                       线性函数．二次优化(quadraticoptimization)则是一函数的梯度有关的更新规则迭代更新解．由于梯度  个典型的符合此条件的优化问题．
+方向是函数增长速度最快的方向,梯度的反方向是                         　　二次优化问题:　　　　　　　　　　　　　函数下降速度最快的方向,因此参照梯度信息进行                                给定:A∈Rn×n,b∈Rn,c∈R．迭代,能更快地获得满足要求的近似最优解．                                        求:minx∈Rn{xTAx＋bTx＋c}．  由于量子计算的特性,运用迭代方法时一旦其
+中一步失败,输入就损毁了,一切就要重头再来,这                            通过设计,对该类问题实现迭代τ次的梯度下降使得若要达到迭代τ 次的效果,往往需要远多于τ       τC        ∗是用量子计算实                         法仅需要O( ∗)的时间,其中C
+次实现迭代操作的量子演化．           现一次迭代的消耗,这在量子迭代方法中是一个进
+                         步．而该工作的缺点是目前尚局限于目标函数的梯度 　　梯度下降法:
+                                                 的   猜测初始解θ０;                          为仿射函数的无约束优化问题,且依赖于QRAM
+                        预处理．此方法可以具体运用在带权最小二乘问题   根据迭代规则θt＋１＝θt－α f(θt)迭代更新解,
+                                                                                             æ                             ö 直到收敛或出现满意的解,其中α 为步长,f(θt)                           O çκ(XTWX)３μ( WX|y) 为目标函数在点θt 处的梯度．           上,能在期望时间􀭾 è    δ             ÷ø 内求
+                                            为条件   针对单位范数(unitnorm)约束多项式优化  得与最优值误差不超过２δ的近似解,其中κ
+(polynomialoptimization)的量子梯度下降法于  数函数,函数μ 与自变量矩阵的范数有关．
+
+===== PDF PAGE 6 =====
+１８２８                                               计算机研究与发展　２０２１,５８(９)
+ 　　带权最小二乘问题:               况提出量子在线梯度下降算法[７３],每轮决策仅需查
+                   以及权             T   给定:样例矩阵X、对应的标签向量y      询O(１)次黑盒就能达到O(  )的遗憾,而目前最
+ 重向量w．                    好的零阶经典算法每轮查询O(１)次黑盒仅能达到
+            i wi(yi －xiθ)T ２最小,其中wi  O(nT )的遗憾,这显示出了潜在的量子优势．并且   求:θ,使得∑为w                是X 的  该量子算法查询O(１)次零阶黑盒就已经达到了使   的第i个分量,yi 为y的第i个分量,xi 第i个列向量．                  用经典一阶黑盒算法的遗憾下界,因此可以得出量子
+                           的零阶(估值)黑盒与经典的一阶(梯度)黑盒一样强  此工作运用的技术为量子奇异值估计算法(包                          大．该算法运用的主要技术是量子梯度估计法．
+含了量子振幅放大、量子振幅估计以及量子相位估  ３．              的算法设计模型上    ４　量子牛顿法(quantumNewton􀆳smethod)计算法)．该工作在原有QRAM            牛顿法是一种处理无约束优化问题的迭代方
+作了一些改进,使得量子奇异值估计算法的时间复杂度由原来的与待分解矩阵的F          法,相比每次迭代沿着梯度方向移动的梯度下降法,               范数有关,改进为                        牛顿法把曲率也考虑在内,因此往往能加快收敛速与最大行范数与F 范数两者之间的较小者有关．由
+于有不少现实问题待分解的矩阵的行范数都是有界  度．梯度下降法与牛顿法之间是迭代复杂度与迭代
+                        次数之间的相互转化,每次迭代考虑更多信息的牛的(boundedl１norm),这一改进是有应用价值的,                        顿法自然单次迭代计算复杂度会更高,但由于收敛而且该改进也可以运用在量子解线性方程上．
+３．                       更快,因此迭代次数相应下降．２种方法不能简单说 ３　量子在线梯度下降(quantumonlinegradient     descent)                  孰优孰劣,各有不同的适应场景．
+                         　　牛顿法:  在线凸优化是在线学习中的一个重要的框架,                               猜测解θ０;是凸优化与博弈论的交叉领域,在决策问题中有非                                  根据迭代规则θt＋１＝θt－αH－１f(θt)迭代更常广泛的应用,如在线路由问题、投资组合问题以及                          新解,直到收敛或出现满意的解,其中α 为步长,H推荐系统等,都可以用在线凸优化的框架建模,并用                           为目标函数在点θt 的黑塞矩阵,f(θt)为目标函相关技术解决．                    数在点θt 处的梯度．
+ 　　在线凸优化模型:                              针对单位范数(unitnorm)约束多项式优化   给定凸集K⊆Rn,凸函数族F:Rn→R．  决策者依序进行T                     (polynomialoptimization),在量子梯度下降法一节             ∗轮决策,在第t∈{１,２,                            提到的文献同时也给出了量子牛顿法[７１],使用了量 􀆺,T∗}轮时:                                        子态指数化(quantumstateexponentiation)技术把  １)在凸集K 中做出决策xt;                 由对手选取  目标函数的梯度和黑塞矩阵编码成算子．但同样地,   ２)遭受损失ft(xt),其中ft∈F                        其算法的运行消耗随迭代次数的增加呈指数增长,
+                                                                                  T∗ 或者由环境生成;                                                                          æ      æ            ö
+                                                                                                  ç                                                                                                         ç                                                                                                                      ÷                                                                                                                           ÷                                            组初                             O
+                                                                                                                      ø                                                                                                                           ø                                                                                                         èp,sA,ΛAδ   ３)使用策略(算法)A 预测下一轮的决策xt＋１．  迭代T∗次仍然需要􀭾                         ö                                                                                                  èpoly
+                                                                              T∗  决策者(策略A)的目标是让累积损失尽可                              æ      æ            ö                                                                                                                           ö
+                                                                                            ç                                                                                                   ç                                                                                                               ÷                                                                                                                           ÷                                           个量                           O 能小．                    始态的拷贝以及􀭾                                                                                                                           ø                                                                                                   è sA,ΛAδ                                                                                            èpolyp,                                                                                                               ø logN
+  在线凸优化的框架可以描述为一系列的决策过                              子门,其中sA 为A 的稀疏度,ΛA 为A 的范数上界,
+                    δ为最终误差．不过由于牛顿法一般能达到指数程,一个算法依序地进行预测,并在每次预测后受到
+一个损失,而该算法的目的是使得持续决策过程的  收敛速度,所需迭代次数一般要比梯度下降法少得
+累积损失尽可能小．衡量在线凸优化算法的好坏有２  多,因此该文的算法思想在量子牛顿法上有更好的
+                         效果．方面标准:１)每次决策所需的计算资源消耗,用时间
+复杂度或查询复杂度作为指标;２)所有决策损失收  ３．５　连续变量量子近似优化算法(quantumappＧ
+敛到全局最优固定决策的速度,用博弈论中的遗憾         roximateoptimizationalgorithmforcontinuous
+函数(regret)作为指标．最近,本文作者及合作者针         variable)
+                        针对连续优化问题的量子近似优化算法于对一般在线凸优化问题,在只有零阶估值黑盒的情
+
+===== PDF PAGE 7 =====
+何键浩等:量子优化算法综述                                          １８２９
+２０１９年由滑铁卢大学的Killoran等学者提出[７４]．该   持向量机[７８]上．
+工作参考了离散版本QAOA 的思路,并用量子粒                         　　二阶锥规划问题:
+                                                          (    m×ni       ni          m ．子势能动力学(quantum dynamicsofparticlesin     给定:Ai)∈R  ,ci∈R ,i∈[r],b∈R                                                 r     renergypotentials)的技术编码目标函数．该算法适
+                                         ∈L用于有约束与无约束优化,稍加修改也可以解决离    求: min i＝１cixiT   i＝１∑A(i)xi＝b,xi                                                                             ni},                                                              nix１,􀆺,xr{∑{      (                                                                                                       ~ )    ni x~散优化问题．文章作者给出了使用此算法最小化非  其中L                                 ＝x＝x０;x ∈R    ≤x０}为洛伦兹凸StyblinskiＧTang函数的数值模拟实验．                                         锥(Lorentzcones),∀i＝[r]．  同样地,该工作相对现存经典技术的优势仍待                         　　投资组合问题:进一步论证,且此版本的实现难度要比离散版本高,                          投资者需要对m 只投资产品的资金分配做T
+超出了目前量子计算机可实验的范围．３．                       轮决策,每轮结算后根据之前的投资决策进行下一 ６　量子内点法(quantuminteriorpointmethod)  内点法是处理有约束优化问题的迭代方法之  轮的分配计划,最终目的是使得总收益最大化．
+一,常用于线性规划与二次规划,实际应用面与著名  ３．７　量子半正定规划(quantumsemiＧdefiniteproＧ
+的单纯形法分庭抗礼,而且相较于非多项式算法的       gramming)
+单纯形法,内点法是多项式算法,因此在大规模的线    半正定规划是凸优化问题的一个分支,针对的
+                        是目标函数为线性函数、优化变量约束在光谱面上性规划问题中有更大的用武之地．
+                         (半正定矩阵构成的锥体与仿射空间的交集)的优化 　　内点法:                          问题,存在多项式时间的经典算法．由于半正定规划   松弛变量,把待优化问题的不等式约束条件转                          在现实中应用面广,输入规模大,因此多项式时间仍 化为线性不等式约束;  目标函数中引入不等式约束条件的屏障函  然不能满足发展需要．２０１７—２０１９年,量子半正定
+                         规划法经过了多次迭代,并得到了快速发展． 数(barrierfunction),构造中央路径(centralpath)
+ 函数;                      　　半正定规划问题(原始形式):
+                                     给定:A１,A２,􀆺,Am ,C∈Rn×n,b１,b２,􀆺,   用牛顿法沿着中央路径寻找最优解．
+                                 bm ∈R ．  量子内点法于２０１８年由巴黎第七大学的２名                                         求:max{tr(CX)|∀j∈[m],tr(AjX)≤bj, 学者Kerenidis与Prakash 提出[７５],并用之设计针
+对半正定规划与线性规划的量子算法,最坏情况运  X≥０}．
+                     æn３．５          ö      æn２            ö                     ç               ÷      ç               ÷     O      O         　　半正定规划问题(对偶形式):          ２κ                         ２μκ                ３log１ε ø                              ３log１ε ø ,行时间分别为􀭾 èξ             与􀭾 èξ                                        给定:A１,A２,􀆺,Am ,C∈Rn×n,b∈Rm ．            是中间矩阵的条件数上其中n 是优化变量维度,κ                                           Tx|
+ ξ                                    求:miny∈Rm{b    k∈[m]ykAk∑   ≥C}．界,   为优化结果误差,ε 为约束条件误差．２个问题
+的量子内点法相比于目前已知最好的经典算法都有  　　量子半正定规划方法于２０１７年由加州理工学
+多项式加速．                         院的Brandão与微软研究院的Svore提出[７９],该算
+   在内点法中,计算牛顿线性系统矩阵(Newton  法比经典算法有着关于矩阵维度的平方级加速,且当
+linearsystem matrix)是非常花时间的,而该文提出   矩阵越稀疏,优势越明显．量子吉布斯采样(quantum
+了构造牛顿线性系统矩阵块编码的量子技术,加速    Gibbssampling)与乘权法(themultiplicativeweight
+了这一过程,主要运用的是量子态层析技术．该文作  method)是实现该算法的关键技术．
+者同时证明了算法的收敛速度与经典方法一致,因    文献[７９]的作者还与马里兰大学的研究人员合
+此量子内点法所需的迭代次数与经典算法一致． 作,针对设备带误差的情况进一步优化了量子半正
+综合每次迭代的加速而言,量子内点法是一个理论  定规划算法[８０],使得上界进一步逼近下界．与文献
+突破．                       [７９]不同的是,该算法使用的是量子态输入模型直
+   ２０１９年,文献[７５]的２名学者与Szilágyi合作  接获得纯化的混合态,且采取的是零和游戏框架．该
+先后发表３篇文章,分别把量子内点法扩展到解决   文核心技术是用快速放大算法(fastamplification
+二阶锥规划[７６],以及应用到投资组合问题[７７]与支   algorithm)改进了量子OR 引理,提高了算法速度．
+
+===== PDF PAGE 8 =====
+１８３０                                               计算机研究与发展　２０２１,５８(９)
+   vanApeldoorn等４名学者提出了对文献[７９]  的几项工作的优点以及GentleQuantumSearch引
+的改进[８１],降低了精度对算法上界的影响,并给出  理,提出了量子半正定规划的改进版本[８２]．该工作
+了所有线性规划算法的量子查询下界(因此包括了  给出了更优的上下界,分别论证了在量子态输入、稀
+所有的半正定规划算法),该工作还把他们的改进版  疏矩阵输入以及量子算子输入这３种不同输入模型
+本应用在了实现给定哈密顿量平滑函数与函数广义                         下的算法效率,并应用到阴影层析问题、量子态区分
+最小值查找算法上．                问题以及EＧ最优设计上．
+   ２０１８年,vanApeldoorn等２名学者综合以上    这４项工作的复杂度上下界详见表１．
+                          Table１　MainResultsofQuantumSemiＧDefiniteProgramming
+                     表１　主要量子半正定规划结果
+  参考文献                上界                          下界
+     [７９]             O(n０．５m０．５s２poly(log(n),log(m),R,１∕δ))                      Ω(n０．５＋m０．５)
+     [８０]           O((n０．５＋m０．５)s２poly(log(n),log(m),R,１∕δ))
+     [８１]                    O(n０．􀭾  ５m０．５s２(Rr∕ε)８)                     Ω((max{n,m})０．５(min{n,m})１．５)
+     [８２]            O((n０．􀭾   ５＋m０．５γ)sγ４),􀭾O((n０．５＋B２．５γ３．５)sγ４)                Ω(m０．􀭾   ５B∕δ),􀭾Ω(m０．５a∕δ)
+                                                   为不同模型下的正则化　注:n 为矩阵维度;m 为约束条件数目;s为输入矩阵稀疏度;R 为最优解的上界;δ,γ 为与解的精度有关的参数;a,B
+   因子．
+　　需要注意的是,精度等参数对于量子半正定规  和游戏上,因此也间接地给出了量子线性规划算法,
+划计算复杂度的影响仍然较大,因此要在实际问题  且其查询复杂度与文献[８３]对稠密矩阵查询模型的
+上超越经典算法依然需要进一步的研究．      复杂度一致．此工作同时证明了该问题的量子查询
+３．８　量子线性规划(quantumlinearprogramming)  下界为Ω(n＋m ),从而证明了根号级别的算法已  线性规划是半正定规划的一个特殊形式,从实                         经是最优的算法．
+                             ３．用的角度比更一般的半正定规划应用更为广泛．除    ９　一般凸优化的量子算法(quantumalgorithm
+                                                     forgeneralconvexoptimization)了３．６节提到的可用于解线性规划问题的内点法
+外,还有２项针对线性规划问题的量子工作．       针对一般的无约束凸优化问题,马里兰大学的
+　　线性规划问题(原始形式):            Childs团队[８５]与荷兰国家数学与计算机中心de
+                       m ．          Wolf团队[８６]于２０２０年分别独立地提出了相应的   给定:A∈Rn×m ,b∈Rn,c∈R
+    求:minx∈Rm{cTx|Ax≥b,x≥０}．         量子算法．
+                          　　一般凸优化问题(查询模型):　　线性规划问题(对偶形式):                       m                    n的成员黑盒OK             n×m       ．          给定:凸集K⊆R        (查询返回   给定:A∈R  ,b∈Rn,c∈R                           询问点是否在集合内),凸函数f:K→R的估值黑   求:maxy∈Rn {bTy|ATy≤c,y≥０}．                           盒Of(查询返回询问点的函数值)．
+                             求:满足f                                                                                                     (x~ ) ≤minx∈Kf(x)＋ε的解x~∈K．其　　２０１９年,vanApeldoorn等人把量子半正定规
+划算法的技术发展应用到矩阵零和游戏上,并且证  中ε为精度．
+明了一般线性规划问题可规约到矩阵零和游戏,从                                文献[８５Ｇ８６]的２项工作结论一致,研究的均为而间接地给出了量子线性规划算法[８３]．该算法对稠                         黑盒查询模型,思路大致类似．在给定成员黑盒(用密矩阵查询模型(可查询任意矩阵元素)的复杂度是                        于查询优化变量给定取值是否在可行域中)与估值
+O(n＋mγ􀭾     ３),对稀疏矩阵查询模型(查询返回第任  黑盒(用于计算目标函数在给定点的值)情况下,
+                     ∗γ３．意个非零元素的位置)的复杂度是􀭾O(s  ５),其  ２项工作的结果由表２说明．我们可以从表中看到,
+中n,m 是矩阵的行数与列数,s∗是矩阵的稀疏度  在时间复杂度相同的情况下,量子算法的查询上界
+上界,γ 是精度参数．               达到了经典算法的下界,这意味着该量子算法在理
+  同年,马里兰大学的Li等人提出了训练线性分  论上达到了经典算法潜在的最好情况．另外,量子算
+类器的量子算法[８４]．该算法同样可以应用在矩阵零  法上下界仍然未紧,这意味着量子算法仍然有提升
+
+===== PDF PAGE 9 =====
+何键浩等:量子优化算法综述                                          １８３１
+空间．由于２项工作结论一致,以下主要介绍文献  极大的P问题,都还处于探索阶段．而量子计算的兴
+[８５]的技术．                  起为这些难题带来了新的希望和探索方向．量子算
+                        法已经在不少问题上相对于经典算法带来了加速优
+   Table２　ComparisonofQuantumandClassicalGeneral           ConvexOptimizationAlgorithms        势,但由于中等规模量子计算机目前依然昂贵,大型
+    表２　量子与经典一般凸优化算法的对比     的通用量子计算机难见踪迹,因此量子优化算法的
+    复杂度类型       经典界     量子界    设计目前依然处于理论分析难、实验成本高的阶段,
+                        学术界与工业界都迫切盼望量子计算能在基础理论
+  成员黑盒查询复杂度    O(n２),Ω(n)􀭾         O(n),Ω(n)􀭾
+  估值黑盒查询复杂度    O(n２),Ω(n)􀭾         O(n),Ω(n)􀭾       与软硬件技术上有进一步的突破．                          本文通过对量子优化算法研究方面的梳理观察
+    时间复杂度         O(n３)􀭾          O(n３)􀭾
+　注:n 为优化变量的维度．               得出４方面:
+                           １)从时间上看,连续变量的量子优化算法是近
+  针对一般凸优化问题的量子算法使用的主要是                         年的趋势,也将会是未来短期内的研究热点．这并非
+量子梯度估计技术,从估值黑盒出发通过量子梯度  说组合优化不重要,而是组合优化问题有很大一部
+估计求得分离超平面,经由分离超平面再得出最小  分是NP问题,要找到高效的量子算法具有挑战性．
+                       已有的针对组合优化问题的量子算法要么是采用化线性函数的方法,最后得出一般凸优化问题的算
+法,这过程中综合运用工程中常见的误差缩小技术  Grover算法,在某个子过程达到根号级别加速,要
+与函数缓和技术处理边界不光滑等会影响算法性能  么就是采用无法在理论上分析复杂度的启发式算
+与误差的问题．                 法,而目前的量子计算机规模还不足以验证启发式
+   近期,Garg等人[８７]认为对于一般凸优化问题,  量子算法的应用价值．连续变量优化问题似乎更有
+在同时拥有零阶(估值)和一阶黑盒(查询返回梯度  希望获得更多的量子加速,而且其应用面也因人工
+或次梯度)的情况下,当目标函数是非平滑函数时,                        智能的发展而日益广泛．
+量子算法并不能做得比经典梯度下降更好．不过该    ２)量子优化使用的基本量子技术的核心思想
+                                       算法以及文的正确性还有待验证．另外,最近Zhang等人[８８]  大多都是１９９５—２００８年提出的,HHL
+针对一般非凸优化问题给出了一个量子算法,查询                            Jordan量子梯度估计法均为１９９５年相位估计算法
+O(log􀭾   ２n∕ε１．７５)次量子零阶黑盒即可求得目标函数  框架的延展,幅值放大技术为１９９６年Grover算法
+的ε近似最优解,其中n 是优化变量的维度．而目前  的延展,而哈密顿量模拟算法以及量子随机存储技
+最好的经典工作达到同样的效果需要查询                          术也已有１０~２０年的历史．若需要寻找新的方向,
+O(log􀭾   ６n∕ε１．７５)次或􀭾O(log４n∕ε２)经典一阶黑盒．如果  还需要在最为底层的算法上有突破．
+正确性能得到验证,此工作将再次显示出量子计算    ３)除启发式算法外,主要的量子优化算法相对
+的加速优势．                  于经典算法都在理论上体现了一定的加速,既有体
+                        现在时间复杂度的加速,也有体现在查询复杂度上
+４　总　　结                   的加速．一般来说,问题的计算复杂度下界往往很难                            证明,但查询复杂度的下界证明有如对手法[８９]等较
+  优化问题在生产生活中无处不在,经典计算领  成体系的方法．纵观现有工作,在一般凸优化问题的
+域把优化作为一个正式的学科分支进行研究已经有                              查询模型上[８５Ｇ８６]寻找量子优势是很有希望的,因为
+一百多年的历史,而最优化方法的起源甚至可以追  其量子上界已经达到经典下界,且量子上下界还未
+溯到三四百年前费马、拉格朗日、牛顿以及高斯的  紧,还有改进空间．
+微积分时代．随后经历了高度依赖一阶、高阶导数的    ４)目前获得量子加速的优化问题十分有限,优                        化领域依然存在许多值得量子计算科学家探索的问分析算法阶段、用准确度交换速度的启发式算法阶
+段,以及高度依赖数据的代理模型阶段．如今在工程  题,如优化领域的难题:非凸优化．对凸优化研究的
+实践中,各类方法高度融合,产生着巨大的经济社会  深入是经典优化领域的一个分水岭[９０],因为凸函数
+效益．                     具有极小值即最小值等良好特性,使得凸优化问题
+  但纵使已经研究了数百年,在优化领域还一直  大多都有可行、高效的算法,因此凸优化问题与能转
+有许多难题尚未得到有效的解决,有如大部分的非  化成凸优化问题的优化问题被认为是较易解决的．
+凸优化问题、组合优化里的NP问题,以及许多规模  相对地,解决非凸优化则比较困难．现在的量子优化
+
+===== PDF PAGE 10 =====
+１８３２                                               计算机研究与发展　２０２１,５８(９)
+算法中,针对的线性规划、二次规划、半正定规划问      (孙晓明．量子计算若干前沿问题综述[J]．中国科学:信息科
+题都是常见的特殊凸优化问题,都属于经典优化领         学,２０１６,４６(８):９８２１００２)                                                    [１４] Nielsen M A, Chuang I．Quantum Computation and域认为较易解决的部分,针对非凸优化的量子算法                                                           Quantum Information [M]．Cambridge, UK:Cambridge
+还很少．再者还有更多贴近实际应用的优化问题,如           UniversityPress,２００２
+引入更多约束条件的约束优化、目标函数不单一的    [１５] RieffelE G,Polak W H．Quantum Computing:A Gentle
+多目标规划、带有不确定性的不确定规划、问题随时          Introduction[M]．Cambridge,MA:MITPress,２０１１
+间而变的动态规划、部分变量要求为整数的混合整    [１６] Steeb W H,HardyY．ProblemsandSolutionsin Quantum                                                               Computing and Quantum Information [M]．Singapore:数规划等．经典优化对于这些优化问题均有系统的           WorldScientificPublishingCompany,２０１８
+研究,而量子计算目前依然缺席,均可进行探索．       [１７] LongGL．Groveralgorithm withzerotheoreticalfailurerate
+                                                                     [J]．PhysicalReview A,２００１,６４(２):０２２３０７
+        参 考 文 献                                                    [１８] BrassardG．Searchingaquantum phonebook [J]．Science,
+                                                            １９９７,２７５(５３００):６２７６２８
+                                                    [１９] Grover L K．FixedＧpoint quantum search [J]．Physical [１] SraS,NowozinS,WrightSJ．Optimizationfor Machine                                                                ReviewLetters,２００５,９５(１５):１５０５０１     Learning[M]．Cambridge,MA:MITPress,２０１２                                                    [２０] GroverL K,PatelA,TulsiT．Quantum algorithms with [２] MissbauerH,UzsoyR．Optimization ModelsofProduction                                                                    fixedpoints:Thecaseofdatabasesearch[J]．arXivpreprint,     PlanningProblems[M]．New York:Springer,２０１１,４３７                                                                   quantＧph∕０６０３１３２,２００６    ５０７                                                    [２１] MizelA．Critically damped quantum search [J]．Physical [３] RaoS S．Engineering Optimization:Theory and Practice                                                                ReviewLetters,２００９,１０２(１５):１５０５０１     [M]．Hoboken,NJ:John Wiley& Sons,２０１９                                                    [２２] YoderTJ,Low G H,ChuangIL．FixedＧpointquantum [４] Belegundu A D,ChandrupatlaT R．OptimizationConcepts                                                                   search with an optimal number of queries [J]．Physical    and Applicationsin Engineering [M]．Cambridge, UK:                                                                ReviewLetters,２０１４,１１３(２１):２１０５０１      CambridgeUniversityPress,２０１９                                                    [２３] HeXiaoyu,ZhangJialin,Sun Xiaomin．Quantum search [５] DebK．OptimizationforEngineeringDesign:Algorithmsand                                                                with prior knowledge [J]．arXiv preprint,arXiv:２００９．     Examples[M]．Delhi,India:PHILearningPvt．Ltd,２０１２                                                            ０８７２１,２０２０ [６] Agustın A, AlonsoＧAyuso A, Escudero L F, et al．                                                    [２４] Aharonov Y,Davidovich L,Zagury N．Quantum random      Mathematical optimization models for air traffic flow                                                                    walks[J]．PhysicalReview A,１９９３,４８(２):１６８７     management:Areview [J]．StudiaInformaticaUniversalis,                                                    [２５] Childs A M, Cleve R, Deotto E,et al．Exponential     ２０１０,８(２):１４１１８４                                                              algorithmicspeedupbyaquantum walk [C]∕∕Procofthe [７] IntriligatorM D．MathematicalOptimizationandEconomic                                                           ３５th Annual ACM Symp on Theory of Computing．New     Theory[M]．Philadelphia,PA:SIAM,２００２                                                     York:ACM,２００３:５９６８
+ [８] VardakasJ S,Zorba N,Verikoukis C V．A survey on    [２６] Ambainis A．Quantum  walks and their algorithmic
+     demandresponseprogramsinsmartgrids:Pricing methods                                                                            applications  [J]．International Journal of Quantum
+    and optimization algorithms [J]．IEEE Communications         Information,２００３,１(４):５０７５１８
+     Surveys& Tutorials,２０１４,１７(１):１５２１７８               [２７] VenegasＧAndracaS E．Quantum walks:A comprehensive
+ [９] ShorPW．PolynomialＧtimealgorithmsforprimefactorization          review[J]．QuantumInformationProcessing．２０１２,１１(５):
+     anddiscretelogarithmsonaquantum computer[J]．SIAM         １０１５１１０６
+     Review,１９９９,４１(２):３０３３３２                         [２８] Zhou Wenda．Review on quantum walk algorithm [J]．
+[１０] Grover L K．A fast quantum mechanical algorithm for          Journalof Physics:Conference Series,２０２１,１７４８(３):
+     databasesearch[C]∕∕Procofthe２８thAnnualACMSympon         ０３２０２２
+     TheoryofComputing．New York:ACM,１９９６:２１２２１９       [２９] CoppersmithD．AnapproximateFouriertransformusefulin
+[１１] Harrow A W,Hassidim A,LloydS．Quantumalgorithmfor          quantumfactoring [J]．arXivpreprint,quantＧph∕０２０１０６７,
+     linearsystemsofequations [J]．PhysicalReview Letters,        １９９４
+     ２００９,１０３(１５):１５０５０２                              [３０] Kitaev A Y．Quantum measurements and the Abelian
+[１２] LiLüzhou, Gao Fei, Yao Penghui,et al．Overview of           stabilizerproblem [J]．arXiv preprint,quantＧph∕９５１１０２６,
+      research progress on quantum algorithmsand complexity         １９９５
+     [R]．Beijing:ChinaMachinePress,２０２０:１５９(inChinese)    [３１] BrassardG,HoyerP,MoscaM,etal．Quantumamplitude
+   (李绿周,高飞,姚鹏晖,等．量子算法与复杂性研究进展概            amplification  and   estimation   [J]．  Contemporary
+    述[R]．北京:机械工业出版社,２０２０:１５９)                     Mathematics,２００２,３０５:５３７４
+[１３] SunXiaoming．Asurveyofsomefrontierissuesinquantum    [３２] Brassard G,HøyerP,Tapp A．Quantum counting [C]∕∕
+     computing[J]．SCIENTIASINICAInformationis,２０１６,４６         Proc of Int Colloquium on Automata, Languages,and
+     (８):９８２１００２(inChinese)                                    Programming．Berlin:Springer,１９９８:８２０８３１
+
+===== PDF PAGE 11 =====
+何键浩等:量子优化算法综述                                          １８３３
+[３３] Ambainis A．Variable time amplitude amplification and    [４９] ChildsA M,KothariR．SimulatingsparseHamiltonianswith
+     quantumalgorithmsforlinearAlgebraproblems[C]∕∕Proc          star decompositions [C] ∕∕Proc of Conf on Quantum
+    ofthe ２９th Symp on Theoretical Aspects of Computer          Computation,Communication,and Cryptography．Berlin:
+     Science．Berlin:Springer,２０１２,１４:６３６６４７                     Springer,２０１０:９４１０３
+[３４] Shyamsundar P．  NonＧBoolean  quantum  amplitude    [５０] WiebeN,BerryD W,HøyerP,etal．Simulatingquantum
+      amplification and quantum mean estimation [J]．arXiv          dynamicsonaquantumcomputer[J]．JournalofPhysicsA:
+      preprint,arXiv:２１０２．０４９７５,２０２１                                MathematicalandTheoretical,２０１１,４４(４４):４４５３０８
+[３５] SuzukiY,UnoS,RaymondR,etal．Amplitudeestimation    [５１] PoulinD,QarryA,SommaR,etal．Quantumsimulationof
+      without phase estimation [J]．Quantum  Information          timeＧdependentHamiltoniansandtheconvenientillusionof
+     Processing,２０２０,１９(２):１１７                                   Hilbertspace[J]．PhysicalReviewLetters,２０１１,１０６(１７):
+[３６] Ambainis A．Variabletimeamplitudeamplification and a         １７０５０１
+      faster quantum algorithm for solving systems oflinear    [５２] KimmelS,Lin C Y Y,Low G H,etal．Hamiltonian
+      equations[J]．arXivpreprint,arXiv:１０１０．４４５８,２０１０                simulationwithoptimalsamplecomplexity[J]．npjQuantum
+                                                              Information,２０１７,３(１):１７[３７] ChildsA M,KothariR,SommaR D．Quantum algorithm
+                                                    [５３] DurrC,Hoyer P．A quantum algorithm forfindingthe     forsystemsoflinearequationswithexponentiallyimproved
+      dependenceonprecision [J]．SIAM JournalonComputing,         minimum [J]．arXivpreprint,quantＧph∕９６０７０１４,１９９６
+                                                    [５４] DürrC,Heiligman M,Hoyer P,etal．Quantum query     ２０１７,４６(６):１９２０１９５０
+                                                            complexityofsomegraphproblems[J]．SIAM Journalon[３８] Wossnig L,Zhao Zhikuan,Prakash A．Quantum linear                                                             Computing,２００６,３５(６):１３１０１３２８     system algorithm fordense matrices [J]．PhysicalReview                                                    [５５] AmbainisA,Špalek R．Quantum algorithmsfor matching     Letters,２０１８,１２０(５):０５０５０２                                                                andnetworkflows[C]∕∕ProcofAnnualSymponTheoretical[３９] DervovicD,Herbster M, Mountney P,etal．Quantum                                                                  AspectsofComputerScience．Berlin:Springer,２００６:１７２     linearsystemsalgorithms:A primer[J]．arXiv,preprint,                                                      １８３     arXiv:１８０２．０８２２７,２０１８                                                    [５６] HoggT,PortnovD．Quantumoptimization[J]．Information[４０] Giovannetti V,Lloyd S, Maccone L．Quantum random                                                               Sciences,２０００,１２８(３Ｇ４):１８１１９７     access memory [J]．Physical Review Letters,２００８,１００                                                    [５７] Szegedy M．Quantum speedＧup of Markov chain based     (１６):１６０５０１                                                              algorithms[C]∕∕Procofthe４５th AnnualIEEE Sympon[４１] GiovannettiV,Lloyd S,Maccone L．Architecturesfora                                                               FoundationsofComputerScience．Piscataway,NJ:IEEE,     quantumrandom access memory [J]．PhysicalReview A,                                                      ２００４:３２４１     ２００８,７８(５):０５２３１０                                                    [５８] Marsh S, Wang Jingbo．Combinatorial optimization via[４２] ChakrabortyS,Gilyén A,JefferyS．ThepowerofblockＧ                                                                     highly efficient quantum  walks [J]．Physical Review     encodedmatrixpowers:Improvedregressiontechniquesvia                                                                Research,２０２０,２(２):０２３３０２      faster Hamiltoniansimulation [C]∕∕Procofthe４６thInt                                                    [５９] ApolloniB,Carvalho C,DeFalco D．Quantum stochastic      Colloquium on Automata,Languages,and Programming．                                                                          optimization  [J]．Stochastic  Processes and  Their     Berlin:Springer,２０１９,１３２:No．３３                                                                 Applications,１９８９,３３(２):２３３２４４[４３] LloydS．Universalquantumsimulators[J]．Science,１９９６,                                                    [６０] Das A．Quantum Annealing and Related Optimization     ２７３(５２７８):１０７３１０７８                                                                  Methods[M]．Berlin:SpringerScience & Business Media,[４４] ChildsA M, Cleve R, Deotto E, et al．Exponential                                                         ２００５
+     algorithmicspeedupbyaquantum walk [C]∕∕Procofthe                                                    [６１] deFalco D, Tamascelli D．An introduction to quantum
+     ３５th Annual ACM Symp on Theory of Computing．New                                                                      annealing  [J]．RAIROＧTheoretical  Informatics and     York:ACM,２００３:５９６８                                                                 Applications,２０１１,４５(１):９９１１６
+[４５] Aharonov D, TaＧShma A．Adiabatic quantum state    [６２] VenegasＧAndracaSE,CruzＧSantosW,McGeochC,etal．A
+     generationandstatisticalzeroknowledge[C]∕∕Procofthe            crossＧdisciplinaryintroduction to quantum annealingＧbased
+     ３５th Annual ACM Symp on Theory of Computing．New          algorithms[J]．ContemporaryPhysics,２０１８,５９(２):１７４
+     York:ACM,２００３:２０２９                               １９７
+[４６] ChildsA M．Quantuminformationprocessingincontinuous    [６３] Choi J, Kim J．A tutorial on quantum approximate
+     time[D]．Cambridge,MA:MITPress,２００４                          optimization algorithm (QAOA ): Fundamentals and
+[４７] BerryD W,AhokasG,CleveR,etal．Efficientquantum          applications[C]∕∕Procof２０１９IntConfonInformationand
+      algorithms for simulating sparse  Hamiltonians [J]．         Communication Technology Convergence．Piscataway,NJ:
+     Communicationsin MathematicalPhysics,２００７,２７０(２):        IEEE,２０１９:１３８１４２
+    ３５９３７１                                         [６４] WangQingfeng,Abdullah T．Anintroductiontoquantum
+[４８] PapageorgiouA,ZhangChi．Ontheefficiencyofquantum           optimizationapproximationalgorithm[OL]．２０１８[２０２１Ｇ０２Ｇ
+      algorithms for Hamiltonian simulation [J]．Quantum         １９]．https:∕∕www．cs．umd．edu∕class∕fall２０１８∕cmsc６５７∕
+     InformationProcessing,２０１２,１１(２):５４１５６１                       projects∕group_１６．pdf
+
+===== PDF PAGE 12 =====
+１８３４                                               计算机研究与发展　２０２１,５８(９)
+[６５] FarhiE,GoldstoneJ,GutmannS．Aquantumapproximate    [８０] BrandãoFG,KalevA,LiTongyang,etal．Quantum SDP
+      optimization algorithm [J]．arXiv preprint,arXiv:１４１１．         solvers:LargespeedＧups,optimality,and applicationsto
+     ４０２８,２０１４                                                 quantumlearning[C]∕∕Procofthe４６thIntColloquium on
+[６６] FarhiE,Harrow A W．Quantum supremacythroughthe          Automata,Languages,andProgramming．Berlin:Springer,
+     quantum approximate optimization algorithm [J]．arXiv        ２０１９,１３２:No．２７
+                                                    [８１] vanApeldoornJ,GilyénA,GriblingS,etal．QuantumSDPＧ      preprint,arXiv:１６０２．０７６７４,２０１６                                                               Solvers:Betterupperandlowerbounds[C]∕∕Procof２０１７[６７] WangZhihui,Hadfield S,Zhang Jiang,etal．Quantum                                                   IEEE ５８th Annual Symp on Foundations of Computer     approximateoptimizationalgorithmformaxcut:Afermionic                                                               Science．Piscataway,NJ:IEEE,２０１７:４０３４１４     view[J]．PhysicalReview A,２０１８,９７(２):０２２３０４                                                    [８２] vanApeldoornJ,GilyénA．ImprovementsinquantumSDPＧ[６８] Zhou Leo, Wang Shengtao, Choi S,et al．Quantum                                                                      Solving with applications [C]∕∕Proc of the ４６th Int      approximateoptimizationalgorithm:Performance,mechanism,                                                                     Colloquium on Automata,Languages,and Programming．    and implementation on nearＧterm devices [J]．Physical                                                                Berlin:Springer,２０１９,１３２:No．９９     ReviewX,２０２０,１０(２):０２１０６７                                                    [８３] vanApeldoornJ,Gilyén A．Quantum algorithmsforzeroＧ[６９] JordanSP．Fastquantum algorithmfornumericalgradient                                                                sumgames[J]．arXivpreprint,arXiv:１９０４．０３１８０,２０１９
+      estimation [J]．Physical Review Letters,２００５,９５(５):    [８４] LiTongyang,ChakrabartiS,WuXiaodi．Sublinearquantum
+     ０５０５０１                                                            algorithmsfortraininglinearandkernelＧbasedclassifiers[C]
+[７０] GilyénA,Arunachalam S,Wiebe N．Optimizingquantum          ∕∕ProcofIntConfon MachineLearning．New York:ACM,
+      optimization algorithms via faster quantum  gradient         ２０１９:３８１５３８２４
+     computation [C]∕∕Proc ofthe ３０th Annual ACMＧSIAM    [８５] ChakrabartiS,ChildsA M,LiTongyang,etal．Quantum
+    Sympon Discrete Algorithms．New York:ACM,２０１９:         algorithmsandlowerboundsforconvex optimization [J]．
+     １４２５１４４４                                               Quantum,２０２０,２２１(４):２２１
+[７１] Rebentrost P,Schuld M, Wossnig L,et al．Quantum    [８６] van Apeldoorn J,Gilyén A,Gribling S,et al．Convex
+      gradient descent and Newton􀆳s method for constrained           optimizationusing quantum oracles [J]．Quantum,２０２０,
+     polynomialoptimization[J]．NewJournalofPhysics,２０１９,         ２２０(４):２２０
+                                                    [８７] GargA,KothariR,NetrapalliP,etal．Noquantumspeedup     ２１(７):０７３０２３
+                                                                overgradientdescentfornonＧsmoothconvex optimization[７２] KerenidisI,PrakashA．Quantumgradientdescentforlinear                                                                     [J]．arXivpreprint,arXiv:２０１０．０１８０１,２０２０     systemsandleastsquares[J]．PhysicalReviewA,２０２０,１０１                                                    [８８] Zhang Chenyi, Leng Jiaqi, Li Tongyang．Quantum     (２):０２２３１６                                                                     algorithms for escaping from saddle points [J]．arXiv[７３] HeJianhao,Yang Feidiao,ZhangJialin,etal．Quantum                                                                    preprint,arXiv:２００７．１０２５３,２０２０      algorithmforonlineconvexoptimization[J]．arXivpreprint,                                                    [８９] AmbainisA．Quantumlowerboundsbyquantumarguments     arXiv:２００７．１５０４６,２０２０                                                             [J]．JournalofComputerandSystem Sciences,２００２,６４[７４] Verdon G,ArrazolaJ M,Brádler K,etal．A quantum                                                          (４):７５０７６７
+      approximateoptimizationalgorithmforcontinuousproblems    [９０] BoydS,BoydSP,VandenbergheL．Convex Optimization
+      [J]．arXivpreprint,arXiv:１９０２．００４０９,２０１９                                                               [M]．Cambridge,UK:CambridgeUniversityPress,２００４
+[７５] KerenidisI,PrakashA．Aquantuminteriorpointmethodfor
+    LPs and SDPs [J]．ACM  Transactions on Quantum               HeJianhao,born in １９９３．PhD．Student
+     Computing,２０２０,１(１):１３２                                                                memberofCCF．Hismainresearchinterests[７６] KerenidisI,PrakashA,SzilágyiD．AquantuminteriorＧpoint                                                                    include quantum  computing, quantum     methodfor secondＧorder cone programming[D]．Paris:                                                                       optimization．     CNRS,IRIF,UniversitéParisDiderot,２０１９                                            何键浩,１９９３年生．博士,CCF学生会员．主要[７７] KerenidisI,PrakashA,SzilágyiD．Quantumalgorithmsfor                                    研究方向为量子计算、量子优化．      Portfoliooptimization [C]∕∕Procofthe１stACM Confon
+     Advancesin Financial Technologies．New York: ACM,                                                            LiLüzhou,bornin１９８１．PhD,professor,     ２０１９:１４７１５５
+                                                  PhD supervisor．Distinguished member of[７８] KerenidisI,PrakashA,SzilágyiD．Quantumalgorithmsfor
+     secondＧorderconeprogrammingandsupportvectormachines             CCF．His main research interestsinclude
+      [J]．arXivpreprint,arXiv:１９０８．０６７２０,２０１９                             quantumcomputingmodel,quantumalgorithm
+[７９] BrandãoF G,Svore K M．Quantum speedＧupsforsolving                andcomplexity,quantum machinelearning．
+     semidefiniteprograms[C]∕∕Procof２０１７IEEE５８thAnnual          李绿周,１９８１年生．博士,教授,博士生导师,
+     SymponFoundationsofComputerScience．Piscataway,NJ:         CCF杰出会员．主要研究方向为量子计算模
+    IEEE,２０１７:４１５４２６                         型、量子算法与复杂性、量子机器学习．

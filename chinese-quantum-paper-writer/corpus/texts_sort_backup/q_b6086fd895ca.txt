@@ -1,0 +1,263 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２１．２０２１０３６６
+ JournalofComputerResearchandDevelopment                                    ５８(９):１８３５１８４２,２０２１
+
+
+量子谱回归算法
+
+潘世杰　高　飞　万林春　秦素娟　温巧燕１(网络与交换技术国家重点实验室(北京邮电大学)　北京　１００８７６)
+２(密码科学技术国家重点实验室　北京　１００８７８)
+ (panshijie＠bupt．edu．cn)
+QuantumAlgorithmforSpectralRegression
+PanShijie,GaoFei,WanLinchun,QinSujuan,and WenQiaoyan
+１(StateKeyLaboratoryofNetworkingandSwitchingTechnology (BeijingUniversityofPostsandTelecommunications),
+  Beijing１００８７６)
+２(StateKeyLaboratoryofCryptology,Beijing１００８７８)
+  Abstract　Subspacelearningisanimportantresearchdirectioninthefieldofmachinelearning．In
+  ordertoreducethecomplexity ofsubspacelearning,Caietal．proposed aspectralregression
+  dimensionalityreductionframework,andproposedefficientspectralregressionforsubspacelearning
+  thatconstructedtheirgraphbyincorporatingthelabelinformation．Inrecentyears,thedevelopment
+  ofquantum computinghas madeitpossibletofurtherreducethecomplexityofsubspacelearning
+  algorithms．Mengetal．pioneeredthequantumalgorithmforspectralregression (MYXZalgorithm)．
+  Inthisarticle,thelimitationsofthe MYXZalgorithm arepointedout．Wepointoutthat MYXZ
+  algorithm usessparse Hamiltoniansimulationtechnologytoprocessthe matrixgeneratedbythe
+  weightmatrix,butthis matrixisadense matrixinsomecases．Inresponsetothissituation,we
+  proposeanimprovedquantumspectralregressionalgorithm．Ourimprovedalgorithm usesquantum
+  singularvalueestimationtechnology,whichhasapolynomialaccelerationcompared with MYXZ
+  algorithm whendealingwithdense matrices．Inaddition,weproposeanewquantum algorithmto
+  acceleratetheclassicalefficientspectralregression．Theproblemsthatournewalgorithmcanhandle
+  cannotbehandledbyMYXZalgorithm．Ouralgorithmutilizesquantumridgeregressionandquantum
+  matrixvector multiplicationtechnology．Underthesameparameterconditions,ouralgorithm has
+  polynomialaccelerationeffectcomparedwiththeclassicalalgorithm．
+  Keywords　quantumalgorithm;quantum machinelearning;spectralregression;subspacelearning;
+  densematrix
+ 摘　要　子空间学习是机器学习领域的重要研究方向．为了降低子空间学习的复杂度,Cai等人提出了谱
+ 回归降维框架,并针对结合标签构造对应图的子空间学习提出了高效谱回归．近年来,量子计算的发展
+ 使进一步降低子空间学习算法的复杂度成为了可能．Meng等人率先提出了量子谱回归算法(MYXZ算
+ 法)．MYXZ算法用了稀疏哈密顿量模拟技术来处理由权重矩阵生成的矩阵,但这个矩阵在较多的情况
+　收稿日期:２０２１－０４－０６;修回日期:２０２１－０５－２５
+　基金项目:中央高校基本科研业务费专项资金(２０１９XDＧA０１);国家自然科学基金项目(６１９７６０２４,６１９７２０４８)
+          ThisworkwassupportedbytheFundamentalResearch FundsfortheCentralUniversities (２０１９XDＧA０１)andthe National
+           NaturalScienceFoundationofChina(６１９７６０２４,６１９７２０４８)．
+　通信作者:高飞(gaof＠bupt．edu．cn)
+
+===== PDF PAGE 2 =====
+１８３６                                               计算机研究与发展　２０２１,５８(９)
+ 下是稠密矩阵．针对这种情况,指出了MYXZ算法的局限性,提出了一个改进的量子谱回归算法．改进
+ 算法采用了量子奇异值估计技术,在处理稠密矩阵时相对MYXZ算法有多项式加速．另外,提出了一个
+ 新的量子算法,对经典的高效谱回归进行加速．新算法能处理的这类问题是MYXZ 算法无法处理的． 新算法利用了量子岭回归和量子矩阵向量乘技术,在相同的参数条件下相对经典算法具有多项式加速
+ 效果．
+ 关键词　量子算法;量子机器学习;谱回归;子空间学习;稠密矩阵
+ 中图法分类号　O４１３
+　　量子计算展示了其相对经典计算的强大优  出可利用权重矩阵的特殊结构,结合格拉姆施密特
+势[１Ｇ２]．在处理特定的问题时,如大数质因数分解[３]、  正交化来得到稠密矩阵的特征向量,而不需要对稠
+无结构数据搜索[４]、稀疏线性方程组求解[５]和低秩  密矩阵进行特征分解,从而把复杂度从维数的立方
+矩阵主成分分析[６],采用量子计算的方式具有比经  降低为维数的一次方．另外,因为引入了线性回归,
+典计算方式低得多的复杂度．近年来,一些研究人员  所以谱回归中也可以很自然地加入正则化参数,使
+将量子强大的计算能力用在处理经典计算机上具有  得算法可用于数据矩阵是病态矩阵的情况．
+较高复杂度的机器学习问题,取得了一系列成果,包     在量子领域,Lloyd等人[６]率先提出了量子主
+括量子回归算法[７]、量子支持向量机[８]、量子生成对    成分分析算法(quantumprincipalcomponentanalysis
+抗网络[９Ｇ１０]、量子神经网络和量子数据挖掘[１１]等．                               algorithm,QPCA),算法相对经典算法具有指数加
+  子空间学习是机器学习的重要部分．现实世界  速效果．需要指出的是,尽管该算法被称为QPCA的数据大多数是以高维的形式出现,而决定计算任                         算法,但实际上如果要维持量子算法的加速效果,该
+务———例如分类和回归———结果的有效维度往往很                         算法只能用来得到低秩(或者近似低秩)矩阵的较大
+低．由于直接处理高维数据不仅需要消耗大量计算                         的特征值,以及以量子态形式得到对应的特征向量;
+资源,还会导致维数灾难(thecurseofdimensionality)                         另外,如果矩阵有重特征值,那么我们无法通过量子问题,因此子空间学习被提出,用来把数据集从高维                        主成分分析得到重特征值对应的一组特征向量,而降到低维,同时保持数据潜在的结构．人脸识别的结                         只能得到特征向量的叠加态．随后,Yu等人基于量果表明,通过子空间学习进行降维,可以显著地提高                             子PCA 算法,提出了量子PCA 降维算法,当降维后算法的性能[１２]．尽管子空间学习可以部分解决高维                        数据的维数为训练数据维数的对数时,他们的量子数据的学习问题,但子空间学习本身通常也需要很                            算法相对经典算法实现了指数级的加速[１７]．Cong等高的复杂度,因此如何降低子空间学习的复杂度是                         人实现了量子LDA 算法,与经典算法相比有指数一个很有实际意义的问题．一个自然而然的想法是            等人基于谱回归降维框                                  级的加速效果[１８]．Meng将量子计算应用于子空间学习,以达到更低的算法                           架[１６],首次提出了正则化子空间学习的量子谱回归复杂度．
+  常用的子空间学习算法包括主成分分析                          算法(MYXZ算法,以作者姓名首字母命名),并在
+(principalcomponentsanalysis,PCA)[１３]、线性判  降维数据的项数m 和数据的特征数n 满足m ＝                              O(lbn)时,算法具有多项式加速效果[１９]．尽管如此,别分析(lineardiscriminantanalysis,LDA)[１４]、局                                                              [１２]                           MYXZ算法仍然存在有待改进的地方．首先,MYXZ部保持投影(localitypreservingprojections,LPP)                        算法在算法的第一步,即求一般特征值问题时用了和邻域保持嵌入(neighborhoodpreservingembedding,
+NPE)[１５]等．子空间学习算法如LDA,LPP和NPE,  稀疏哈密顿量模拟,当处理的矩阵是稀疏矩阵时,算
+通常需要进行稠密矩阵的特征分解,这往往需要消  法具有良好的加速效果,但实际应用中存在很多矩
+耗较高的计算资源．为了降低计算资源,２００７年Cai  阵不稀疏的例子,例如LDA,此时用稀疏哈密顿量
+等人[１６]提出了谱回归降维框架,该框架包含了很多  模拟没有加速效果．其次,如果算法第一步的解中有
+现有的子空间学习算法,如LDA,LPP和NPE．在同  相同的特征值,也会导致MYXZ算法无法得到相应
+一篇文章中,针对结合标签信息来构造对应图的子  的特征向量(只能得到特征向量的叠加态)而导致后
+                                算法的加速基于假设空间学习,Cai等人提出了高效谱回归．Cai等人提  续步骤出错．最后,MYXZ
+
+===== PDF PAGE 3 =====
+潘世杰等:量子谱回归算法                                           １８３７
+
+                 为数据的特m＝O(lbn),其中m 为数据的项数,n         谱回归主要包含３个步骤:
+征数．因为谱回归的原始文献[１６]的重点在于把算    １)求解最大特征向量问题
+法复杂度中的因子m３降至m,而对于m＝O(lbn)             Wy＝λDy,          (１)                                                         m的情况,谱回归本身只有很小的加速效果,因此我们                            其中,D            Wij．得到最大的c－                                                                           j＝１认为m＝O(n)是更符合实际情况的假设．          为对角矩阵,Dii＝∑
+  本文首先对MYXZ算法进行了细致分析,并指  １个特征值对应的特征向量y(１),y(２),􀆺,y(c－１),c
+出了算法的局限性．然后,我们提出了一个改进算  为类别个数．
+法,该算法采用了量子奇异值估计技术(quantum    ２)求解c－１个最小二乘问题m
+singularvalueestimation,QSVE)[２０],而不是稀疏        ai            ixj                                             ＝argminai    (aT －yj(i))２,    (２)                                                                       j＝１量子主成分分析来求解一般特征值问题,在处理稠                        ∑                                          j(i) 表示向量y(i)的第j                             其中,y          个元素,i∈{１,２,􀆺,密矩阵特征值问题时,QSVE 具有更低的复杂度．当                               c－１}．m＝O(n)时,我们的改进算法相对经典算法有多项                           ３)对新数据x 进行降维,令A＝(a１,a２,􀆺,式加速效果;当算法的第１步涉及的矩阵是稠密矩                            ac),则降维后的坐标为阵时,我们的改进算法相对MYXZ算法有多项式加
+速效果．其次,针对结合标签信息来构造对应图的子             yx＝ATx．
+空间学习算法,例如LDA 和带标签的LPP,NPE,   当样本数m 小于特征数n 时,优化问题(２)是
+我们提出了相应的量子算法．我们把文献[１６]中提  病态的,一种常见的做法是采用岭回归的方式,引入
+出的高效算法中复杂度较高的岭回归部分设计成量                          正则化参数α,即求解优化问题:
+子算法,并行得到多个岭回归结果;而复杂度较低的      ai       m  ixjT －yj                                           ＝argminai    (a      (i))２＋αai,２                                                                   j＝１部分(即格拉姆施密特正交化)仍然采用原算法实       ∑                              此时ai 的解析解为
+现．这样做的好处在于既规避了稠密矩阵特征分解                                  (                                        ai＝(XXT＋αI)－１Xyi)．的问题,也利用了量子的加速效果．另外,为了算法    引入正则化参数的谱回归被称为正则化子空间
+的完整性,我们给出了对新输入数据进行降维的实
+现方式．当m＝O(n)时,我们的算法相对经典的高  学习的谱回归．                             在文献[１６]中,作者提出一种高效的谱回归求效谱回归算法具有多项式加速效果．                        解方法．对于结合标签信息来构造对应图的降维算
+                              法,如LDA 以及有监督的LPP 和NPE,其最大特１　正则化子空间学习的谱回归                            征向量问题(即式(１))的求解是平凡的．不妨假设数
+                          据是按标签信息排列的,则  在本节中,我们将对正则化子空间学习的谱回
+                                                                                       æ                                                                                                                   ö                          W(１) ０  􀆺  ０                                                                                       ç                                                                                                                   ÷归进行回顾,并介绍其复杂度．
+                                                                                       ç                                                                                                                   ÷１．                                  ０ W(２) 􀆺  ０                                                                                       ç                           ÷ , １　谱回归                  m           W＝                                          ⋮                                                                                                                                                                              çç                                                                                                                                                                                                                                      ÷÷                                  ⋮  ⋮  ⋱  假设有m 张人脸图像,表示为{xi}i＝１∈Rn,令                                                                                                                 (c)                                                                                       è                                                                                                                   ø                                 W                                  ０  ０  􀆺X＝(x１,x２,􀆺,xm )．我们要做的是对这些图像数据                       其中W(                                       t)是mt×mt 的矩阵,mt 为第t个类别的样进行降维处理,降维后数据矩阵表示为Y＝(y１,
+y２,􀆺,ym )．为了对新输入数据进行降维,以及对测  本数,此时可以直接给出式(１)的最大特征值１对应
+                        的c个特征向量,即试集的数据进行检验,通常需要输出降维矩阵A,对                        y(                        Tx．                                           i)＝[０,􀆺０,１,􀆺,１,０,􀆺０ ]．新输入数据x,降维后数据记为yx＝A                                                                    c︸             ︸ ︸mi个  令G 表示由m                                                              i－１                                                                          j＝１mj个                                                                                                  j＝i＋１mj个         个顶点构成的图,每个顶点对应        ∫                                   ∫
+一张人脸图像即xi,W 为一个m×m 的权重矩阵,     另外,显然全１向量１＝(１,１,􀆺,１)T 也是式(１)
+其元素表示图G 中顶点i和顶点j 之间的权重．谱                         中最大特征值１对应的特征向量．因为对所有的W,
+                矩阵的不同选回归是一个降维算法的框架,通过W         １都是式(１)中特征值１对应的特征向量,因此１并
+取方式,能得到不同的降维算法,如线性判别分析、局  不包含关于问题的任何信息．为了去除和１相关的
+部保持投影和邻域保持嵌入．谱回归的提出是为了                           冗余信息,文献[１６]中提出的方法是取１为第１个
+避免降维算法中复杂度较高的稠密矩阵特征分解．                          正交向量,其余c－１个特征向量由y(i)通过格拉姆
+
+===== PDF PAGE 4 =====
+１８３８                                               计算机研究与发展　２０２１,５８(９)
+施密特正交化得到．最后去掉１,就得到了我们想要  ２．２　算法分析
+的c－１个相互正交的特征向量,也即式(１)的解．     本节将结合文献[１９]中的假设,对算法及其复
+１．２　谱回归的复杂度               杂度进行分析．
+                             L 是稀疏矩阵,其稀疏度用   根据文献[１６]中的算法,回归算法的第１步的     文献[１９]认为矩阵􀭺
+复杂度主要来源于格拉姆施密特正交化,复杂度为  sL 表示．第１步的量子主成分分析中量子模拟部分
+                         采用的是稀疏哈密顿量模拟的方式．稀疏哈密顿量
+mc  ２－１ ３;第２步做c－１次岭回归的复杂度为                 ts４ O 表示一些增长慢   ３c                   模拟的复杂度为􀭾O[lb(m) L](􀭾
+                                 L 通常不是低秩s(c－１)(２mn＋３m＋５n),其中s为迭代次数,岭回  的项被省略掉了)[５]．注意到,矩阵􀭺
+归的收敛很快,因此s通常取值较小;第３步矩阵向  矩阵,所以在量子主成分分析测量时,测量一次得到
+量乘法的复杂度为O(cn)．因此总算法复杂度为                        最大的c个特征值中的一个的概率为c c                                m (需要指出O(２m＋cmns)．
+                            的是,文献[１９]并没有考虑测量的概率,导致算出来
+２　正则化子空间学习的量子谱回归       的复杂度比实际的复杂度低),引入幅度放大,量子
+                                                                                                     é cmsL４             ù                              O êê                        主成分分析的复杂度为􀭾  本节将对正则化子空间学习的量子谱回归进行                                                                                                     ë ε  polylb(m)úúû (我
+回顾,并对算法进行分析,给出算法复杂度．        们用polylb(m)来表示poly(lbm),以简化符号．
+                                                                               Lij                                       􀭺 i􀎯２．１　量子谱回归                      polylb(m)来源于对量子态|􀭺L􀎯＝ L１  ij                                    􀭺 F∑  ２０１９年,Meng等人提出了正则化子空间学习
+ 的量子谱回归算法[１９](MYXZ算法)．该算法没有利  j􀎯的制备),算法的输出为y－(１)􀎯,y－(２)􀎯,􀆺,
+用文献[１６]中的核心思想,即对于结合标签信息来  y－(c－１)􀎯．
+构造对应图的降维算法,其最大特征向量问题的求     文献[１９]没有明确给出D１∕２|y－(i)􀎯的量子算法
+ 解(式(１))是平凡的,而是直接用量子主成分分析[６]  及其复杂度,尽管看起来这部分算法很直接,且复杂
+                          度低于量子主成分分析部分,为了完整性,我们给出的方式来对矩阵进行特征分解．                                    L 的存储                         具体的算法并分析其复杂度．类似于矩阵􀭺   MYXZ算法主要包含２个步骤:
+  １)用稀疏矩阵量子主成分分析和量子矩阵向  假设,我们假设D 的元素是存储在QRAM 中的．因                            是对角矩阵,且要得到􀭺L,需要先得到D,因此量乘法来求式(１)的解y(１),y(２),􀆺,y(c－１)．     为D                       事  这个假设比矩阵􀭵                           L 的假设弱．此时输入y－(i)􀎯＝   MYXZ算法假设矩阵􀭺L＝D                            －１∕２WD１∕２＋Im                                      m
+先被存储在一个树状的量子存储器(QRAM)中,其                                                －(ji) j􀎯,直接调用QRAM 查询(复杂度为 中Im                                    j＝１y   为m×m 的矩阵．用量子算法(即量子主成分 ∑             m
+                                                                  －(ji)分析)求最大特征向量问题:            O(              j􀎯Djj􀎯．通过受控旋                                                        j＝１y                             lbm))可得量子态∑       􀭺         Ly－＝(λ＋１)y－,                              转[５](复杂度可忽略)和测量(平均测量次数为O(κD),得到的c－１个最大特征值对应的特征向量(量子   其中κD 为矩阵D                                  的条件数,即最大特征值和最小特态形式)表示为|y－(１)􀎯,|y－(２)􀎯,􀆺,|y－(c－１)􀎯,则式(１)                   查询的次数                            征值的比值．通过幅度放大,调用QRAM                                                          m的解|y(i)􀎯＝D１∕２|y－(i)􀎯可通过量子矩阵向量乘法
+ 得到[５]．                            降低为O(κ１∕２                                             D       Djjy１∕２ －(ji) j􀎯Djj􀎯,                                                                               j＝１                                 )),可得量子态∑  ２)用量子算法求                          再次调用QRAM 对第２量子寄存器进行逆运算,                                                   m                     －１Xy(i)．        ai＝(XXT＋αI)
+             事先存储在一个树状                       可得D１∕２|y－(   Djjy１∕２ －(ji) j􀎯．因此矩阵向量乘   MYXZ算法假设矩阵X                                         j＝１                                       i)􀎯＝∑
+的QRAM 中,基于量子稠密线性方程组求解技  法的复杂度为O(κ１∕２D lbm)．在实际问题中,κD 通常
+术[１６],设计出量子稠密矩阵岭回归技术,可直接用  取值较小,因此这个复杂度相对于量子主成分分析
+ 于求ai．                    部分是可以忽略的．
+                                                                                                                  æ cmsL４     ö   MYXZ算法没有考虑算法的第３步,也即针对                                                   ç             ÷ ．                            综上,算法的第１步总复杂度为Oè ε lbmø一个新输入的数据x,输出其降维后坐标yx＝Ax．
+
+===== PDF PAGE 5 =====
+潘世杰等:量子谱回归算法                                           １８３９
+算法的第２步对稠密线性方程组技术进行了推广,  根据QSVEm[２０]可得:应用于岭回归求解,这一步的算法的复杂度为                             １                                                           (λj ＋１)y－(j)􀎯y－(j)􀎯λj􀬈􀎯,＋１    é                       L                                                            j＝１ c mκ２                  ù                        􀭺                             F∑O        êê                                                               úú    为矩阵X 的条件    ë ε polylb(m＋n)û ,其中κ                                                  é                ù                     算法复杂度为O  êê １                          úú数．因此算法的总复杂度为                                                            ëεpolylb(m)û ,其中λj＋１􀬈∈
+
+      é    cmsL４       mκ２                  ù                         L F．令δ 􀭺 O                             L F＝O(δ m )＜ε,则有             êê                                                                                                                    úú ．   (λj＋１)±δ 􀭺
+                                                                                                                                ù      ë ε polylb(m)＋c ε polylb(m＋n)û                æ ε ö                           é m                                                                            ç                                                                                 ÷                                                                                                                                                                                                                           êê                          δ＝O                                                                                 ø ,此时复杂度为O                                                                            è m                                                                                                             ë ε polylb(m)úúû ．   作为对比,经典算法的复杂度为O(c２m＋cmns)．
+ 当m＝O(lbn),１ε＝O(lbmn),κ＝O(lbmn),因为  测量第４寄存器,以cm 的概率测得较大的λi,此时
+c≪m[１６],sL≤m＝O(lbn),此时算法相对经典算法  可得对应的量子态|y－(j)􀎯．可通过振幅放大,重复
+在n                       次数降低为O ( m∕c) ,因此第１步的总复杂度为   上有指数加速效果．当m＝O(n),１ε＝O(lbmn),
+                                                                       æmc     ö                     Oç           ÷κ＝O(lbmn)时,因为c≪m[１６],不妨令c＝O(lbm),       è ε lbmø ．结合MYXZ算法的第２步,总算法复
+若sL＝O(lbn),那么算法相对经典算法有多项式                  écmκ２            ù                          æm ö             杂度为O êê                                     úú ．                          ç   ÷                                                  ë ε lb(m＋n)û加速效果;若sL ＝Ωèc ø (这种情况常见于LDA),
+那么算法的复杂度比经典算法的复杂度更高．       对比经典算法复杂度O(csmn＋c２n),当κ＝
+                                     O(lbmn),１ε＝O(lbmn),m＝O(n)时,算法具有多
+３　改进的量子谱回归                          项式加速效果．对比MYXZ算法,我们算法在m＝
+                         L                和提取的特征  O(n)且矩阵􀭵 不是稀疏矩阵时,具有更低的复杂度．  在实际应用中,往往样本数量m
+个数n 的规模是相差不大的,另外,在谱回归的原始                      ４　高效谱回归的量子算法论文中[１６],谱回归算法的优势在于降低了复杂度中
+参数m 的次数．如果m≪n,谱回归的加速效果并不                              在文献[１６]中,Cai等人针对结合标签信息来明显．因此在改进的算法中,在其他参数假设不变的                        构造对应图的降维算法,如有监督的局部保持投影前提下,我们希望在m＝O(n)时,量子算法相对经典算法有显著加速效果．              和邻域保持嵌入,提出了一个高效的实现方式．对于
+                                           重特征                          这类降维算法,式(１)的最大特征值１是c  在对MYXZ算法复杂度的分析中,我们发现,         L              值,因而MYXZ算法无法进行处理．我们提出了这在较多的情况下,矩阵􀭺 并不是一个稀疏矩阵(如
+                        类子空间学习问题的量子谱回归算法．我们的算法在LDA 中,有csL≥m,通常认为c取值较小[１６],不                         中也用到了MYXZ中的部分过程．
+                                 L 的信息被存储妨令c＝O(lbm),此时有sL≥m                lbm),在主成分分析     在MYXZ 算法中,假设矩阵􀭺
+步骤中采用稀疏矩阵模拟的方式并没有加速效果．                          在树状的QRAM 中,而在实际情况中,通常我们并
+  针对这种情况,我们的改进算法不采用稀疏矩  不会事先知道矩阵􀭺L 的信息．特别在一些问题中,矩
+阵模拟的方式来进行主成分分析,而是直接用量子  阵􀭺L 的计算较为复杂,如带标签的NPE 算法,W 由
+奇异值估计[２０](QSVE)来得到相应的特征向量． 几个矩阵的乘积及求和得到,而􀭺L＝D－１∕２WD１∕２＋
+QSVE算法在处理稠密矩阵时具有更低的复杂度． Im ,此时如果直接进行存储假设,而不计算其复杂
+             L 的信息存储在  度,对与之作对比的经典算法不公平．我们的算法仅具体地,类似于MYXZ算法,假设􀭺
+                             被按标签顺序存储在树状的树状的QRAM 中．那么可以制备         假设数据矩阵X
+                     Lij          １                              QRAM     􀭺L􀎯＝                    中．           􀭺 i􀎯j􀎯,                          ij       L                             ４．        􀭺          F∑                          １　算法过程              m
+        １                  考虑到量子主成分分析的局限性,我们直接采不妨令􀭺L􀎯＝                    (λj ＋１)y－(j)􀎯y－(j)􀎯,那么      L                  j＝１      􀭺        F∑                           用经典的方式来求式(１)的解．我们的算法步骤为:
+
+===== PDF PAGE 6 =====
+１８４０                                               计算机研究与发展　２０２１,５８(９)
+  １)令第１个特征向量为全１向量(１,１,􀆺,  O(mlbm)．进而,制备|ψ􀎯的复杂度为O(cmlbclbm)．
+                                     所对应的存储位１)T,通过对                     其中因子lbc 来源于查找标签i
+ y′(i)＝[０,􀆺０,１,􀆺,１,０,􀆺０ ],i＝１,２,􀆺,c   置,c来源于读取QRAMc－１次．需要指出的是,                    c︸             i－１︸ ︸mi个           j＝１mj个           j＝i＋１mj个            QRAM 只需要存储一次,就可以进行多次读取．    ∫     ∫                              在４．１节所述的步骤３中,我们采用MYXZ算法进行格拉姆施密特正交化,得到c－１正交的特征
+                         中稠密矩阵岭回归算法来求|ϕ􀎯．具体地,类似于向量,作为式(１)的解,记为y(１),y(２),􀆺,y(c－１)．                           MYXZ算法的假设,假设矩阵X  ２)把y(１),y(２),􀆺,y(c－１)存储到QRAM 中,制                事先存储在一个树
+备量子态                            状的QRAM 中,再在第２寄存器上直接执行量子稠
+                          c－２                              (          密矩阵岭回归算法,即得量子态|ϕ􀎯,复杂度和MYXZ          １              i􀎯yi＋１)􀎯．                                                                          ２                                     mκ                       i＝０                                                                       ．需                                                                                                                                                                                                       êê                                                                                                                                                                                                                                                           úú      ψ􀎯＝ c－１∑                         算法相应步骤一致,为O é                                                                                                   ë                                                                                                                             û                               ε                                                              polylb(m＋n)ù  ３)对第２量子寄存器,执行稠密矩阵岭回归量                          要注意的是,这个复杂度并没有考虑对|ψ􀎯的制备,子算法,得
+                          c－２                           因为需要进行O(κ)次的调用,因此这部分的复杂度          １      ϕ􀎯＝        i􀎯ai＋１􀎯．                        i＝０            为O(cκmlbclbm)．        c－１∑                           为了方便对４．１节所述的步骤４的分析,我们  ４)针对新输入的量子态|x􀎯,用量子低秩矩阵                              定义对数据的量子访问[２１]:向量乘法,来求其降维后量子态|y􀎯．                           定义１[２１]．如果存在以下变换可以在复杂度T
+  我们算法的第４步即对新输入的数据进行降                           内实现,那么称我们可以通过量子访问矩阵A∈Rn×m:维,这正是子空间学习的目的．MYXZ算法没有给出                                                      |i􀎯|０􀎯→|i􀎯|Ai􀎯,算法的降维过程,为了算法的完整性,我们将给出降
+维过程以及其复杂度分析．                       １    Ai                                     |０􀎯→ A  i   |i􀎯,４．                                 F∑ ２　算法分析                            表示矩阵A 的第i列构成                         其中,i∈{１,２,􀆺,n},Ai  ４．１节所述的步骤１为经典步骤,复杂度为  的向量．
+mc   ３．  ２－１                         需要注意的是,４．１节算法步骤２~３可以实现   ３c                y      |i􀎯|０􀎯→|i􀎯|Ai􀎯,但该过程不可逆(涉及到测量),   在４．１节所述的步骤２中,我们先把y(１), (２),􀆺,y                          我们可以把这些过程转化为可逆的[２２],而复杂度只 (c－１)存储到c－１个QRAM 中,因为元素个数为                         有常数倍的增长．在我们的算法中,Ai ＝１,因此m(c－１),因此QRAM 存储的执行次数为O(mc)．通过调用存储y(                  制备 １    Ai        i)的QRAM,我们可以制备量子态    A  i   i􀎯是平凡的．因此我们有对数据   m－１                             F∑１                                                                                                       é mκ２                 ù        j＋１􀎯,其中y(i)     j＋１表示向量y(i)          (i)的第j＋１                                                                                                                                                                                                              êêm∑j＝０j􀎯y                   矩阵的量子访问,其中T＝O                                                                                                       ë ε polylb(m＋n)úúû ,个元素．添加辅助比特进行受控旋转,得                      m－１             额外的复杂度为O(cκmlbclbm)．进而,利用量子访                            (i)                                                                                                 æ       ö       ψ１􀎯＝１       m∑j＝０j􀎯yj＋１􀎯􀱋        问,我们可以实现矩阵 çèA０A†    ÷ø 的(A F,lb(m ＋           (i)                æ                          (i) ö            éy                              ２     ù                    ０            j＋１                                  ç j＋１                                         ÷                         êê                                                                                                  úú                                                                                                         é                                         mκ２                ù                                                 û ,            ë Cz １􀎯＋ １－yè Cz ø  ０􀎯                                                                                                                                                                                                                 êê                                                                                                                                                                                                                                                                 úú ．                           n) ,０)块编码[２３],复杂度为O ë ε polylb(m＋n)û                        (i)其中Cz 为绝对值不小于yj＋１的绝对值的一个常
+        (i)        j＋１                    根据引理１,我们可得生成量子态
+                                                                         æ                                                                                   ö            æ                                                                                                         ö                                                                                                           æ                                                                                                                 ö数,即yCz ≤１．对第２寄存器做逆计算,并测量辅                                                                                                                 ÷                                                                                                         ÷                                                                         ç ０ A                                                                                                ç ０ A                                                                                                           ç|x􀎯                                                                     †     ø è     ø ＝|１􀎯|y􀎯                                    (                    èA†   ÷|０􀎯|x􀎯＝ø            èA助寄存器,若测量结果为１,即得量子态|yi)􀎯．可以       ０        ０ ０
+                                                                                 F                                  ＝c)为看到,对于一般的量子态,测量结果为１的概率  的复杂度(引理１中γ 取常数, A
+                                                                     é cmκ２                    æ   ö ù                                                                                                   ç                                                                                                       ÷                                         ． １                                      １                                                                                                                                          êê                                                                                                                                                                                                                 úú                                                                                                       ø                                                                                                         ûm  ２Cz≥１２ m２,因此需要重复制备量子态|ψ１􀎯的次数                                                                                                   èε                                                                     ë ε polylb(m＋n)lb
+为O(m２)．在算法中引入幅度放大,重复制备次数可    引理１[２３]．令A 为N ×N 的复矩阵,|b􀎯为满
+以降低为O(m)．因此,制备量子态|y(i)􀎯的复杂度为  足A|b ≥γ 量子态．假设制备|b􀎯的复杂度为Tb,
+
+===== PDF PAGE 7 =====
+潘世杰等:量子谱回归算法                                           １８４１
+A 的(α,a,０)编码可以在TA 复杂度内实现,那么有                          相比经典算法的复杂度O(c２m＋cmns),当κ,１ε ＝量子算法可以以精度ε            生成量子态A|b􀎯∕A|b􀎯,
+                                        ù                                  æ                                      ö
+                                  ç                                      ÷                                   O(lbmn),m＝O(n),c≪m 时,我们提出的量子算             １复杂度为O éêêα(Tb＋TA)                                                                               úú ．                ë  γ   lbèε ø û          法具有多项式加速效果．
+  综上,算法的总复杂度为             相关算法的复杂度对比和适用条件如表１所
+                  ２                     æ   ö                                                ç   ÷      示．需要注意的是,我们没有把降维过程(即４．１节     ２＋cmκ         １ ＋       ε  polylb(m ＋n)lbèε ø                          中的算法步骤４)的复杂度列在表中,因此表中量子
+                       高效谱回归的总复杂度比上面算出来的复杂度稍   O[mc    c２mκ２        æç             m ＋nö÷
+         ε polylbè ε   ø     低,但并不影响对比结果．  cκmlbclbm]＝O[            ],
+    Table１　ComparisonofComplexityandApplicableConditionsofClassicalandQuantumSpectralRegressionAlgorithms
+               表１　经典和量子谱回归算法的复杂度和适用条件对比
+  算法    最大特征问题           岭回归          适用条件         总复杂度
+            cms４L 量子算法O                 O                  c mκ２           特征值不同,O  cms４                                                                                                                                                    ]                 [ ε  polylb(m)]             [ ε polylb(m＋n)]                    L                                       稀疏         [ ε  polylb(m)＋cmκ２ε polylb(m＋n)
+
+                                    整合标签信息
+ 经典算法                               的降维算法          mc２－１            O(csmn)                     O(csmn＋c２m)                ３c３                                      (特征值相同)
+
+ 改进算法       mc     O                 O                  c mκ２           特征值不同    O cmκ２                  [ ε polylb(m)]               [ ε polylb(m＋n)]                                       [ ε polylb(m＋n)] (第３节)
+                                    整合标签信息
+ 新算法
+              O                                                                                  ]                                [ ε polylb(m＋n)]          mc２－１               [ mκ２ε polylb(m＋n)＋cκmlbclbm  的降维算法    O c２κ２m (第４节)        ３c３                                      (特征值相同)
+                        法,而且对其他类型的机器学习算法都具有一定的
+５　结　　论                  参考价值．
+
+                 算法的细          参 考 文 献  在本文中,我们重新分析了MYXZ
+                  算法的结节,并纠正了其复杂度(并不影响MYXZ
+论)．针对MYXZ算法的局限性,即在m＝O(n)时,    [１] BiamonteJ,WittekP,PancottiN,etal．Quantum machine                                                                learning[J]．Nature,２０１７,５４９(７６７１):１９５２０２只能在􀭺   L 为稀疏矩阵的情形下才有量子加速,我们                                                   [２] WangYongli,Xu Qiuliang．Principleandresearchprogress
+                   来得到         ofquantum computation and quantum cryptography [J]．提出了一个改进算法．改进算法采用QSVE
+L            L 是否稀疏的影          JournalofComputerResearchand Development,２０２０,５７􀭺 的特征向量,因而复杂度不受􀭺
+         L 为稠密矩阵的情形下相          (１０):２０１５２０２６响,算法在m＝O(n)且􀭺                                     (王永利,徐秋亮．量子计算与量子密码的原理及研究进展综对经典算法有多项式加速效果．另外,针对文献[１６]       述[J]．计算机研究与发展,２０２０,５７(１０):２０１５２０２６)
+中提出的高效谱回归算法,我们提出了其量子版本     [３] ShorP．PolynomialＧtimealgorithmsforprimefactorization
+的算法．我们算法解决的问题并不能用MYXZ算法          anddiscretelogarithmsonaquantum computer[J]．SIAM
+来解决,因为求解的问题有c－１重特征值．实际上,         JournalonComputing,１９９７,２６(５):１４８４１５０                                                   [４] Grover L K．A fast quantum mechanical algorithm for如果特征值问题(１)的解中有重根,即有２个以上特                                                              databasesearch[C]∕∕Procofthe２８thAnnualACMSympon
+征向量共享一个特征值,那么MYXZ算法将无法通          TheoryofComputing．New York:ACM,１９９６:２１２２１９
+过量子主成分分析得到相应的特征向量(只能得到     [５] Harrow A W,Hassidim A,LloydS．Quantumalgorithmfor
+特征向量的叠加态)而导致后续步骤出错．我们算法          linearsystemsofequations [J]．PhysicalReview Letters,的优势在于把经典计算机上复杂度较高的部分用量         ２００９,１０３(１５):No．１５０５０２
+                                                   [６] Lloyd S, Mohseni M,Rebentrost P．Quantum principal
+子算法进行降维,而复杂度较低的部分保持原有经          componentanalysis[J]．NaturePhysics,２０１４,１０(９):６３１
+典算法．我们的算法设计思想不仅对子空间学习算         ６３３
+
+===== PDF PAGE 8 =====
+１８４２                                               计算机研究与发展　２０２１,５８(９)
+ [７] WiebeN,Braun D,LloydS．Quantum algorithmfordata          Advancesin NeuralInformation Processing Systems ３２．
+     fitting[J]．PhysicalReview Letters,２０１２,１０９(５):No．         Vancouver:CurranAssociates,Inc．,２０１９:１１１
+     ０５０５０５                                          [２３] ChakrabortyS,Gilyén A,JefferyS．ThepowerofblockＧ
+ [８] RebentrostP,MohseniM,LloydS．Quantumsupportvector          encodedmatrixpowers:Improvedregressiontechniquesvia
+     machinefor big data classification [J]．Physical Review           faster Hamiltoniansimulation [C]∕∕Procofthe４６thInt
+     Letters,２０１４,１１３(１３):No．１３０５０３                                Colloquium on Automata,Languages,and Programming．
+ [９] Lloyd S, Weedbrook C．Quantum generative adversarial            Dagstuhl:SchlossDagstuhlＧLeibnizＧZentrum fuerInformatik,
+     learning[J]．PhysicalReview Letters,２０１８,１２１(４):No．        ２０１９:３３:１３３:１４
+     ０４０５０２
+[１０] Situ Haozhen,He Zhimin, Wang Yuyi,etal．Quantum                 PanShijie,bornin１９９１．PhDcandidate．His
+      generative adversarial network for generating discrete               main research interests include quantum
+      distribution[J]．InformationSciences,２０２０(５３８):１９３２０８                                                                 algorithmsandquantum machinelearning．
+[１１] Yu Chaohua, Gao Fei, Wang Qingle,et al．Quantum          潘世杰,１９９１年生．博士研究生．主要研究方      algorithmforassociationrulesmining [J]．PhysicalReview                                   向为量子算法和量子机器学习．     A,２０１６,９４(４):No．０４２３１１
+[１２] He Xiaofei, Yan Shuicheng, Hu Yuxiao,et al．Face             Gao                                                             Fei,born in １９８０．Professor, PhD      recognitionusingLaplacianfaces[J]．IEEE Transactionson                                                                          supervisor．Hismainresearchinterestsinclude     PatternAnalysisand MachineIntelligence,２００５,２７(３):
+    ３２８３４０                                                      quantumalgorithms,quantumcryptography
+[１３] Hotelling H．Relationsbetweentwosetsofvariates [J]．                andrelatedquantuminformationproblems．
+     Biometrika,１９３６,２８(３∕４):３２１３７７                     高　飞,１９８０年生．教授,博士生导师．主要
+[１４] FisherR A．Theuseofmultiplemeasurementsintaxonomic         研究量子算法、量子密码学及相关量子信息
+     problems[J]．AnnalsofEugenics,１９３６,７(２):１７９１８８           问题．
+[１５] HeXiaofei,CaiDeng,YanShuicheng,etal．Neighborhood
+     preservingembedding[C]∕∕Procofthe１０thIEEEIntConf                WanLinchun,bornin１９９２．PhDcandidate．
+     onComputerVision．Piscataway,NJ:IEEE,２００５:１２０８                                                                     Hismainresearchinterestsincludequantum     １２１３                                                                       algorithm and privacyＧpreserving quantum[１６] CaiDeng,HeXiaofei,HanJiawei．Spectralregressionfor                                                                     machinelearning．      efficientregularizedsubspacelearning [C]∕∕ProcofIEEE                                        万林春,１９９２年生．博士研究生．主要研究方     １１thIntConfonComputerVision．Piscataway,NJ:IEEE,                                   向为量子算法和隐私保护的量子机器学习．    ２００７:１８
+[１７] Yu Chaohua,Gao Fei,Lin Song,etal．Quantum data
+     compressionbyprincipalcomponentanalysis[J]．Quantum                QinSujuan,bornin１９７９．Professor,PhD
+     InformationProcessing,２０１９,１８(８):No．２４９                              supervisor．Hermainresearchinterestsinclude
+[１８] CongI,Duan Luming．Quantum discriminantanalysisfor                quantumcryptography,quantumalgorithms
+      dimensionalityreductionandclassification[J]．NewJournal                andnetworksecurity．
+     ofPhysics,２０１６,１８(７):No．０７３０１１                      秦素娟,１９７９年生．教授,博士生导师．主要研
+[１９] MengFanxu,Yu Xutao,Xiang Ruiqing,etal．Quantum         究方向为量子密码学、量子算法和网络安全．
+      algorithm forspectralregressionforregularized subspace
+     learning[J]．IEEEAccess,２０１９,７:４８２５４８３２                                                               WenQiaoyan,bornin１９５９．Professor,PhD[２０] KerenidisI,PrakashA．Quantumrecommendationsystems                                                                          supervisor．Hermainresearchinterestsinclude      [C]∕∕Procofthe８thInnovationsin TheoreticalComputer                                                                  quantumcryptography,quantumalgorithms,     ScienceConf．Dagstuhl:Schloss DagstuhlＧLeibnizＧZentrum                                                                       codingtheory,informationsecurity,network     fuerInformatik,２０１７,６７:４９:１４９:２１
+                                                                    securityandappliedmathematics．[２１] KerenidisI,LandmanJ．Quantum spectralclustering [J]．
+      PhysicalReview A,２０２１,１０３(４):No．０４２４１５                 温巧燕,１９５９年生．教授,博士生导师．主要研
+                                    究方向为量子密码学、量子算法、编码理论、[２２] KerenidisI,Landman J,Luongo A,etal．qＧmeans:A
+     quantumalgorithmforunsupervisedmachinelearning[C]∕∕         信息安全、网络安全和应用数学．

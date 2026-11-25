@@ -1,0 +1,407 @@
+===== PDF PAGE 1 =====
+基于矩阵乘积算符的混合量子压缩经典生成对抗网络
+张曜麟, 刘晓楠, 杜帅岐, 廉德萌
+
+引用本文
+
+张曜麟, 刘晓楠, 杜帅岐, 廉德萌. 基于矩阵乘积算符的混合量子压缩经典生成对抗网络[J]. 计算机科学,
+
+2025, 52(6): 74-81.
+
+ZHANG Yaolin, LIU Xiaonan, DU Shuaiqi, LIAN Demeng. Hybrid Quantum-classical Compressed
+
+Generative Adversarial Networks Based on Matrix Product Operators [J]. Computer Science, 2025,
+
+52(6): 74-81.
+
+
+
+
+
+相似文章推荐（请使用火狐或 IE 浏览器查看文章）
+
+Similar articles recommended (Please use Firefox or IE to view the article)
+
+一种基于混合量子卷积神经网络的恶意代码检测方法
+
+Malicious Code Detection Method Based on Hybrid Quantum Convolutional Neural Network
+
+计算机科学, 2025, 52(3): 385-390. https://doi.org/10.11896/jsjkx.240800006
+
+
+基于参数化量子线路的量子神经网络数据分类
+
+Parameterized Quantum Circuits Based Quantum Neural Networks for Data Classification
+
+计算机科学, 2024, 51(11A): 231200112-7. https://doi.org/10.11896/jsjkx.231200112
+
+
+Grover量子搜索算法在“嵩山”超级计算机系统中的模拟
+
+Simulation of Grover's Quantum Search Algorithm in “Songshan” Supercomputer System
+
+计算机科学, 2024, 51(9): 96-102. https://doi.org/10.11896/jsjkx.230600219
+
+
+基于矩阵乘积态的有限纠缠量子傅里叶变换模拟
+
+Simulation of Limited Entangled Quantum Fourier Transform Based on Matrix Product State
+
+计算机科学, 2024, 51(9): 80-86. https://doi.org/10.11896/jsjkx.230300215
+
+
+生成扩散模型研究综述
+
+Survey on Generative Diffusion Model
+
+计算机科学, 2024, 51(1): 273-283. https://doi.org/10.11896/jsjkx.230300057
+
+===== PDF PAGE 2 =====
+http://www．jsjkx．com
+                                                                                 DOI:１０．１１８９６/jsjkx．２４０５０００１７
+
+基于矩阵乘积算符的混合量子压缩经典生成对抗网络
+
+张曜麟１,２  刘晓楠１  杜帅岐１,２  廉德萌１,２
+１国家超级计算郑州中心　郑州４５０００１
+２郑州大学计算机与人工智能学院　郑州４５０００１
+ 　(２４７４９９５７６８＠qq．com)
+　
+摘　要　神经网络在人工智能图像生成领域研究中占据重要地位.生成对抗网络作为近年来的热门算法,在图像生成任务中
+展现了卓越性能.量子计算作为一种新型计算模式,正在与传统人工智能算法融合,这样不仅加快了处理速度,还提升了数据
+安全性,尤其适合处理高维数据和优化问题.其中,混合量子经典生成对抗网络在图像生成任务中表现良好.然而,当前的混
+合量子经典生成模型在生成高维图像方面存在挑战,且生成器中线性层的加入,导致模型参数量增多.因此,提出了一种采用
+矩阵乘积算符的混合量子压缩经典生成对抗网络模型.该模型通过改进分块量子生成器的结构,使单次调用能够生成多个数
+据块,提高了模型效率.同时,结合经典网络的非线性特性和矩阵乘积算符,既保证了高维图像的生成质量,又提高了模型的收
+敛速度,并减少了参数量.实验结果表明,优化后的生成器结构将总运行时间提升了约９２．８８％,模型参数减少了约５．５９％,并
+且在MNIST 和FMNIST 数据集上的收敛速度优于传统及混合量子经典模型,展示了其在高维图像生成中的潜力.
+关键词:图像生成;量子计算;参数化量子线路;混合生成对抗网络;矩阵乘积算符
+中图分类号　TP３８５
+　
+HybridQuantumＧclassicalCompressedGenerativeAdversarialNetworksBasedonMatrix
+ProductOperators
+ZHANG Yaolin１,２,LIU Xiaonan１,DUShuaiqi１,２andLIANDemeng１,２
+１NationalSupercomputingCenterinZhengzhou,Zhengzhou４５０００１,China
+２SchoolofComputerandArtificialIntelligence,ZhengzhouUniversity,Zhengzhou４５０００１,China
+　
+Abstract　Neuralnetworksplayapivotalroleinartificialintelligence,particularlyinimagegeneration．Asapopularalgorithmin
+recentyears,generativeadversarialnetworks(GANs)havedemonstratedsuperiorperformanceinthisarea．Quantumcomputing,
+mergingwithtraditionalAIalgorithms,acceleratesprocessingspeedsandenhancesdatasecurity,makingitespeciallysuitablefor
+managinghighＧdimensionaldataandoptimizationproblems．Withinthiscontext,hybridquantumＧclassicalGANsshowpromising
+results．However,thesemodelsfacechallengesingeneratinghighＧdimensionalimages,andtheinclusionoflinearlayersingeneraＧ
+torsresultsinelevatedparametercounts．Therefore,ahybridquantumＧclassicalcompressedGAN modelusingmatrixproＧduct
+operatorsisproposed．Thismodelimprovesthestructureoftheblockquantumgenerator,enablingthegenerationofmultipledata
+blocksinasinglecall,whichenhancesefficiency．Itintegratesthenonlinearpropertiesofclassicalnetworkswithmatrixproduct
+operators,ensuringhighＧqualityimagegeneration,speedingupmodelconvergence,andreducingparametercounts．ExpeＧrimental
+resultsshowthattheoptimizedgeneratorstructureincreasestotalruntimebyapproximately９２．８８％,reducesmodelparameters
+byabout５．５９％,andsurpassestraditionalandhybridquantumＧclassicalmodelsinconvergencespeedon MNISTandFMNIST
+datasets,demonstratingitspotentialforhighＧdimensionalimagegeneration．
+Keywords　Imagegeneration,Quantumcomputing,Parametricquantumcircuits,Hybridgenerativeadversarialnetworks,Matrix
+productoperators
+　
+                           相近的精度. 其中,生成对抗网络(Generative Adversarial１　引言                                                 作为                                     Network,GAN)成为最引人注目的技术之一[１].GAN
+  深度学习正在改变人们处理大规模复杂数据的方式.目  一种深度神经网络,展现了在生成式机器学习任务中的巨大
+前,深度神经网络能在图像和语音识别等任务上达到与人类  潜力,即学习生成逼真的数据样本.虽然最初训练这些模型
+ 到稿日期:２０２４Ｇ０５Ｇ０６　返修日期:２０２４Ｇ０８Ｇ２６
+基金项目:２０２２年度河南省重大科技专项(２２１１００２１０６００)
+ThisworkwassupportedbytheMajorTechnologyProjectofHenanProvince,Chinain２０２２(２２１１００２１０６００)．
+通信作者:刘晓楠(prof．liu．xn＠foxmail．com)
+
+===== PDF PAGE 3 =====
+张曜麟,等:基于矩阵乘积算符的混合量子压缩经典生成对抗网络                      ７５
+
+                                                   设备仅存在困难,但GAN 很快在图像生成[２]、超分辨率[３]、图像到  子机器学习算法逐渐走向主流[１５].但目前的NISQ
+图像翻译[４]以及文本生成[５]等多个领域得到了应用.     支持少量量子比特,并且受到退相干、门错误、测量误差和串
+   尽管GAN 取得了广泛成功,但其巨大的计算需求正逼  扰等噪声的影响,只能在噪声干扰较少时执行有限的门序列,
+近摩尔定律的极限.例如,训练一个拥有１．５８亿参数的Big  而变分量子线路提供了一种实现算法的途径,这类基于变分
+                            量子线路的神经网络模型将成为处理经典数据的有效手段之GAN,需要使用１４００万个样本和５１２块TPU 训练两天,以
+生成５１２×５１２像素的图像[６].目前,最先进的量子计算系统  一.考虑到图像数据是日常生活中最常接触的数据类型之
+进入了噪声中等规模量子(NoisyIntermediateＧScaleQuanＧ  一,而深度学习在图像处理领域已展现出巨大优势,将量子神
+tum,NISQ)技术时代[７],该技术被认为有潜力在短期内为特  经网络与深度学习相结合,设计用于图像生成的量子机器学
+                                        是深度学习中的一种主要图像定科学领域提供实际应用.特别是,量子信息和机器学习的  习算法显得尤为重要.GAN
+结合已成为量子计算最有前景的应用之一,即量子机器学习  处理模型.因此,使用基于变分量子线路的神经网络代替传
+(Quantum MachineLearning,QML)[８].           统神经网络构建的GAN,是将量子机器学习算法应用于图像
+               的交叉使得一个新的研  在此背景下,量子计算和GAN             生成的重要切入点.
+究方向诞生,即量子生成对抗网络(Quantum GenerativeAdＧ     GAN 首次在文献[１]中提出,其框架包括一个生成器和
+versarialNetwork,QGAN)[９],旨在推动生成式学习的发展.  一个鉴别器,它们在一种对抗性博弈中竞争.具体来说,鉴别
+                            器的任务是区分接收到的数据是来自真实数据集还是由生成早期,许多框架仅能处理如简单概率分布等低维数据[１０]在图
+像生成领域,量子生成器仅能生成低分辨率图像[１１],或需要  器伪造的.而生成器则尝试捕捉真实数据集的联合概率分
+通过主成分分析降维[１２].后来,一种基于Wasserstein距离  布,并努力使其生成数据的概率分布接近真实数据的分布,从
+的分块量子生成对抗网络[１３]被提出,其通过多个量子生成器  而让鉴别器难以判断数据的真伪.鉴别器的训练目标是最小
+协作完成高维数据的生成任务,但其生成器部分采用纯量子  化其判断错误的概率,而生成器的训练目标则是最大化鉴别
+结构,拟合能力仍有提升空间.接着,文献[１４]提出了一种量  器判断错误的概率.理想情况下,这一对抗过程会最终达到
+子经典混合生成对抗网络,利用经典网络的非线性提高拟合  一个平衡点,即纳什均衡.在这一点上,生成器生成的数据与
+效果,但该实验仍使用了经过降维的数据,并且只能生成低维  真实数据难以区分,鉴别器对于判断生成数据和真实数据的
+数据.本文旨在在降低参数量、加快网络收敛速度和保证图  能力下降到最低,总是给出５０％的可信度.
+像生成质量的同时,以图像形式生成高维数据.我们采用了                         ３　混合量子压缩经典生成对抗网络实现一种改进的分块量子生成器结构,该结构基于文献[１１]的提
+议,并对其进行了优化:原本的设计中,每次调用子生成器仅    本文的目标是生成高维数据,同时实现参数量的减少,训
+产生一个数据块;现在的改进允许一次调用生成等同于批量  练收敛速度的加快,以及生成图像质量的保证.生成器采用
+大小的数据块.此外,我们还引入了经典网络结构以增强拟  分块量子结构和参数化量子线路构造,并通过加入经典线性
+合效果并有效地生成高维数据,将分块生成器与经典线性层  层来提高拟合效果;鉴别器则使用经典线性层结构.为降低
+结合,代表了一种全新的尝试.需要注意的是,经典线性层包  参数量,引入矩阵乘积算符对生成器和鉴别器的线性层进行
+含了大量需要训练和存储的变分参数.为了减小这些参数量  压缩.
+和降低过拟合风险,通过引入矩阵乘积算符来压缩经典线  ３．１　矩阵乘积算符实现线性层压缩的方法
+性层.                           经典神经网络在处理数据中发展了强大的非线性操作,
+  本文第２章介绍了量子机器学习的理论基础;第３章介  以更好地接近训练目标.引入线性层到生成器中可以提升模
+绍了基于矩阵乘积算符的混合量子压缩经典生成对抗网络的                            型的拟合能力,弥补量子模型在此方面的不足.线性层通过
+                                                      映射实现;第４章验证了实验并分析了实验结果;最后总结全文并  权重矩阵W 执行线性变换,把维度为Nx 的输入向量x
+展望未来.                         到维度为Ny 的输出向量y,如式(１)所示,结构如图１(a)所
+                             示.然而,由于输入和输出神经元数量众多,线性层需要确定２　量子机器学习                            大量参数.训练和存储这些参数不仅是一大挑战,还可能增
+  量子计算基于量子力学原理,利用量子比特表示和处理  加过拟合的风险,从而限制网络的泛化能力.
+信息.与传统比特不同,量子比特可以存在于多种状态的叠     y＝Wx＋b                            (１)
+加中,并通过量子纠缠在非局部层面实现状态间的联系.这    在量子信息和凝聚态物理学领域,同样也存在类似的现
+一特性使得量子计算在处理特定类型的计算问题时,其性能  象.在量子多体系统中,引入的参数总数可能极为庞大,理论
+远超传统计算机.机器学习是人工智能的一个分支,它利用   上随系统大小呈指数级增长.矩阵乘积算符(MatrixProduct
+算法和统计模型解析数据、识别模式并作出决策,无需人为编  Operator,MPO)最初在物理学中被提出,用于描述一维量子
+程.其核心任务包括分类、回归和聚类等.量子机器学习是  系统中的短程纠缠[１６],并已成为表示高阶张量或短程相互作
+                                            是一种张量序列近一种结合量子计算与机器学习理论的新兴跨学科研究领域,  用哈密顿量的常见方法.数学上,MPO
+其目标是利用量子计算的独特优势,来提升机器学习算法的  似,将高阶张量分解成所谓的局部张量的顺序乘积[１７].采用
+                                                      包含性能.                                MPO 表示可大幅减少所需变分参数的数量,因为MPO
+   随着NISQ 技术的发展,基于变分量子线路的启发式量  的参数数量仅随系统大小呈线性增长.考虑到深度神经网络
+
+===== PDF PAGE 4 =====
+计算机科学                                                                                  Vol．５２,No．６,June２０２５ ７６                                                  ComputerScience
+中线性变换与量子算符间许多相似的特性,使用文献[１８]提  ３．２　混合量子压缩经典生成对抗网路模型
+出的MPO 表示线性层来有效解决神经网络的参数问题,过    本文的生成器采用了文献[１１]提出的分块量子结构,并
+程如算法１所示,结构如图１(b)所示.           对其进行了优化.通过使用参数化酉矩阵,构建了可训练的
+                              量子线路作为子生成器的核心,如图２所示,单层参数化量子
+                            线路包括４个量子位和８个参数化门.潜在向量首先被编码
+                            为Ry门的旋转角度,随后通过参数化量子线路进行状态转
+                              换.在量子线路的末端,对所需的量子比特进行测量,并将其
+                            幅度归一化,以生成有效的像素值.这些像素值的分块最终
+                            叠加,形成完整的图像.该过程如算法２所示.旧分块结构
+                             的思路如算法３所示.
+
+
+
+
+
+                         表示的线性层结构     (a)经典线性层结构       (b)使用MPO
+          图１　两种不同线性层结构
+           Fig．１　Twodifferentlinearlayerstructures
+算法１　利用MPO 实现压缩线性层                                       图２　子生成器采用的参数化量子线路输入:in_modes,out_modes,mat_ranks,mat_cores,biases,dim,x                                                                    Fig．２　ParametricquantumcircuitsusedbysubＧgenerator输出:x
+１．//输入张量x重塑为二维张量                算法２　新分块生成器算法
+２．reshape(x,－１,prod(in_modes))                                 输入:n_qubits,block_num,circuit,q_params,x
+３．transpose(x,１,０)                        输出:images
+４．//mpo操作以实现线性压缩                         １．//初始化block的批次大小
+５．fori←０todim－１do                                        ２．x_batch_size←x．shape[－１]
+６．　reshape(x,mat_ranks[i]∗in_modes[i],－１)                   ３．transpose(x,０,１)
+７．　x←matmul(mat_cores[i],x)                                  ４．reshape(x,block_num,n_qubits,x．shape[１])
+８．　reshape(x,out_modes[i],－１)                   ５．//采用角度编码,设定旋转门的参数
+９．transpose(x,１,０)                                 ６．x←x ∗pi/２
+１０．returnadd(reshape(x,－１,prod(out_modes)),biases)        ７．images←empty(x_batch_size,０)
+  W 的MPO 表示通过将其分解为n个局部张量的乘积来   ８．//分块生成图像
+实现,具体过程如式(２)所示:                            ９．fori←０toblock_num－１do                                                                 １０．　block←circuit(n_qubits,x[i],q_params[i])     Wj１,􀆺,jn,i１,􀆺,in ＝Tr(w(１)[j１,i１],w(２)[j２,i２],􀆺,w(n)[jn,                                                          １１．　block←stack(block,dim＝１)             in])                      (２)                     代表连接w(k)与    １２．　images←cat((images,block),dim＝１)其中,w(k)[jk,ik]的矩阵维度是Dk－１×Dk,Dkw                                                           １３．returnimages (k＋１)的键的维度.此时,D０和Dn 的值均为１,除了k＝０或                                                  (k)的  算法３　旧分块生成器算法n以外,所有的Dk 均等于D.在这个MPO 表示法中,w                                                                输入:n_qubits,block_num,circuit,q_params,x张量元素作为变分参数,随着键尺寸D 的增加,参数的数量                                 输出:images也会增加,使得D 成为一个可调节的参数,用于平衡表达                                    １．//采用角度编码,设定旋转门的参数
+能力.                                         ２．x←x ∗pi/２
+   为了便于描述,将经MPO 压缩过的线性层重新表示,如   ３．images←empty(０,n_qubits∗block_num)
+式(３)所示:                                ４．//分批次生成
+  MI１,I２,􀆺,InJ１,J２,􀆺,Jn (D)                         (３)   ５．foreleminxdo
+   对于由式(３)定义的MPO 结构,这些变分参数的总数量    ６．　patches←empty(０,n_qubits)
+如式(４)所示:                            ７．//分块生成单个批次图像           n－１                                         ８．　forparamsinq_paramsdo
+   Nmpo＝∑k＝２IkJkD２＋I１J１D＋InJnD             (４)   ９．　　q_out←circuit(n_qubits,elem,params)
+   为了量化MPO 压缩的线性层相比于原始线性层的压缩    １０．　　tensor(q_out)
+性,我们定义了压缩比ρ,如式(５)所示:                       １１．　　reshape(q_out,－１,n_qubits)
+   ρ＝NmpoNori                              (５)   １２．　　patches←cat((patches,q_out),dim＝０)                                                             １３．　reshape(patches,－１,n_qubits∗self．block_num)
+                     压缩线性层的其中,Nori和Nmpo分别代表原始线性层和MPO                 １４．　images←cat((images,patches),dim＝０)
+参数数量.压缩比越小,表示MPO 中使用的参数越少.        １５．returnimages
+
+===== PDF PAGE 5 =====
+张曜麟,等:基于矩阵乘积算符的混合量子压缩经典生成对抗网络                      ７７
+   其中,利用PennyLane框架特性,当给定一个量子线  复杂的图像数据.为降低参数数量,我们通过矩阵乘积算符
+                        维张路输入n维张量时,这个量子线路的输出也是一个n    简化一层经典线性层.基于此,融合参数化量子层、经典层及
+               旧分块生成器算法的思量,这个特性可以将n作为批次.            压缩经典层的混合型生成网络应运而生.本文研究了两种
+想是把n设置成１,因此生成一个批次大小的图像,需要调   QGAN 网络模型:混合量子压缩经典生成网络模型和混合量
+用n次生成器,单次调用只能生成一张拼接而成的图像;  子经典生成网络模型,如图３所示,对应图中(a)和(b)结构.
+                            我们还使用具有相同层数的经典生成网络模型进行了性能对而新分块生成器算法的思想是将n设置成批次大小,当生
+成一个批次大小的图像时,只需要调用１次生成器就能完  比,如图３所示,对应图中(c)结构.经典生成网络模型和混
+成分块图像的生成任务,这样做极大地缩短了生成所需要  合量子经典生成网络模型的鉴别器都包括多个经典线性层.
+                            而混合量子压缩经典生成网络模型由多个经典线性层和一个的时间.
+  如文献[１４]所述,强大的非线性处理能力能够提升网络  通过MPO 压缩的线性层组成.结构如图３所示,分别对应
+在训练目标拟合上的表现;此外,更深的网络结构能生成更   图中(d)和(e)结构.
+
+
+
+
+
+                          图３　完整图像生成结构图
+                                       Fig．３　Completeimagegenerationstructurediagram
+　　图像生成的完整结构如图３所示,可分为:生成器模块和  组合形成的.
+鉴别器模块.首先,经典数据或者经过编码线路成为包含经    混合量子GAN 的训练与经典GAN 的训练过程相似.
+典信息的量子态会经过不同的生成器生成对应的图像;然后  在k次迭代过程中,通过损失函数l来迭代优化生成器和鉴
+将生成图像或真实图像输入到鉴别器中,由鉴别器来进行判  别器.损失函数的具体数学表达式如式(７)所示:
+别;最后,再由目标数值进行比较得出对应的损失函数数值,    l(θ,γ)＝log(Dγ(x))＋log(１－Dγ(Gθ(z)))      (７)
+                                     θ和γ 分别为生成器和鉴别器的可训练进行反向传播,交替优化生成器与鉴别器.经过反复的迭代   其中,x∈D,z∈P(z),
+运算,网络可以达到纳什均衡状态.             参数.生成器和鉴别器的目标分别是最小化和最大化损失函
+                                       生成器的参数更新规则如３．３　损失函数                          数,形式化为maxγ　minθ　l(θ,γ).
+  生成对抗网络中的核心损失是生成对抗损失,由两个网                                     式(８)所示:络互相牵制,促使生成器试图生成能够欺骗鉴别器的图像.   θ       θ            (k)这里所讨论的生成器由T                                     (k＋１)＝θ(k)－ηG×∂θl((k),γ(k))/∂θ            (８)             个子生成器{Gt}组成,每个子生成                   在第k 次迭代的     同样,鉴别器的参数更新规则如式(９)所示:器负责生成图像的一部分.以子生成器Gt          γ       θ             (k)                                                          (k＋１)＝γ(k)＋ηD ×∂γl((k),γ(k))/∂γ            (９)实现为例,这一方法同样适用于所有子生成器.假定量子层                                         其中,ηG 和ηD 表示生成器和鉴别器的学习率.包含n个量子位,生成器的输入潜在状态表示为|z(k)›,其数
+             n
+学表示为|z(k)›＝(􀱋i＝１Ry(αz(k)))|０›􀱋n.这里,Ry 代表沿y 轴  ４　实验验证
+                                              数据集进行实的单量子比特旋转门,α               z(k) 则是从(０,π)的均匀分布中采样得    本文采用了公开的MNIST 和FMNIST
+到的.在每次迭代中,所有子生成器接收相同的潜在状态   验.所有模型均使用Python３,PyTorch和PennyLane进行
+|z(k)›作为输入.接下来,将|z(k)›输入到Gt,即通过可训练的   实现,其中PyTorch是一个高性能机器学习库,PennyLane为
+酉矩阵U(θ       t(k))进行处理.图２给出了U(θ                             t(k))的实现过程.  PyTorch提供了量子机器学习的接口.训练过程在国家超级
+Gt 生成的量子态如式(６)所示:              计算郑州中心的平台上模拟完成.通过超参数调整,我们确
+  |Φ     t(k)(z)›＝U(θ             t(k))|z(k)›                  (６)  定生成器的学习率需高于鉴别器,分别设置为０．０００２和
+最后对生成态|Φ           t(k)(z)›进行测量,得到经典生成结果.简而   ０．０００１.采用Adam 优化器进行更新优化,并设置了３０个批
+                  个子生成器的测量言之,第k次迭代生成的图像x∧(k)是由T                            次以确保生成器在训练期间得到充分更新,所有实验共进行
+
+===== PDF PAGE 6 =====
+计算机科学                                                                                  Vol．５２,No．６,June２０２５ ７８                                                  ComputerScience
+了１００００次迭代,并用M２,４,４,４,２２,４,４,２,２(４)和M２,４,４,２,２２,４,４,４,２(４)分别表示混  指标之一.在训练过程中,损失函数曲线可以反映模型参
+合量子压缩经典GAN 网络生成器与鉴别器中经MPO 压缩  数的优化进程和收敛状态. 图４给出了在训练中生成器
+的线性层.对于MNIST 数据集,选取了标签为０(数字０类)  与鉴别器的损失值变化.图４中,虚线表示轮数收敛临界
+                                                 网络在和３(数字３类)的２８∗２８像素数据进行训练;对于FMNIST  值.对于数字０的生成,混合量子压缩经典GAN
+                                                          混数据集,选择了标签为０(T 恤类)和１(裤子类)的２８∗２８像  大约２１００轮时已经收敛,而其他两个网络尚未收敛.
+素数据.                         合量子经典GAN 网络的收敛速度也早于经典GAN 网络.
+４．１　在MNIST数据集上对模型效果进行验证        这证明了参数较少的模型通常需要较少的训练数据来学
+   首先,在MNIST 数据集上利用经典GAN 网络、混合量  习有效特征,并且参数更新更迅速,从而加快了收敛速
+子经典GAN 网络和混合量子压缩经典GAN 网络分别生成  度. 然而,在数字３的生成中,经典GAN 网络和混合量
+数字０和３,并展示了使用这些网络结构的训练和测试效果  子经典GAN 网络分别在２０００轮、２１００轮较早地进入收
+                                                   相比对比.为节约计算和存储资源,每个子生成器配置为１层且  敛状态,但在后续轮次中出现了严重损失值波动.
+含４个数据量子位.                   之下,混合量子压缩经典GAN 网络在４５００轮收敛后保
+  损失函数的收敛情况是评估GAN 生成性能的重要  持稳定.
+
+
+
+
+
+                  网络模型                 网络模型                 网络模型               (a)经典GAN             (b)混合量子经典GAN          (c)混合量子压缩经典GAN
+                          图４　３种模型的训练结果
+                                           Fig．４　Trainingresultsofthreemodels
+　　损失函数的收敛情况只能反映生成器与鉴别器之间的对   其中,pd(x)表示真实数据x 的概率密度,pg(x)表示生成数
+抗结果,但无法直接显示生成概率分布与目标概率分布之间   据G(z)的概率密度.KL散度的值随着pd(x)和pg(x)之间
+的差异.因此,引入KL散度[１９]来衡量这两个概率分布之间   差异的增加而增大;当pd(x)与pg(x)完全相同时,KL 散度
+的差异.KL(KullbackＧLeibler)散度是衡量两个概率分布差  的值为零,这是最优状态.
+异的常用方法,其源于信息论,被广泛应用于机器学习、统计    通过对每４００轮训练数据的KL 散度求平均,得到了２５
+                                            散度在训练过程中的                             组综合KL散度数据.图５给出了KL学和信息论等多个领域,计算式如式(１０)所示:
+                        pd(xi)           变化,其中模型１为经典GAN 网络,模型２为混合量子经典                                        (１０)   KL(pd‖pg)＝∑ipd(xi)log                                        (pg(xi))                                   GAN 网络,模型３为混合量子压缩经典GAN 网络.
+
+
+
+
+
+              　(a)数字０时３种模型的KL散度变化         　(b)数字３时３种模型的KL散度变化
+                        图５　３种模型的KL散度变化情况
+                                       Fig．５　KLdivergencechangesforthreemodels
+
+===== PDF PAGE 7 =====
+张曜麟,等:基于矩阵乘积算符的混合量子压缩经典生成对抗网络                      ７９
+　　图５(a)给出了３种模型对数字０的KL 散度变化情况,  络的参数量高于本文模型,尤其是经矩阵乘积算符压缩的线
+图５(b)则为数字３的情况.在１００００次迭代后,对于数字０  性层,根据式(５)计算可得,单层压缩比约为４０,具体模型参
+的实验,模型２的KL散度为０．１４７,略低于KL散度为０．０６７  数量的对比如表１所列.
+的模型１.引入压缩经典线性层后,模型３的KL散度逐渐接                                         表１　各网络模型的具体参数量
+近模型１,并最终达到０．０６８,与模型１几乎相同,保证了图像                                                                 Table１　Specificparametercountsofeachnetworkmodel
+                                                        混合量子经典  混合量子压缩的生成质量以及提高了模型的拟合效果.对于数字３的实                   网络
+验,模型１－模型３的最终KL 散度分别为０．０８,０．０８３,              经典GAN      GAN 网络   经典GAN 网络
+０．０８１.这表明增加压缩经典线性层可以提升网络的最终生    量子＋经典参数量    ０＋１１５３３４４    ３２＋１１５３０８８   ３２＋１０８８８９６
+成效果.                           同时,实验比较了新旧分块结构生成器的运行时间,均使
+  图６给出了３种模型在不同迭代轮次生成数字０和数字  用标签为０的MNIST 数据集、混合量子压缩经典模型、相同
+３的图像集合,其中左边为经典GAN 网络的生成结果,中间  的参数化量子线路及批次大小.本文详细比较了前５００轮的
+和右边分别为混合量子经典GAN 网络和混合量子压缩经典  总运行时间和平均运行时间,结果如表２所列.数据显示,经
+                            过优化的分块结构生成器的单轮平均运行时间比优化前提高GAN 网络的生成结果.
+                                    了约９３．０２％,总运行时间提高了约９２．８８％.
+                                       表２　新旧分块结构生成器的运行时间
+                                                               Table２　Runtimeofnewandoldblockstructuregenerators
+                                                        ５００轮平均运行时间/s  ５００轮总运行时间/s
+                                       新分块结构生成器         ０．０３              １５．３９
+                                       旧分块结构生成器         ０．４３              ２１６．０８
+                                 ４．２　在FMNIST数据集上对模型效果的验证             (a)数字０的图像生成结果                                                 网络是否                               接下来,本文将探究混合量子压缩经典GAN
+                               能学习并生成更复杂的数据,使用来自FMNIST 数据集的T
+                            恤类和裤子类图像进行验证,并保持子生成器结构为１层４
+                             个数据量子位.
+                              图７给出了训练过程中生成器与鉴别器的损失值情况,
+                            其中虚线表示轮数收敛临界值.经典GAN、混合量子经典
+                                                 恤类的生成                                   GAN 和混合量子压缩经典GAN 网络模型,在T
+             (b)数字３的图像生成结果             实验中分别在７１００轮、６６５０轮、５２００轮达到收敛;在裤子类
+          图６　３种模型的生成结果            的生成实验中分别在７２００轮、４２００轮、３８００轮达到收敛.
+                                          网络的收敛速度快于经           Fig．６　Generationresultsofthreemodels       结果再次证明,混合量子经典GAN
+  从图中可以清楚看出,在经典和量子情况下,生成器均成  典GAN 网络,并且在加入压缩经典线性层后,模型的收敛速
+功学习了生成数字０和数字３的图像,其中混合量子压缩经  度进一步提高.与在MNIST 数据集上的实验相比,本文模
+典GAN 网络生成的图像轮廓更为清晰.然而,经典GAN 网  型在处理更复杂的图像数据时,快速收敛的效果更为显著.
+
+
+
+
+
+                  网络模型                 网络模型                 网络模型               (a)经典GAN             (b)混合量子经典GAN          (c)混合量子压缩经典GAN
+                          图７　３种模型的训练结果
+                                           Fig．７　Trainingresultsofthreemodels
+
+===== PDF PAGE 8 =====
+计算机科学                                                                                 Vol．５２,No．６,June２０２５ ８０                                                  ComputerScience
+　　同样,使用KL 散度来评估两个概率分布之间的差异.    图８给出了训练过程中KL散度的变化.模型１是经典
+我们对每４００轮数据的KL 散度求平均,共得到２５组综合  GAN 网络,模型２是混合量子经典GAN 网络,模型３是混合
+KL散度数据.                       量子压缩经典GAN 网络.
+
+
+
+
+
+                   　(a)T 恤类时３种模型的KL散度变化         　(b)裤子类时３种模型的KL散度变化
+                        图８　３种模型的KL散度变化情况
+                                      Fig．８　KLdivergencechangesofthreemodels
+　　图９给出了３种模型在不同迭代轮次下生成T 恤类和裤  然而,裤子类图像的样本仍然显示出一定的模糊性.尽管如
+                       作为一                   正在尝试捕捉更多子类图像的集合.与MNIST 数据集相比,FMNIST      此,我们注意到混合量子压缩经典GAN
+                      恤类图像个更复杂的数据集,所展示的结果更为明显.从T       细微的特征,如图９(b)中裤子腿的不同色调和厚度.这显示
+                           网来看,混合量子压缩经典GAN 网络比混合量子经典GAN   出量子生成器未来有潜力从更复杂的图像中学习.与本文相
+络和经典GAN 网络能更早生成图像,并且图像轮廓更清晰.  关的一些研究对比如表３所列.
+
+
+
+
+
+              恤类的图像生成结果                    (a)T                　　             (b)裤子类的图像生成结果
+                          图９　３种模型的生成结果
+                                          Fig．９　Generationresultsofthreemodels
+                         表３　本文与其他文献的对比
+                                    Table３　Comparisonofthispaperwithotherliterature
+                     文献[２０]             文献[１３]             文献[１４]           本文
+     生成对象     数据集           MNIST 数据集和FMNIST     数据集           MNIST 数据集和FMNIST                MNIST           数据集                 MNIST           数据集
+
+                                      混合量子经典生成器加经典  混合量子压缩经典生成器加
+     生成网络  纯量子生成对抗网络     量子生成器加经典鉴别器
+                                        鉴别器           压缩经典鉴别器
+
+                                      采用量子与经典相结合的生  采用改进的分块量子结构,结
+                                   的理           利用纯量子结构生成数据,证   利用Wasserstein GAN    成网络结构,利用经典网络的  合经典网络和矩阵乘积算符,
+                          论优势,改进了生成对抗网络
+          明了量子生成对抗网络的可               非线性特性提高模型的拟合  实现了高维图像的生成,同时
+      特点                 结构,以生成高维图像数据.
+           行性.然而,这种结构无法生                效果.然而,实验中使用的是  保证了图像质量.此外,该方
+                        但采用纯量子结构生成器在
+           成高维数据,且拟合效果不足                压缩后的数据,仍无法处理和  法还提高了模型的收敛速度
+                         拟合效果上表现不足
+                                       生成高维数据        并减少了模型参数量
+　　结束语　本文提出了一种结合量子、经典及压缩经典技        参考文献
+术的GAN 网络,用于高维图像生成任务.本文模型采用改
+进的分块量子生成算法,使模型的平均运行时间和总运行时    [１] GOODFELLOWIJ,POUGETＧABADIEJ,MIRZA M B,etal．
+间分别缩短了约９３．０２％和９２．８８％.同时,在模型参数减少          GenerativeAdversarialNets[C]∥Proceedingsofthe２７thInterＧ
+                网络和混合量子经典         nationalConferenceonNeuralInformationProcessingSystemsＧ了约５．５９％的情况下,相比经典GAN
+GAN 网络,本文模型加快了网络的收敛速度并保证了生成图         Volume２．２０１４:２６７２Ｇ２６８０．
+像的质量.但是在迭代生成数据过程中,图像生成质量不佳,   [２] ZHUJY,KRÄHENBÜHLP,SHECHTMANE,etal．GeneraＧ
+这是由数据转换方式或不恰当的损失函数选择引起的.因         tiveVisualManipulationontheNaturalImage Manifold[C]∥
+此,未来研究应考虑合理的数据转换方式和损失函数对网络         EuropeanConferenceonComputerVision．２０１６:５９７Ｇ６１３．
+生成质量的影响.                                    [３] LEDIG C,THEIS L,HUSZAR F,etal．PhotoＧrealisticsingle
+
+===== PDF PAGE 9 =====
+张曜麟,等:基于矩阵乘积算符的混合量子压缩经典生成对抗网络                      ８１
+    imagesuperＧresolutionusingagenerativeadversarialnetwork         tumgenerativeadversarialnetworks[J]．ComputerEngineering
+     [C]∥ProceedingsoftheIEEEConferenceonComputerVision         andApplications,２０２４,６０(５):１５６Ｇ１６４．
+    andPatternRecognition(CVPR)．２０１７:４６８１Ｇ４６９０．          [１５]CHENSY C,YANG C H H,QIJ,etal．Variationalquantum
+[４] ISOLAP,ZHUJY,ZHOU T,etal．ImageＧtoＧimagetranslation         circuitsfordeepreinforcementlearning[J]．IEEE Access,２０２０,
+     withconditionaladversarialnetworks[C]∥Proceedingsofthe        ８(１):１４１００７Ｇ１４１０２４．
+    IEEEConferenceonComputerVisionandPatternRecognition   [１６]PIRVUB,MURG V,CIRACJI,etal．Matrixproductoperator
+     (CVPR)．２０１７:１１２５Ｇ１１３４．                                      representations[J]．New Journalof Physics,２０１０:１２(２):
+[５] GULRAJANII,AHMED F,ARJOVSKY M,et al．Improved       ０２５０１２．
+                                                   [１７]LIU X N,LIAND M,DU SQ,etal．SimulationoflimitedenＧ    trainingofwassersteinGANS[C]∥Proceedingsofthe３１stInＧ
+                                                               tangledquantum fouriertransform based on matrix product     ternationalConferenceon NeuralInformationProcessingSysＧ
+                                                                    state[J]．ComputerScience,２０２４,５１(９):８０Ｇ８６．    tems．２０１７:５７６９Ｇ５７７９．
+                                            [１８]GAOZF,CHENGS,HE R Q,etal．Compressingdeepneural[６] DENG C,YANG E,LIU T,etal．UnsupervisedsemanticＧpreＧ                                                                   networksbymatrixproductoperators[J]．PhysicalReview ReＧ     servingadversarialhashingforimagesearch[J]．IEEETransacＧ                                                                  search,２０２０,２(２):０２３３００．    tionsonImageProcessing２８,２０１９,２８(８):４０３２Ｇ４０４４．                                               [１９]LIJG,ZHAO H T,SUNSY．KLＧdivergenceＧbasedpolicyoptiＧ[７] PRESKILLJ．QuantumcomputingintheNISQeraandbeyond                                                                     mization[J]．ComputerScience,２０１９,４６(６):２１２Ｇ２１７．     [J]．Quantum,２０１８,２(１):７９．                                               [２０]STEINSA,BAHERIB,CHEN D,etal．QuGAN:agenerative[８] BIAMONTEJ,WITTEKP,PANCOTTIN,etal．Quantum maＧ                                                                  adversarialnetworkthroughquantum states[J]．arXiv:２０１０．     chinelearning[J]．Nature,２０１７,５４９(７６７１):１９５Ｇ２０２．                                                             ０９０３６,２０２０．[９] LLOYD S,WEEDBROOK C．Quantum generativeadversarial
+    learning[J]．PhysicalReviewLetters,２０１８,１２１(４):０４０５０２．                ZHANG                                                                               Yaolin,bornin２０００,postgraＧ[１０]ASSOUEL A,JACQUIER A,KONDRATYEV A．A quantum                                                                    duate．His mainresearchinterestsinＧ     generativeadversarialnetworkfordistributions[J]．arXiv:２１１０．                                                                   cludequantum algorithm andquantum    ０２７４２v１,２０２１．                                                                         machinelearning．[１１]HUANG H L,DU Y,GONG M,etal．Experimentalquantum
+     generativeadversarialnetworksforimagegeneration[J]．PhysiＧ
+    calReview Applied,２０２１,１６(２):０２４０５１．                                 LIUXiaonan,bornin１９７７,Ph．D,assoＧ
+[１２]CHU C,SKIPPER G,SWANY M,etal．IQGAN:robustquanＧ                     ciate,professor,master’ssupervisor．
+    tumgenerativeadversarialnetworkforimagesynthesisonNISQ                  His main research interests include
+     Devices[J]．arXiv:２２１０．１６８５７v１,２０２２．                                                                  quantum algorithm and highＧperforＧ[１３]TSANGSL,WEST M T,ERFANISM,etal．HybridquantumＧ                                                                          manceparallelcomputation．     classicalgenerativeadversarialnetworkforhighresolutionimＧ
+     agegeneration[J]．arXiv:２２１２．１１６１４v２,２０２３．
+[１４]JIANG Y D,WANG M M．DatareconstructionbasedonquanＧ                     (责任编辑:李亚辉)

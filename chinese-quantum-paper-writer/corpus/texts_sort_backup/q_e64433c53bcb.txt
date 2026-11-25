@@ -1,0 +1,745 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２０．２０２００４７２
+ JournalofComputerResearchandDevelopment                                   ５７(１０):２１５８２１７６,２０２０
+
+
+后量子前向安全的可组合认证密钥交换方案
+
+陈　明(宜春学院数学与计算机科学学院　江西宜春　３３６０００)
+ (chenming９８２４＠aliyun．com)
+AComposableAuthenticationKeyExchangeSchemewithPostＧQuantumForward
+Secrecy
+
+ChenMing
+ (CollegeofMathematicsandComputerScience,YichunUniversity,Yichun,Jiangxi３３６０００)
+  Abstract　AsthepostＧquantumeraapproaches,anewsecurityrequirementinnetworkcommunicaＧ
+  tionsisforwardsecurityagainstquantumcomputingattacks．However,thepostＧquantumpublickey
+  infrastructurehasnotbeenestablished,anditisimperativetoconstructahybridcryptosystemthat
+  consistsoftraditionalpublickeycryptosystemsandpostＧquantumkeyexchangeprotocols．Aimedat
+  thisneed,a genericand combinableauthentication key exchangescheme,named GCＧAKE,is
+  proposed．TheGCＧAKEprotocolisacombinationoftwociphersuites,whicharesigncryptionscheme
+  and DiffieＧHellman keyexchangeＧlike (DHKEＧlike)protocol,respectively．In GCＧAKE,mutual
+  authenticationcanberealizedbyusingthesigncryptionschemetosigncryptthetemporarypublickey
+  inDHKEＧlike,andsessionkeyestablishmentreliesontheDHKEＧlikeprotocol．Thesigncryptions
+  withstrongunforgeabilityensurethattheGCＧAKEschemeachievesperfectforwardsecurity．An
+  instanceofthe GCＧAKEisproposed．ItcombinesapostＧquantum DHKEＧlikeprotocol with an
+  identityＧbasedsigncryption scheme thatis putforward in this paper based on elliptic curve
+  cryptography．TheidentityＧbasedsigncryptionschemeisprovedtoachieveindistinguishabilityagainst
+  chosenciphertextattacks (INDＧCCA)andstrongexistentiallyunforgeableunderadaptivechosen
+  messagesattacks (SEUFＧCMA)．Furthermore,asecurity model,wAKEＧPFS,whichcansimulate
+  perfectforwardsecurity,isdefined．Underthe wAKEＧPFS model,thesecurityofthe GCＧAKE
+  schemeisreducedtosolvingDDHＧlike(decisionDiffieＧHellmanＧlike)problems,aswellascracking
+  thesecurityofidentityＧbasedsigncryptionscheme．Theanalysisshowsthatthe GCＧAKEscheme
+  instanceachievesperfectforwardsecurity,anditscomputationandcommunicationoverheadsare
+  relativelylow．Meanwhile,theDHKEＧlikeprotocolfromtheringlearningwitherrorsproblem (RingＧ
+  LWE)providesforwardsecrecyagainstfuturequantumattackers．
+  Key words　authentication key exchange;DiffieＧHellman key exchangeＧlike;signcryption;ring
+  learningwitherrorsproblem;perfectforwardsecrecy
+ 摘　要　随着后量子时代的逼近,网络通信安全要求会话密钥具有针对量子计算攻击的前向安全性,而
+ 后量子的公钥基础设施尚未建立,采用现有公钥密钥系统与后量子密钥交换相结合的混合密码系统势在
+
+ 　收稿日期:２０２０－０６－１２;修回日期:２０２０－０７－３０
+ 　基金项目:国家自然科学基金项目(６１６６２０８３)
+           ThisworkwassupportedbytheNationalNaturalScienceFoundationofChina(６１６６２０８３)
+
+===== PDF PAGE 2 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１５９
+  必行．以DHKEＧlike(DiffieＧHellmankeyexchangeＧlike)协议为基础,结合签密方案,提出一种通用可组
+                                     的基本思路是采  合的认证密钥交换(authenticationkeyexchange,AKE)方案———GCＧAKE．GCＧAKE
+ 用签密方案对DHKEＧlike中的临时公钥进行签密,实现实体的相互认证和密钥协商．采用签密机制的
+ 主要目的是为了实现GCＧAKE方案的完美前向安全性,这要求签密机制满足强不可伪造性．提出一种
+ 基于椭圆曲线密码的基于身份签密方案,结合基于环上误差学习问题的DHKEＧlike协议,提出一种
+ GCＧAKE方案实例．定义了能模拟完美前向安全性的wAKEＧPFS 模型．在wAKEＧPFS 模型下,GCＧ
+  AKE方案的安全性被规约为求解DDHＧlike(decisionDiffieＧHellmanＧlike)问题,以及破解基于身份签
+ 密的选择密文安全性(indistinguishabilityagainstchosenciphertextattacks,INDＧCCA)和强不可伪造
+  性(strongexistentiallyunforgeableunderadaptivechosenmessagesattacks,SEUFＧCMA)．分析表明:
+ GCＧAKE方案实例的计算和通信开销都相对较低,同时实现了会话密钥的完美前向安全性及后量子的
+ 前向安全性．
+ 关键词　认证密钥交换;类DH 密钥交换;签密;环上误差学习问题;完美前向安全性
+  中图法分类号　TP３０９
+　　认证密钥交换(authenticatedkeyexchange,  DHKEＧlike[１０,１８,２０])．需要指出的是,由于缺乏后量子
+AKE)协议用于在开放网络环境下,网络通信实体   的公钥基础设施(publickeyinfrastructure,PKI)
+之间确认彼此身份、协商共享会话密钥,为通信提供  支持,基于格的密钥交换协议在当下还不能作为后
+机密性、认证性和完整性保障．自Diffie和Hellman  量子密钥交换的完整解决方案．一种过渡时期的解
+提出密钥交换(简称为DHKE[１])概念以来,AKE  决办法是将后量子的(无认证)密钥交换与现有的公
+协议得到广泛的研究和应用,是保障网络通信安全  钥密码系统整合,利用现有公钥密码技术实现实体
+的基础协议之一．                     的相互认证,典型的方案有Bos等人[１８]将基于RingＧ
+  AKE协议的一个重要安全属性是会话密钥的  LWE问题的DHKEＧlike机制与TLS[２５]握手协议
+前向安全性(forwardsecrecy,FS),是指参与会话  进行整合,实现会话密钥的后量子前向安全性．但
+的用户长期私钥泄露不影响之前已经建立的会话密                         是,TLS协议需要多轮信息交换,不适合某些特殊
+钥的安全性．随着量子计算技术的发展,FS被赋予  的应用场景,如多方认证、传感器网络、自组织网络
+                       协了新的含义,即向后量子时代过渡的时期,AKE   和专用网络等．
+议被要求能抵抗未来量子计算机的攻击．后量子的    为了适应更加广泛的网络应用环境,考虑过渡
+网络通信安全受到越来越多政府、研究机构和学者  时期对AKE 方案的可扩展性需求,本文提出“签
+的关注．２０１６年美国国家标准与技术研究所   密[２６](signcryption,SC)＋DHKEＧlike”的可组合
+(NationalInstituteofStandardsandTechnology,  AKE架构．
+NIST)开启了下一代密钥交换和数字签名的后量子     签密的概念由Zheng[２６]在１９９７年的美密会议
+标准征集工作[２]．我国、日本及欧洲也相继开展相关  上提出,能在一个密码学的逻辑步骤中同时实现消
+研究项目．                   息的机密性和认证性,在网络通信领域有着广阔的
+   近２０年来,基于格(lattice)上困难问题构建密  应用前景,得到了广泛研究．
+码系统的研究[３Ｇ８]取得进展,为后量子密码研究和应     本文的主要工作是:本文提出以DHKEＧlike为
+用奠定了基础．在Asiacrypt２００９会议上,Katz等人[９]   基础的一轮(２Ｇpass)AKE 方案,主要工作包括３个
+提出了首个基于格问题的口令认证密钥交换协议． 方面:
+随后,文献[１０Ｇ２４]分别提出多种基于格上困难问题     １)提出“SC＋DHKEＧlike”架构的通用可组合
+的密钥交换方案．总体来看,提出的方案分为２种类  AKE方案(记为GCＧAKE)．具体来说,采用具有
+型:一类采用密钥封装机制(keyencapsulationmechＧ  INDＧCCA 安全(indistinguishabilityagainstchosen
+anism,KEM)传输会话密钥材料;另一类则基于格   ciphertextattacks)和SEUFＧCMA[２７]安全(strong
+上LWE(ringＧlearningwitherrors,RingＧLWE)问    existentiallyunforgeableunderadaptivechosenmessＧ
+题[４,７Ｇ８]构造了类似DHKE 的密钥交换机制(记为   agesattacks)的SC 机制对DHKEＧlike中的临时
+
+===== PDF PAGE 3 =====
+２１６０                                               计算机研究与发展　２０２０,５７(１０)
+公钥参数进行加密和签名,实现实体认证和会话密   计算一致的会话密钥．具体来说,Fujioka等人[１３]提
+钥协商．但是,一个关键问题是,理想格上DHKEＧ  出一种通用的AKE 构造方法,采用一种称之为
+like机制的临时公钥大小为几十Kb,其签密的计算   “twistedPRF”的技术(类似于NAXOStrick[３０]),
+以及通信开销较大．为了降低开销,本文设计了临时   ２个伪随机函数(pseudoＧrandomfunction,PRF)分
+公钥特征提取和恢复函数进行特征提取、公钥隐藏  别输入实体的长期私钥和临时私钥,相互交织,输出
+和恢复,将认证过程中签密消息的长度从几十Kb  高安全性的密钥材料,实现抵抗长期私钥泄露的伪
+降低为nb(本文取n＝１０２４)．            装攻击和临时私钥泄露攻击．然而,Fujioka方案实
+  ２)基于现有AKE的安全模型,定义了wAKEＧ  例[１４]计算过程复杂,通信开销较大,总体的性能较
+             协议的完美前向安                问题构造了类似PFS安全模型,重点模拟AKE           差．Zhang等人[１７]基于RingＧLWE
+全性(perfectFS,PFS)．在wAKEＧPFS模型下,本  HMQV[３１]协议的隐式认证与密钥交换方案．Zhang
+     协议的安全性被规约到敌手求解文GCＧAKE                         等人[１７]的方案采用了Ding等人[１０]提出的DHKEＧ
+DDHＧlike问题(见本文３．１节定义８),以及攻破SC  like密钥交换机制,在会话双方之间协商得到２个
+机制的INDＧCCA 和SEUFＧCMA 安全性．      近似相等的多项式,通过密钥调节机制,从２个多项
+  ３)考虑到(后量子)过渡时期的实际应用需求,  式中提取一致的会话密钥材料．但是,在基于RingＧ
+ 提出一种基于身份的签密(identityＧbasedsigncrypＧ  LWE问题的DHKEＧlike密钥交换中重用公钥被认
+tion,IBSC)机制,以Boneh等人[２８]提出的短签名方   为存在私钥泄露风险[３２Ｇ３３]．为了弥补这一缺陷,Ding
+案BBS为基础扩展而来,在选择身份安全模型下实   等人[１２]提出公钥可重用AKE 方案,利用一个随机
+                       机现了INDＧCCA 和SEUFＧCMA 安全性．将IBSC   谕言机(一个密码Hash函数)对临时公钥进行结构
+制与理想格上的DHKEＧlike组合,可实现用户的相   调整．Yang等人[２３]提出一种强安全性的通用AKE
+互认证,以及抵抗量子计算机的完美前向安全性．   方案,采用OTＧINDＧCCA[２３]安全(oneＧtimeINDＧ
+                                        机制传递密钥                               CCA)的KEM 设计了一种OTKEM
+１　相关工作                   材料,使用强不可伪造签名算法实现实体认证,并提
+                              出一种基于RingＧLWE 问题的OTKEM 实例．然
+  后量子密钥交换的前期研究工作主要集中于构                实例计算和通信代                                   而,Yang等人[２３]提出的OTKEM
+造无认证的密钥交换方案,或者KEM 机制,作为一   价太高,难以实际应用．李子臣等人[２４]将NewHopeＧ
+个独立的密码套件与其他加密原语(如数字签名)进   SimpleKEM[２１]方案变形为公钥加密机制,以此为
+行组合(类似TLS[２５]和SIGMA 方案[２９]),实现实体   基础构造了基于RingＧLWE 问题的AKE 方案．但
+                                   方案不能抵抗密钥重的认证和密钥交换．比较典型的方案包括:Ding等  是,李子臣等人提出的AKE
+人[１０]提出了格上DHKEＧlike 密钥交换方案;  用攻击,具体分析见本文５．２．１节．
+           问题提出了带密钥调节Peikert[１６]基于RingＧLWE                  此外,Wang等人[１５]提出格上的基于身份AKE
+机制的KEM 方案;Bos等人[１８]采用Peikert的密钥   协议(IDＧAKE),采用ABBＧIBE[３４]加密传输会话密
+调节机制构造了BCNSＧDHKEＧlike协议及其在一  钥材料．该方案构造简单,安全性低,不具有前向安
+般格上的变形(Frodo[１９]);Alkim 等人[２０]将BCNSＧ  全性．赵秀凤等人[２２]提出一种基于BCNSＧDHKEＧ
+DHKEＧlike协议进行简化,提出了NewHope方案,  like机制的IDＧAKE 方案(记为ZhaoＧAKE)．但是,
+将RingＧLWE实例中误差采样的离散高斯分布替  ZhaoＧAKE方案存在较为严重的安全缺陷,具体在
+换为中心二项分布,以提高采样效率;随后,Alkim  本文５．２．２节分析．由于基于格的IBC系统普遍存在
+等人将NewHope 方案变形,提出更加简化的  密钥尺寸较大的问题,使得格上基于身份的KEM
+NewHopeＧSimpleKEM[２１]方案,并且采用了密文压  密文尺寸大,限制了其在AKE 领域的应用．就目前
+缩技术以降低通信开销．               的文献来看,尚没有高效、安全的基于格的IDＧAKE
+  在基于格的AKE 方面,Fujioka 等人[１３Ｇ１４]、  协议发表．
+Zhang等人[１７]、Ding等人[１１Ｇ１２]分别提出一轮隐式认    本文提出一种可组合的AKE方案,重点关注在
+证和密钥交换方案,融合对方实体的长期和临时公  过渡时期的后量子前向安全性．本文方案采用“SC＋
+钥与自身的长期和临时私钥,以某种方式融入到会  DHKEＧlike”组合,可实现跨密码体制的AKE协议,
+话密钥的计算中,实体的相互认证有赖于会话双方  适应多种应用需求．例如针对过渡时期的网络通信
+
+===== PDF PAGE 4 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１６１
+
+                 实例采用基                   为整数安全需求,本文４．２节提出的GCＧAKE       的向量表示,每个系数是Zq中的成员,q
+ 于椭圆曲线密码(ellipticcurvecryptography,ECC)  模量．
+ 的IBSC 与基于RingＧLWE 问题的DHKEＧlike机      令‖􀅰‖和‖􀅰‖¥ 分别表示向量(或多项式)的欧                                          中抽取均匀制组合,实现了跨密码体制的IDＧAKE 协议．尽管本  拉范数和无穷范数,令a←UR 表示从R                                                 表 文方案以BCNSＧDHKEＧlike协议为基础,但是可采  随机的元素a,令χ 表示R 上的概率分布,e←χ
+ 用具有DDHＧlike性质的其他DHKEＧlike协议(如  示从χ 中随机抽取元素e．
+DHKE[１]和NewHope[２０]协议)直接替换．此外,通      BCNSＧDHKEＧlike方案以Rq 上RingＧLWE 问
+过将SC机制扩展为多接收者的签密方案,还可以  题为基础,下面描述其判定性问题和假设,详细内容
+         方案扩展到多方认证的应用环                                 请查阅文献[８,１８]． 将本文的GCＧAKE
+                                   定义１．判定RingＧLWE 问题．给定参数(n,q,境．对比相关的通用AKE 方案,例如文献[１４,２３],
+本文方案在实现较强安全性的同时,具有结构简单、  R,Rq,χ),对随机选择的s←χ,定义谕言机OD,s按
+可组合的优势,同时在计算、存储和通信开销方面具  ２个步骤执行:１)随机选取a←URq 和e←χ;２)返回
+                                    (a,as＋e)∈Rq×Rq．有一定优势．                                    判定RingＧLWE 问题是区分OD,s 的输出与
+                                 Rq×Rq 上的随机均匀样本．特定地,定义区分算法２　背景知识                      的优势为                          A,则A
+                                 Advdrlwe                 OD,２．                                               n,q,χ(A)＝|Pr(s←χ;A s(􀅰)＝１)－ １　数学概念与定义                                         Pr(AU(Rq×Rq)(􀅰)＝１)|．  本节简要描述本文所使用的数学概念和符号,                           定义１中,s从错误分布χ 中选取,而不是Rq以及困难数学问题．                                  的选取                                   的均匀分布,Lyubashevsky等人[８]证明了s２．１．１　双线性映射理论
+  本节简要阐述与本文相关的双线性对理论及假                               不影响判定RingＧLWE 问题的困难性(文献[８]的
+                           引理２．２４)． 设,详细内容请参考文献[２８,３５]．           ２．                            ２　AKE协议安全模型  双线性映射:给定素数阶为p 的循环群G１,G２ 和GT                                 本文安全模型以Cremers等人[３６]的eCKＧPFS   ,g１和g２分别是G１和G２的生成元,且存在                         模                              模型为基础,融合了王霏和陈明[３７]对eCKＧPFS 同构函数ψ:G２→G１,使得ψ(g２)＝g１成立,定义双                          型的扩展．下面对相关概念进行简要阐述,详细内容 线性映射e:G１×G２→GT 满足３个性质．                                 见文献[３６Ｇ３７]和本文３．３．２节．  １)双线性．给定u∈G１,v∈G２和任意的a∈ p∗    p∗                  ab．           会话(session)是协议实例的一次运行,由一个Z ,b∈Z ,满足e(ua,vb)＝e(u,v)                           七元组Ts＝(sactor,speer,srole,ssent,srecv,sstat,scomp)  ２)非退化性．e(g１,g２)≠１．          唯一标识．Ts 记录会话s                                   的运行参数,sactor和speer记   ３)可计算性．给定任意的u∈G１,v∈G２,能有                         录实体身份;srole是会话拥有者的角色;ssent和srecv记 效计算e(u,v)．                                录发送和接收的消息;sstat记录临时参数;scomp记录
+    CDH(computationalDiffieＧHellman)假设．给a b                         会话状态,scomp＝T 表示会话已完成,scomp＝^表示                  i                          ab      i 定gi,gi,gi∈Gi,求解g 是困难的．其中, Î{１,  会话未完成．
+２},(a,b)未知．                                 敌手(adversary)被模拟为一个概率多项式时
+   lＧSDH (lＧstrong DiffieＧHellman)假设．给定x   (x２)       (xl)    间图灵机,允许执行如下询问．                                                 到                            ２ ,􀆺,g                                    ２ ),且l＋２个元素的元组(g１,g２,g２,g                                       １)Send(s,M)询问．模拟敌手发送消息M                                                １/(x＋c)                                    １   )是  会话s． 存在同构函数ψ(g２)＝g１,计算输出(c,g
+困难的．其中,c∈Z             p∗ ．                            ２)Corrupt(ID)询问．询问用户ID 的长期私钥．
+                                           的临时   为了叙述简洁,本文省略了“modp”运算．          ３)EphemeralＧkey(s)询问．询问会话s
+                         秘密．２．１．２　环的定义及困难问题n
+   R＝Z[X]∕(X ＋１)是一个分圆多项式环,其        ４)SessionＧkey(s)询问．询问会话s的会话密钥．
+                         s 中,n 为２的整数幂,环的元素是系数为整数的多      ５)Test( ∗)询问．模拟器随机选择ζ∈{０,１},
+项式．                       如果ζ＝０,输出s∗的会话密钥,否则输出随机的
+          的成员用它的所有系数组成    令Rq＝R∕qR,Rq                                  SK←{０,１}λ．其中,λ为安全参数．
+
+===== PDF PAGE 5 =====
+２１６２                                               计算机研究与发展　２０２０,５７(１０)
+  下面定义原始会话、匹配会话和会话新鲜性．     ４)如果不存在s∗↔s,但是存在s′→s,则在s
+    定义２．原始会话[３６Ｇ３７](originＧsession,OS)．如   完成之前,不允许执行Corrupt(speer)询问．
+果会话s′(可能尚未完成)与已完成的会话s满足:    ５)如果不存在s′满足s′→s,则不允许执行
+s′sent＝srecv,那么s′是s的原始会话,用s′→s表示．   Corrupt(speer)询问．
+                                     赢得游戏的优势    定义３．匹配会话[３６Ｇ３７](matchingＧsession,MS)．    定义wAKEＧPFS 模型中,A
+                                           AwAKEＧPFS(λ)＝|２Pr[ζ′＝ζ]－１|．如果两个已完成的会话s 与s′满足:sactor＝s′peer∧   为:Adv
+speer＝s′actor∧ssent＝s′recv∧srecv＝s′sent∧srole≠s′role,那么     定义７．wAKEＧPFS．如果AKE 协议满足２个
+s与s′互为匹配会话,用s′↔s表示．         条件:１)如果２个诚实的参与者完成了一次匹配的
+                       满     定义４．eCKＧPFSfresh[３６]．如果已完成的会话s   会话,那么他们能输出相同的会话密钥;２)对多项式
+                                                 AwAKEＧPFS (λ)是可忽略的．则被认为足６个条件,那么s满足eCKＧPFSfresh．        时间敌手A,Adv
+     １)sactor,speer是诚实的参与者;           实现了wAKEＧPFS安全．
+                                      模型能模拟   ２)未执行过SessionＧkey(s)询问;          除了MEX 安全性,wAKEＧPFS
+  ３)如果存在s∗↔s,则未执行SessionＧkey(s∗)  AKE协议的其它安全属性,包括KCI和PFS．
+询问;                         ２．３　签密及其安全模型
+   ４)不允许同时执行EphemeralＧkey(s)询问和    签密由系统建立、密钥生成、签密和解签密４个
+Corrupt(sactor)询问;                 算法组成．本文以IBSC为例,定义为:
+  ５)对于所有满足s′→s的s′,不允许同时执行      系统建立．输入安全参数λ,PKG(privateＧkey
+Corrupt(speer)询问和EphemeralＧkey(s′)询问;    generator)产生系统的公开参数和主密钥．
+                   完成之   ６)如果不存在s′满足s′→s,那么在s       密钥生成．输入用户身份ID,密钥生成中心产
+ 前,不允许执行Corrupt(speer)询问．        生用户密钥SK 并通过安全信道返回给用户．IBC
+   安全游戏(securitygame)被模拟为挑战者C  系统中,用户私钥实质是PKG 对用户ID 的签名．
+与敌手A 之间的一系列测试游戏．游戏分为初始化、    签密．输入发送者私钥SKs、接收者身份IDr 和
+                创建模拟环询问和挑战３个阶段．初始化阶段,C          待签密消息m,输出密文c←SCIBSC(m,SKs,IDr)．
+       自适应地执行多项式时间有界境．询问阶段,A                      解签密．输入发送者公钥IDs、接收者私钥SKr
+(次)的询问,但仅能提交１次Test(s∗)询问,C 模  和密文c,输出明文m←UnSCIBSC(c,SKr,IDs)或
+                   输出对拟协议的相应算法做出应答．挑战阶段,A      者“⊥”(表示密文无效)．
+                                              安全                       赢                                签密应同时满足INDＧCCA 和EUFＧCMATest(s∗)询问的猜测ζ′∈{０,１}．如果ζ′＝ζ,A
+                           A得游戏．A 赢得游戏的优势定义为:AdveCKＧPFS                               (λ)＝   性,分别归纳为INDＧCCA 和EUFＧCMA 的２类安
+                                       具有强的不可伪|２Pr[ζ′＝ζ]－１|．                  全游戏．本文AKE 方案要求IBSC
+    定义５．eCKＧPFS[３６]．如果AKE 协议满足２个  造性,以选择身份安全模型为例,定义为:
+                                   GameINDＧCCA ．模拟为挑战者C 与敌手A 之间的                                                                                  IBSC条件:１)如果２个诚实的参与者完成了一次匹配会
+话,那么他们能输出相同的会话密钥;２)对多项式时  挑战游戏,分为初始化、２个阶段的询问和挑战４个
+           A 间敌手A,AdveCKＧPFS          (λ)是可忽略的．则被认为实现  阶段．
+ 了eCKＧPFS安全．                  初始化．C 创建系统公开参数和N 个用户身份
+  此外,本文定义一类较弱的安全模型,命名为   {ID１,ID２,􀆺,IDN },随机选择l∈{１,２,􀆺,N}．
+                                自适应地提交多项式时间有界wAKEＧPFS,不模拟协议的抗临时秘密泄露攻击     询问１．敌手A
+                                             的询 (maximalexposureattacks,MEX[１３]),即不允许敌  的询问,挑战者C 模拟IBSC 的相应算法对A
+ 手询问会话的临时秘密(EphemeralＧkey(s)询问)．  问进行应答．
+                       满                            １)密钥询问．A 提交用户身份IDi,如果IDi＝   定义６．wAKEＧPFSfresh．如果已完成的会话s
+足５个条件,那么s满足wAKEＧPFSfresh．       IDl,则终止模拟,否则C 输出IDi 的长期私钥．
+                                           输出签     １)sactor,speer是诚实的参与者;           ２)签密询问．A 输入(m,IDs,IDr),C
+   ２)未执行过SessionＧkey(s)询问;        密密文c．
+  ３)如果存在s∗↔s,则未执行SessionＧkey(s∗)    ３)解签密询问．A 输入(c,IDs,IDr),如果验证
+询问;                      签密密文有效,则输出明文m,否则返回⊥．
+
+===== PDF PAGE 6 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１６３
+
+               提交挑战身份和    当q            函数输出偏   挑战．第１阶段询问结束后,A               为奇数时,为了避免MR∕CR
+                                           ¹２个等长的消息(IDs,IDr,m０,m∗  １)．如果IDr∗                            倚,需要将模数扩大为２q,定义dbl函数为
+IDl,则终止模拟,否则C 随机选择ζ∈(０,１),返回         dbl:Zq→Z２q,x adbl(x)＝２x－􀭰e,
+密文cζ∗ ←SCIBSC(m                         e 从{－１,０,１}中选取,选取的概率分             ζ∗ ,SKs,IDr)给A．         其中,x∈Rq,􀭰
+                                                                                                                     q,２   询问２．敌手A 可以继续执行与询问１相同的   别为p－１＝p１＝１∕４,p０＝１∕２．采用与⌊􀅰⌉q,２和‹􀅰›
+询问,但是不允许其询问c                  ζ∗ 的解签密询问．     运算相同的方法,dbl函数也可扩展到多项式．
+                           定义集合．   最后,A 输出其猜测ζ′∈(０,１)．如果ζ′＝ζ,则
+A 猜测成功,定义GameINDＧCCAIBSC 中A 成功的优势为          I０＝{０,１,􀆺, q∕２＋１－１},
+    AdvINDＧCCAA   (λ)＝|Pr(ζ′＝ζ)－１∕２|．                                     I１＝{－q∕２,􀆺,－２,－１}．   GameSEUFＧCMA ．模拟为挑战者C 与敌手A 之间             IBSC                                   令E＝[－q∕４,q∕４),对与v∈Zq逼近的w∈Zq,的游戏,分为初始化、询问和伪造３个阶段．   初始化和询问阶段与GameINDＧCCA 基本相同．     令v′＝dbl(v)∈Z２q,b＝‹v′›２q,２∈{０,１},调节函数                                        IBSC         定义为
+   伪造．询问结束后,A 提交其伪造密文c∗．如果c                                       ０,w∈Ib＋E mod２q,                                                                          {   ∗是(IDs,IDr,m∗)的有效密文,且IDs＝IDl,      rec(２w,b)＝并且c              成功赢得                    １,otherwise．   ∗从未在询问阶段出现过,则AGameSEUFＧCMA          ASEUFＧCMA              文献[１６]的断言３．１~３．３表明:如果q 为奇数,        IBSC  的优势为:Adv    (λ)．                安全的主要  v＝w＋e∈Zq,w,e∈Zq,且２e±１∈E(modq),令   注意,SEUFＧCMA 与EUFＧCMA差别在于密文c∗中包含的m∗是否在询问中出现   v′＝dbl(v)∈Z２q,b＝‹v′›２q,２,那么rec(２w,b)＝
+                                                     ⌊v′⌉２q,２． 过．在EUFＧCMA 模型中,不允许m∗在询问中出现,     rec       模型则允许m∗出现在询问过程中．     函数同样可扩展到多项式．令v＝w＋e∈ 而SEUFＧCMA                                 Rq,w∈Rq,e←χ,v′＝dbl(v)∈R２q,则rec(２w,具体来说,在SEUFＧCMA 模型中,敌手可以通过签                 n．           个c′i                       ‹v′›２q,２)＝⌊v′⌉２q,２∈{０,１}密询问取得t≤qs    ←SCIBSC(m∗,SKl,IDr),但是要求c  c′c′  c′    表示签密询      基于Peikert[１６]定义的密钥调节机制,Bos等      ∗∉{１,２,􀆺,t}．其中,qs问次数的上界．                        人[１８]实现的BCNSＧDHKEＧlike方案如图１所示:
+
+３　基于DHKEＧlike的AKE方案
+   本节提出一种以DHKEＧlike为基础的GCＧAKE
+ 方案,下面首先简要阐述Bos等人[１８]的DHKEＧlike
+方案,然后提出本文GCＧAKE方案模型．
+３．１　DHKEＧlike密钥交换方案
+    BCNSＧDHKEＧlike[１８]方案在密钥交换双方交
+换２个近似相等的多项式环成员,采用Peikert[１６]定      Fig．１　UnauthenticatedDiffieＧHellmanＧlikekeyexchange
+义的密钥调节机制从２个多项式中提取相同的密钥       图１　无认证的DiffieＧHellmanＧlike密钥交换方案
+材料．                                    取n＝１０２４,q＝２３２－１,σ＝８∕２π≈３．１９２,根   首先简要介绍Peikert[１６]定义的密钥调节机制．                                  据文献[１８](命题２)的分析,BCNSＧDHKEＧlike密    定义MR(modularrounding)函数⌊􀅰⌉q,２和CR  钥交换的会话双方输出会话密钥不相等的概率为
+
+                                                                                                      ¥ (crossＧrounding)函数‹􀅰›q,２为:
+  ⌊􀅰⌉q,２:Zq→Z２,x a⌊x⌉q,２＝２x∕q＋１mod２,                        DZ,σ(x)＜２－２１７．                                                                                       x＝５１２                                    Pr(κA≠κB)≤２n(２n＋１)∑   ‹􀅰›q,２:Zq→Z２,x a‹x›q,２＝４x∕q mod２．                                            定义８．DDHＧlikeproblem[１８]．给定参数(n,q,
+   MR 函数和CR 函数的输入可扩展为多项式,  R,Rq,χ)和１个DHKEＧlike实例(a,b,b′,c,κ),区
+                                                                n 上的随机对多项式的每一个系数分别执行⌊􀅰⌉q,２和‹􀅰›q,２运                        分κ是DHKEＧlike的有效解还是{０,１}
+                                             赢得算．例如令f＝fn－１Xn－１＋􀆺＋f１X＋f０∈Rq,则  样本．特定地,对于多项式时间敌手A,定义A
+ ‹f›q,２＝(‹fn－１›q,２,􀆺,‹f１›q,２,‹f０›q,２)∈R２．     DDHＧlike挑战的优势为
+
+===== PDF PAGE 7 =====
+２１６４                                               计算机研究与发展　２０２０,５７(１０)
+  Advq,n,χ(A)＝|Pr(A(a,ddhl        b,b′,c,κ)＝１)－    无需完整加密bA．本文设计算法(b′A,μA)←F(bA)
+        Pr(A(a,b,b′,c,κ′)＝１)|,        和bA←F－１(b′A,μA)对临时公钥进行特征提取、信
+                                          的每个系 其中,a←URq,s,s′,e,e′,e″←χ,b＝as＋e,b′＝  息隐藏、以及公钥恢复．函数F(bA)将bA
+as′＋e′,v＝bs′＋e″,v′＝dbl(v),c＝‹v′›２q,２,κ＝  数的符号位(多项式的系数表示为区间[－q∕２,
+                                                                       n ⌊v′⌉２q,２,κ′←U{０,１}n．                 q∕２]上的整数)取出,按顺序填充为μA∈{０,１}
+   定理１．给定参数(n,q,R,Rq,χ),如果判定                                    (n＝１０２４);然后将bA 所有系数的符号位用“０”填
+RingＧLWE问题是难解的,那么DDHＧlike问题也是   充,得到b′A∈Rq．函数bA←F－１(b′A,μA)则为F(bA)困难的．特定地,对于多项式时间敌手A,赢得                              的逆变换,利用b′A 和μA 恢复出bA．本文方案中仅
+DDHＧlike挑战的优势为                  对μA 实施签密,大大降低了计算、通信和存储开销．
+     Advq,n,χ(A)≤Advddhl          q,n,χ(A􀳱B１)＋drlwe           F(bA)函数的安全性将在本文３．３节讨论．
+         Advq,n,χ(A􀳱B２),drlwe                 本文提出的GCＧAKE方案包含系统建立、用户
+其中,B１和B２为判定RingＧLWE问题的敌手．   密钥生成和密钥交换３个阶段．
+   定义８和定理１来源于文献[１８]的定义３和定    １)系统建立．输入安全参数λ,认证权威运行
+                                       Setup理１,文献[１８]对定理１进行了安全性规约,本文不       算法,产生系统参数para＝{n,q,Rq,χ,a,λ                                         为密钥导出再赘述．                 H}．其中,a←URq,H:{０,１}∗→{０,１}
+                         函数．３．２　基于DHKEＧlike的认证密钥交换方案
+   结合SC机制,本节提出基于DHKEＧlike的认    ２)用户密钥生成．给定用户的标识为ID,令用
+                  方案对                    skID证密钥交换方案,基本思路是采用SC       户的公私钥为(pkID ,  )．这里不具体指定用户密
+DHKEＧlike方案中的临时公钥进行签密．该临时公  钥生成的方式,可基于PKI系统或者IBC系统等．
+钥为Rq 上的成员,在具体实现中,采用所有系数组     ３)密钥交换．如果Alice与Bob期望建立安全
+成的向量表示,每个系数是Zq中的成员．根据文献  会话,按如下步骤进行认证与密钥交换,如图２所
+[１８]的参数取值,一个临时公钥大小为３２Kb．考虑   示．令Alice,Bob的身份和密钥分别为(IDA,pkA,
+到本文方案的目标是将临时公钥对敌手隐藏,因此,  skA),(IDB,pkB,skB)．
+
+
+
+
+
+                                Fig．２　Genericauthenticatedkeyexchangeprotocol
+                       图２　通用的AKE协议
+ 　　①Alice随机选择tA,eA←χ,计算bA＝atA＋   rec(２bBtA,θB),SKAB＝H(IDA,IDB,μA,θB,κA)．
+eA,(b′A,μA)←F(bA),cA←SC(μA,skA,pkB),发送    在理想信道下,如果签密方案满足正确性,且
+ (b′A,cA)给Bob．                       BCNSＧDHKEＧlike密钥交换有效,那么诚实的Alice
+                           和Bob能以极大的概率(不小于１－２－２１７)输出一致   ②Bob随机选择tB,eB,e′B←χ,计算bB＝atB＋                       (                 )             的会话密钥,SKAB ＝SKBA．也就是说,如果密文ceB,μA ←UnSC cA,skB,pkA ,bA ←F－１(b′A,μA),      x                  是签密算法的有效输出c←SC(μ,ski,pkj),则接收x＝bAtB ＋e′B,􀭺 ←dbl(x),θB ←‹􀭺x›２q,２,cB ←                                者必然输出有效的μ←UnSC(c,skj,pki),进而认SC(θB,skB,pkA),κB ←⌊􀭺x⌉２q,２,SKBA ＝H (IDA,                                证双方能建立有效的DHKEＧlike实例(a,bA,bB,
+IDB,μA,θB,κB),发送(bB,cB)给Alice．        μA,θB,κA,κB),使得κA ＝κB．可见,本文GCＧAKE
+    ③Alice计算θB←UnSC(cB,skA,pkB),κA ←  方案满足正确性．
+
+===== PDF PAGE 8 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１６５
+   本文GCＧAKE方案以无认证DHKEＧlike方案   行安全性规约．与eCKＧPFS 模型不同,wAKEＧPFS
+为基础,组合签密方案,实现实体的认证和密钥协  模型不允许敌手询问会话的内部状态(临时秘密
+商．DHKEＧlike方案每次选择新鲜的临时公(私)钥,  参数)．
+与用户长期私钥无关,实现了会话密钥的新鲜性和      根据wAKEＧPFSfresh定义,本文主要考虑６种攻
+前向安全性;签密方案对发送者和接收者的身份进  击场景S１~S６,如表１所示．令s 表示Test会话,
+行了绑定,只有拥有相应私钥的用户才能完成密钥 s分为发起者会话(I)和响应者会话(R)这２类,每
+交换,协商一致的会话密钥,融合了显式认证(签名)  一类会话分别存在３种情形:１)存在s∗↔s(则至少
+和隐式认证(加密)．本文方案具有可组合的特点,根  存在一个原始会话s∗→s);２)不存在s∗↔s,但存
+据不同安全需求,可采用任何满足安全性要求的签   在s′→s;３)s∗↔s和s′→s都不存在．表１中,MS表
+密方案和DHKEＧlike方案进行组合,实现认证密钥  示匹配会话,OS表示原始会话;Yes表示存在s∗↔
+                 实例采用基 s或s′→s,No则表示不存在;allowed表示允许敌交换．例如本文４．２节提出的GCＧAKE
+                                          完成之前 于ECC的IBSC与基于RingＧLWE 问题的DHKEＧ  手执行Corrupt询问,allowed∗表示在s
+                                          表示不like机制组合,既能满足现实的应用需求,还能实现   不允许敌手执行Corrupt 询问,disallowed
+抵抗量子计算攻击的前向安全性．           允许敌手执行Corrupt询问．
+３．３　GCＧAKE方案的安全性分析                         Table１　SimulationScenariosofwAKEＧPFSModel
+   本节首先分析F(∗)函数的安全性,然后采用            表１　wAKEＧPFS模拟场景
+wAKEＧPFS模型对GCＧAKE方案进行安全性规约．      Scenarios Corrupt(sactor)Corrupt(speer)srole MS  OS
+３．３．１　F(∗)函数的安全性分析                       S１        allowed       allowed   I  Yes  Yes
+   从３方面分析F(bA)函数的安全性．              S２        allowed      allowed∗   I  No  Yes
+  １)分析不同的会话中,μA 发生碰撞的概率．令       S３        allowed      disallowed  I  No  No
+bA＝atA＋eA,其中,a 为Rq 上均匀随机的成员,根       S４        allowed       allowed   R  Yes  Yes
+ 据判定RingＧLWE假设,bA 也(近似)均匀随机,同       S５        allowed      allowed∗   R  No  Yes
+                                                 S６        allowed      disallowed  R  No  No时根据文献[１８]的算法实现,多项式环的每个系数n独立抽样,则a       的系数在Zq上随机均匀分布,进而     　Note:∗TheadversarycanmaketheCorrupt(speer)queryafter         n
+bA 的系数在Zq上也近似均匀分布．多项式的系数表            thechallengesessionhasbeencompleted．
+示为区间[－q∕２,q∕２]上的整数,系数的符号位
+                         　　表１中,所有场景均允许敌手询问会话拥有者将系数的值划分为相等的２个值空间[－q∕２,０)          的每个系数的符号位等于   的私钥(Corrupt(sactor)询问),表明所有场景均可模 和[０, q∕２],因此bA              发生碰撞的概率近  拟密钥泄露伪装攻击(KCI);S１和S４场景允许敌                                                 存 “０”的概率近似为１∕２,那么μA           手在任意时刻询问挑战会话双方的私钥,由于s                 发生碰撞的似于２－１０２４．可得,在不同的会话中,μA        在匹配会话,限制了敌手在挑战会话中主动注入临
+                                             完成概率可忽略．                   时秘密的能力,而场景S２和S５允许敌手在s
+  ２)分析敌手完整恢复bA 的概率．同上,由于bA   之后询问对端实体的私钥(Corrupt(speer)),能模拟
+的每个系数的符号位等于“０”的概率近似为１∕２,则                            协议的完美前向安全性(PFS)．敌手完整恢复bA 的概率为max(２－１０２４,εSC)．其中,                             “BR＋wPFS”模型不区分匹配会话与原始会
+εSC为敌手攻破SC方案INDＧCCA 安全的概率．    话,不能模拟S２,S５;S２,S５分别包含在S３,S６中;       的系数中至少存在一个系数没有正   ３)假定bA                           这是wPFS与PFS安全性的主要区别．
+确恢复,这一错误使得该系数出现在２个独立的值                                   定理２．给定参数(n,q,R,Rq,χ),如果DDHＧ
+                                                 和 空间[－q∕２,０)和[０,q∕２]．根据多项式乘法,这  like假设成立,并且SC 方案满足INDＧCCA
+                                                 协 一错误会扩散到x＝bAtB＋e′B 的所有系数．按照   SEUFＧCMA 安全性,那么本文提出的GCＧAKE
+ Peikert[１６]定义的调节机制,此种情形下,敌手(仿冒   议满足wAKEＧPFS安全．
+Bob)与Alice输出一致会话密钥的概率趋近于０．     证明．首先考虑定义７的第１个条件,２个诚实
+３．３．２　GCＧAKE方案安全性规约          的用户完全如实地按照协议执行,如果他们完成了
+                    方案进   本文采用wAKEＧPFS模型对GCＧAKE     一次匹配的会话,根据匹配会话条件,如果SC方案
+
+===== PDF PAGE 9 =====
+２１６６                                               计算机研究与发展　２０２０,５７(１０)
+                        机选择d                    ∗表有效,接收方能正确恢复bA 和θB,进而,密钥交换         ∈{１,２,􀆺,qI},t∈{１,２,􀆺,qR},令s
+                        示游戏中的第d 个发起者会话,s″表示游戏中的第t双方能输出相同的会话密钥SKAB ＝SKBA,且
+Pr(SKAB＝SKBA)≥１－２－２１７．           个响应者会话．令E２表示A 发起了Test(s)询问,
+  其次,对于定义７的第２个条件,根据安全游  但是s≠s∗或者s″↔s∗不成立,或者scomp≠T．如果∗
+         协议的安全性规约为求解戏,本文将GCＧAKE                E２发生,算法终止,A 输出随机的ζ′∈(０,１),则A
+                       和 DDHＧlike 问题和攻破SC 方案的INDＧCCA    猜测成功的概率Pr(S２|E２)＝１∕２;如果E２不发
+                                        猜测成功的概率SEUFＧCMA 安全性．                       生,则GameS１．２与GameS１．１相同,A
+  表１所概括的６种场景分别对应一个安全游   Pr(S２|􀭺E２)＝Pr(S１|􀭺E２)＝Pr(S１)．那么,GameS１．２
+                      中A戏．考虑到模拟过程冗长且差别不大,本文选取场景    猜测成功的概率:
+S１,S３和S５进行详细叙述．场景S１模拟AKE协议          Pr(S２)＝Pr(S２|E２)Pr(E２)＋                  的完美前 的弱前向安全性(wPFS),S５模拟AKE                                                Pr(S２|􀭺E２)Pr(􀭺E２)＝ 向安全性(PFS),S３重点模拟AKE 协议的KCI安全性．                                          １∕２Pr(E２)＋Pr(S１)Pr(􀭺E２)＝
+  游戏过程模拟为敌手A 与挑战者C 之间的一         Pr(􀭺E２)(Pr(S１)－１∕２)＋１∕２．
+                         由于d 和t随机选择,且发起者会话和响应者系列游戏．C      激活一个模拟器产生系统公开参数,创建N                         会话相互独立,E２不发生的概率Pr(􀭺E２)≥１∕qIqR,    个独立的用户P＝{ID１,ID２,􀆺,IDN },发送
+给敌手A,接受敌手的询问并做出相应的应答．令π  则A 成功的优势为                  表示游戏GameSi．j                ε２＝|２Pr(S２)－１|＝ 表示本文GCＧAKE协议,Sj         (i∈
+                                        Pr(􀭺E２)|２Pr(S１)－１|≥ε１∕qIqR． {１,２,３,４,５,６},j∈{０,１,２,３,􀆺})中敌手猜测成功                j 中敌手赢得游戏的优势定义       GameS１．３:在GameS１．２的基础上,GameS１．３模拟 的事件,那么GameSi．
+                分别表示游戏为:εj＝|２Pr(Sj)－１|．令N,qI,qR           对DDHＧlike问题的挑战．给定一个DDHＧlike问题
+中创建的用户数、发起者会话数和响应者会话数的   实例(a,b∗,b″,θ″,κ∗),模拟过程描述为:
+上界．注意,模拟过程中,C 将所有签名验证不成功     １)C 按照真实协议的系统建立算法生成系统
+的询问作为无效询问．                               公开参数para＝{n,q,Rq,χ,a,H}发送给A．
+  下面首先叙述S１的模拟过程,由一系列游戏     ２)C 按照协议的密钥生成算法生成用户密钥
+GameS１．j 组成．                                   (pkID ,skID ),将(ID,pkID ,skID )插入初始为空的列
+                       自   表LID ．    GameS１．０:GameS１．０模拟真实的攻击场景,A
+适应地提交询问,C 按照协议π 和安全模型的定义     ３)A 提交Send(s,IDj)询问激活发起者会话s．
+对A 的询问做出应答,那么A 赢得游戏的优势为:  令sactor＝IDi,如果s＝s∗,C 计算(b′∗,μ∗)←
+ε０＝|２Pr(S０)－１|．                   F(b∗),c∗←SC(μ∗,skIDi ,pkIDj ),将(b′∗,c∗)返
+                                   按照协议步骤计算响应    GameS１．１:在GameS１．０的基础上,GameS１．１考虑   回给A(事件E３);否则,C
+一些小概率的碰撞事件,比如在不同的会话中发生   消息(bi,ci)返回给A．最后更新Ts．
+临时参数碰撞或者Hash碰撞等,当出现此类事件     ４)A 提交Send(s,IDj,M)询问激活响应者会
+则模拟失败．令E１表示上述小概率事件,根据差分   话s,令sactor＝IDi,如果s＝s″,C 计算c″←SC(θ″,
+ 引理(文献[３６]引理１):                          skIDi ,pkIDj ),将(b″,c″)返回给A(事件E３);否则,
+       |Pr(S０)－Pr(S１)|≤Pr(E１),     C 按照协议步骤计算得到sstat＝(bj,bi,μj,θi,ci,
+  ε０＝|２Pr(S０)－１|＝２|Pr(S０)－Pr(S１)＋     κi,SKij),返回响应消息(b′i,ci)给A．最后更新Ts
+    Pr(S１)－１∕２|≤２(|Pr(S０)－Pr(S１)|＋      并置scomp＝T．
+                                          是一个已激       |Pr(S１)－１∕２|)≤ε１＋２Pr(E１)．        ５)A 提交Send(s,M)询问．如果s
+    那么,GameS１．１中A 成功的优势为:ε１≥ε０－   活的发起者会话,且scomp≠T,且如果s＝s∗,则置
+negl(λ)．其中,negl(λ)为一个可忽略的函数,表示  scomp＝T;否则C 按照协议计算得到sstat＝(bi,bj,μi,
+E１发生的概率．                       ci,θj,κi,SKij),更新Ts 并置scomp＝T;否则忽略．
+    GameS１．２:在GameS１．１的基础上,GameS１．２考虑     ６)A 提交Corrupt(ID)询问．如果ID∈P,则
+一类较大概率的失败事件E２．模拟开始之前,C                       随   查询LID 返回用户ID 的私钥,否则返回⊥．
+
+===== PDF PAGE 10 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１６７
+
+                    s∗                输出随机的   ７)A 提交Reveal(s)询问,如果s＝s∗∨s↔   comp≠T．如果E２发生,则算法终止,A
+                                    猜测成功的概率与s∗,算法终止(破坏wAKEＧPFSfresh);否则,如果s  ζ′∈(０,１)．如果E２不发生,A
+ 不存在或scomp≠T 则返回⊥;否则C 查询sstat,返回   GameS３．１相同,有Pr(S２|􀭺E２)＝Pr(S１|􀭺E２)＝Pr(S１);
+ 相应的SKij．                           如果E２发生则Pr(S２|E２)＝１∕２．与GameS１．２类似,   ８)A 提交Test(s)询问,如果事件E２发生则算  A       计算并输出会话密钥SK       成功的优势为:ε２＝|２Pr(S２)－１|＝Pr(􀭺E２)|法终止;否则,C              ∗＝H s∗ s∗   κ                       ２Pr(S１)－１|≥ε１∕NqI．  (actor,peer,μ∗,θ″, ∗)(事件E４)．                                                GameS３．３:在GameS３．２的基础上,GameS３．３考虑                     直接   ９)最后,A 输出其猜测ζ′∈(０,１),则C                攻击．C                              对SC算法的SEUFＧCMA    创建模拟环境, 输出ζ′作为对DDHＧlike挑战的应答(事件E５)．   构造谕言机O                                 SC模拟SC算法的签密和解签密运算,    GameS１．３与GameS１．２在事件E３~E５不同．事件                         运行子算法B,游戏模拟如下．E３描述用给定的DDHＧlike挑战实例(a,b∗,b″,   B          ∗及其匹配会话s″的输出．假定      维护初始为空的列表LSC＝(IDi,IDj,ν,c)．θ″)替换挑战会话s                                          步骤１)、２)与GameS１．３相同． (a,b∗,b″,θ″)独立于A 的视角,则敌手不能区分                       的     ３)A 提交Send(s,IDj)询问激活发起者会话GameS１．３和GameS１．２．事件E４和事件E５都是C                                           s．令sactor＝IDi,B 按协议步骤随机选择ti,ei←χ,内部事件,对A 透明．假设在DDHＧlike挑战中,ζ＝                    询问谕言                                       计算bi＝ati＋ei,(b′i,μi)←F(bi),将μi０表示κ∗是DDHＧlike实例(a,bn  ∗,b″,θ″)的有效的  机O             上的随机值．         SC得到密文ci,返回响应消息(b′i,ci)给A．最后解,则ζ＝１表示κ∗是{０,１}         Test(s)      ∗根据κ                         ∗   更新Ts,将(IDi,IDj,μi,ci)插入LSC．询问中,SK    ∗计算得到,如果ζ＝０,则SK是挑战会话s                              ∗     ４)A 提交Send(s,IDj,M)询问激活响应者会       ∗的正确会话密钥;如果ζ＝１,则SKλ与随机的SK                               话s,令sactor＝IDi,M＝(b′j,cj)．如果cj∉LSC是与         ∗←U {０,１} 不可区分,则GameS１．３和  IDj                      ∗是                             相关的可验证有效的签密密文,IDj＝IDGameS１．２的Test(s)询问输出同分布．因此,敌手不能                                        作为对                             密文cj 的签名者身份,那么B 输出cj 根据E４和E５区分GameS１．３和GameS１．２．则GameS１．３
+                                   SEUFＧCMA 挑战的应答,然后终止模拟(事件E３);中敌手成功的优势:ε３≥ε２－negl(λ)．                                                     得μj             猜测成功的概率的上  否则,B 询问谕言机OSC,解密cj                                                    并恢复bj,然   下面分析GameS１．３中A                                             提交界．如果A 猜测成功,则C 也必然猜测成功．令   后按照协议计算(bi,x,􀭺x,θi,κi,SKij),将θi
+               ddhl                  谕言机OSC得到密文ci,返回响应消息(bi,ci)给A．εddhl＝Advq,n,χ(λ)表示C 赢得DDHＧlike挑战的优
+ 势,则GameS１．３中敌手A 猜测成功的概率为:  最后更新Ts 并置scomp＝T,将(IDi,IDj,θi,ci)插
+Pr(S３)≤εddhl＋１∕２．那么A 成功的优势为:ε３＝   入LSC．                                          是一个已激                               ５)A 提交Send(s,M)询问．如果s|２Pr(S３)－１|≤２εddhl．
+   根据系列游戏结果,A 赢得GameS１的优势为:  活的发起者会话,且scomp≠T,令sactor＝IDi,M ＝
+                                     相关的可验证有效                                         (bj,cj)．如果cj∉LSC是与IDjε≤ε１＋negl(λ)≤qIqRε２＋negl(λ)≤２qIqRεddhl＋
+negl(λ)．                        的签密密文,IDj＝ID∗是密文cj 的签名者身份,
+   场景S１的模拟到此结束,下面叙述场景S３的  那么B 输出cj 作为对SEUFＧCMA 挑战的应答,然
+模拟过程．                             后终止模拟(事件E３);否则,B 询问谕言机OSC,解
+    GameS３．０:与GameS１．０相同,GameS３．０模拟真实的   密cj 得θj,按照协议计算得到sstat＝(bi,bj,μi,ci,
+攻击场景,A 赢得游戏的优势为:ε０＝|２Pr(S０)－１|．  θj,κi,SKij),更新Ts 并置scomp＝T;否则忽略．
+    GameS３．１:与GameS１．１相同,在GameS３．０的基础     ６)A 提交Corrupt(ID)询问．如果ID＝ID∗,
+                     成功 上,GameS３．１考虑一些小概率的碰撞事件,则A     则算法终止(破坏wAKEＧPFSfresh);否则,如果
+的优势为:ε１≥ε０－negl(λ)．             ID∈P,B 向C 提交密钥询问返回用户ID 私钥,否
+    GameS３．２:在GameS３．１的基础上,考虑一类较大  则返回⊥．
+概率的失败事件E２．模拟开始前,C 随机选择d∈     ７)A 提交Reveal(s)询问,如果s＝s∗∨s↔
+                       个 s∗,算法终止(破坏wAKEＧPFSfresh);否则,如果s {１,２,􀆺,qI}和t∈{１,２,􀆺,N},令s∗表示第d
+发起者会话,ID∗表示创建的第t个用户．令E２表   不存在或scomp≠T 则返回⊥;否则B 查询sstat,返回
+示A 发起了Test(s)询问,但是s≠s∗∨speer≠ID∗∨  对应的会话密钥SKij．
+
+===== PDF PAGE 11 =====
+２１６８                                               计算机研究与发展　２０２０,５７(１０)
+   ８)A 提交Test(s)询问,如果事件E２发生则算  IDj＝ID∗是密文cj 的签名者身份,则终止模拟．
+                                          是一个已激 法终止;否则,B 随机选择ζ∈(０,１),如果ζ＝０,则     ５)A 提交Send(s,M)询问．如果s
+查询sstat,输出会话密钥SK∗          ∗,否则输出随机的   活的发起者会话,且scomp≠T,令M＝(bj,cj),如果
+                                           询问谕言                                         ι∗ ,则置scomp＝T(事件E６);否则,FSK∗←U{０,１}λ．                     cj＝c
+   ９)最后,A 输出其猜测ζ′∈(０,１)．                        机OSC,取得cj 的明文θj,按照协议计算得到sstat＝
+                  替换了   模拟过程中,GameS３．３用谕言机OSC                                          (bi,bj,μi,ci,θj,κi,SKij),更新Ts 并置scomp＝T;
+GameS３．２中的SC算法,假定谕言机OSC与签密运算   否则忽略．与GameS３．３相同,如果cj∉LSC是与IDj
+的输出同分布,如果事件E３不发生,则敌手无法区  相关的可验证有效的签密密文,IDj＝ID∗是密文
+                       赢   cj 的签名者身份,则终止模拟． 分GameS２．３与GameS２．２．如果事件E３发生,则B
+ 得SEUFＧCMA 挑战,令εB ＝AdvBSEUFＧCMA (λ)表示算     ６)A 提交Corrupt(ID)询问．如果ID＝ID∗,
+                                       向C 提交密钥询法B                         则算法终止;否则,如果ID∈P,F   赢得挑战的优势,则Pr(E３)≤εB ⇒Pr(􀭺E３)≥   ．                      问,将得到的用户私钥返回给A,否则返回⊥．１－εB
+                输出随机的   如果事件E３发生,算法终止,A           ７)A 提交Reveal(s)询问,如果s＝s∗∨s↔
+                    s∗,算法终止;否则,如果s不存在或scomp≠Tζ′∈(０,１),则Pr(S３|E３)＝１∕２．如果事件E３不发                      则返                                 回⊥;否则查询sstat,如果存在SKij,则返回SKij; 生,则Pr(S３|􀭺E３)＝Pr(S２|􀭺E３)＝Pr(S２)．因此有:                     成功   否则返回随机的SKij←U{０,１}λ(事件E７)．Pr(S３)＝Pr(􀭺E３)(Pr(S２)－１∕２)＋１∕２．可得A                                ８)A 提交Test(s)询问,如果事件E２发生则算
+                                              查询的优势为:ε３＝|２Pr(S３)－１|＝Pr(􀭺E３)|２Pr(S２)－                               法终止;否则随机选择ζ∈(０,１),如果ζ＝０,F
+１|≥(１－εB)ε２．                    sstat,计算κ∗      ∗←rec(２b′t∗,θ′),输出SK∗＝H(sactor,∗    GameS３．４:在GameS３．３的基础上,GameS３．４考虑 s                                                          peer,μ∗  ０,∗ θ′,κ∗),否则输出随机的SK∗←U{０,１}λ．
+ 对SC算法的INDＧCCA 攻击．C 创建模拟环境,运                          输出ζ′                                ９)最后,A 输出其猜测ζ′∈(０,１),则C行子算法F,游戏模拟如下．                    挑战的应答．                                作为对INDＧCCA
+  F 维护初始为空的列表LSC＝(IDi,IDj,ν,c)．     模拟过程中,GameS３．４与GameS３．３在事件E４~
+    步骤１)、２)与GameS１．３相同．          E７不同．事件E４描述F                                      在挑战会话中植入INDＧ
+                                                                                  ∗   ３)A 提交Send(s,IDj)询问激活发起者会话                                CCA 挑战,根据本文３．３．１节的分析,μ０(近似)随
+                                                                         ∗       区分s．如果s＝s∗,F 随机选择t∗,e∗←χ,计算b∗＝  机均匀分布,与随机选择的μ１同分布,则A                                           ∗                                          １at∗＋e∗,(b′∗,μ０)←F(b∗    ∗),然后随机选择μ                                           GameS３．４与GameS３．３的概率是可忽略的．事件E５和
+ ←U{０,１}n,将(μ０,μ∗  １)作为INDＧCCA∗                 挑战明文提  E６描述敌手的恶意询问,提交了非正常的输入消息
+ 交给C,C 返回挑战密文c                  ι∗ ,F 将(b′∗,c                            ι∗ )返回给   (小概率的参数碰撞事件在GameS３．１模拟,这里不考
+                按协议步骤随A(事件E４);否则,令sactor＝IDi,F           虑)．在E５中,(bi,θi)为随机选择,根据判定RingＧ
+ 机选择ti,ei ←χ,计算bi ＝ati ＋ei,(b′i,μi)←  LWE假设,敌手无法区分(bi,θi)是否是一个真实
+                                     的内部事件对A 透明．F(bi),将μi 询问谕言机OSC得到密文ci,返回响应   的DHKEＧlike样本;E６是F
+ 消息(b′i,ci)给A．最后更新Ts,将(IDi,IDj,μi,  因此,A 通过事件E５和E６区分GameS３．４与GameS３．３
+ci)插入LSC．                   的概率是可忽略的．事件E７描述对事件E５和E６
+   ４)A 提交Send(s,IDj,M)询问激活响应者会  相关会话输出随机的SKij←U {０,１}λ．事件E５中,
+                                                                ι∗ 对应的明 话s,令sactor＝IDi,M ＝(b′j,cj)．如果(b′j,cj)＝   会话输出随机的(bi,θi),事件E６中,c
+ (b′∗,c                                                    ∗ １)由发起者会话输出且(近似)随机均匀∗     ι∗ ),令bj＝b∗,按照协议计算(bi,x,􀭺x,θi,  文(μ０,μ
+κi,SKij);如果b′j≠b′∗∧cj＝c                      ι∗ ,则随机选择(bi,  分布,与响应者会话的DHKEＧlike样本无关,因此,
+                       得θi)(事件E５);否则,F 询问谕言机OSC,解密cj                          在事件E５和E６中,会话密钥的生成不与任何有效
+μj  并恢复bj,然后按照协议计算(bi,x,􀭺x,θi,κi,  的DHKEＧlike样本相关,则敌手通过事件E７区分
+SKij)．F 将θi 提交谕言机OSC得到密文ci,返回响   GameS３．４与GameS３．３的概率是可忽略的．通过上述分
+ 应消息(bi,ci)给A;更新Ts 并置scomp ＝T,将   析,A 成功的优势为:ε４≥ε３－negl(λ)．
+                                    猜测成功的概率的上 (IDi,IDj,θi,ci)插入LSC．与GameS３．３相同,如果      下面给出GameS３．４中A
+                                                                  ι∗ 是μ０∗cj∉LSC是与IDj 相关的可验证有效的签密密文,  界．假设在INDＧCCA 挑战中,ζ＝０表示c
+
+===== PDF PAGE 12 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１６９
+的密文,则ζ＝１表示c                ι∗ 是μ１的密文．令s∗             recv＝∗      ６)A 提交Corrupt(ID)询问．如果ID＝ID∗,
+ (b′,c′),根据第３)步有b∗＝at∗＋e∗,(b′∗,μ０)←∗                         且scomp≠T,则算法终止;否则,如果ID∈P,B∗                  向C
+F(b∗),Test(s)询问中,如果ζ＝０,则b∗←F(b′∗,  提交密钥询问,返回用户ID 的私钥,否则返回⊥．
+μ ０),κ∗   ∗←rec(２b′t∗,θ′),SK∗＝H (sactor,s∗    peer,∗        步骤７)、８)、９)与GameS３．３相同．
+μ ０,∗ θ′,κ∗),那么(b∗,b′,θ′,κ∗)是一个有效的    根据表１,场景S５允许敌手在挑战会话完成之
+DHKEＧlike实例,SK∗是挑战会话s∗的有效的会  后(scomp＝T)询问ID∗       ∗的私钥．因此对签名的伪造
+话密钥;如果ζ＝１,则b１←F(b′∗     ∗,μ１),b∗  １≠at∗   ∗＋   事件(E３)只能是在Corrupt(ID∗)询问之前发生,
+                                           赢得                    １无∗      与GameS３．３相同,如果事件E３发生,则Be∗,又或者srecv＝(b′,c′)中的(b′,θ′)与b∗                     ∗∕b
+                                                                          B   (λ)表示赢得关,由敌手随意生成,那么(b∗∕b１,b′,θ′)不是有效∗              SEUFＧCMA 挑战,令εB ＝AdvSEUFＧCMA
+ 的DHKEＧlike实例,F 输出随机的SK∗←U {０,１}λ,  SEUFＧCMA 挑战的优势,则Pr(E３)≤εB ．那么A
+                         成功的优势为 则GameS３．４和GameS３．３的Test(s)询问输出同分布．
+F 根据A 的猜测结果输出对INDＧCCA 挑战的应    ε３＝|２Pr(S３)－１|＝Pr(􀭺E３)|２Pr(S２)－１|≥
+答,如果A 猜测成功,则F 也必然猜测成功．令εF ＝                (１－εB)ε２．
+                                     猜测成功的概率的上AdvINDＧCCAF  (λ)表示F 赢得INDＧCCA 挑战的优势,     下面,给出GameS５．３中A
+则敌手A 猜测成功的概率为:Pr(S４)≤εF ＋１∕２．  界．如果事件E３不发生,根据场景S５的定义必然存
+则A 成功的优势为:ε４＝|２Pr(S４)－１|≤２εF ．     在s′→s∗,使得srecv＝s′send．由于会话s′和s∗            ∗均由模
+  根据系列游戏结果,A 赢得游戏GameS３的优   拟器生成,令t′,e′,t∗,e∗,e′∗←χ 为B 随机选择,
+势为:ε≤２NqIεF∕(１－εB)＋negl(λ)．           b′＝at′＋e′,b∗＝at∗＋e∗,x∗＝b′t∗＋e′∗,􀭺x∗←
+   场景S３的模拟到此结束,下面叙述场景S５的   dbl(x∗),θ∗←‹􀭺x∗›２q,２,κ∗←⌊􀭺x∗⌉２q,２,显然(b′,
+模拟过程．                b∗,θ∗,κ∗)是一个有效的DHKEＧlike实例,根据
+                                              猜测    GameS５．０:与GameS１．０相同,GameS５．０模拟真实的 κ∗计算的SK∗是s∗的有效会话密钥．此时,A
+攻击场景,A 赢得游戏的优势为:ε０＝|２Pr(S０)－１|．  成功的概率为Pr(S３|􀭺E３)≤εddhl＋１∕２．如果事件E３
+    GameS５．１:与GameS１．１类似地,在GameS５．０的  发生,则A 输出随机的ζ′∈(０,１),则Pr(S３|E３)＝
+                  成功的优 基础上,GameS５．１考虑小概率碰撞事件,A                                         １∕２．那么GameS５．３中A 成功的优势为:
+势为:ε１≥ε０－negl(λ)．                       ε３＝|２Pr(S３)－１|＝|２Pr(S３|􀭺E３)Pr(􀭺E３)＋
+    GameS５．２:与GameS１．２类似,GameS５．２考虑一类           ２Pr(S３|E３)Pr(E３)－１|≤                  随机选择较大概率的失败事件E２．模拟开始前,C                                                 |(２εddhl＋１)Pr(􀭺E３)＋Pr(E３)－１|≤２εddhl．d                   ∗表示第  ∈{１,２,􀆺,qR}和t∈{１,２,􀆺,N},令s                           根据系列游戏结果,A 赢得游戏GameS５的优d 个响应者会话,ID∗表示创建的第t个用户．令E２                         势为:ε≤２NqRεddhl∕(１－εB)＋negl(λ)．
+表示A 发起了Test(s)询问,但是s≠s∗∨speer≠     场景S４,S６,S２的模拟过程分别与场景S１,
+ID∗∨scomp≠T．如果E２发生,则算法终止,A∗                     输出  S３,S５类似,限于论文篇幅,这里不再详述．综合上
+ 随机的ζ′∈(０,１)．类似地,A 成功的优势:ε２＝              成功的优势AdvA                          述游戏模拟,可得敌手A                     wAKEＧPFS (λ)
+|２Pr(S２)－１|＝Pr(􀭺E２)|２Pr(S１)－１|≥ε１∕NqR．  是可忽略的．因此,定义７的第２个条件得证．证毕．
+    GameS５．３:与GameS３．３类似,在GameS５．２的基础
+ 上,GameS５．３考虑对SC 算法的SEUFＧCMA 攻击．C  ４　一种GCＧAKE架构的IDＧAKE方案创建模拟环境,运行子算法B,游戏模拟如下．
+  B 维护初始为空的列表LSC＝(IDi,IDj,ν,c)．    本节提出一种基于GCＧAKE 架构的IDＧAKE
+    步骤１)、２)、３)与GameS３．３相同．         方案,采用基于身份的签密(IBSC)方案．根据GCＧ
+    步骤４)和５)与GameS３．３基本相同．不同之处在  AKE架构的要求,IBSC方案应同时满足INDＧCCA
+                     相关于事件E３的触发条件:如果cj∉LSC是与IDj      和SEUFＧCMA 安全性．
+的可验证有效的签密密文,IDj＝ID∗是密文cj                       的  ４．１　强安全的基于身份签密
+ 签名者身份,且敌手尚未执行Corrupt(ID∗)询问,     本文的IBSC方案来源于Boneh和Boyen[２８]提
+那么B 输出cj 作为对SEUFＧCMA 挑战的应答．   出的BBS签名,王霏等人[３７]将BBS签名扩展为基于
+
+===== PDF PAGE 13 =====
+２１７０                                               计算机研究与发展　２０２０,５７(１０)
+
+                                                    １身份的签名,本文进一步将其扩展为IBSC 方案．下  σ＝g１∕(xs＋ϑ＋tys)                                   ,输出签密密文c＝(W,τ,ω,σ,t)．
+面简要描述BBS方案及其扩展．                解签密(UnSCIBSC):输入密文c＝(W,τ,ω,σ,
+４．１．１　BBS签名                      t),发送者身份及公钥(IDs,R１s,R２s),接收者身份
+  BBS签名基于双线性映射理论,相关背景知识  IDr 及密钥SKr＝(xr,yr,zr),步骤计算为:
+和符号定义见本文２．１节．                 １)计算η′＝τ􀱇H３(Wzr),m′＝H４(η′)􀱇ω,
+   给定签名者的公私钥对:PK＝(g１,g２,u,v,α),                                 ι′＝H２(η′,m′),验证等式W ＝gι′２是否成立,若成SK＝(x,y)．其中,g１和g２分别是群G１和G２的生                  x    y         立则继续下一步,否则返回⊥．
+ 成元,x∈Z        p∗ ,y∈Z             p∗ ,u＝g２,v＝g２,α＝e(g１,g２)．    ２)计算ϑ′＝H５(W,τ,ω,m′),q１s＝H１(IDs,
+                                                                                                               q１s                                                                                                                              q２s  BBS签名．输入待签名消息m∈Z                                             ０,                          p∗ 和用户私钥   R１s),q２s＝H１(IDs,R２s),us＝R１sP                                                            ０,vs＝R２sP                                   １    ,SK＝(x,y),随机选择r∈Zp∗ ,计算σ＝g１∕(x＋m＋yr)                         ϑ′ t                                验证等式e(σ,usg２vs)＝α 是否成立,若等式成立输出签名(σ,r)．                           则输出m′,否则返回⊥．
+  BBS签名验证．收到消息m 的签名(σ,r),输入m         需要说明的是,本文IBSC 方案沿用文献[２８]
+ 公钥PK＝(g１,g２,u,v,α),验证e(σ,u􀅰g２􀅰vr)＝α  的符号定义,采用标准离散群的数学描述,具有更好
+是否成立,若等式成立则接受签名,否则拒绝签名．                           的通用性．在具体实现中,为了降低开销,BBS签名  定理３[２８]．如果群G１,G２,GT 上的(q,t′,ε′)Ｇ  可采用定义在y                                      ２＝x３＋２x±１上的椭圆曲线和超SDH 假设成立,则BBS签名实现了(t,qs,ε)ＧSEUFＧ                          奇异椭圆曲线构建ECC系统．在本文第５节的分析
+CMA安全．其中,qs＜q,ε≈２ε′,t≤t′－Θ(q２T),T                          中,也采用了基于ECC的方案．
+为G１和G２上求幂的最大次数．           ４．１．３　IBSC方案安全性分析
+                                           假设和   文献[２８]对其进行了证明,这里不再赘述．       定理４．如果群G１,G２,GT 上的SDH
+４．１．２　IBSC方案                               CDH 假设成立,则本文IBSC 方案满足INDＧCCA
+                                         赢得GameINDＧCCA 的优势为  IBSC方案描述如下．             安全性．特定地,如果A              IBSC                产生系统公开   系统建立．输入安全参数λ,PKG                           ε,则C 成功解决CDH 问题的优势为AdvCCDH (λ)≥ 参数param ＝{G１,G２,GT ,g１,g２,e,α,P０,H１,                  为满足条   ２ε∕NqH３．其中,qH３表示模拟过程中H３询问的最大H２,H３,H４,H５}．其中,e:G１×G２→GT       次数．
+                          s    公                                           安全性规件的双线性映射;α＝e(g１,g２),P０＝g２为PKG                                 证明．本文将IBSC方案的INDＧCCA      p∗                        ID      p∗钥,s∈Z 为PKG 主密钥;H１:{０,１} ×G２→Z , 约到模拟器C 利用敌手A             n                             求解CDH 问题．给定                                                     a                                                        b                                             输出                           n,H４:H２:{０,１}n×{０,１} →Z                 p∗ ,H３:G２→{０,１}                                                   ２,g                       n      n                               CDH 问题实例:(g２,g                                              ２)∈G３２,C 利用A
+ {０,１}n→{０,１}n,H５:G２×{０,１} ×{０,１} ×{０,    挑战的解gab．下面模拟C 和A 之间的游戏．模                               CDH
+                                                 ∗表示１}n→Z     p∗ 为密码Hash函数．             拟之前,C 选择i∈{１,２,􀆺,N},令IDi＝ID
+                 随机选择  创建的第i个用户身份．   密钥生成．提交用户身份ID,PKG
+                                          生成系统公r１∈Z    p∗ ,r２∈Z          p∗ ,r３∈Z                p∗ ,计算R１＝gr１２,R２＝gr２２,    初始化．输入安全参数λ,挑战者C
+R３＝gr３２,q１＝H１(ID,R１),q２＝H１(ID,R２),q３＝   开参数param＝{G１,G２,GT ,g１,g２,e,α,P０,H１,
+H１(ID,R３),x＝r１＋sq１,y＝r２＋sq２,z＝r３＋                                x    H２,H３,H４,H５}．其中,H１,H２,H３,H４,H５模拟
+                         为随机谕言机．Csq３,输出用户私钥SKID ＝(x,y,z);令u＝g２＝         y           z                    维护初始为空的L１＝(ID,R,                      q２                                        q３R１Pq１０,v＝g２＝R２P            ０,w＝g２＝R３P                  ０,则用户公   h１),L２＝(η,m,h２),L３＝(U,h３),L４＝(η,h４),
+ 钥PKID ＝(u,v,w)．                  L５＝(W,τ,ω,m,h５)和LID ＝(ID,R１ID ,R２ID ,
+   签密(SCIBSC)．输入待签密消息m∈{０,１}n,发   R３ID ,r１ID ,r２ID ,r３ID ,xID ,yID ,wID )分别记录H１,
+送者身份IDs 及密钥SKs＝(xs,ys,zs),接收者身  H２,H３,H４,H５询问和用户密钥．
+                              自适应地执行多项式时间有界的询 份及公钥参数(IDr,R３r),步骤计算为:                                询问１．A
+   １)随机选择η∈{０,１}n,计算q３r＝H１(IDr,                               问,C 模拟IBSC方案的相应算法做出应答．注意:询                            ι                    q３r                问中随机选择的参数出现碰撞则重新选择．R３r),wr＝R３rP０,ι＝H２(η,m),W ＝g２,τ＝η􀱇     ι
+H３(wr),ω＝H４(η)􀱇m．                １)创建用户．在其他询问之前要先创建用户．输
+                                                                      p∗ ,  ２)随机选择t∈Z               p∗ ,计算ϑ＝H５(W,τ,ω,m),  入IDi,如果IDi＝ID∗,C 随机选择r３,q∗ ３∈Z∗
+
+===== PDF PAGE 14 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１７１
+
+        a                                    ３                                                                   ζ∗ ,ϑ∗)令w∗＝(g       ２)r∗３,计算R３＝w∗   ∗􀅰(Pq∗０)                              －１(μ－１表示   后将(⊥,h３),(η∗   ∗,h４)和(W∗     ∗,τ∗,ω∗,m
+μ 在G２上的乘法逆元),然后随机选择r１,r∗ ２∈∗    分别插入L３,L４和L５．
+ p∗ ,按照密钥生成算法计算得到(R１,R∗  ２,x∗  ∗,    询问２．A 可以继续提交询问,询问过程与第１Z
+y∗),最后,将(ID∗,R１,R∗  ２,R∗  ３,r∗  １,r∗  ２,r∗ ３,x∗  ∗,  阶段相同,但是不能提交c∗＝(W∗,τ∗,ω∗,∗,∗)
+y ∗,⊥)和(ID∗,R３,q∗ ３)分别插入LID∗         和L１;否  的解签密询问．
+                    p∗ ,按照密钥生成算法    第２阶段询问结束后,A 输出其猜测ζ′∈(０,则,C 随机选择r１i,r２i,r３i∈Z
+ 产生(R１i,R２i,R３i,xi,yi,zi),然后将(IDi,R１i,  １)．C 随机选择Ui∈L３,计算U                                                           i１∕r∗３ι∗ 作为对CDH
+R２i,R３i,r１i,r２i,r３i,xi,yi,zi)插入LID ．注意:其中  挑战的应答．
+的H１运算替换为H１询问．             令事件E 表示:A 提交了H３(U∗)询问,并且
+                                                             ab   ２)H１询问．输入(IDi,Ri),C 查询L１,如果存                                ２)r∗３ι∗ ．                     U∗＝(g
+ 在(IDi,Ri,h１i),则直接输出h１i;否则,随机选择并    如果事件E 不发生,则模拟过程完备．在以上
+                                     的视图与其在真实 输出h１i∈Z        p∗ ,然后将(IDi,Ri,h１i)插入L１．    模拟中,如果事件E 不发生,A
+   ３)H２询问．输入(ηi,mi),C 查询L２,如果存  攻击中的视图是不可区分的．这是因为:１)由于将
+ 在(ηi,mi,h２i),则输出h２i;否则,随机选择并输出  Hash函数模拟为随机谕言机,根据随机谕言假设,
+h２i∈Z     p∗ ,将(ηi,mi,h２i)插入L２．          随机谕言机的输出与Hash函数输出同分布,敌手
+                         τ   ４)H３询问．输入Ui,C 查询L３,如果存在(Ui,  不能区分;２) ∗＝η∗􀱇H３(U∗)相当于对随机选择
+h３i),则输出h３i;否则,随机选择并输出h３i ∈{０,  的加密密钥材料η∗做一次一密加密,如果事件E
+                              得不到η１}n,将(Ui,h３i)插入L３．              不发生,则A                                    ∗的任何信息,从而也得不到
+   ５)H４询问．输入ηi,C 查询L４,如果存在(ηi,                     mζ∗ 的任何信息．所以对A 来说,２种视图不可区分．
+h４i),则输出h４i;否则随机选择输出h４i∈{０,１}n,                                    那么有Pr(ζ′＝ζ|􀭺E)＝１∕２,则: 将(ηi,h４i)插入L４．                                           Pr(ζ′＝ζ)＝Pr(ζ′＝ζ|􀭺E)Pr(􀭺E)＋   ６)H５询问．输入(Wi,τi,ωi,mi),C 查询L５,                                        Pr(ζ′＝ζ|E)Pr(E)≤Pr(ζ′＝ζ|􀭺E)Pr(􀭺E)＋如果存在(Wi,τi,ωi,mi,h５i),则输出h５i;否则,随机                                        Pr(E)＝１∕２Pr(􀭺                                                  E)＋Pr(E)＝１∕２＋１∕２Pr(E)．
+                      A 赢得GameINDＧCCA            p∗ ,将(Wi,τi,ωi,mi,h５i)插入L５．选择并输出h５i∈Z                                                                                             IBSC                                   的优势为:ε＝|Pr(ζ′＝ζ)－   ７)密钥询问．输入IDi,如果IDi＝ID∗,则C                                    １∕２|≤１∕２Pr(E),那么事件E 发生的概率Pr(E)≥
+                                       的概率出现在终止模拟;否则如果LID 中存在(IDi,∗,∗,∗,∗,∗,∗,                             ２ε．因此,模拟结束后,U∗以至少２ε
+                                        挑战成功的xi,yi,zi)则返回(xi,yi,zi)给A,否则返回⊥．                          L３中,由于C 随机选择Ui∈L３,则C
+                                                                     CDH   ８)签密询问．输入(IDs,IDr,mi),C 按照SCIBSC           C                              优势为:Adv  (λ)≥２ε∕qH３．其中,qH３表示模拟结算法计算并输出ci               ＝(Wi,τi,ωi,σi,ti),其中的  束后L３中的项目数．          证毕．
+H１,H２,H３,H４,H５运算替换为对应的谕言机询                     假设和                             a r∗       定理５．如果群G１,G２,GT 上的SDH
+                                              安全问．注意:用户ID∗的加密公钥为w∗＝(g２)３,签                               CDH 假设成立,且BBS方案满足SEUFＧCMA
+                                               安全性．特名密钥为(x∗,y∗)．                   性,则本文IBSC 方案满足SEUFＧCMA
+                                    赢得Game                                                                                                   IBSC   ９)解签密询问．输入ci＝(Wi,τi,ωi,σi,ti),C  定地,假设A                                                                                            SEUFＧCMA 的优势为ε,那么模
+                                                                                                              BBS 查询L２,L３,L４,L５,如果存在(η,m,h２),(U,h３),                           拟器C０成功赢得BBS挑战的优势为AdvC０≥ε． (η,h４),(Wi,τi,ωi,m,h５),使得下列等式成立:            方案的不可伪造性规约到                                证明．我们将IBSC
+                                    安全性．规约过程分为初Wi＝gh２       h２    ２,U＝w              r ,τi＝η􀱇h３,ωi＝h４􀱇m,e(σi,us  BBS方案的SEUFＧCMA     ti
+gh５２vs )＝α,则返回明文m;否则返回⊥．       始化、询问和伪造３个阶段,包含２类模拟器C０和
+               提交挑战身份和   挑战．第１阶段询问结束后,A         C１,以及敌手A．规约形式采用嵌套的游戏模拟方
+２个等长的消息(IDs,IDr,m０,m∗  １)．如果IDr≠∗         式,外层模拟以C０为模拟器,A 为敌手,内层模拟
+ID∗则终止模拟;否则C 随机选择ζ∈(０,１),bι∗,  (BBS挑战游戏,参考文献[２８])以C１为模拟器,C０
+ϑ∗,t∗∈Z       p∗ ,η∗,h３,h∗  ４∈{０,１}∗    n,令W∗＝(g２)ι∗,  为敌手,C０可以向C１提交BBS签名询问,最后向
+                                １     ,  C１提交伪造的BBS签名．模拟之前,C０选择i∈{１,τ∗＝η∗􀱇h３,ω∗  ∗＝h４􀱇m∗                   ζ∗ ,σ∗＝g１∕(xs＋ϑ∗＋t∗ys)
+返回挑战密文c∗＝(W∗,τ∗,ω∗,σ∗,t∗)给A,然   ２,􀆺,N},令IDi＝ID∗表示创建的第i个用户身份．
+
+===== PDF PAGE 15 =====
+２１７２                                               计算机研究与发展　２０２０,５７(１０)
+
+                          在模拟环境下成功的优势等于其在真实攻击   初始化．输入安全参数λ,挑战者C１产生BBS  则A
+挑战游戏的公开参数(G１,G２,GT ,g１,g２,e,u∗,  环境下的优势．假设A 赢得GameIBSCSEUFＧCMA 的优势为
+                 游戏公开参v∗,α)发送给模拟器C０,C０产生IBSC                          ε,那么C０挑战成功的优势为AdvC０≥ε．BBS    证毕．
+ 数param＝{G１,G２,GT ,g１,g２,e,α,P０,H１,H２,  ４．２　基于IBSC的IDＧAKE方案
+H３,H４,H５}．与定理４的证明过程相同,H１,H２,    本文IDＧAKE方案基于３．２节提出的GCＧAKE
+H３,H４,H５模拟为随机谕言机,C０维护初始为空  方案和４．１节提出的IBSC算法,描述如下．
+                                        产生系统参数 的L１,L２,L３,L４,L５和LID 分别记录H１,H２,H３,    系统建立．输入安全参数λ,PKG
+H４,H５询问和用户密钥．此外,C０维护初始为空的   para＝{n,q,Rq,χ,a,H,G１,G２,GT ,g１,g２,e,α,
+LSC＝(Wi,τi,ωi,hi,σi,ti)记录签密询问的结果．   P０,H１,H２,H３,H４,H５}．系统参数包含了基于格
+  询问．A 自适应地提交多项式时间的下列询问．  的和基于双线性映射的２套参数．
+                                      密钥生成算法相同．用  １)创建用户．在其他询问之前C０先创建用户．    用户密钥生成．与IBSC
+ 输入IDi,如果IDi＝ID∗,C０随机选择q１,q∗ ２∈∗                               户私钥SKID ＝(x,y,z);用户公钥PKID ＝(u,v,
+                      １                                       ２                           －１,然后  w),其中u＝g                                                x２＝R１Pq１０,v＝g                                                            y２＝R２Pq２０,w ＝Z p∗ ,计算R１＝u∗   ∗(Pq∗０)                  －１,R２＝v∗   ∗(Pq∗０)                                       z
+            p∗ ,按照密钥生成算法计算得到                     g２＝R３Pq３０．随机选择r３∈Z∗
+ (R３,z∗  ∗),最后将(ID∗,R１,R∗  ２,R∗  ３,⊥,⊥,r∗     ３,∗     密钥交换．如果Alice与Bob期望建立安全会
+ ⊥,⊥,z∗),(ID∗,R１,q∗  １)和(ID∗     ∗,R２,q∗ ２)分别∗     话,其密钥交换过程与图２基本相同．为了进一步增
+ 插入LID 和L１;否则,C０按照密钥生成算法产生用  强安全性(主要考虑抵抗临时秘密泄露攻击
+ 户密钥,然后将(IDi,R１i,R２i,R３i,r１i,r２i,r３i,xi,  (ESR)),将会话密钥的计算方式替换为
+                                                                                               zA                                                              ),yi,zi)插入LID ．                  SKAB＝H(IDA,IDB,μA,θB,κA,(R３BPq３B０)
+                                                                                                             q３A０)zB),   步骤２)~７)与定理４证明过程相同．        SKBA＝H(IDA,IDB,μA,θB,κB,(R３AP
+   ８)签密询问．输入(IDs,IDr,mi),如果IDs＝  其中,q３B＝H１(IDB,R３B),q３A＝H１(IDA,R３A)．可
+ID∗,C０按照SCIBSC算法第１)步计算得到(Wi,τi,  以验证:(R３BP                                                                                 q３B０)zA ＝gzBzA２  ＝(R３APq３A０)zB．从而可ωi),提交H５询问得到h５i,然后向C１提交h５i的  得SK                                         AB＝SKBA．
+BBS签名询问得到签名(σi,ti),将ci＝(Wi,τi,ωi,    通过增强,即使临时秘密κA 和κB 泄露,针对传
+σi,ti)返回给A;否则,C０按照SCIBSC算法计算输出                          统的非量子攻击者,也不影响会话密钥的安全性(因
+                                                                          zBzAci＝(Wi,τi,ωi,σi,ti)．其中,H１,H２,H３,H４,H５   为(wA,wB,g２ )是一个CDH 问题的实例),这在运算替换为对应的谕言机询问．最后,C０将(Wi,τi,                        过渡时期具有现实意义．抵抗临时秘密泄露的安全ωi,h５i,σi,ti)插入LSC．                              性在一些相关文献中有详细讨论[３６Ｇ３８],本文不做详
+  ９)解签密询问．与定理４相同．                         细分析．
+                           但是这种增强的方式在基于格的密码系统中并   伪造．询问结束后,A 提交(IDs,IDr,m∗)的伪
+造密文c∗＝(W∗,τ∗,ω∗,σ∗,t∗)．如果IDs≠ID∗,                          不直接适用．因为在基于格的环境下,不具有与离散
+                                         安全性需要 或者(∗,∗,∗,∗,σ∗,t∗)∈LSC,又或者L５中不存在                                    h∗      群相同的CDH 假设,则基于格的ESR                                         ５ (W∗,τ∗,ω∗,m∗,h∗５)∈L５使得e(σ∗,u∗g２v                                 ∗t∗)＝  进一步讨论．
+α成立,则终止模拟,模拟失败;否则,C０提交(h５,∗
+σ∗,t∗)给C１作为对BBS挑战的伪造签名．    ５　对比分析
+   显然,如果c∗＝(W∗,τ∗,ω∗,σ∗,t∗)是IBSC的
+有效的伪造密文,那么(h∗５,σ∗,t∗)必然是BBS的有  ５．１　相关AKE方案对比分析
+效的伪造签名．即,如果A 挑战成功,则C０必然挑     本文选择FSXY 方案[１４]、BCNS方案[１８]、YCL
+战成功．                              方案[２３]和DBS 方案[１２]作为对照方案进行对比分
+                                          方案为通   上述模拟过程中,由于BBS签名询问的输出与   析,如表２所示．其中,FSXY 方案和YCL
+                                        方案将真实BBS签名算法的输出同分布,且H１,H２,H３,  用AKE 在格密码系统下的实例;BCNS
+H４,H５模拟为随机谕言机,根据随机谕言机假设,  DHKEＧlike密钥交换与TLS握手协议整合,实现经
+                       典密码系统下的实体认证以及后量子的会话密钥A 的视图与其在真实攻击中的视图是不可区分的,
+
+===== PDF PAGE 16 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１７３
+
+                  协议的密前向安全;DBS方案则采用类似HMQV          此外,李子臣等人[２４]和赵秀凤等人[２２]也分别
+钥交换方案,侧重实现隐式认证．本文方案则遵循   提出了基于RingＧLWE 问题的AKE 方案．但是,本
+BCNS方案的思路,将DHKEＧlike密钥交换与现有  文分析发现,这２种方案都存在较为严重的安全缺
+经典公钥密码系统相结合,重点关注会话密钥的后  陷,具体的分析见本文５．２节．
+量子前向安全性．此外,本文方案也融合了通用    表２中,第３列表示ECC 计算量,“M”表示椭
+AKE的思想,以适应后量子密码技术的发展,以及  圆曲线上的点乘运算,“P”表示双线性对运算;YCL
+                        方案的开销取决于参数μ提供AKE 方案的可扩展性．例如,BCNSＧDHKEＧ                和m,根据文献[２３],有
+                                            的取值like密钥交换方案可直接使用其他具有类似DDH  m＝logn ,如果n＝１０２４则m＝１０,而μ                                                                                          ∗属性的DHKEＧlike 密钥交换方案替代,比如  取决于抗碰撞的密码Hash函数TCRHF:{０,１}
+NewHope[２０]协议．                        →{０,１}μ．
+                                 Table２　ComparisonofSeveralAKEprotocols
+                         表２　AKE协议对比
+  Protocols  MessageＧPass∕times   ECC   Sample←χ∕times PolynomialMultiplication∕times NumberofRq∕times      Security
+  FSXY      ２       ０        １１              １３            ≥７＋２      KCI,wPFS,MEX
+  BCNS      ４       ２M      ５           ３            ２          KCI,wPFS
+  YCL      ２       ０       >２μ＋３         >２μ＋２m＋３         >２μ＋m＋５     KCI,PFS,MEX
+   DBS      ２       ０      ８＋４          ８             ≥２＋２        KCI,wPFS
+   Ours      ２       １１M＋１P    ５           ３            ２         KCI,PFS,MEX
+ 　Note:“M”meansscalarmultiplicationonellipticcurve;“P”meanspairingcalculation．
+　　可以看出,FSXY 方案和YCL 方案在计算、存  CK＋模型;YCL方案则采用了eCKＧPFS模型;本文
+储和通信方面的开销都明显较大．特别是通信开销  提出的通用AKE 采用wAKEＧPFS 模型(见第２
+(表２第６列),表２中仅列出了直接的密钥交换开  节),而第４节提出的AKE实例则实现了eCKＧPFS
+销和公钥传输的开销,由于基于格的证书系统尚未   安全性．严格来讲,FSXY 方案和YCL 方案的MEX
+建立,公钥证书的开销则未列入,其他如密钥调节参  安全性具有较大局限性．由于FSXY 方案和YCL方
+数由于相对较小(１０２４b)也未列入．具体来看,  案等通用AKE 方案临时秘密参数较多,不能像
+FSXY 方案共发送９个Rq 上的成员(其中２个Rq  HMQV 协议那样将MEX 安全性规约到一个确定
+上的成员为用户长期公钥),YCL 方案则多达２μ＋  的DHKE实例,部分参数泄露仍然不能保证MEX
+m＋５个Rq 上的成员．以n＝１０２４,logq＝３２为例,  安全性．例如,FSXY 方案中的(KA,KB,KT )和
+                 方案的通信１个Rq 上的成员约为４KB,则FSXY        YCL方案中的rpgid１泄露同样不能防止会话密钥
+开销大于３６KB．BCNS方案、DBS方案和本文方案  泄露,在实际应用中,不能区别对待临时的秘密参
+的总体开销差别不大．BCNS方案的计算性能虽然  数．在本文４．２节的AKE 实例中,即使所有临时的
+较优,但是TLS握手协议需要多轮信息交互,其总   参数泄露(包括DHKEＧlike密钥κ),针对非量子攻
+                  方案和体性能并不占优．此外,FSXY 方案、YCL      击者,也能确保会话密钥的安全性．
+DBS方案未指明用户公钥的授信机制,假定采用  ５．２　２种AKE方案的安全性分析
+PKI体制,与公钥证书相关的开销并未在表２中列  ５．２．１　NLPQＧAKE方案分析
+                                             问题出．本文方案实例基于IBC系统,对用户公钥的授权     李子臣等人[２４]提出一种基于RingＧLWE
+                                                 中验证包含在IBSC算法中,在通信部分增加约１６０B  的AKE 方案(记为NLPQＧAKE)．NLPQＧAKE
+传输开销(假定用户身份标识为２０B)．         采用的INDＧCPA 安全的PKE(记为NLPQＧCPAＧ
+   在安全性方面(表２第７列),BCNS方案仅实   PKE)是NewHopeＧSimpleKEM 的变形．但是,文献
+                                       方案的公钥重现了客户端对服务器的认证,采用ACCE[３９]安全模   [２１]不建议NewHopeＧSimpleKEM
+             方案实现了相互认型(类似于BR＋wPFS);DBS              复使用．Bauer等人[４０]分析表明,对于NewHopeＧ
+                方案采用了证,采用了BR＋wPFS 模型;FSXY            SimpleCPAＧKEM 实例,重用公钥会导致私钥泄露,
+
+===== PDF PAGE 17 =====
+２１７４                                               计算机研究与发展　２０２０,５７(１０)
+ 对于NewHopeＧSimpleCCAＧKEM 实例,在可能重
+用公钥的情况下,应谨慎设计CPAＧKEM→CCAＧ ６　结束语
+                       方KEM 转换中的关键步骤．不幸的是,NLPQＧAKE
+案中的NLPQＧCCAＧKEM 机制完全暴露了NLPQＧ     本文以格上(无认证)DHKEＧlike协议为基础,
+CPAＧPKE 机制的密文,不能抵抗密钥重用攻击．  采用签密机制对DHKEＧlike协议中的临时公钥进
+NLPQＧAKE方案分为２组独立(分别采用用户长   行签密,提出一种“SC＋DHKEＧlike”的可组合AKE
+期公钥和临时公钥)的密钥交换,其中采用长期公钥   构造方案———GCＧAKE．GCＧAKE结构简单,具有可
+                          组合的优点,可根据不同应用场景需求,采用不同密的NLPQＧCCAＧKEM 实例必然存在公钥重用,将导
+                         码学原语加以组合．针对向后量子时代过渡的时期,致用户长期私钥的泄露．根据文献[４０]的测试结果,
+                        面向AKE协议的后量子前向安全需求,本文提出采用Alkim 等人[２１]推荐的系统参数,只需数千个重                           采用基于ECC 的IBSC 结合基于理想格的DHKEＧ用公钥的密文即以较大概率恢复对应的完整私钥．                                 like协议实例．在wAKEＧPFS 模型下,本文的GCＧ５．２．２　ZhaoＧAKE方案分析                         AKE方案实现了可证明安全性,特别是实现了会话   赵秀凤等人[２２]提出一种基于BCNSＧDHKEＧ                          密钥的PFS安全性．PFS安全性要求使用具有强不like机制的IDＧAKE 方案(记为ZhaoＧAKE)．但是,                          可伪造的签名方案．因此,本文以BBS签名为基础,ZhaoＧAKE方案存在较为严重的安全隐患．具体来                           设计了强不可伪造的IBSC 方案,并对其安全性进说,赵秀凤等人提出一种新的基于身份密钥生成算                         安                             行了规约证明,实现了INDＧCCA 和SEUFＧCMA法(详见文献[２２]的３．２节),将用户密钥(Si＝IiS＋                                 全性．但是,采用基于RingＧLWE问题的DHKEＧlikeMei)的安全性建立在RingＧLWE 问题的困难性上． 协议作为密码套件存在一个关键问题,即:如果加密
+其中,Ii＝H (IDi)和M 为多项式环Rq                  上具有小  完整的临时公钥,则加密后的密文较大,使得AKE
+范数的元素,S 是系统主密钥,ei 是误差值,S 和ei  的计算和通信开销较大．为了解决这一问题,本文提
+服从Rq 上的离散高斯分布．根据RingＧLWE 假设,  出临时公钥特征提取与隐藏函数,仅加密n 位(本
+给定均匀随机的a←URq,求解(a,as＋e)∈Rq×Rq  文取n＝１０２４)的特征值,显著降低了需加密传输的
+中的秘密s是困难的(其中s和e服从Rq 上的离散  数据量,使得本文的AKE 协议实例的计算和通信
+        和M 在Rq 上并非随机均匀分  开销相对较优．进一步的优化可采用性能更优的高斯分布)．由于Ii
+      方案的用户密钥产生算法不满足   DHKEＧlike协议替换BCNSＧDHKEＧlike 协议,如 布,ZhaoＧAKE                和M 非均   NewHope协议．RingＧLWE假设条件,敌手可能利用Ii
+                  的猜测攻匀随机分布的特性,实施对系统主密钥S               参 考 文 献
+击．就目前掌握的文献资料来看,没有相关的理论能
+够证明非随机均匀分布的(a,as＋e)满足RingＧ    [１] DiffieW,Hellman M．Newdirectionsincryptography[J]．
+LWE假设条件,而文献[２２]并未就这一关键问题展        IEEE TransactionsonInformation Theory,１９７６,２２(６):
+                                                      ６４４６５４开讨论．同理,用户密钥Si 也不满足判定RingＧ
+LWE假设．文献[２２]的安全性证明中(引理１０),在     [２] NIST:PostＧQuantumcryptographyproject[OL]．[２０２０Ｇ０５Ｇ                  替换真实          ２５]．https:∕∕csrc．nist．gov∕Projects∕postＧquantumＧcryptographyGame３中用随机的Ii←URq 和M１←URq              [３] AjtaiM．Generatinghardinstancesoflatticeproblems[J]．
+的Ii 和M (Game２),并声称敌手无法区分Game２          QuadernidiMatematica,２００４,１３:１３２
+和Game３(应用判定RingＧLWE假设)．显然,敌手可     [４] RegevO．Onlattices,learning witherrors,randomlinear                                                              codes,andcryptography[C]∕∕Procofthe３７thACM Symp以通过计算Ii 和M１的范数来区分,因为Game２中                                                        onTheoryofComputing(STOC)．NewYork:ACM,２００５:
+的Ii 和M 具有小的范数,而Rq              上的随机成员具有        ８４９３
+小范数的概率很低,Ii 和M１的分布不满足判定     [５] Regev O．LatticeＧbased cryptography [G]∕∕LNCS ４１１７:
+RingＧLWE 假设条件,不适合应用这一假设,文献          ProcofCRYPTO２００６．Berlin:Springer,２００６:１３１１４１                                                   [６] MicciancioD．Generalizedcompactknapsacks,cycliclattices,
+[２２]的安全性证明不成立．基于以上分析,ZhaoＧ           andefficientoneＧwayfunctions[J]．ComputationalComplexity,
+AKE方案[２２]不是一种安全可靠的IDＧAKE方案．          ２００７,１６(４):３６５４１１
+
+===== PDF PAGE 18 =====
+陈　明:后量子前向安全的可组合认证密钥交换方案                               ２１７５
+ [７] LyubashevskyV,PeikertC,RegevO．Onideallatticesand    [２０] Alkim E,DucasL,PöppelmannT,etal．PostＧquantumkey
+     learningwitherrorsoverrings [J]．Journalofthe ACM,          exchangeＧa new hope [C]∕∕Proc of the ２５th USENIX
+     ２０１３,６０(６):４３．１４３．３５                                           Security Symp (USENIX Security １６)．Berkeley, CA:
+ [８] Lyubashevsky V,PeikertC,Regev O．AtoolkitforringＧ        USENIX Association,２０１６:３２７３４３
+     LWEcryptography[G]∕∕LNCS７８８１:ProcofEUROCRYPT    [２１] Alkim E, Ducas Lo,Pöppelmann T,et al．NewHope
+     ２０１３．Berlin:Springer,２０１３:３５５４                                  withoutreconciliation [OL]．[２０２０Ｇ０３Ｇ１８]．https:∕∕eprint．
+ [９] KatzJ,Vaikuntanathan V．Smoothprojectivehashingand         iacr．org∕２０１６∕１１５７
+      passwordＧbasedauthenticatedkeyexchangefromlattices[G]                                                    [２２] ZhaoXiufeng,GaoHaiying,WangAilan．AnidentityＧbased
+     ∕∕LNCS５９１２:ProcofASIACRYPT２００９．Berlin:Springer,                                                                          authenticated key exchange protocol from RLWE [J]．     ２００９:６３６６５２                                                              JournalofComputerResearchand Development,２０１６,５３[１０] DingJintai,Xie Xiang,Lin Xiaolong．A simpleprovably                                                              (１１):２４８２２４９０(inChinese)     securekeyexchangeschemebasedonthelearningwitherrors                      的身份基认证密钥                                      (赵秀凤,高海英,王爱兰．基于RLWE     problem [OL]．[２０２０Ｇ０６Ｇ１０]．https:∕∕eprint．iacr．org∕２０１２∕                                             交换协议[J]．计算机研究与发展,２０１６,５３(１１):２４８２    ６８８                                                       ２４９０)[１１] DingJintai,GaoXinwei,TakagiT,etal．OnesampleringＧ                                                    [２３] Yang Zheng, Chen Yu, Luo Song．TwoＧmessage key   LWE withroundinganditsapplicationtokeyexchange[G]                                                                    exchangewithstrongsecurityfromideallattices[G]∕∕LNCS     ∕∕LNCS１１４６４:ProcofACNS２０１９．Berlin:Springer,２０１９:                                                             １０８０８:ProcofCTＧRSA２０１８．Berlin:Springer,２０１８:９８    ３２３３４３
+[１２] Ding Jintai, Branco P,Schmitt K．Key exchange and        １１５
+                                                    [２４] LiZichen,XieTing,ZhangJuanmei,etal．Postquantum      authenticated key exchange with reusable keys based on
+     RLWEassumption [OL]．[２０２０Ｇ０６Ｇ１０]．https:∕∕eprint．iacr．         authenticatedkeyexchangeprotocolbasedonringlearning
+                                                                    witherrorsproblem [J]．JournalofComputerResearchand      org∕２０１９∕６６５
+[１３] FujiokaA,Suzuki K,Xagawa K,etal．Stronglysecure          Development,２０１９,５６(１２):２６９４２７０１(inChinese)
+      authenticated key exchange from factoring,codes,and      (李子臣,谢婷,张卷美,等．基于RLWE的后量子认证密钥
+      lattices [G]∕∕LNCS ７２９３:Proc of PKC ２０１２．Berlin:       交换协议[J]．计算机研究与发展,２０１９,５６(１２):２６９４
+     Springer,２０１２:４６７４８４                                 ２７０１)
+[１４] FujiokaA,SuzukiK,XagawaK,etal．PracticalandpostＧ    [２５] DierksT,RescorlaE．Thetransportlayersecurity (TLS)
+     quantum authenticated keyexchangefrom oneＧwaysecure          protocolversion１．３[S]．CA:IETFCommunity,２０１８
+      keyencapsulation mechanism [C]∕∕Procofthe８th ACM    [２６] ZhengYuliang．Digitalsigncryptionorhowtoachievecost
+     SIGSACSymponInformation,ComputerandCommunications            (signature & encryption)＜＜cost(signature)＋cost
+     Security(ASIACCS２０１３)．New York:ACM,２０１３:８３９４          (encryption)[G]∕∕LNCS１２９４:ProcofCRYPTO９７．Berlin:
+[１５] WangHao,ZhaoChuan,XuQiuliang,etal．IdentityＧbased                                                              Springer,１９９７:１６５１７９
+      authenticatekeyexchangeprotocolfromlattice[C]∕∕Procof                                                    [２７] BonehD,ShenE,WatersB．Stronglyunforgeablesignatures
+     the９thIntConfonComputationalIntelligence & Security．                                                                   basedoncomputationalDiffieＧHellman [G]∕∕LNCS３９５８:
+     LosAlamitos,CA:IEEEComputerSociety,２０１３:５６４５６８                                                              ProcofPKC２００６．Berlin:Springer,２００６:２２９２４０[１６] PeikertC．LatticecryptographyfortheInternet[G]∕∕LNCS                                                    [２８] BonehD,BoyenX．Shortsignatureswithoutrandomoracles     ８７７２:ProcofPQCrypto２０１４．Berlin:Springer,２０１４:１９７                                                       [G]∕∕LNCS ３０２７:Proc of EUROCRYPT ２００４．Berlin:    ２１９                                                              Springer,２００４:５６７３[１７] Zhang Jiang, Zhang Zhenfeng, Ding Jintai, et al．                                                    [２９] Krawczyk H．SIGMA:The ‘SIGnＧandＧMAc’approachto      Authenticatedkeyexchangefromideallattices[G]∕∕LNCS                                                                     authenticatedDiffieＧHellmananditsuseintheIKEprotocols     ９０５７:ProcofEUROCRYPT２０１５．Berlin:Springer,２０１５:                                                              [G]∕∕LNCS２７２９:ProcofCRYPTO２００３．Berlin:Springer,    ７１９７５１                                                        ２００３:４００４２５[１８] BosJW,CostelloC,Naehrig M,etal．PostＧquantum key
+                                                    [３０] LamacchuaBA,LauterK,MityaginA．Strongersecurityof     exchangefortheTLSprotocolfromtheringlearning with
+     errorsproblem [C]∕∕Proc ofthe ３６th IEEE Symp on           authenticated key exchange [G]∕∕LNCS ４７８４:Proc of
+                                                                 ProvSec２００７．Berlin:Springer,２００７:１１６      SecurityandPrivacy (S&P２０１５)．Piscataway,NJ:IEEE,
+     ２０１５:５５３５７０                                     [３１] Krawczyk H．HMQV:A highＧperformancesecure DiffieＧ
+[１９] BosJW,CostelloC,DucasL,etal．Frodo:Takeoffthe         Hellmanprotocol[G]∕∕LNCS３６２１:ProcofCRYPTO２００５．
+     ring!practical,quantumＧsecurekeyexchangefromLWE[C]          Berlin:Springer,２００５:５４６５６６
+     ∕∕Procofthe２３rd ACM SIGSAC Confon Computerand    [３２] FluhrerS．CryptanalysisofringＧLWE basedkeyexchange
+      CommunicationsSecurity (CCS２０１６)．New York:ACM,          withkeysharereuse[OL]．[２０２０Ｇ０５Ｇ１１]．https:∕∕eprint．iacr．
+     ２０１６:１００６１０１８                                                org∕２０１６∕０８５
+
+===== PDF PAGE 19 =====
+２１７６                                               计算机研究与发展　２０２０,５７(１０)
+[３３] DingJintai,FluhrerS,SaraswathyRV．Completeattackon    [３８] Chen Ming．Stronglysecureanonymousimplicitauthentication
+    RLWE key exchange with reused keys, without signal        and key agreementforroaming services [J]．Journalof
+     leakage[G]∕∕LNCS１０９４６:Procof ACISP２０１８．Berlin:         ComputerResearchandDevelopment,２０１７,５４(１２):２７７２
+     Springer,２０１８:４６７４８６                                     ２７８４(inChinese)
+[３４] AgrawalS,BonehD,BoyenX,Efficientlattice(H)IBEin      (陈明．强安全的匿名隐式漫游认证与密钥协商方案[J]．计
+    the standard  model [G] ∕∕LNCS ６１１０: Proc of        算机研究与发展,２０１７,５４(１２):２７７２２７８４)
+     EUROCRYPT２０１０．Berlin:Springer,２０１０:５５３５７２         [３９] JagerT,KohlarF,SchägeS,etal．OnthesecurityofTLSＧ
+[３５] GalbraithS D,Paterson K G,Smart N P．Pairingsfor         DHEinthestandard model [G]∕∕LNCS ７４１７:Proc of
+                                                             CRYPTO２０１２．Berlin:Springer,２０１２:２７３２９３      cryptographers [J]．Discrete Applied Mathematics,２００８,
+                                                    [４０] BauerA,GilbertH,RenaultG,etal．Assessmentofthe     １５６(１６):３１１３３１２１
+                                                                keyＧreuseresilienceofNewHope[G]∕∕LNCS１１４０５:Procof[３６] CremersC,Feltz M．BeyondeCK:Perfectforwardsecrecy                                                               CTＧRSA２０１９．Berlin:Springer,２０１９:２７２２９２     under actor compromise and ephemeralＧkey reveal [J]．
+     DesignsCodes& Cryptography,２０１５,７４(１):１８３２１８                                                         Chen Ming,bornin １９７８．PhD,associate[３７] WangFei,Chen Ming．AnidentityＧbasedauthenticatedkey
+     agreementschemewithperfectforwardsecrecy[J]．Journal                professorofYichun University．Memberof
+     ofCryptologicResearch,２０２０,７(１):５６６８(inChinese)              CCF．His main research interestsinclude
+   (王霏,陈明．完美前向安全的基于身份认证密钥协商方案                    informationsecurity,securityprotocolanalysis
+     [J]．密码学报,２０２０,７(１):５６６８)                               anddesign．
+
+􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍􀪍
+
+          «计算机研究与发展»征订启事
+   «计算机研究与发展»(JournalofComputerResearchandDevelopment)是中国科学院计算技术研究所
+和中国计算机学会联合主办、科学出版社出版的学术性刊物,中国计算机学会会刊．主要刊登计算机科学技
+术领域高水平的学术论文、最新科研成果和重大应用成果．读者对象为从事计算机研究与开发的研究人员、
+工程技术人员、各大专院校计算机相关专业的师生以及高新企业研发人员等．
+  «计算机研究与发展»于１９５８年创刊,是我国第一个计算机刊物,现已成为我国计算机领域权威性的学
+术期刊之一．并历次被评为我国计算机类核心期刊,多次被评为“中国百种杰出学术期刊”．此外,还被«中国
+学术期刊文摘»、«中国科学引文索引»、“中国科学引文数据库”、“中国科技论文统计源数据库”、美国工程索
+引(Ei)检索系统、日本«科学技术文献速报»、俄罗斯«文摘杂志»、英国«科学文摘»(SA)等国内外重要检索机
+构收录．
+   国内邮发代号:２Ｇ６５４;国外发行代号:M６０３
+   国内统一连续出版物号:CN１１Ｇ１７７７∕TP
+   国际标准连续出版物号:ISSN１０００Ｇ１２３９
+  联系方式:
+  １００１９０　北京中关村科学院南路６号«计算机研究与发展»编辑部
+   电话:＋８６(１０)６２６２０６９６(兼传真);＋８６(１０)６２６００３５０
+    Email:crad＠ict．ac．cn
+   http:∕∕crad．ict．ac．cn

@@ -1,0 +1,485 @@
+===== PDF PAGE 1 =====
+基于层次化量子蝙蝠算法的特征选择
+张兴旺, 贺晓丽, 陈思, 折延宏
+
+引用本文
+
+张兴旺, 贺晓丽, 陈思, 折延宏. 基于层次化量子蝙蝠算法的特征选择[J]. 计算机科学, 2026, 53(7):
+
+195-204.
+
+ZHANG Xingwang, HE Xiaoli, CHEN Si, SHE Yanhong. Feature Selection Based on Hierarchical
+
+Quantum Bat Algorithm [J]. Computer Science, 2026, 53(7): 195-204.
+
+
+
+
+
+相似文章推荐（请使用火狐或 IE 浏览器查看文章）
+
+Similar articles recommended (Please use Firefox or IE to view the article)
+
+基于集成学习与权重约束的网络流量对抗训练防御框架
+
+Collaborative Adversarial Training Defense Framework for Network Traffic Classification Based on
+
+Ensemble Learning and Weight Constraint
+
+计算机科学, 2026, 53(7): 397-405. https://doi.org/10.11896/jsjkx.250600039
+
+
+基于注意力机制拓扑特征融合的AETC图像分类模型
+
+AETC:Image Classification Model via Attention-based Topological Features Fusion
+
+计算机科学, 2026, 53(7): 24-33. https://doi.org/10.11896/jsjkx.250700003
+
+
+ChainGrid-V:面向跨域车联网的高可扩展区块链存储与共识框架
+
+ChainGrid-V:A Highly Scalable Blockchain Storage and Consensus Framework for Cross-
+
+domainInternet of Vehicles
+
+计算机科学, 2026, 53(6A): 250800060-8. https://doi.org/10.11896/jsjkx.250800060
+
+
+基于多模态特征融合的智能识别方法
+
+Intelligent Recognition Method Based on Multimodal Feature Fusion
+
+计算机科学, 2026, 53(6A): 250700065-10. https://doi.org/10.11896/jsjkx.250700065
+
+
+基于属性值类重叠度的不平衡数据学习方法
+
+Imbalanced Data Learning Approach Utilizing Feature Value Based Class Overlap Degree
+
+计算机科学, 2026, 53(6A): 250600199-8. https://doi.org/10.11896/jsjkx.250600199
+
+===== PDF PAGE 2 =====
+http://www．jsjkx．com
+                                                                                 DOI:１０．１１８９６/jsjkx．２５０５０００３２
+
+基于层次化量子蝙蝠算法的特征选择
+
+张兴旺１  贺晓丽２,３  陈　思２  折延宏２,３
+１西安石油大学计算机学院　西安７１００６５
+２西安石油大学理学院　西安７１００６５
+３西北大学概念认知与智能研究中心　西安７１０１２７
+ 　(２３２１１０６０８４８＠stumail．xsyu．edu．cn)
+　
+摘　要　特征选择(FS)作为模式识别的核心步骤,旨在通过降维优化分类性能与计算效率.针对现有群体智能算法,如蝙蝠
+算法(BA)在高维数据中面临的搜索效率低、易陷入局部最优等挑战,设计了一种基于信息增益率和随机森林的层次化量子蝙
+ 蝠算法(HierarchicalQuantumBatAlgorithmBasedonInformationGainRatioandRandomForest,IRHQBA).首先构建混合
+                                                   初始化阶过滤式预选机制,融合Pearson相关性、信息增益率(IGR)与随机森林(RF)三重评估,高效剔除冗余特征;其次,在BA
+段,基于特征重要性排序进行分层子特征分组,并引入量子计算优化搜索空间与突变策略增强多样性;最后,通过分层协同优化
+与动态突变机制提升特征子集的分类性能.
+关键词:特征选择;蝙蝠算法;量子计算;特征重要性;分类
+中图分类号　TP３１１．１３
+　
+FeatureSelectionBasedonHierarchicalQuantumBatAlgorithm
+ZHANGXingwang１,HEXiaoli２,３,CHENSi２andSHEYanhong２,３
+１SchoolofComputerScience,Xi’anShiyouUniversity,Xi’an７１００６５,China
+２SchoolofScience,Xi’anShiyouUniversity,Xi’an７１００６５,China
+３CenterforConceptualCognitionandIntelligence,NorthwestUniversity,Xi’an７１０１２７,China
+　
+Abstract　Featureselection(FS),asacorestepinpatternrecognition,aimstooptimizeclassificationperformanceandcomputaＧ
+tionalefficiencythroughdimensionalityreduction．Toaddressthechallengesfacedbyexistingswarmintelligencealgorithms,such
+astheBA(BatAlgorithm),inhighＧdimensionaldata,includinglowsearchefficiencyandsusceptibilitytolocaloptima,aIRHQBA
+ (HierarchicalQuantumBatAlgorithmBasedonInformationGainRatioandRandomForest)isdesigned．Firstly,ahybridfilterＧ
+basedpreＧselectionmechanismisconstructed,integratingPearsoncorrelation,IGR(InformationGainRatio),andRF(Random
+Forest)fortripleevaluation,toefficientlyeliminateredundantfeatures．Secondly,intheBAinitializationstage,hierarchicalsubＧ
+featuregroupingisconductedbasedonfeatureimportanceranking,andquantumcomputingisintroducedtooptimizethesearch
+spaceandmutationstrategytoenhancediversity．Finally,theclassificationperformanceoffeaturesubsetsisimprovedthroughhiＧ
+erarchicalcollaborativeoptimizationanddynamicmutationmechanisms．
+Keywords　Featureselection,Batalgorithm,Quantumcomputing,Featureimportance,Classification
+　
+                               量不相关、冗余特征,这不仅增加了计算复杂度、引入噪声,还１　引言                             会显著影响系统准确性和性能,导致模型过拟合、泛化能力降
+  机器学习在多领域广泛应用,高维数据集在实际应用中  低[２].特征选择已成为解决此问题的首选方法[３].
+越来越普遍,其规模庞大、特征维度高,为模式识别、预测分析       特征选择(FeatureSelection,FS)[４]是通过筛选原始特征
+和决策支持提供了丰富信息[１].然而,现实世界数据常含大  中的关键信息来降低数据维度的技术,能去除冗余和不相关
+ 到稿日期:２０２５Ｇ０５Ｇ１２　返修日期:２０２５Ｇ０９Ｇ１２
+ 基金项目:国家自然科学基金(１２４７１４４２,１２００１４２２,６１９７６２４４,１２１７１３８８);陕西省自然科学基础研究计划(２０２３ＧJCＧYBＧ０２７,２０２５JCＧYBQNＧ１０２,
+２０２５JCＧYBMSＧ０３４);教育部人文社会科学研究一般项目(２４XJC７２０４０００１);陕西数理基础科学研究项目(２３JSQ０４７);陕西省教育厅高校青年创
+ 新团队项目(２３JP１３０,２３JP１３２)
+ThisworkwassupportedbytheNationalNaturalScienceFoundationofChina(１２４７１４４２,１２００１４２２,６１９７６２４４,１２１７１３８８),NaturalScienceBasic
+ResearchProgramofShaanxiProvince(２０２３ＧJCＧYBＧ０２７,２０２５JCＧYBQNＧ１０２,２０２５JCＧYBMSＧ０３４),GeneralProjectofHumanitiesandSocialSciＧ
+encesResearchofMinistryofEducation(２４XJC７２０４０００１),ShaanxiBasicResearchProjectofMathematicsandPhysics(２３JSQ０４７)andYouthInＧ
+novationTeamProjectofShaanxiProvincialDepartmentofEducation(２３JP１３０,２３JP１３２)．
+ 通信作者:贺晓丽(hexl＠xsyu．edu．cn)
+
+===== PDF PAGE 3 =====
+计算机科学                                                                                   Vol．５３,No．７,July２０２６ １９６                                                 ComputerScience
+
+                                                     的情特征,提升模型性能、泛化能力和可解释性,同时降低计算复  在面对简单问题时,可能会出现收敛速度慢于传统BA
+杂度、避免过拟合.其优势在于降维后分类器性能可保持,甚  况,需要增强BA 的局部开发能力.因此,在特征选择时,BA
+至优于原始水平,因而受到广泛关注.然而,特征选择是NP  在局部开发时与信息论方法相结合,旨在以高价值信息为导
+难问题[５],主要挑战在于从可能的特征子集中确定最佳解的  向进行高效开发.此外,研究表明,初始化策略的选择对算法
+计算复杂性.特征选择技术主要分为过滤法、包装法和嵌入   的性能有显著影响[２０].文献[１２]提出一种基于信息增益(InＧ
+                                                     的种法３种类型.                              formationGain,IG)值的子特征分组策略来初始化PSO
+                                                值更高的特征来  近年来,混合方法[６]作为一种融合了过滤法与包装法的  群,从而使种群在初始化时更倾向于选择IG
+第四种手段,通过整合过滤法和包装法的优势,显著提升了性  提高初始种群质量.
+                                                     值高的能.进化算法[７Ｇ８](EvolutionaryAlgorithms,EA)是强大的优     然而,单独使用IG 时,算法会倾向于选择那些IG
+化算法,能够有效地为复杂问题获得近乎最优的解决方案,经  特征且具有大量值的属性特征,其中可能会存在一些不太重
+常被用作特征选择的包装器方法.这些算法已被广泛应用于  要的特征,虽然它们自身的IG 较高,但在整个特征集合中,与
+                        能够各种科学和工程领域[９].与传统的优化算法相比,EA    其他特征的组合并不是最有价值的,甚至会带来一些噪声.
+逃避局部最优值并广泛探索解决方案空间,从而获得有效的  不难发现,这类特征的IG 值虽然高,但对分类任务的贡献不
+               与过滤器方法相结合的混结果.研究人员开发了一种将EA              大.为了提高BA 在特征选择方面的性能,本文提出了一种
+合特征选择算法[１０].文献[１１]提出了一种新的特征选择算   基于信息增益率(InformationGainRatio,IGR)和随机森林
+                                                     的种法,将信息增益比与遗传算法相结合,旨在提高特征选择的效   (RandomForest,RF)的子特征分组策略来初始化BA
+率和准确性.Gao等[１２]提出了基于信息增益比的子特征分  群.对于分类任务,该方法融合了多种策略来保证初始种群
+组粒子群优化(PSO)算法用于特征选择,并通过结合信息论  的高质量,并基于量子计算重新设计了搜索因子,以提高搜索
+方法与种群初始化及学习过程来选择特征.Karimi等[１３]提  效率.
+出了一种基于蚁群优化的名为SemiACO 的特征选择方法,    本文的主要贡献总结如下:
+通过考虑特征之间的最小冗余以及特征与类标签之间的最大                               １)结合特征过滤方法协同作用优化算法的搜索空间,并
+相关性来选择特征.文献[１４]提出了一种具有显式粒子表示  引入了一种涉及子特征分组的新型初始化策略.在初始化之
+(ESAPSO)的创新PSO 方法,使用最大信息系数对特征进行  前,特征根据重要性大小分为３组,为每组分配不同的初始化
+排序.这些研究共同证明了将信息方法与优化算法相结合以  策略.
+进行特征选择的有效性.                        ２)在BA 基础上集成量子计算算子,重新定义蝙蝠个体
+   蝙蝠算法(BatAlgorithm,BA)[１５]作为一种进化算法,因  位置信息更新公式,赋予算法更高级的搜索方式,同时原始频
+具备参数少、动态平衡全局搜索和局部搜索、收敛速度快等优  率参数自适应、动态调整.这增强了算法前期全局搜索和后
+点而受到广泛关注,在特征选择方面,已经显示出实际应用价  期局部挖掘的能力.
+    通过模拟蝙蝠在复杂环境里利用回声定位捕食的行值.BA                          ３)提出了种群分层策略,通过层次间信息交换提高了
+为,从而在高维特征空间中实现有效的探索并寻找到最佳特  BA 搜索效率,最佳层在探索和开发中起引导作用.同时引
+征子集.但原始的BA 在寻优过程中容易陷入局部最优,为  入了以特征重要性为导向的突变策略,协同作用下使特征子
+了显著提高元启发式算法的性能,许多研究人员致力于将量  集聚焦关键特征,增强于算法寻优性能.
+子计算(Quantum Computation,QC)技术[１６]与进化算法相结    本文第２章介绍背景知识,包括BA 和信息论方法;第３
+合.量子化机制具有量子隧穿效应,即允许种群以概率形式  章详细介绍本文算法及其实现步骤;第４和第５章分别给出
+                       依赖速“穿透”局部最优区域,扩大搜索范围.同时,传统BA     实验设计和结果分析;最后总结全文并展望未来.
+度变量,容易陷入历史轨迹的惯性;而量子化更新通过势阱中                          ２　背景心(全局最优与种群平均位置)动态调整搜索方向,减少速度
+                     需调节响度依赖性,降低对局部最优的依赖.此外,传统BA        ２．１　蝙蝠算法
+                   一般仅需控制收(Ai)、脉冲发射率(ri)等参数,而量子化BA            蝙蝠算法由Yang提出,是一种受自然界蝙蝠群体的捕
+缩因子(fi)来自动平衡探索与开发,减少了对初始参数设置  食行为启发而设计的优化算法[１５].该算法通过模拟蝙蝠回
+的敏感性.结合QC原理的算法示例如下:文献[１７]结合了  声定位的特性,结合频率调谐、脉冲发射率和响度的变化,实
+量子启发机制和群体智能技术,提出了一种创新的多目标包  现了高效的优化过程.作为一种全局优化器,BA 不仅具备
+装式特征选择方法,显著提升了高维特征选择的效率和鲁棒  强大的随机搜索能力,还能在局部搜索和全局搜索之间自动
+性;文献[１８]为高维特征选择提供了一种量子启发的进化算  切换,这一机制由蝙蝠个体的发射率和响度参数控制[２１].
+法,通过量子并行性和动态优化机制,在精度和效率上均超越    算法的核心步骤包括蝙蝠位置的更新,其初始阶段通过
+了传统方法;此外,还有量子启发多verse优化(QIMO)[１９]等  随机飞行实现.t   t  t
+                                              i                                          ＝ωvi＋(pi－xi)􀅰fi                   (１)其他量子启发算法.与传统QC 不同,这些量子启发算法不   vt＋１
+需要量子计算机来执行.因此,提出了一种基于QC 的BA      fi＝fmin＋(fmax－fmin)􀅰βt  t                           (２)
+                                                     i        通过量子行为扩展了蝙蝠个体的搜索范   xt＋１i ＝xi＋v                                                                                   (３)群体策略,使得BA                                                         t  t                                        i分别代表蝙蝠个体的位置和速度围,形成一种新的混合搜索优化算法.值得注意的是,量子化     在第t次迭代中,xi和v
+                                                为惯性权重机制更侧重于全局最优(势阱中心),导致局部开发能力下降,  信息,pti表示该个体迄今为止发现的最佳位置,ω
+
+===== PDF PAGE 4 =====
+张兴旺,等:基于层次化量子蝙蝠算法的特征选择                            １９７
+因子.fi表示蝙蝠个体i的脉冲频率,β是一个[０,１]内的随  征和目标变量的均值.
+机数,fmin和fmax分别表示脉冲频率的最小值和最大值.     ２．２．２　信息增益率
+                                          对各特征的重要性进行   若随机数rand＞ri,蝙蝠个体将在当前最优解附近进行    在特征选择过程中引入了IGR
+局部搜索,并生成新的解.                     评估.IGR 是IG 的改进版,结合了IG 与特征的内在信息(属
+   xnew＝pt＋εAt                          (４)  性熵),在特征选择中表现出色.它引入内在价值作为惩罚
+其中,At是响度的平均值;ε∈[－１,１]为一个随机数.      项,抑制多值特征,使选择更公正,准确反映特征的实际贡献.
+  经过前两步操作后,若新解的适应度值优于当前解,则接      R(D,X)＝GI(D,X)                     (８)                                                I(X)受该更优解.与此同时,系统会更新响度A 和脉冲发射率ri,
+其更新公式如下:                                    I(X)＝－∑P(xi)log(P(xi))               (９)
+  At＋１i      t                         其中,I(X)表示特征X 的内在信息量,P(xi)表示特征值xi出     ＝α∗Ai,α∈[０,１]                   (５)
+  rt＋１i    ０                          现的概率.IGR 通过考虑特征固有熵,减轻对多值特征的偏    ＝ri[１－exp(－γt)],γ≥０               (６)  α和γ 分别代表脉冲频率的增加系数和脉冲响度的衰  好,是适合特征值多样化场景的平衡全面的评估标准.其中,
+减系数.                               ２．２．３　随机森林
+２．２　信息度量                             使用IGR 评估的同时,还引入了RF模型对各特征的重
+  在特征选择领域,信息论是关键数学工具,它通过熵、互  要性进行评估.该方法通过构建多个决策树并在每棵树的节
+信息等概念衡量特征信息量,剖析特征与目标变量的内在联  点分裂过程中记录各特征对分裂质量的贡献(如基尼指数下
+系,有效提升模型性能及数据处理的效率和精度.        降或IG 提升),从而量化每个特征对模型预测性能的整体影
+                             响.最终,根据累积的重要性得分对全部特征进行排序,并结２．２．１　Pearson相关系数
+  Pearson相关系数用于衡量变量间的线性关系,取值为  合每个特征的IGR 值对特征进行质量筛选.在这一融合过程
+－１到１.在特征选择中,若两特征的相关系数接近１或－１,  中,随机森林凭借其在特征重要性评估方面的独特优势,对信
+表明它们可能包含重复信息,可去掉其中一个以减少冗余并  息增益筛选出的高频特征进行二次优化,将那些易引发过拟
+提升模型泛化能力.但该系数对非线性关系不敏感,因此常  合或与其他特征存在冗余的部分精准剔除.
+结合信息增益率和随机森林方法,以获得更全面的特征评估.                         ３　基于信息方法的多策略蝙蝠算法其计算式如下:
+                              通过将信息论的方法与基于量子计算和优化设计策略的       ∑(xi－x－)(yi－y－)  r＝                    ２                (７)                          的混       ∑(xi－x－)２∑(yi－y－)                蝙蝠算法(BA)相结合,本文提出了一种名为IRHQBA
+其中,xi和yi分别表示特征和目标变量的观测值,x－和y－表示特  合算法.图１详细展示了IRHQBA 的完整流程.
+
+
+
+
+
+                                 图１　IRHQBA 的流程图
+                                        Fig．１　FlowchartofIRHQBA
+３．１　特征约简和层次化子特征分组             特征分组策略.
+  在机器学习领域,当面对大型数据集时,一个棘手的问题     在特征约简阶段,先用Pearson相关系数筛除高相关性
+是数据中冗余或不相关的特征会严重拖累模型性能.为有效  特征,然后分别利用IGR 和RF计算各特征的重要性.重要
+化解这一难题,利用信息论方法,设计特征约简与层次化子  性分数被归一化为０到１之间.通过排序重要性分数,选择
+
+===== PDF PAGE 5 =====
+计算机科学                                                                                   Vol．５３,No．７,July２０２６ １９８                                                 ComputerScience
+阈值来区分明显不重要的特征和其他特征.如果特征的重要   St＋１i                                     ＝P±fti􀅰|St＋１mean－Sti|ln􀅰 ( u                                                １ )            (１５)性大于阈值,则保留特征;如果其重要性低于阈值,则删除特
+                                                 μ＝rand(０,１)                          (１６)征.假设在基于IGR 和RF指标选择的约简特征子集中可能                                                      P＝μ􀅰Pbest＋(１－μ)􀅰gbest                  (１７)存在显著特征,因此,它们的并集用于进一步的特征优化.
+                                       式(１５)中的P 由式(１７)组成,Pbest代表个体历史搜索到   完成特征约简后,在IRHQBA 算法构建过程中,充分利                                              t＋１用前一阶段信息增益率和随机森林结合所产出的特征重要性   的最佳位置,gbest代表种群最佳层中的个体,Smean是在第t＋１
+评估成果.特征重要性数值越高,则特征的关键程度越显著.  次迭代时对每个个体的Pbest求和并除以种群规模得到的种群
+                             平均位置,u是一个服从０~１均匀分布的随机数.传统BA基于此,对所有特征开展层次化子特征分组:将全部特征依据                             依赖速度变量,容易陷入历史轨迹的惯性;而量子化更新通过重要性值从高到低依次排序,随后把重要性值位居前３０％的                             势阱中心(全局最优与种群平均位置)动态调整搜索方向,降特征归入第１组(F１),把IGR 处于最末３０％的特征纳入第二                             低对局部最优的依赖,增强探索能力.组(F２),剩余特征则划归到第三组(F３).进入后续的初始化                    ti是本文设计的一个基于全局最优                                       此外,式(１５)中变量f阶段,F１,F２,F３这３组特征将被随机挑选,用于个体的搭建.                            位置的自适应频率优化策略.该策略动态优化算法中重要参而对于每个个体,其随机初始化过程如式(１０)所示:                            数的频率,以帮助算法实现更好的性能.频率参数的更新公       rand＜R(D,j), j∈Fk    Si,j＝ {                                (１０)  式改为:        rand＜０．５,    otherwise    j表示第i个个体的第j                               fi,new＝[fmin＋(fmax－fmin)]􀅰ρ              (１８)其中,Si,            个特征;R(D,j)表示该特征                                                                 Tmax重要性值,其值被映射到０到１之间;Fk表示预选的子特征,    ρ＝                                  (１９)                                                     Tmax＋１０t
+在初始化过程中,Fk会为每个个体重新选择.假设种群规模      式(１８)中的fmin和fmax是一个固定值,分别取０．４和０．９;
+为N,则Fk会被随机选择N 次.式(１０)表明,对于属于Fk的  Tmax代表最大迭代次数;t代表当前迭代次数;ρ随着迭代次数
+特征,其特征重要性值会与０到１之间的随机数进行比较.  增加线性衰减,从１递减到０．１.对频率更新公式的分析揭
+对于不在子特征Fk中的特征,使用默认阈值０．５来决定其是  示,在算法迭代的早期(即t较小时),ρ的值较大,这使得个体
+否被选择.对Fk中的特征基于重要性分层分组:高价值的特  蝙蝠获得较高的脉冲频率,有助于在早期阶段增强算法的全
+征更容易选中,特征重要性相对较低的在随机初始化阶段用  局搜索能力.另一方面,在算法迭代的后期(即t较大时),ρ
+特征重要性值替换其阈值,从而降低它们被选择的概率.这  的值较小,导致个体蝙蝠获得较低的脉冲频率,增强了局部搜
+样的操作有助于种群初始化时选择更有价值的特征.     索能力.
+３．２　基于量子计算的搜索算子                ３．３　种群分层与突变协同优化策略
+  尽管蝙蝠算法具有能够处理多种复杂优化问题的基本并                                在优化算法中,种群结构影响收敛速度、多样性和个体互
+行结构,但作为一种基于群体智能的传统随机优化算法,它的  动.传统单一种群易陷入局部最优,分层策略可维持多样搜
+探索能力有限,在某些情况下容易陷入局部最优解.增强元  索路径,提升全局搜索效能.根据种群个体的适应度大小,即
+启发式算法性能的一个有效策略是利用量子计算[１６].为此,  分类性能将种群分为３层,低层广泛搜索,高层精细搜索,各
+基于量子计算理论,结合频率参数的动态调整,设计了一种新  层协同优化.这种模式平衡了全局与局部搜索,加速收敛,低
+型算法.                        层借助高层信息提高搜索质量.
+                                                算法框架  基于量子计算搜索算子,蝙蝠个体的状态需要通过波函    为进一步强化算法的搜索能力,在IRHQBA
+                                                          的数Ψ(S,t)来描述,S＝(x,y,z)表示蝙蝠个体在三维空间中的  下,设计了与之适配的突变策略.具体而言,在IRHQBA
+位置向量.从蝙蝠算法的全局收敛性来看,必须存在一个以  突变策略中,创新性地引入了由最佳层个体以及特征重要性
+最优解Pi为中心的吸引势场.个体蝙蝠所处潜力场的势能函  共同引导的两种突变方法.
+数可以表示为:　                       第一种为个体特征突变方法.在该方法中,种群个体获
+   V(x)＝|S－p|２                          (１１)  得新解后,与最佳层随机选中个体对比适应度,若新个体适应
+  然后,根据定态薛定谔方程,归一化的波函数为:     度更高,则认为该个体位置代表的性能相对较差,启动突变策
+                            略.突变时,利用特征重要性在选中的最佳层个体附近进行   Ψ(Y)＝１Le－２Y            L                          (１２)                             精细探索,使个体以特征贡献为导向探寻更优解,同时丢弃劣
+  相应的概率密度函数Q 可以表示为:          质解.此方法重点识别最佳解中的选中与未选特征,依据特
+                   L   Q(Y)＝|Ψ(Y)|２＝１Le－２Y                                        (１３)  征数量实施双向突变,所选特征多则反向突变,将重要性低的
+                             选中特征转为未选;反之则正向突变,把重要性高的未选特征  概率分布函数F 为:                            转为选中.这种双向策略平衡了个体特征激活状态,提升了             －２YL
+   F(Y)＝e                              (１４)  算法优化效率与准确性,推动群体向更优解演进.
+  为了得到个体蝙蝠在量子空间中的位置表达式,使用了    第二种为交叉突变方法.在种群层次结构中,为挖掘最
+常用的蒙特卡罗随机模拟方法,这是一种常用的简单概率分  差层个体潜在价值,以最佳层个体解与最差层个体历史最佳
+布函数形式.具有量子行为的蝙蝠个体位置公式被重新定  解为亲本,随机选取两者共同特征位置进行交叉结合,生成新
+义为:                         个体.该方法既能催生多样化后代,又能确保新解朝着解空
+
+===== PDF PAGE 6 =====
+张兴旺,等:基于层次化量子蝙蝠算法的特征选择                            １９９
+间更优方向探索.其具体过程如图２所示,首先从种群最佳    １３．　IfFitnessoffi＜FitnessGbestthen
+层挑选一个最佳解,再随机选取最差层解的历史最佳解.假   １４．　　更新Pbesti和Gbest;
+设所选取的两个个体解的特征分布如图２中①所示,其中双    １５．　else                                      １６．　　S(选中),U(未被选中)←统计Gbest所有位置上选中和未向箭头所指即为被选中发生交叉的特征位置.图２中②展示                                    被选中的征数量;的新解,是在最佳层个体解的基础上,在选定位置与突变个体                                               １７．　　IfS≥Uthen的历史最佳解对应位置特征交叉结合而得.                                       １８．　　　对Gbest执行特征反向突变;   综上所述,IRHQBA 算法的特征突变策略,既利用优质                                                    １９．　　else特征子集,又通过局部精细搜寻与交叉结合广泛探索的突变                                       ２０．　　　对Gbest执行特征正向突变;
+手段,实现解空间探索与开发的平衡,保障算法在复杂环境下   ２１．　　end　
+的高效运行.                                ２２．　　将特征突变后得到的新个体解赋给Offspringi;
+                                               ２３．　　更新Pbesti和Gbest;
+                                                   ２４．　end
+                                      ２５．　通过对Pbest和Gbest交叉结合使最差层所有个体通过交叉突
+                                   变得到新个体;
+                                                     ２６．　eval＝eval＋N;
+                                            ２７．　t＝t＋１;
+                                                           ２８．endwhile
+                          ４　实验设置
+                                系统配置:所有实验均使用相同的硬件和软件平台,运行
+                                          环境为Windows１１系统,配备Inteli９Ｇ１３９００HX２．２０GHz         图２　个体解的特征交叉突变                                      CPU 和１６GB内存.使用的软件是MATLAB２０２１a.     Fig．２　Characteristiccrossmutationofindividualsolutions                                 ４．１　分类数据集
+   算法１概述了IRHQBA 的主要操作步骤.在此算法中,                                 在１３个数据集上验证特征选择方法,特征数１４~８５６
+t表示当前迭代计数,T 表示最大迭代次数;eval表示当前评                                个,实例数最多４６０１个,类别数最多２６个,这些数据集来自                            表 估计数,Maxeval表示最大评估次数;N 表示种群数目;D                               UCI机器学习库,被广泛用于算法性能评估,能从多维度为研
+ 示数据集的特征维度,Si表示初始化生成的个体;Fitness表                             究提供数据支持.数据集的详细介绍如表１所列.
+示个体解通过模型分类后所得适应度值,该值越低,代表个体                表示经过探索生成的后            表１　数据集的详细介绍 的特征集分类能力越强;Offspring                                                                             Table１　Detailsofthedatasets 代个体,Pbest表示该个体在历史探索中找到的最佳位置,                                                                 Name            Instance    Features    Classes
+Gbest表示最佳层中被随机选中的个体.在IRHQBA 中,个                   Australian          ６９０      １４     ２
+体经多次优化迭代,每次迭代后根据个体解的空间位置进行                GermanZoo           １０００１０１      ２４１６     ７４
+优劣判断,劣势个体借助层次间交流信息,使用突变策略优化                 Ionosphere         ３５１      ３４     ２
+探索方向,同时持续更新个体历史最佳解与最佳层个体,直至                DermatologyKrVsKpEw         ３１９６３６６      ３６３４     ６２
+满足迭代条件停止.                                                       Spambase         ４６０１      ５７     ２         算法流程                                                 Sonar           ２０８      ６０     ２ 算法１　IRHQBA                                                       Musk１           ４７６      １６６     ２
+ 输入:种群S,当前数据集中７０％的样本和标签                                   SemeionＧhandwrittenＧdigit    １５９３      ２５６     １０                                                                                  Arrhythmia         ４５２      ２７９     １６ 输出:最佳层中最优特征子集Gbest                                                       Isolet５          １５５９      ６１７     ２６
+１．计算所有特征对的Pearson相关系数,系数大于０．９的特征对只保              CNAEＧ９          １０８０      ８５６     ９
+ 留一个特征;                                    ４．２　基线２．结合IGR 和RF评估特征的重要性;                               为了评估本文方法的性能,将其与５种现有的特征选择３．forSido                                进化算法(EA)进行了比较.对比的算法分别是ISPSO[１２],４．　随机选择子特征组;                                       NRBO[２２],LEA[２３],GJO[２４],COOT[２５],它们都是近两年被提５．　基于式(１０)初始化Si并计算FitnessSi;                             出的优秀的进化算法.６．end
+                                  ４．３　参数设置７．根据适应度将种群分为最佳层、正常层、最差层,同时记录所有个体
+  的历史最佳                                种群规模设为３０,最大迭代次数为１００,评估限制为
+８．whileeval＜Maxeval&&t＜Tdo               ３０００,达到任一终止条件则算法停止.特征选择下界０、上界
+９．fori＝１:Ndo                        １.数据集按７０％训练、３０％测试划分,用k 最近邻分类器
+１０．　forj＝１:Ddo                        (k＝５,在许多实验中常用)评估[２６],训练阶段优化特征集并
+１１．　　基于式(１５)－式(１８)计算Offspringi;           应用于测试集.每种算法在相同数据集上独立运行３０次,取
+１２．　end                        平均最佳结果进行分析比较.表２列出了各算法参数设置.
+
+===== PDF PAGE 7 =====
+计算机科学                                                                                  Vol．５３,No．７,July２０２６２００                                                 ComputerScience
+           表２　参数设置
+               Table２　Parametersettings        ５　实验和结果讨论
+      比较算法  年份                   参数     取值       ５．１　通过指标进行性能分析                  种群规模                                   ３０                  惯性权重               本节用平均误分类误差(MCE)、F１分数评估IRHQBA                                         ０．０１         ISPSO    ２０２４  自我认知系数                                       ０．４        算法及比较算法在１３个数据集上的性能,并用Wilcoxon符                社会认知系数                                        表示分类模型预测错误的样                                       ０．９       号秩检验比较性能差异.MCE                  种群规模                                   ３０        COOT    ２０２１   惯性权重            本比例,值越低,表明模型的分类性能越好;F１分数是精确率                                       ０．６
+                  种群规模     ３０       和召回率的调和平均数,取值为０到１,值越高,表示模型在
+         LEA    ２０２４  刺激阶段的阈值                                       ０．５       精确率和召回率之间的平衡性越好.表３和表４列出了实验                角色阶段的阈值
+                                                         和                                       ０．５          结果,IRHQBA 算法在１２个数据集上取得了最佳的MCE                  种群规模                                   ３０          GJO     ２０２３  初始逃脱能量    ０．５       F１分数,在１个数据集上MCE 和F１分数排名第二.WilＧ
+                领导阶段概率    ０．６         coxon符号秩检验显示,IRHQBA 性能显著优于５种对比算
+        NRBO    ２０２４  陷阱避免因子种群规模     ３０       法,表明其在降低错误率、提升分类性能方面具有高稳定性和                                       ０．６                            整体性能优势.
+                      表３　在测试集上MCE的平均值和标准差
+                              Table３　MeanandstandarddeviationofMCEonthetestset
+       IRHQBA          NRBO             ISPSO           LEA           COOT             GJONo．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．     Std．
+ １ １．１９４EＧ０１６．２３５EＧ０３１．７８４EＧ０１５．７１０EＧ０２１．１８０EＧ０１１．６４３EＧ０２１．１９８EＧ０１７．４１０EＧ０２１．２０１EＧ０１２．８０２EＧ０２１．５１０EＧ０１１．２６２EＧ０２
+ ２ ５．７７８EＧ０２１．１５２EＧ０２１．４２２EＧ０１４．７０９EＧ０２２．３４４EＧ０１１．８５４EＧ０２２．０２２EＧ０１７．４７６EＧ０２１．９８９EＧ０１３．９６２EＧ０２８．２２２EＧ０２３．２４４EＧ０２
+ ３ ９．７８９EＧ０２２．８３４EＧ０３１．７００EＧ０１９．１７９EＧ０２２．５０３EＧ０１２．１７７EＧ０２２．２２９EＧ０１９．６００EＧ０２１．７５７EＧ０１１．７７５EＧ０２１．１６８EＧ０１１．８８７EＧ０２
+ ４ ７．７７８EＧ０２１．４３９EＧ０２１．３３３EＧ０１２．３３３EＧ０２１．１５９EＧ０１１．９７１EＧ０２１．６７６EＧ０１３．１７９EＧ０２１．９２９EＧ０１１．７２１EＧ０２１．４９５EＧ０１２．６１３EＧ０２
+ ５ ９．３９３EＧ０３３．６６０EＧ０３７．６０６EＧ０２３．１４５EＧ０２３．２７２EＧ０２１．１２２EＧ０２３．７８８EＧ０２２．５８３EＧ０２４．２４２EＧ０２１．２２５EＧ０２１．９６９EＧ０２４．８２４EＧ０３
+ ６ １．６６８EＧ０２３．９８７EＧ０３１．２５１EＧ０１１．１３７EＧ０１２．３８７EＧ０２４．８７１EＧ０３１．３６４EＧ０１１．１７６EＧ０１２．２２８EＧ０２５．５０７EＧ０３５．９７１EＧ０１７．５７４EＧ０３
+ ７ ６．０５１EＧ０２３．２４５EＧ０３１．００８EＧ０１１．６１３EＧ０２８．１６４EＧ０２５．８３５EＧ０３１．１７９EＧ０１１．６７５EＧ０２８．４４４EＧ０２６．１８２EＧ０３１．０３６EＧ０１６．９３７EＧ０３
+ ８ ３．１７２EＧ０２８．９６９EＧ０３１．７２６EＧ０１４．１５３EＧ０２２．１５６EＧ０１４．０９５EＧ０２２．０２７EＧ０１３．５１０EＧ０２２．４６２EＧ０１４．５６１EＧ０２２．４５２EＧ０１１．４３０EＧ０２
+ ９ ４．３８２EＧ０２１．０７０EＧ０２１．４９４EＧ０１２．４３３EＧ０２１．２３７EＧ０１１．９１０EＧ０２１．１１４EＧ０１２．８５６EＧ０２１．０８９EＧ０１２．０４２EＧ０２１．４３８EＧ０１９．６６２EＧ０３
+ １０８．１２９EＧ０２６．３４０EＧ０３１．２９１EＧ０１１．６６１EＧ０２１．０６１EＧ０１７．７７６EＧ０３１．０８９EＧ０１２．９０４EＧ０３１．２１５EＧ０１１．２５１EＧ０２９．６３０EＧ０２１．２８７EＧ０３
+ １１３．５０３EＧ０１１．４３６EＧ０２３．５２５EＧ０１２．０７８EＧ０２３．６６９EＧ０１１．７９１EＧ０２３．６６０EＧ０１２．１５８EＧ０２３．４７５EＧ０１１．８０９EＧ０２３．４９２EＧ０１１．２０４EＧ０２
+ １２１．２３７EＧ０１１．２４３EＧ０２２．００１EＧ０１２．４２２EＧ０２２．２１８EＧ０１１．４８１EＧ０２２．１５７EＧ０１２．０１６EＧ０２１．７０４EＧ０１１．２８６EＧ０２１．８６１EＧ０１２．６８１EＧ０２
+ １３６．７１８EＧ０２１．３８２EＧ０２２．０２３EＧ０１６．１６６EＧ０２１．３５４EＧ０１１．４７８EＧ０２１．６１７EＧ０１４．２９５EＧ０２１．５４４EＧ０１４．５１０EＧ０２１．４８１EＧ０１２．００１EＧ０２
+ p      －               ４．８８３EＧ０４           ４．８８３EＧ０４           ４．８８３EＧ０４           ２．４４１EＧ０４           １．２２１EＧ０３
+                     表４　在测试集上F１分数的平均值和标准差
+                             Table４　MeanandstandarddeviationofF１scoreonthetestset
+       IRHQBA          NRBO             ISPSO           LEA           COOT             GJONo．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．     Std．
+ １ ８．７０６EＧ０１１．１１９EＧ０２８．１３８EＧ０１６．１７０EＧ０２８．８０３EＧ０１１．６７０EＧ０２８．６５１EＧ０１７．７７２EＧ０２８．５１１EＧ０１２．８３６EＧ０２８．４７８EＧ０１１．２６５EＧ０２
+ ２ ８．１５６EＧ０１９．９６６EＧ０３７．４６６EＧ０１３．８９２EＧ０２６．４６７EＧ０１５．１５６EＧ０２７．４１６EＧ０１８．９９２EＧ０３７．４９１EＧ０１４．８８９EＧ０２７．７４９EＧ０１１．２２３EＧ０１
+ ３ ８．９３６EＧ０１１．１２４EＧ０２８．１０９EＧ０１１．０８７EＧ０１６．７７５EＧ０１２．９７９EＧ０２７．５６３EＧ０１１．１２１EＧ０１８．１７２EＧ０１１．９６４EＧ０２８．０１６EＧ０１１．８８１EＧ０２
+ ４ ９．１８９EＧ０１２．３４１EＧ０２８．６００EＧ０１２．３２１EＧ０２８．８０８EＧ０１２．０５０EＧ０２８．０７９EＧ０１３．７４２EＧ０２８．８０１EＧ０１１．８８７EＧ０２８．２８７EＧ０１３．０２０EＧ０２
+ ５ ９．８７８EＧ０１１．５４４EＧ０２９．２６９EＧ０１３．１６４EＧ０２９．６５９EＧ０１１．１８０EＧ０２９．５７１EＧ０１２．７６６EＧ０２９．３５１EＧ０１１．９６０EＧ０２９．７２９EＧ０１８．１１８EＧ０３
+ ６ ９．８３３EＧ０１３．８３１EＧ０３８．７５２EＧ０１１．１３６EＧ０１９．７６１EＧ０１４．８５７EＧ０３８．６３９EＧ０１１．１７３EＧ０１９．７７８EＧ０１５．５３２EＧ０３９．４０４EＧ０１７．５６９EＧ０３
+ ７ ９．３６５EＧ０１５．９７７EＧ０２８．９５５EＧ０１１．６７６EＧ０２９．１６３EＧ０１５．９８８EＧ０３８．７７７EＧ０１１．７５０EＧ０１９．１９７EＧ０１６．４６１EＧ０３８．９１１EＧ０１７．３４４EＧ０３
+ ８ ９．６８３EＧ０１３．７８０EＧ０２８．３００EＧ０１４．０５０EＧ０２７．８１２EＧ０１４．２５３EＧ０２７．９５９EＧ０１３．５８３EＧ０２７．６８３EＧ０１４．４１０EＧ０２７．４４３EＧ０１１．４７８EＧ０２
+ ９ ９．５６２EＧ０２１．７４５EＧ０２８．５２１EＧ０１２．４３０EＧ０２８．７７１EＧ０１１．９２９EＧ０２８．９２２EＧ０１２．６５３EＧ０２８．９０９EＧ０１１．９７９EＧ０２８．６２６EＧ０１８．７７９EＧ０３
+ １０９．４０１EＧ０１８．１３３EＧ０３８．７６５EＧ０１１．５６４EＧ０２８．９２５EＧ０１８．００６EＧ０３８．９５５EＧ０１２．８１４EＧ０３８．８１４EＧ０１１．１９０EＧ０２９．０４１EＧ０１１．０９０EＧ０３
+ １１５．７６２EＧ０１１．１３３EＧ０２５．４６７EＧ０１１．５６５EＧ０２２．７８０EＧ０１２．６２４EＧ０２５．６６６EＧ０１７．３４２EＧ０２５．７９９EＧ０１３．３５９EＧ０２４．９９２EＧ０１１．２６５EＧ０２
+ １２８．８２２EＧ０１１．１７８EＧ０２８．１４８EＧ０１２．２４３EＧ０２７．６９１EＧ０１１．６３２EＧ０２８．０３４EＧ０１１．９５０EＧ０２８．３５１EＧ０１１．３０４EＧ０２８．２３３EＧ０１１．２８４EＧ０２
+ １３９．３６４EＧ０１１．８６６EＧ０３８．１７５EＧ０１４．６５７EＧ０２８．６３４EＧ０１１．５４４EＧ０２８．４２５EＧ０１９．８８７EＧ０３８．４８７EＧ０１３．４６８EＧ０２８．５７０EＧ０１１．９９６EＧ０１
+ p      －               ２．１４８EＧ０２           ２．１４８EＧ０２           ２．１４８EＧ０２           ２．６６１EＧ０２           ２．１４８EＧ０２
+
+===== PDF PAGE 8 =====
+张兴旺,等:基于层次化量子蝙蝠算法的特征选择                            ２０１
+５．２　可视化分析                       １０,１３的数据集上的最小值、中位数值均优于其他算法,且在
+  图３以箱形图呈现实验结果,以便直观分析算法性能.  所有数据集上的箱图框更小,表明其准确性与稳定性更高.
+                                                     的最箱形图中,下水平线表示数据集最小值,上水平线表示最大   特别地,在编号为７,８,９,１０,１３的数据集上,IRHQBA
+值,框大小显示结果离散度或分布范围,框内垂直线表示中位  大值小于其他算法的最小值.这些结果进一步表明,该算法
+数.如图３所示,IRHQBA 算法在数据集编号为３,４,７,８,９,  在分类准确性、稳定性和泛化能力上均具有显著优势.
+
+
+
+
+
+                (a)Cane                  (b)Semeoin_handwritten_digit                 (c)Australian                   (d)Amhythmia
+
+
+
+
+
+             (e)Geman                          (f)Ionosphere                           (g)Isolet５                    (h)KrVsKpEW
+
+
+
+
+
+             (i)Dematology                          (j)Sonar                       (k)Spambase                    (l)MUSKI
+
+
+
+
+
+                                                         (m)Zoo
+                         图３　所有测试数据集的箱线图
+                                            Fig．３　Boxplotofalltestdatasets
+　　为了进一步评估算法性能,我们将训练集中每一种算法  稳定且全面的表现表明,所提算法并未针对特定数据分布产
+的最佳特征集通过测试集验证并绘制ROC曲线,该曲线基于  生过拟合,而是具备良好的数据适应能力与鲁棒性.从特征
+真阳性率和假阳性率构建,越接近点(０,１),说明分类器性能  选择后的分类性能来看,该算法能够有效平衡真阳性率与假
+                                     曲线的整体趋势进一步印证了箱形图分越好.如图４所示,IRHQBA 在８个数据集上明显比其他算  阳性率.此外,ROC
+法更接近(０,１)点,表明其在不同数据集上能保持较高的真阳  析的结论:该算法在准确性、稳定性和泛化能力上均具有显著
+性率和较低的假阳性率,性能优于其他５种算法.此外,在其  优势.进一步分析表明,该算法在不同数据分布下均能保持
+                                              曲线下面积余数据集上,IRHQBA 仍具有竞争力.           较高的真阳性率与较低的假阳性率,其ROC
+                     算法在多数  纵观所有数据集上的ROC 曲线,IRHQBA                              (AUC)整体优于其他对比算法,展现出更强的泛化能力和实
+数据集上始终保持良好的竞争性能,未出现显著衰减.这一  际应用前景.
+
+===== PDF PAGE 9 =====
+计算机科学                                                                                   Vol．５３,No．７,July２０２６ ２０２                                                 ComputerScience
+
+
+
+
+
+               (a)Australian                     (b)Dermatology                   (c)German                        (d)Ionosphere
+
+
+
+
+
+           (e)KrVsKpEW                 (f)MUSKI                (g)Semeoin_handwritten_digit                (h)Sonar
+
+
+
+
+
+             (i)Spambase                          (j)Zoo                       (k)Arrhythmia                   (l)CANEＧ９
+
+
+
+
+
+                                                                     (m)Isolet５
+                    图４　测试过程中１３个数据集的接收者操作特性曲线
+                      Fig．４　Receiveroperatingcharacteristiccurvesforthirteendatasetsduringthetestingprocess
+                                       算法的分类错误率５．３　计算时间                         间算法(BAＧ１至BAＧ４)与原始BA
+                                                在多数情况   图５显示,IRHQBA 算法在８个数据集上的运行时间最   (MCE),结果如表５所列.结果显示,IRHQBA
+短,在其余５个数据集上虽不是最短,但性能仍优于其他算  下MCE最低,凸显了其特征选择优势.
+法.IRHQBA 的运行时间无峰值且大部分保持较低水平,表     具体而言,BAＧ１加入量子计算搜索算子后,多数数据集上
+明其具有更高的时间效率,能更快找到更佳解决方案.     MCE降低,如数据集编号为１的MCE从BA 的１．５３６EＧ０１降
+                                    至１．４２１EＧ０１,显示量子算子利于性能提升.BAＧ２在BAＧ１
+                                                    进一步                              基础上增加分层子特征分组和随机初始化策略,MCE
+                              下降,如数据集编号为２的MCE 从BAＧ１的１．１３３EＧ０１降至
+                                 １．２６６EＧ０１,表明这些策略助力算法收敛到了更优特征子集.
+                                BAＧ３和BAＧ４分别引入频率优化和种群分层策略,MCE在多
+                                数数据集上进一步降低.最终,IRHQBA 在BAＧ４基础上增
+                               加特征突变策略后,MCE 显著降低,在维度较高的数据集上
+                             更突出.
+     图５　６种算法在１３个数据集上的平均运行时间        综上所述,基于量子计算的搜索算子、分层子特征分
+   Fig．５　Averagerunningtimeof６algorithmson１３datasets   组与初始化、频率优化策略、种群分层策略以及特征突变
+５．４　消融研究                    策略在特征选择过程中均发挥了重要作用. 从原始BA
+   消融实验对比了IRHQBA 算法及其逐步添加策略的中  算法到逐步添加策略的变体,再到IRHQBA 算法,性能呈
+
+===== PDF PAGE 10 =====
+张兴旺,等:基于层次化量子蝙蝠算法的特征选择                            ２０３
+现逐步优化的趋势,充分证明了每种策略对提升特征选择  性能的有效性.
+                   表５　不同变体在测试集上MCE取值的平均值和标准差
+                      Table５　MeanandstandarddeviationofMCEvaluesfordifferentvariantsonthetestset
+         IRHQBA            BAＧ４              BAＧ３              BAＧ２              BAＧ１           BA  No．       Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．    Std．     Avg．     Std．
+   １１．１９４０EＧ０１６．２３５EＧ０３１．１９９EＧ０１７．５４３EＧ０２１．２００EＧ０１１．０８１EＧ０２１．２０９EＧ０１１．１００EＧ０２１．４２１EＧ０１１．１７０EＧ０２１．５３６EＧ０１３．０１５EＧ０２
+  ２ ５．７７８EＧ０２１．１５２EＧ０２８．９３０EＧ０１２．００４EＧ０２１．０００EＧ０１２．３０９EＧ０２１．２６６EＧ０１３．５７９EＧ０２１．１３３EＧ０１３．７６２EＧ０２１．７４４EＧ０１３．９８１EＧ０２
+  ３ ９．７８９EＧ０２２．８３４EＧ０３１．１１２EＧ０１８．３４４EＧ０３１．２００EＧ０１１．２７９EＧ０２１．２９６EＧ０１１．３４１EＧ０２１．４０３EＧ０１１．５２５EＧ０２１．６３１EＧ０１１．６８３EＧ０２
+  ４ ７．７７８EＧ０２１．４３９EＧ０２７．７７０EＧ０１１．６００EＧ０２１．０７９EＧ０１１．５０７EＧ０２１．２０９EＧ０１１．２７８EＧ０２１．３００EＧ０１２．９９７EＧ０２１．３１１EＧ０１２．６２７EＧ０２
+  ５  ９．３９３EＧ０３３．６６０EＧ０３  ２．０４EＧ０２ ９．２２５EＧ０３３．３１２EＧ０２１．９５９EＧ０２３．７６９EＧ０２１．５９２EＧ０２３．７８７EＧ０２１．４１１EＧ０２４．１７２EＧ０２１．３８６EＧ０２
+  ６ １．６６８EＧ０２３．９８７EＧ０３２．２３４EＧ０２５．９９８EＧ０３２．６６５EＧ０２５．８２６EＧ０３３．０２０EＧ０２５．２８５EＧ０３３．１０７EＧ０２５．０３７EＧ０３４．０８６EＧ０２１．０１７EＧ０２
+  ７ ６．０５１EＧ０２３．２４５EＧ０３７．５００EＧ０２３．５６３EＧ０３８．１９０EＧ０２７．４８０EＧ０３８．１８６EＧ０２７．５６４EＧ０３８．４１３EＧ０２６．１６４EＧ０３９．１２３EＧ０２１．６７２EＧ０２
+  ８ ３．１７２EＧ０２８．９６９EＧ０３１．０２１EＧ０１１．６７０EＧ０２１．４６９EＧ０１２．６７６EＧ０２１．５５３EＧ０１２．６６８EＧ０２１．６８１EＧ０１３．７７２EＧ０２１．８５１EＧ０１４．９０９EＧ０２
+  ９ ４．３８２EＧ０２１．０７０EＧ０２８．７５５EＧ０２１．１３４EＧ０２１．１３３EＧ０１１．１６５EＧ０３１．２５９EＧ０１２．２１１EＧ０２１．２６１EＧ０１１．７６６EＧ０２１．４７８EＧ０１２．４８２EＧ０２
+  １０８．１２９EＧ０２６．３４０EＧ０３９．００４EＧ０２６．４４０EＧ０３９．２１６EＧ０２６．１４５EＧ０３９．９４４EＧ０２６．７６７EＧ０３９．９４４EＧ０１６．５９１EＧ０３１．１１６EＧ０１８．８８１EＧ０３
+  １１３．５０３EＧ０１１．４３６EＧ０２３．１２１EＧ０１１．４３３EＧ０２３．１９９EＧ０１１．６５６EＧ０２３．２４０EＧ０１１．９６７EＧ０２３．４２３EＧ０２１．７５７EＧ０２３．７２４EＧ０２２．１１４EＧ０２
+  １２１．２３７EＧ０１１．２４３EＧ０２１．５３９EＧ０１１．３９６EＧ０２１．６５５EＧ０１１．３２４EＧ０２１．６３４EＧ０１１．３５６EＧ０２１．７０３EＧ０１１．４８１EＧ０２１．８０４EＧ０１１．８８１EＧ０２
+  １３６．７１８EＧ０２１．３８２EＧ０２１．０８３EＧ０１１．３４１EＧ０２１．２８９EＧ０１１．３４７EＧ０２１．２８９EＧ０１１．３７４EＧ０２１．５５０EＧ０１１．８３１EＧ０２１．６９６EＧ０１２．０７６EＧ０２
+ p      －               ６．１０４EＧ０３           ６．１０４EＧ０３           ２．４４１EＧ０３           １．７０９EＧ０２           ２．１４８EＧ０２
+　　结束语　本文提出了一种层次化量子蝙蝠算法(IRHQＧ        FrontiersofComputerScience& Technology,２０２２,１６(１):８８Ｇ
+BA).IRHQBA 由两个特征缩减步骤组成,并集成了层次化       １０５．
+子特征分组、量子计算搜索算子、种群分层与突变协同策略,   [８] GAO H M,WANG Y H,BLAN C,etal．ResearchonFeature
+                            集          Selection MethodsBasedon Hybrid Evolutionary Algorithms使其在性能上优于其他５种特征选择算法.在IRHQBA                                                                       [J]．ActaElectronicaSinica,２０２３,５１(６):１６１９Ｇ１６３６．成特征约简中,使用Pearson相关性方法剔除冗余特征后,根                                                  [９] EIBEN A E,SMITH J．Fromevolutionarycomputationtothe据IGR 和RF方法对特征的重要性进行排序.其次,在原始                                                                     evolutionofthings[J]．Nature,２０１５,５２１(７５５３):４７６Ｇ４８２．BA 的种群初始化、搜索、信息交流过程中引入不同策略.为                                               [１０]XU H,XUEB,ZHANG M．AduplicationanalysisＧbasedevoluＧ了评估IRHQBA 算法的性能,对１３个具有不同特征维度的                         算法         tionaryalgorithm forbiobjectivefeatureselection[J]．IEEE数据集进行了特征选择评估.实验结果表明,IRHQBA                                                                  TransactionsonEvolutionaryComputation,２０２０,２５(２):２０５Ｇ
+相比５种对比算法更能有效地处理特征选择问题.              ２１８．
+   鉴于IRHQBA 较其他对比算法具有更优越的性能,   [１１]XUZZ,SHEN D R,NIE TZ,etal．HybridFeatureSelection
+未来的工作将进一步探索如何设计多个互补的评价指标,        AlgorithmBasedonInformationGainRatioandGeneticAlgoＧ
+以更全面地衡量特征重要性.此外,考虑到特征选择的动         rithm [J]．JournalofSoftware,２０２２,３３(３):１１２８Ｇ１１４０．
+态性和数据的流特性,将尝试在动态变化的数据环境下进   [１２]GAO J,WANG Z,JIN T,etal．Information gain ratioＧbased
+行特征选择.                                                    subfeaturegroupingempowersparticleswarm optimizationfor
+                                                                   featureselection[J]．KnowledgeＧBased Systems,２０２４,２８６:      参考文献
+                                                          １１１３８０．
+                                              [１３]KARIMIF,DOWLATSHAHIM B,HASHEMIA．SemiACO:[１] LI J,LIU H．Challenges of feature selection for big data
+     analytics[J]．IEEEIntelligentSystems,２０１７,３２(２):９Ｇ１５．             AsemiＧsupervisedfeatureselectionbasedonantcolonyoptimiＧ
+[２] LIJ,CHENG K,WANGS,etal．Featureselection:AdataperＧ         zation [J]．Expert Systems with Applications,２０２３,２１４:
+     spective[J]．ACM ComputingSurveys,２０１７,５０(６):１Ｇ４５．           １１９１３０．
+[３] CAIJ,LUO J,WANG S,etal．Featureselectionin machine   [１４]QU L,HE W,LIJ,etal．ExplicitandsizeＧadaptivePSOＧbased
+     learning:Anewperspective[J]．Neurocomputing,２０１８,３００:７０Ｇ         featureselectionforclassification[J]．SwarmandEvolutionary
+   ７９．                                                          Computation,２０２３,７７:１０１２４９．
+[４] GUYONI,ELISSEEFFA．AnintroductiontovariableandfeaＧ   [１５]YANG X S．A new metaheuristicbatＧinspiredalgorithm [M]∥
+     tureselection[J]．JournalofMachineLearningResearch,２００３,         NatureInspiredCooperativeStrategiesforOptimization(NICSO
+    ３(Mar):１１５７Ｇ１１８２．                                              ２０１０)．Berlin:Springer,２０１０:６５Ｇ７４．
+[５] CHEN B,HONGJR,WANG Y D．TheProblemofSelecting   [１６]DEUTSCH D．Quantum theory,the ChurchＧTuring principle
+     OptimalFeatureSubset[J]．JournalofComputerScience,１９９７,        andtheuniversalquantum computer[J]．Proceedingsofthe
+     ２０(２):１３３Ｇ１３８．                                                 RoyalSocietyofLondon．A．MathematicalandPhysicalSciences,
+[６] SHIQJ,PANF,LONGFH,etal．ReviewonFeatureSelection        １９８５,４００(１８１８):９７Ｇ１１７．
+     Methods[J]．MicroelectronicsandComputer,２０２２,３９(３):１Ｇ８．   [１７]ZOUACHED,GOT A,ALARABIAT D,etal．AnovelmultiＧ
+[７] ZHANGJL,WANGXF,LUL,etal．ComparativeAnalysisof         objectivewrapperＧbasedfeatureselection methodusingquanＧ
+     SeveralNewIntelligentOptimizationAlgorithms[J]．Journalof         tumＧinspiredandswarmintelligencetechniques[J]．Multimedia
+
+===== PDF PAGE 11 =====
+计算机科学                                                                                   Vol．５３,No．７,July２０２６ ２０４                                                 ComputerScience
+     ToolsandApplications,２０２４,８３(８):２２８１１Ｇ２２８３５．                   ExpertSystemswithApplications,２０２２,１９８:１１６９２４．
+[１８]ALBINO AS,PIRESO M,NOOBLATH M Q,etal．EvolutioＧ   [２５]NARUEII,KEYNIA F．A newoptimization methodbasedon
+     naryquantumfeatureselection[J]．arXiv:２３０３．０７１３１,２０２３．           COOTbirdnaturallifemodel[J]．ExpertSystemswithApplicaＧ
+[１９]SAYEDGI,DARWISH A,HASSANIENAE．QuantummultiＧ        tions,２０２１,１８３:１１５３５２．
+     verseoptimizationalgorithmforoptimizationproblems[J]．NeuＧ   [２６]HANCER E．Newfilterapproachesforfeatureselectionusing
+    ralComputingandApplications,２０１９,３１:２７６３Ｇ２７８０．                differentialevolutionandfuzzyroughsettheory[J]．Neural
+[２０]PRAMANIKR,SARKARS,SARKAR R．AnadaptiveandalＧ         ComputingandApplications,２０２０,３２(７):２９２９Ｇ２９４４．
+    truisticPSOＧbaseddeepfeatureselectionmethodforPneumonia
+     detectionfromChestXＧrays[J]．AppliedSoftComputing,２０２２,              ZHANG Xingwang,bornin２００１,postＧ
+    １２８:１０９４６４．                                                        graduate．His main researchinterests
+[２１]YANG XS．NatureＧinspiredoptimizationalgorithms[M]．AcaＧ                    include swarm intelligence algorithms
+    demicPress,２０２０．                                                           andtheirapplications,featureselection．[２２]SOWMYA R,PREMKUMAR M,JANGIR P．NewtonＧRaphＧ
+     sonＧbasedoptimizer:A new populationＧbased metaheuristicalＧ
+     gorithmforcontinuousoptimizationproblems[J]．Engineering                   HEXiaoli,bornin１９８２,Ph．D,associate
+     ApplicationsofArtificialIntelligence,２０２４,１２８:１０７５３２．                         professor．Her mainresearchinterests
+[２３]GAO Y,ZHANGJ,WANG Y,etal．Loveevolutionalgorithm:                    includeuncertaintyreasoningandgraＧ
+     AstimulusＧvalueＧroletheoryＧinspiredevolutionaryalgorithmfor                     nularitycomputation．
+     globaloptimization[J]．TheJournalofSupercomputing,２０２４,
+    ８０(９):１２３４６Ｇ１２４０７．
+[２４]CHOPRA N,ANSARIM M．Goldenjackaloptimization:AnoＧ
+     velnatureＧinspiredoptimizerforengineeringapplications[J]．                      (责任编辑:何杨)

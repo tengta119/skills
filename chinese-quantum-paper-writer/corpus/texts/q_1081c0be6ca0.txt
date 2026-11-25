@@ -1,0 +1,1686 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２１．２０２１０３６７
+ JournalofComputerResearchandDevelopment                                    ５８(９):１８４３１８５５,２０２１
+
+
+量子错误缓解研究进展
+
+张宇鹍１,２ 　　　袁　骁３１(北京师范大学物理系　北京　１００８７５)
+２(北京师范大学高等量子研究中心　北京　１００８７５)
+３(北京大学前沿计算研究中心　北京　１０００８０)
+ (２０１８２１１４００３８＠mail．bnu．edu．cn)
+QuantumErrorMitigation:AReview
+ZhangYukun１,２andYuanXiao３
+１(DepartmentofPhysics,BeijingNormalUniversity,Beijing１００８７５)
+２(CenterofAdvancedQuantumStudies,BeijingNormalUniversity,Beijing１００８７５)
+３(CenteronFrontiersofComputerStudies,PekingUniversity,Beijing１０００８０)
+  Abstract　Duetotheinteractionwiththeenvironmentandimperfectionsofcontrols,quantumdevices
+  areaccompaniedwitherrors,whoseaccumulationcouldleadtoameaninglesscomputingresult．The
+  realizationofafullＧfledgedquantumcomputerreliesonquantum errorcorrection,whichhowever,
+  introducesahugeoverheadthatmakesitchallengingfornearＧterm quantum devices．Inthenoisy
+  intermediateＧscale quantum era,quantum error mitigation methodsinstead of quantum error
+  correctionareintroducedforsuppressingerrors．Usinga mildcostunderreasonableassumptions,
+  quantumerrormitigationcouldenhancetheresulttoachieveadesiredcomputationalaccuracy,andits
+  feasibilityhas been demonstrated extensivelyintheoriesand experiments．Thisarticleaimsto
+  introduceandsummarizethelatestdevelopmentsinquantumerrormitigation,andtocommenton
+  potentialfuturedirections．
+  Keywords　quantum computing;nearＧterm quantum devices;quantum error mitigation;quantum
+  algorithms;noisyintermediateＧscalequantumera
+ 摘　要　由于与环境的相互作用及对量子设备的控制中存在的偏差,量子设备总是在不断产生错误．若
+ 不对这些错误加以处理,错误的积累会使得量子算法的实施变得毫无意义．成熟量子计算机的实现依赖
+ 于量子纠错技术以纠正量子设备中的错误．然而,由于量子纠错开销巨大,其难以在近期量子设备中实
+ 现．故在有噪声中等尺寸量子时代,以变分量子求解器为代表的量子算法选择量子错误缓解技术来压制
+ 错误,而非纠正它们．量子错误缓解允许仅通过中等大小的额外资源获得可以接受的计算精读,并已在
+ 理论及实验上展示出其可行性．旨在介绍与总结量子错误缓解领域的最新进展,并展望该技术未来发展
+ 的前景与方向．
+ 关键词　量子计算;近期量子设备;量子错误缓解;量子算法;有噪声的中等尺寸量子时代
+  中图法分类号　O５９
+　　近期量子设备的特征限制了能够操控的量子比    子(noisyintermediateＧscalequantum,NISQ)设
+特(qubit)数目,一般为几个到几十个量子比特,且  备[１]．由于能够控制的量子比特数目有限,故一般无
+                        法使用量子纠错码将物理量子比特编码为逻辑量子存在一定的噪声,因此称之为有噪声的中等尺寸量
+　收稿日期:２０２１－０４－０７;修回日期:２０２１－０６－２２
+　通信作者:袁骁(xiaoyuan＠pku．edu．cn)
+
+===== PDF PAGE 2 =====
+４
+４
+８
+１
+计算机研究与发展　２０２１,５８(９)
+比特后进行计算:据估计,以合理的成功概率实现超
+越经典计算机算力的Shor算法需要将几千个物理
+量子比特编码为１个逻辑量子比特[２]．故而,对于
+NISQ 设备我们需要考虑设计对其友好的算法,并
+在此基础上设计算法能够成功实施的相应技术．一
+系列面向NISQ 设备设计的算法已经提出,其中最
+受瞩目的为变分量子求解器(variationalquantum
+eigensolver,VQE)
+[３Ｇ５]和量子近似优化算法(quantum
+approximateoptimizationalgorithm,QAOA)
+[６],
+前者多用于量子模拟(quantumsimulation)领域[７],而
+后者主要面向计算机领域的组合优化(combinatorial
+optimization)问题[８]．与此同时,量子错误缓解(quantum
+errormitigation,QEM)技术[９]成为NISQ 时代在
+量子设备上可靠地实施算法的必不可少的元素．
+２０１９年和２０２０年,Google公司在量子计算领
+域取得了里程碑式的进展,分别在其Sycamore量
+子芯片上实现了量子霸权(quantumsupremacy)实
+验[１０]和目前在量子计算机上实现的最大的量子模
+拟(quantumsimulation)算法[１１]．对于后者,依赖于
+后处理(postＧselection)和McWeen 纯化(McWeen
+purification)的量子错误缓解技术,研究人员们成功
+将保真度(fidelity)最低２％的计算结果还原到
+９９％,足以体现量子错误缓解对于NISQ 时代量子
+计算的重要性．
+本文主要以面向VQE 算法实施的量子模拟算
+法为背景,介绍相关的量子错误缓解技术．
+１　量子模拟和变分量子特征求解器简介
+量子力学是描述微观世界的基础理论．通过经
+典计算机研究量子系统问题是物理、化学、材料等领
+域的重要研究方向之一．然而,随着系统自由度的增
+加,经典计算机所需要的计算资源在最一般的情况
+下呈指数级上升,称之为“指数墙”(exponential
+wall)困难[１２]．
+意识到这一困难,Feynman 最早于１９８２年提
+出了量子模拟的概念:通过可控的、易获得的量子系
+统来模拟难以获得的目标量子系统[７]．直觉上,利用
+量子系统本身自由度指数级增大的希尔伯特空间
+(Hilbertspace),我们可以在一定程度上解决指数
+墙困难．
+在量子多体物理和量子化学领域中,系统在低
+能态表现出的特性是研究人员关心的问题之一．其
+中,最具代表性的即为原子或分子系统的电子结构
+问题．电子结构问题的研究目的为对特定哈密顿量
+(Hamiltonian)H 描述的原子或分子系统,理解其
+在低能态下相互作用的电子在原子核产生的势能下
+是怎样分布的．系统的性质由波函数(wavefunction)
+描述,电子结构问题要求我们求解系统的基态
+(groundstate)和低能激发态,并计算各个观测量的
+大小,其中最为重要的观测量为系统能量E．
+RayleighＧRitz变分法给出了对量子基态求解
+的可行策略,其主要通过设定参数化的试探波函数
+(trialwavefunction)|ψ(θ)􀎯,又称拟设(ansatz),θ
+为其参数．以能量E 作为观测量为例,系统基态能
+量E０满足:
+E０≤􀎮ψ(
+θ)|H|ψ(
+θ)􀎯．
+(１)
+可以看到,系统的基态能量给出了该观测量的
+下界,我们可以不断调整、优化拟设的参数使其逐渐
+逼近系统基态,从而获得基态能量．
+借助这一思想,VQE算法通过在量子计算机上
+制备试探波函数,通过测量获得观测量当前值,并使
+用经典计算机优化试探波函数参数实现对基态能量
+的求解．其优势在于利用量子计算机指数级增长的
+希尔伯特空间来表示波函数,经典计算机的参与减
+少了对量子线路(quantumcircuit)深度的要求．随
+着量子线路深度的增加,随机错误的数量和退相干
+(decoherence)效应的影响会越来越明显,故VQE
+算法保持较为浅层的量子线路深度的特性使其适合
+于在近期量子设备上实施．另外,VQE 算法本身具
+有一定的对连续错误的缓解效果[４Ｇ５]．当然,浅层量
+子线路的错误仍然会带来计算的偏差,本文将接下
+来总结针对浅层量子线路的量子错误缓解方法．
+２　量子错误缓解基本框架
+本节主要讨论针对NISQ 设备噪声的量子错误
+缓解方法．由于噪声的影响,我们考虑量子混态
+(quantum mixedstate),而非纯态(purestate)．考虑
+量子门U (􀅰)＝U (􀅰)U
+†．设E 为噪声信道(noise
+channel),则有噪声的量子门为E􀳱U．这里,我们假
+设量子门实施中产生的错误为马尔可夫的
+(Markovian),即噪声信道与量子门的类型及施加
+位置等特征无关．
+考虑任意输入态ρin,理想的输出态ρ
+ideal
+out 和有噪
+noisy
+out 可以写为
+声的输出态ρ
+out ＝UM􀳱UM －１􀳱􀆺􀳱U１(
+ρin),
+ideal
+ρ
+(２)
+noisy
+out ＝E􀳱UM􀳱E􀳱UM －１􀳱􀆺􀳱E􀳱U１(
+ρin),
+
+===== PDF PAGE 3 =====
+５
+４
+８
+１
+张宇鹍等:量子错误缓解研究进展
+其中,M 为量子门的数量．当单个量子门的出错概
+率小于一定的阈值(threshold)时,我们可以通过量
+子纠错以及提升量子纠错码矩(distance)实现对错
+误的任意精度的缓解．
+量子错误缓解则面向近期量子设备,提出了一
+种开销小、鲁棒性高的策略．与量子纠错不同,错误
+缓解不考虑实时地减少量子线路中的错误,而是仅
+考虑通过有噪声的测量结果􀎮O􀎯noisy＝tr(ρ
+noisy
+out O)恢
+复理想线路的理想测量结果􀎮O􀎯ideal＝tr(ρ
+outO),如
+ideal
+图１所示．对于近期量子设备实施的算法而言,例如
+第１节讨论的VQE算法等,其量子线路较浅,即便
+错误在算法实施过程中不断积累,我们依然可以以
+高概率恢复得到观测量的概率分布,代价是错误缓
+解算法会导致恢复得到的概率分布的方差增大,从
+而增加需要的测量样本数量．由于量子错误缓解技
+术不纠正错误,错误仍然会在线路中积累,故而,该
+技术仅在物理错误概率较低时起作用,且无法规模
+化到较深层的量子线路．
+３．
+１　外推法
+外推法(extrapolation)利用不同的物理错误率
+下运行相同的量子线路,从而通过不同错误率对应
+的测量结果外推得到无错误情况下的观测结果,如
+图２所示:
+Fig．２　Schematicofquantumerrorextrapolation
+[４]
+图２　量子错误外推法示意图[４]
+１)Richardson外推法
+Richardson外推法(Richardsonextrapolation)
+Fig．１　Schematicofquantumerrormitigation
+[５]
+图１　量子错误缓解示意图[５]
+３　量子错误缓解的主要方法
+本节将具体介绍１０类量子错误缓解方法以及
+各类方法相互结合的方法．根据对噪声模型的依赖
+程度和错误缓解的不同方法,我们将这些方法归为
+如表１所示的４种类型:弱噪声模型、精确噪声模
+型、机器学习噪声模型、未假设噪声形式模型．最后,
+我们将讨论各个方法间的组合方法．
+率先由Li等人[１３]和Temme等人[１４]分别提出．关注
+随机噪声过程Ek,其形式为
+Ek＝(１－εk)I＋εkNk,
+(３)
+其中,I 为单位映射,而Nk 为噪声映射,
+εk 为一个
+较小的错误率．为方便起见,这里假设所有的噪声信
+道具有相同的错误率εk＝ε．根据式(２),对于任意观
+测量Z,我们可以对其期望值做泰勒展开,得到:
+n
+􀎮Z􀎯(
+ε)＝􀎮Z􀎯(０)＋∑
+m ＋O(
+ε
+n＋１), (４)
+Zmε
+m＝０
+其中,Zm 为展开系数,􀎮Z􀎯(
+ε)为观测量在错误率为
+ε 情况下的期望值．
+为了得到理想的测量数据􀎮Z􀎯(０),我们通过实
+验调节不同的ε大小获得相应的观测结果􀎮Z􀎯(
+ε)．通
+过实验手段,我们可以增加物理错误率ε．我们选择
+不同的噪声放大比例λl,并要求１＝λ０＜λ１＜􀆺＜
+λn,得到不同噪声大小下的观测期望值􀎮Z􀎯(λlε)．然
+后,我们可以通过n 阶泰勒展开和Richardson外推
+法获得对无噪声情况的估计:
+Table１　ClassificationofDifferentQuantumErrorMitigationMethods
+表１　不同量子错误缓解方法分类
+弱噪声模型
+精确噪声模型
+机器学习噪声模型
+未假设噪声形式模型
+外推法
+测量错误缓解
+基于机器学习的错误缓解
+量子子空间展开
+最小二乘拟合法
+准概率模型
+Clifford数据回归
+对称性验证
+个体错误减少
+随机错误缓解
+基于学习的准概率方法
+
+===== PDF PAGE 4 =====
+６
+４
+８
+１
+计算机研究与发展　２０２１,５８(９)
+n
+􀎮Z􀎯est＝∑
+k＝０ζk􀎮Z􀎯(λkε)＝􀎮Z􀎯(０)＋O(
+ε
+n＋１), (５)
+n
+n
+其中,系数λk 满足归一化条件∑
+k＝０ζk ＝１,∑
+m＝０ζmλ
+m ＝
+k
+０．注意到,我们将错误压制到了n＋１阶,对于较小
+错误率ε,该方法可以非常有效地缓解错误．然而,由
+于该方案的资源消耗随指数n 增加,我们不能通过
+提高式(５)中n 的大小任意地压制错误．
+外推法的优势在于任何连续函数都可以被泰勒
+展开,故而,在保证能够准确提升系统的物理错误率
+的情况下,该方法在理论上可以应用于任何错误模
+型中．这是由于外推法没有使用噪声的具体形式做
+出特定的假设,故而,错误缓解后的测量结果的方差
+会急剧上升．特别地,可以得到􀎮Z􀎯est的方差为
+n
+Var[􀎮Z􀎯est]＝∑
+２
+kVar[􀎮Z􀎯(λkε)],
+(６)
+k＝０ζ
+可以看到,当假设Var[􀎮Z􀎯(λkε)]为常数时,方差被
+n
+放大了􀱽＝∑
+２
+k 倍,意味着我们的采样次数也需
+k＝０ζ
+要增加同样的倍数以达到与无错误情况下相同的测
+量精度．可以估计出􀱽随着n 呈指数增长,从而,我
+们仅可以对较小n 进行展开．
+值得注意的是,IBM 演示了通过VQE 求解
+LiH 和H２分子基态能量的实验[１５]．
+２)指数外推法
+上面１)讨论的Richardson外推法通过假设存
+在一个有效的泰勒展开式,可以将测量结果展开为
+错误率的多项式函数,且可以忽略高阶项的影响．实
+践中,量子设备具有的特点是物理错误率ε 小,但量
+子门数目M 较大,这种情况下多项式展开会变得不
+精确．Endo 等人[１６]提出指数外推法(exponential
+extrapolation),使用指数衰减函数来替代原来的多
+项式展开．
+考虑Markov随机错误,形式为
+E＝(１－ε)I＋εN,
+(７)
+则M 个有噪声的量子门EU＝EMUM􀳱EM －１UM －１􀳱􀆺􀳱
+E１U１可以展开为
+M
+EU ＝∏
+((１－ε)I ＋εNk)􀳱Uk ＝
+k＝１
+M
+j( )
+M
+∑
+(１－ε)
+M－jεj∑
+j ＝
+Fi
+j＝０
+i＝１
+M
+∑
+αjFj,
+(８)
+j＝０
+式(８)第２行将展开的按照错误的数量重新分
+组,Fi
+j 对应含有j 个错误的展开．从而,我们可以将
+其写为第３行中二项式分布αj＝M
+æ
+è
+ç
+ö
+ø
+÷ (１－ε)
+jεj,并
+j
+且,定义Fi
+j 的平均值为
+M
+j( )
+Fj ＝∑
+Fi
+j
+．
+(９)
+i＝１
+M
+æ
+è
+ç
+ö
+ø
+÷
+j
+对于量子线路中错误率ε 较小、量子门M 数量
+较多的情况,若二者满足Mε＝O(１)的关系,则二项
+式分布αj 可以通过Poisson分布近似获得:
+－Mε(Mε)
+j
+j!
+,
+(１０)
+αj≈e
+噪声信道可以展开为
+(Mε)
+j
+M
+－Mε∑
+j!
+Fj,
+(１１)
+E U ＝e
+j＝０
+其中,展开系数e
+－Mε使得其随着Mε 指数衰减．进一
+步,通过对该展开实施一阶近似,我们考虑在ε 和λε
+(
+λ＞１)两个噪声率下的测量结果􀎮M􀎯(
+ε)和􀎮M􀎯(
+λε),
+可以得到对于无噪声情况的近似:
+Mε􀎮M 􀎯(
+ε)－e
+Mλε􀎮M 􀎯(λε)
+􀎮M 􀎯est(０)≐λe
+λ－１
+．(１２)
+错误缓解的额外开销为
+２e
+２Mε＋e
+２Mλε
+Cexp＝λ
+(λ－１)
+２
+．
+(１３)
+指数外推法仅在观测量对错误率的展开式上进
+行了改变,故依然可以使用３．
+２节中提出的最小二
+乘法进行近似．Endo 等人[１６]和GiurgicaＧTiron 等
+人[１７]分别通过数值模拟证明了指数展开相较于
+Richardson展开的优势．并通过IBM 超导量子计算
+机就哈密顿量模拟进行了演示[１８]．
+３．
+２　最小二乘拟合法
+当被给定在不同错误率情况下的测量值时,我
+们可以使用最小二乘法(leastsquarefitting)
+[１９]估
+计无错误情况下的测量结果．与第３．
+１节所讨论外
+推法类似,考虑不同错误率大小ε１,
+ε２,􀆺,
+εm ,外推
+法中使用的n 阶泰勒展开可以近似为一个线性方程:
+Dz≈k,
+(１４)
+其中,
+１
+ε１
+􀆺
+ε
+n
+１
+æ
+ö
+ç
+ç
+ç
+çç
+÷
+÷
+÷
+÷÷
+１
+ε２
+􀆺
+ε
+n
+２
+⋮
+⋮
+⋱
+⋮
+,
+(１５)
+D＝
+１εm
+􀆺ε
+n
+è
+ø
+m
+z＝(􀎮Z􀎯(０),Z１,􀆺,Zn)
+T,
+k＝(􀎮Z􀎯(
+ε１),􀎮Z􀎯(
+ε２),􀆺,􀎮Z􀎯(
+εn))
+T．
+
+===== PDF PAGE 5 =====
+７
+４
+８
+１
+张宇鹍等:量子错误缓解研究进展
+错误率的数量m 可以随着展开的阶数变化．式
+(１４)的解可以通过最小化获得:
+D􀎮Z􀎯(
+ε１)－k
+２,
+(１６)
+当m＝n 时,式(１６)给出的结果与Richardson展开
+一致．
+实践中,最小二乘法可以对不同的噪声影响分
+配不同的系数．假设存在另一个噪声系数κ,我们可
+以获得观测量期望值的展开􀎮Z􀎯(
+ε,
+κ),将其展开为
+􀎮Z􀎯(
+ε,
+κ)＝􀎮Z􀎯(０)＋Z１０ε＋Z０１κ＋
+２＋􀆺．
+(１７)
+Z１１εκ＋Z２０ε
+２＋Z０２κ
+假设我们将式(１７)展开截断到二阶,可以得到
+线性方程的各项为
+１
+ε１
+κ１
+ε１κ１
+ε
+２
+１
+κ
+２
+１
+æ
+ö
+ç
+ç
+ç
+çç
+÷
+÷
+÷
+÷÷
+１
+ε２
+κ２
+ε２κ２
+ε
+２
+２
+⋮
+⋮
+⋮
+⋮
+⋮
+⋮
+２
+２
+κ
+,
+(１８)
+D＝
+１εm
+κm εmκm ε
+２
+２
+m
+κ
+è
+ø
+m
+及
+􀎮Z􀎯(０)
+æ
+ö
+ç
+ç
+ç
+ç
+ç
+ç
+çç
+÷
+÷
+÷
+÷
+÷
+÷
+÷÷
+􀎮Z􀎯(
+ε１,
+κ１)
+Z１０
+æ
+ö
+ç
+ç
+ç
+çç
+÷
+÷
+÷
+÷÷
+􀎮Z􀎯(
+ε２,
+κ２)
+Z０１
+,k＝
+．
+(１９)
+z＝
+⋮
+Z１１
+􀎮Z􀎯(
+εm ,
+κm )
+Z２０
+è
+ø
+Z０２
+è
+ø
+则我们可以通过式(１４)获得对􀎮Z􀎯(０)的估计．
+该方法通过Rigetti的八量子比特设备演示[１９]．
+３．
+３　量子子空间展开
+量子子空间展开(quantumsubspaceexpansion,
+QSE)法由McClean等人[２０]最先提出．假设已经获
+得关于某系统哈密顿量H 基态的近似|ψref􀎯,将该
+量子态作为参考,我们用一组算符可以构造一个线
+性子空间展开这一参考态．具体而言,我们可以定义
+􀱋M }及以该集合展开
+泡利算符集合{G⊂I,X,Y,Z
+的子空间:
+{
+ρsub ＝∑
+∗
+jPiρPj Pi ∈G,
+cic
+i,j
+ci ∈C,tr(
+ρsub)＝１},
+(２０)
+其中,
+ci,cj 为展开系数,我们在展开后的子空间中
+求解能量的最小值以获得对噪声缓解的结果:
+c tr(
+ρsubH ),
+(２１)
+min
+其中c＝(
+ci)．
+如图３所示,给定有噪声的基态,我们可以通过
+子空间的扩展面来找到真实的基态．子空间展开的
+最优解可以通过以下泛化特征值问题求解得到:
+H
+^C＝S
+^CE,
+(２２)
+其中,H
+^ 为展开子空间中的哈密度量,形式为H
+^
+ij＝
+tr(
+ρPjHPi),
+S
+^为重叠矩阵,形式为S
+^
+ij＝tr(
+ρPjPi),E
+为由特征值组成的对角矩阵,C 为特征向量构成的
+矩阵．注意到,H
+^ 和S
+^可以在量子计算机上高效测
+量得到,而泛化特征值问题可以通过经典计算机高
+效求解,当得到基态对应的特征值c 后,我们可以计
+算获得能量或其他算符的平均值∑
+∗
+jρPjHPi,
+cic
+ij
+注意到通过该方法我们可以额外获得其他能级的激
+发态．
+Fig．３　Schematicofquantumsubspaceexpansion
+图３　量子子空间展开法示意图
+具体分析量子子空间展开的错误缓解效果．令
+P＝∑
+ciPi,子空间展开方法等价于在子空间{
+ρsub＝
+i
+PρP†∕tr(PρP†)}下进行优化,我们可以通过奇异值
+† 形式,其中U 和V 为幺正矩
+分解将P 分解为UDV
+阵,而D 为对角矩阵．展开算符的效果可以理解为
+对量子态的转动和投影．故而,QSE 方法可以用于
+缓解相干错误和随机错误．如由于对量子系统的不
+完美调控,我们在实施量子门过程中可能会对特定
+量子态的转角产生过度或不足的转动,QSE 可以在
+一定程度上缓解该问题．然而,一般量子态展开泡利
+算符形式会产生指数多项数,故使用线性空间或低
+阶空间展开不足以纠正这些错误,QSE 方法对相干
+错误的缓解能力有限．对于随机错误,考虑得到的有
+噪声基态与真实基态非常接近的情况．QSE 方法在
+这种情况下无法保证在子空间求解得到的解中,噪
+声基态(对应展开算符为I)的展开系数c０接近于
+１．然而,我们可以通过３．４节讨论的对称性验证
+(symmetryverification)方法相结合可以极大提升
+QSE对随机错误的纠正能力．
+３．
+４　对称性验证
+当系统遵循一定的物理对称性时,我们可以通过
+设计满足这种对称性的波函数拟设来缩小参数搜索
+
+===== PDF PAGE 6 =====
+８
+４
+８
+１
+计算机研究与发展　２０２１,５８(９)
+的范围．例如,对于遵循粒子数和自旋守恒的系统,
+考虑设计由使得系统的总粒子数和自旋守恒的幺正
+变换构成的波函数拟设,则可以选择幺正偶合簇
+(unitarycoupledＧcluster)
+[２１]方法,或者特定的硬件
+高效拟设(hardwareＧefficientansatz)
+[２２]．相应地,我们
+可以通过对称性检验(symmetryverification)
+[２３Ｇ２４]的
+方式来检验输出波函数是否仍然具备这种对称性．
+理想的量子算法实施会保持量子态的对称性,但是
+由有噪声的量子线路制备得到的量子态可能会破坏
+这种对称性．因为对称性仅在错误出现的情况下才
+会被破坏,故对称性验证方法的工作原理为丢掉对
+称性被破坏的测量结果．
+具体而言,对称性检验量子线路输出态是否遵
+循特定对称性的方式为对该对称性实施奇偶校验,
+注意到该校验方式在量子纠错码中常常使用,但这
+里我们不纠正错误,而是去掉有瑕疵的结果．我们可
+以通过泡利群(Pauligroup)PN 来理解奇偶验证．泡
+利群PN 中所有元素由所有长度为N 的泡利矩阵X,
+Y 和Z,及单位矩阵I 构成的直积态组成,群元的第
+i个元素代表作用到第i 个量子比特的操作．注意
+到,PN 中任意群元都有±１两个特征值,并分别表示
+该群元检测量的奇偶性,若为偶数则为１,若为奇数
+则为－１．特定群元可以用于对系统相应对称性进行
+奇偶校验,而理想波函数应为相应对称性算符的本
+征态．例如,考虑对于理想波函数|ψ􀎯的粒子数奇偶
+性算符P
+^
+N ,其应满足:
+P
+^
+N|ψ􀎯＝e|ψ􀎯,
+(２３)
+其中,
+e＝±１．对应的校验线路如图４所示,可以看
+到当有偶数个粒子时,校验结果为１,反之则为－１．
+为了保证测量的高效性,我们一般关注可以表达为
+泡利算符的对称性表示．例如,粒子数和自旋的奇偶
+算符P
+^
+N 和P
+^
+↑↓都有±１的特征值,故可以在合适
+的编码方式下映射为泡利算符．与奇偶校验不同的
+是,由于一般的观测量可以分解为局域泡利算符的
+Fig．４　Schematicofverifycircuit
+[５]
+图４　检测线路示意图[５]
+直积态,系统的对称性可以通过由局域泡利测量及
+经典后处理获得,从而不需要额外的辅助量子比特．
+然而,由于该方法通过经典后处理(postＧprocessing)
+缓解错误,故需要更多的测量次数．
+更一般地,对于同时包含P
+^
+N 正负２部分本征
+态的有噪声量子态ρ,我们可以将其投影到子空间:
+ρe＝MeρMe
+tr(Meρ),
+(２４)
+其中,Me＝I＋ePN
+２
+．这样,对称性算符测量值与目标
+值不符的部分会被丢掉．假设观测量为系统哈密顿
+量H ,且其与校验算符P
+^
+N 对易,我们有:
+tr(Hρe)＝tr(Hρ)＋etr(H P
+^
+Nρ)
+．
+(２５)
+１＋etr(P
+^
+Nρ)
+故而,我们可以通过测量tr(Hρ),tr(H P
+^
+Nρ)和
+tr(P
+^
+Nρ)来高效获取后选择态(postＧselectedstate)
+ρe 的观测值．注意到,式(２４)中的形式与QSE 方法
+的子空间态一致．当我们将e 作为参数优化时,我们
+得到的算法与QSE等价．已经验证当给定系统基态
+的对称性时,上述方法的结果与QSE
+[２０]相同．注意
+到,经典后处理方法已经在两量子比特超导量子比
+特计算机上演示证明[２５]．
+参考量子纠错中应用最为广泛的稳定子编码
+(stabilizercode),McClean等人[２６]设计了对应的经
+典后处理版本,相较于稳定子编码需要对稳定子群
+(stabilizer)中各生成元(generator)实施对应的奇偶
+校验线路,该方法可以在完全忽略这些线路实施
+的情况下检测错误．另外,我们可以以概率的形式
+实施量子纠错码中具备的各个对称性投影,使得量
+子态回归到码字(codeword)空间．相应的后处理解
+码器(decoder)通过数值实现了对５个量子比特量
+子化学模拟的纠错并获得了５０％的有效纠错阈值
+(threshold)．
+３．
+５　测量错误缓解
+测量错误缓解(measurementerrormitigation)
+[２７Ｇ２９]
+用于减少测量过程中的错误．假设理想测量过程由
+一组正算符值测量(positiveＧoperatorvaluedmeasure,
+POVM)构成{Fi}．对于系统状态ρ,获得第i 个测
+量结果的概率为Pi＝tr(Fiρ)．将理想概率分布表示
+为Pideal＝(P１,P２,􀆺,PM －１,PM )
+T,其中,M 为正
+算符值测量的数量．当测量中存在错误时,测量错误
+将理想概率分布转换为
+Pnoisy＝F􀅰Pideal,
+(２６)
+
+===== PDF PAGE 7 =====
+９
+４
+８
+１
+张宇鹍等:量子错误缓解研究进展
+其中,F 为转换矩阵．例如,我们可以考虑对单量子
+比特的投影测量结果P＝(P０,P０),错位测量错误
+可以描述为
+F＝１－ε
+η
+ε
+１－η
+æ
+è
+ç
+ö
+ø
+÷ ,
+(２７)
+其中,
+ε 和η 分别为量子比特状态０和１的发生翻
+转的错误概率．
+实践中,对变换矩阵的估计可以通过量子探测
+器态层析(quantum detectortomography)实现．当
+我们不考虑探测器对不同量子比特存在串扰错误
+(crosstalkerror)时,对整体变换矩阵的估计可以表
+示为各个部分变换矩阵估计的直积态．我们可以通
+式(２８)获得对无错误情况的估计:
+－１
+estPnoisy．
+(２８)
+Pest＝F
+然而,由于量子错误的存在,如相干错误,我们
+获得的转换矩阵中可能会出现非物理概率．为了避
+免这一问题,我们可以采用优化方法:
+Pest
+F􀅰Pest－Pnoisy ,
+(２９)
+∗
+est＝argmin
+P
+要求Pest满足归一化条件且其元素全部为正,􀅰表
+示欧几里得范数．
+该方法用于IBM５量子比特设备上[２７Ｇ２８]．近期,
+测量错误缓解技术被延伸到测量阶段存在量子比特
+间的关联错误的情况,并在IBM ２０量子比特计算
+机上演示[３０]．
+３．
+６　N 阶可表示性
+N 阶可表示性(NＧrepresentability)由Rubin
+等人[３１]引入量子错误缓解领域．考虑N 电子系统,
+其哈密顿量H 为
+†
+jakal,
+(３０)
+H ＝hija
+†
+iaj＋Vijkla
+†
+ia
+其中,a
+†
+i 和aj 分别为费米子生成、湮灭算符,hij和
+Vijkl分别为单电子和两电子相互作用系数．对于当
+前系统量子态|ψ􀎯,系统能量表达为
+E＝􀎮ψ|H|ψ􀎯＝hij􀎮ψ|a
+†
+iaj|ψ􀎯＋
+Vijkl􀎮ψ|a
+†
+jakal|ψ􀎯＝hijD
+２, (３１)
+１＋VijklD
+†
+ia
+其中,D
+１和D
+２分别为系统的单电子和两电子约化
+密度矩阵(reduceddensitymatrix,RDM),分别记
+作１ＧRDM 和２ＧRDM．实验上,我们可以高效测量得
+到体系的２ＧRDM,并约化得到１ＧRDM．由于具有实
+际的物理意义,要求２ＧRDM 不但满足约化密度矩
+阵自身的性质,如厄米性、交换反对称性、迹为N ×
+(N－１)等,还需加入额外限制条件保证其为N 电
+子密度矩阵约化而来,这些条件称为N 阶可表示性
+(NＧrepresentability)条件．由于得到全部条件被证
+明是QMAＧcomplete问题,理论上无法获得,故一
+般考虑近似、必要非充分条件,如２阶正定条件(２Ｇ
+positiveconditions),其形式为
+２＝􀎮ψ|a
+†
+jakal|ψ􀎯≽０,
+(３２)
+D
+†
+ia
+２＝􀎮ψ|aiaja
+†
+k|ψ􀎯≽０,
+(３３)
+†
+la
+Q
+２＝􀎮ψ|a
+†
+lak|ψ􀎯≽０,
+(３４)
+G
+†
+iaja
+式(３２)~(３４)要求两电子、两空穴、单电子和单空穴
+RDM 都是半正定的,对应的物理意义为在任意两
+电子轨道找到两电子、两空穴、一个电子和一个空穴
+的概率大等于０．N 阶可表示性规定了测量得到的
+２ＧRDM 具备怎样的性质才为物理或化学上可以出
+现的,实验测量得到的２ＧRDM 往往由于噪声的存
+在不满足这些条件,通过将测量得到的２ＧRDM
+mea投影到满足N 阶可表示性空间最近的点上,我
+２
+D
+们可以得到错误缓解后的结果．
+Rubin等人[３１]使用半正定规划(semiＧdefinite
+programming)算法将D
+２
+mea投影到满足限定条件空
+间距离最近的􀮃
+D
+２．Google公司通过类似的思想,使
+用McWeen纯化及３．
+４节讨论的对称性验证方法实
+现了１２电子量子体系模拟[１１],成功将２％保真度的
+结果还原为９９％．
+３．
+７　准概率模型
+当可以获得噪声模型的形式时,我们可以随机
+施加噪声的逆过程,从而抵消掉噪声的影响．利用这
+一思想的错误缓解方法首先被Temme等人[３２]提出
+用于特殊量子信道,而后被Endo 等人[１６]泛化到
+Markov噪声模型中．考虑一个有噪声量子门E􀳱U,
+其中,U 为量子门的理想表达,而E 为噪声．若可以
+实施该噪声的逆过程ER ＝E －１使得E －１􀳱E＝I,称为
+恢复操作,可以抵消掉噪声的影响,如图５所示．实
+践中,可以通过量子态层析来获取噪声信道的表达．
+Fig．５　Schematicofprobabilisticerrorcancel
+图５　概率错误抵消示意图
+注意到对量子信道求逆得到的概率表达形式中
+可能存在负概率,故我们无法直接实施该方法．
+Temme等人[３２]利用准概率方法解决了这一问题．
+具体而言,对于任何一组量子过程Bj,我们可以利
+用其将上述过程分解为
+E －１＝∑
+qjBj ＝τ∑
+pjsgn(qj)Bj,
+j
+j
+qj ,pj＝qj
+其中τ＝∑
+τ
+．这样,我们可以将各个
+
+===== PDF PAGE 8 =====
+０
+５
+８
+１
+计算机研究与发展　２０２１,５８(９)
+信道Bj 以一定概率pj 随机加入到量子线路中,并
+通过线性组合获得错误缓解结果．特别地,对观测量
+Z,其理想测量期望值􀎮Z􀎯U(ρ)可以表达为
+􀎮Z􀎯U(ρ)＝tr(E －１􀳱E􀳱U(
+ρ)Z)＝
+τ∑
+pjsgn(qj)􀎮Z􀎯Qi(ρ),
+(３５)
+j
+其中,􀎮Z􀎯Qi(ρ)＝tr(Bj􀳱E􀳱U(
+ρ)Z)．从而,我们通过蒙
+特卡洛方法以概率pj 将操作Bj 加入到量子线路
+中．进一步,每一次的测量值乘以对应的sgn(qj),加
+和足够次数的结果后乘以τ 即可获得错误缓解的结
+果．在实施过程中,我们对期望值乘以τ,使得结果的
+２倍．这是准概率方法的实施代价．
+下面以一个例子分析概率错误抵消方法．考
+方差变为原来的τ
+虑去极化信道(depolarizingchannel),系统量子态
+U(
+ρ)受到该信道作用后得到的形式为
+ED (U(
+ρ))＝１－３
+４p
+æ
+è
+ç
+ö
+ø
+÷U(
+ρ)＋
+p
+４(XU(
+ρ)X＋YU(
+ρ)Y＋ZU(
+ρ)Z),
+(３６)
+得到其逆过程形式为
+ER(
+ρ)＝τ(p１ρ＋(－１)×
+p２(XρX＋YρY＋ZρZ)),
+(３７)
+其中,p１＝４－p
+２p＋４,p２＝
+p
+２p＋４,p１＋３p２＝１,
+τ＝１＋
+３p
+１－２p．观测量M 的理性期望值表达为
+􀎮M 􀎯U(ρ)＝τ(p１tr(
+ρM )＋(－１)×
+p２(tr(XU(
+ρ)XM )＋tr(YU(
+ρ)YM )＋
+tr(ZU(
+ρ)ZM )))．
+(３８)
+当测量量子态时,相应符号及常数τ 作用于测
+量结果．重复多次后,我们可以获得理论上理想的测
+量结果．
+上面的讨论主要针对单个量子门的错误缓解,
+准概率方法也可以用于对任意量子线路的错误缓
+解[１６],如图６所示．假设量子线路过程的理想形式
+m
+为∏
+Uk,Uk 代表各个量子门．假设Uk 可以分解为
+k＝１
+Uk ＝τk∑
+piksgn(qik )Qik ,
+(３９)
+ik
+其中,Qik ＝Bik􀳱E􀳱Uk．从而,理想过程可以表示为
+m
+m
+m
+m
+∏
+Uk ＝∏
+τk∑
+ik∈spik∏
+sgn(qik )∏
+Qik ＝
+k＝１
+k＝１
+k＝１
+k＝１
+m
+τsum∑
+k＝１pik 􀅰sgn(qik )􀅰Qik ,
+(４０)
+m
+m
+其中,
+s＝{
+i１,
+i２,􀆺,
+im },
+τsum＝∏
+τk,pi＝∏
+k＝１pik ,
+m
+m
+sgn(qi)＝∏
+sgn(qik ),及Qi ＝∏
+Qik ．故而,对于
+k＝１
+k＝１
+每一种不同的噪声过程,我们可以同时以概率pi 实
+施Qi 到量子线路中,对测量结果乘以sgn(qi)后,
+对于足够次数的结果加和乘以τsum获得对观测期望
+值的错误缓解结果．类似于上面对于单量子比特门
+的讨论,准概率方法对于量子线路的错误缓解带来
+２
+sum．
+的额外开销增大比例为τ
+Fig．６　SchematicofthequasiＧprobabilitymethod
+[４]
+图６　准概率方法示意图[４]
+３．
+８　个体错误减少
+个体错误减少(individualerrorreduction)
+[３３]
+将量子纠错用于单个量子比特错误检测,并使用经
+典后处理来缓解错误．假设每一个量子门受到物理
+噪声的作用形式由Lindblad主方程给出:
+d
+dtρ＝∑
+Lj(
+ρ),
+(４１)
+j
+Lj(
+ρ)＝２L
+†
+jLj．
+(４２)
+†
+jρLj－L
+†
+jLjρ－ρL
+Lj(
+ρ)为作用于第j 个量子比特的Lindblad算
+符,噪声的持续时间为T．假设第k 个量子比特被编
+码为逻辑量子比特,其噪声通过量子纠错被压制为
+原来的ηk 倍．从而,量子态的演化过程变为
+d
+dtρk ＝∑
+Lj(
+ρ)＋(１－ηk)Lj(
+ρk),
+(４３)
+j≠k
+从而,个体错误减少的定义为
+est＝ρideal＋O(T
+２),
+(４４)
+􀭴
+ρ
+其中,
+ρideal为量子线路的无错误输出态．接下来,对于
+观测量Z,我们可以通过量子计算高效测量得到其
+期望值􀎮Z􀎯＝tr(Mρ
+noisy)和量子纠错后的期望值
+􀎮Z􀎯k＝tr(Mρ
+noisy
+k
+),利用二者我们可以通过经典后
+处理得到对理想期望值􀎮Z􀎯ideal＝tr(
+ρidealZ)的估计:
+１
+􀎮􀭾
+Z􀎯est＝􀎮Z􀎯－∑
+(􀎮Z􀎯－􀎮Z􀎯k)．(４５)
+ηk
+
+===== PDF PAGE 9 =====
+１
+５
+８
+１
+张宇鹍等:量子错误缓解研究进展
+注意到,个体错误减少将错误压制到一阶,我们
+可以在此基础上与其他量子错误缓解方法结合获得
+更好的效果．由于使用量子纠错,该方法相较于其他
+量子错误缓解算法会带来额外的硬件和算力开销．
+３．
+９　基于机器学习的量子错误缓解算法
+１)Clifford数据回归(Clifforddataregression)
+机器学习算法由于其强大的函数拟合能力,在
+一系列数值计算问题中展现出优势．以监督学习
+(supervisedlearning)为例,我们假设可以获得大小
+为n 的训练集{x
+noisy
+i
+,x
+ideal
+i
+,
+i∈{１,２,􀆺,n}}和大小
+为m 的测试集{x
+noisy
+j
+,x
+ideal
+j
+,j∈{１,２,􀆺,m}}．则可
+以利用机器学习算法实现对从{x
+noisy
+i
+}到{x
+ideal
+i
+}的映
+射学习:x
+ideal
+i
+＝f(x
+noisy
+i
+,w)．其中,f 为选定的机器学
+习算法,如回归(regression)算法或者神经网络(neural
+networks)算法;w 为算法的优化参数．
+注意到使用经典计算机模拟一般量子线路的困
+难性,Czarnik 等人[３４]提出使用Clifford 线路作为
+训练数据的来源．理由是Clifford量子线路可以被
+经典计算机高效模拟,从而保证了训练过程的高效
+性．一旦学习完成,我们可以使用训练好的模型预测
+任意给定的噪声结果对应的理想观测结果．理想情
+况下,不论我们给定的量子线路的形式如何,机器学
+习算法在训练过程中能够学习到有噪声观测量到理
+想观测量的映射模式,这一映射模式隐含了对系统
+噪声模式的学习．故而,我们可以在测试阶段将训练
+得到的模型用于任意具备相同噪声模式的数据,由
+于机器学习算法的泛化性质,可以保证在预测阶段
+模型获得合理的表现．
+具体而言,Czarnik等人[３４]通过从真实Clifford
+量子线路采样得到{x
+noisy
+i
+},并通过经典计算机模拟
+生成{x
+ideal
+i
+}．并使用线性回归算法表征二者间的映
+射:f(x
+noisy
+i
+,w)＝ax
+noisy
+i
+＋b．这里选择损失函数为
+L(w)＝∑
+(f(x
+noisy
+i
+,w)－x
+ideal
+i
+)
+２．
+(４６)
+i
+Clifford数据回归模型已经在IBMQ１６量子比
+特计算机和６４量子比特经典计算机上进行演示[３４]．
+由于机器学习算法具有强大的模式学习能力,这类
+算法具备高度的灵活性和通用性,可以应用于各类
+噪声模型和实验数据中,且可以同时用于Markov
+和关联错误．这使得面相特定量子设备的错误缓解
+成为可能．
+２)基于学习的准概率方法(
+learningＧbasedquasiＧ
+probabilitymethod)
+Strikis等人[３５]提出使用机器学习算法用于准
+概率方法,从而可以避免使用量子态层析．该方法关
+注的量子线路由单量子比特门和Clifford两量子比
+特门构成．注意到,这足以组成通用量子门集合
+(universalgateset),故实践中,我们可以将任意的
+量子线路编译为由上述量子门组成的线路．假定主
+要的错误来源为两量子比特门．使用U＝{U１,U２,
+􀆺}代表单量子比特门,Videal(U)和Vnoisy(U)分别代
+表理想和有噪声的量子线路．准概率方法通过在各
+个量子门前后加入单量子比特泡利算符K ＝{K
+１,
+２,􀆺}来恢复理想过程．将带有额外错误缓解操作
+K
+的量子线路表示为Vnoisy(U,K)．准概率方法通过搜
+索参数κ(K)使得:
+Vest(U)＝∑
+κ(K)Vnoisy(U,K)
+(４７)
+K
+近似于Videal(U)．一般非学习准概率方法以对量子信
+道的态层析来获得参数．由于过高开销,这种方式可
+能在用于得到时间和空间上的存在关联错误的描述
+时失效．
+准概率学习方法提供了避免使用态层析的替代
+ideal(est)(U)为对理想观测值的估计．选定机器
+方案．
+π
+学习模型参数κ(K)及训练集S,损失函数为
+L(U)＝１
+S∑
+U∈S
+ideal(U)－π
+est(U)２．(４８)
+π
+这里,为了保证训练过程的效率,我们的训练集
+选择使用Clifford群生成量子线路．可以看到与１)
+Clifford数据回归的学习方法类似,由于机器学习
+算法的泛化性,算法可以学习到噪声的模式．故在测
+试环节中,我们可以将训练好的模型用于任意存在
+非关联错误的非Clifford单量子比特门中．
+注意到随着线路中量子门个数的增加,恢复操
+作构成的空间大小可能会呈现指数级上升．这种情
+况下,一种方法是采用截断方法,另一种为变分优化
+方法．前者通过泡利旋转(Paulitwirling)
+[１３]将错误
+转化为有错误的泡利量子门,并截断该空间的大小
+到与量子线路大小呈多项式关系．后者则通过蒙特
+卡洛采样得到损失函数并通过变分法优化该损失函
+数．实践中,我们可以使用不完美的量子门组态层析
+作为优化的初始点．
+３．
+１０　随机错误缓解
+相较于离散的数字量子模拟,当前量子计算领
+域没有系统的方法对模拟量子模拟(analogquantum
+simulation)实施量子纠错[３６]．而随机错误缓解为连
+续的模拟量子模拟提供了压制错误的方法,可以实
+现有效应用．
+
+===== PDF PAGE 10 =====
+２
+５
+８
+１
+计算机研究与发展　２０２１,５８(９)
+考虑,假设系统的动力学演化过程由Lindblad
+主方程给出:
+d
+dtρ＝－i H ,
+ρ
+[
+] ＋L(
+ρ),
+(４９)
+L(
+ρ)＝∑
+†
+jLj, (５０)
+２LjρL
+†
+j －L
+†
+jLjρ－ρL
+j
+其中,H 为系统哈密顿量,L(
+ρ)为有噪声的Lindblad
+算符．假设Lindblad算符的作用为局域的且其作用
+较弱．由于随着系统动力学演化,Lindblad算符的作
+用会传播到整个系统,导致一般而言对于这种具有
+全局效应的物理噪声的缓解是困难的．简单起见,这
+里假设系统哈密顿量是不含时的,注意到这里的结
+果同样对含时情况有效．将量子态从时刻t 到t＋δt
+的演化表示为
+ρk(
+t＋δt)＝Ek(
+ρk(
+t)),
+(５１)
+其中,k＝I,N 分别对应理想和有噪声情况．为了通
+过有噪声演化过程E I 模拟理想的演化过程E N ,可
+以通过式(５２)实施准概率方法:
+E I ＝E RE N ,
+(５２)
+其中,E R 为恢复算符,其可以分解为
+E R ＝∑
+i qiBi ＝τR∑
+sgn(qi)piBi,
+(５３)
+i
+其中,
+τR ＝∑
+i
+qi ,pi＝|qi|∕τR ,Bi 为单量子比
+特算符直积．为了模拟在时间T 内的整个演化过
+程,我们可以通过在每一个时间间隔υ 实施一次恢
+复操作E R ．故而,共需要实施T∕υ 次操作,代价为
+Ctot＝ET∕υ
+R ．
+注意到,对于模拟量子模拟,持续地实施式(５３)
+恢复操作会带来过高的开销．每一个小时间段δt 内
+所实施的恢复操作接近全等算符．这里,我们可以使
+用蒙特卡洛方法在整个过程中随机地加入强恢复操
+作,类似于随机薛定谔方程．
+３．
+１１　量子错误缓解方法的组合
+在３．
+８节的讨论中,我们已经提及不同量子错
+误缓解方法间的结合可以弥补特定方法的缺陷．这
+里,我们就３种不同的方法结合[３７]进行讨论．
+１)对称性验证与外推法结合
+对称性验证方法无法识别能够保持系统对称性
+的错误,这些错误与对称性检测算符相互对易,称之
+为对易错误(commutingerror),而其他错误称之为
+反对易错误(antiＧcommutingerror)．而与对称性检
+测算法反对易的错误经过偶数次的出现与积累,其
+也会与检测算符相互对易．为了增加算法的错误缓
+解能力,一种方法是将其与外推法结合．假设对观测
+量Z 在错误率为ε 下对称性检测后得到的观测期望
+值为􀎮Z􀎯sym(
+ε),使用外推法可以进一步缓解对称性
+检测后仍然存在的与检测算符对易的错误:
+􀎮Z􀎯est＝λ􀎮Z􀎯sym(
+ε)－􀎮Z􀎯sym(λε)
+λ－１
+．
+(５４)
+这里采用线性外推法．数值上,该方法被McArdle
+等人[２３]验证．并且,Cai
+[３８]讨论了该方法在Hubbard
+VQE算法中的应用．
+２)准概率方法与外推法结合
+我们也可以使用准概率方法与外推法结合[３８]．
+这种情况下,我们不使用准概率方法来缓解所有类
+型的错误,而是在不改变噪声信道形式的情况下实
+现对噪声率的压制．从而,我们可以获得在不同噪声
+大小的测量期望值,并使用外推法获得理想测量期
+望值．相较于一般的外推法,我们不需要在量子设备
+上通过实验手段获得不同噪声率情况下的测量值,
+且由于可以降低而非增加噪声率,我们可以获得更
+低的估计误差．代价是引入准概率方法会产生更高
+的采样需要．发现这２种方法的结合可以用于缓解
+连续过程的物理和模型估计误差[３７]．
+３)准概率与对称性验证方法结合
+本节１)讨论到对称性验证方法无法检测到与
+对称性检测算符对易的错误．通过引入准概率方法,
+我们可以通过改变噪声信道的形式,从而改变错误
+与对称性检验算符的对易性,实现更好的效果．在实
+施准概率方法的过程中,额外加入的量子门可能会
+与对称性检验算符反对易,故而,我们需要相应改变
+结果的对称性．准概率方法用于缓解线路中的反对
+易错误．在此之后,若线路中剩下的反对易错误为奇
+数个,则会被对称性验证方法检验并纠正;若存在偶
+数个,则无法检测．
+使用ν 代表系统经过准概率方法作用后剩余的
+错误数量,而后通过式(１１)可以获得这种情况下系
+统观测量的期望值为
+ν
+k
+¥
+－ν∑
+􀎮Z􀎯(
+ν)＝e
+k!􀎮Z􀎯k,
+(５５)
+k＝０
+其中,􀎮Z􀎯k 为观测量在量子线路中存在k 个错误情
+况下的期望值．
+通过３．
+１节２)中对指数外推法的讨论,可知观
+测量遵从指数衰减曲线:
+􀎮Z􀎯(
+ν)＝􀎮Z􀎯(０)e
+－Γdν,
+(５６)
+假定􀎮Z􀎯(
+ν)与理想情况测量值􀎮Z􀎯(０)满足:
+􀎮Z􀎯k＝􀎮Z􀎯(０)(１－Γd)
+k,
+(５７)
+
+===== PDF PAGE 11 =====
+３
+５
+８
+１
+张宇鹍等:量子错误缓解研究进展
+其中,０≤Γd≤１．可知在实施对称性验证方法后,量
+子线路中仅可能存在偶数个非对易错误,给定下列
+观测结果:
+􀎮Z􀎯e ＝
+１
+cosh(
+ν)∑
+偶数k
+ν
+k
+k!􀎮Z􀎯k ＝
+cosh((１－Γd)
+ν)
+cosh(
+ν)
+􀎮Z􀎯(０),
+(５８)
+－ν变为
+１
+cosh(
+ν)．
+其中,对概率分布的归一化常数由e
+所以,经过对称性验证后的结果􀎮Z􀎯e 总是比式(５６)
+中􀎮Z􀎯(
+ν)更接近􀎮Z􀎯(０)．
+４　量子错误缓解技术未来发展方向
+以测量错误减少和准概率方法等为代表的错误
+缓解技术,面向特定的量子信道,通过严格推导可以
+达到对错误形成有保证的缓解效果．然而,实践过程
+中,一方面,这类方法依赖错误的形式,故需要实施
+具有高开销的态和信道层析技术;另一方面,真实设
+备中错误的来源多种多样,很难通过严格的推导实
+现对所有类型错误的缓解．而类似于外推法等方法,
+没有利用错误本身的信息,导致达到理想精度的错
+误缓解效果一般需要高度的计算资源．机器学习算
+法为这种两难的困境提出了一大出路．理由是机器
+学习算法具有强大的模式识别的能力[３９],能够从训
+练数据中学习到系统噪声对理想测量期望值的改变
+模式,故使得机器学习算法在这一方面具有更高的
+灵活性:既可以用于各类特定形式的量子信道中,也
+可以对实验数据进行处理．故而,未来在量子错误缓
+解领域更多机器学习算法的进入值得期待．并且,机
+器学习算法的开销主要集中于训练阶段,当完成训
+练后可以使用训练好的模型低成本地推断各类情况
+下的错误缓解结果．
+除此以外,利用计算任务本身特性的错误缓解
+算法展现出具有优势的表现,如３．
+６节的N 阶可表
+示性[３１]．在近期量子计算任务中,量子模拟求解化
+学、物理体系的基态及动力学过程等成为最受瞩目
+的分支之一,值得期待的是未来更多面向特定物理、
+化学体系的错误缓解算法的提出．这有赖于在传统
+凝聚态物理、量子多体物理和量子化学领域对体系
+的知识积累,利用相应的认识和见解,可以获得理想
+结果所存在的子空间,从而对量子态施加除了对称
+间．可以预见,对物理、化学体系信息的更充分利用
+可以带来更加稳定的结果表现以及在算法开销上的
+优势．
+５　结束语
+我们通过量子模拟,引入和介绍了量子错误缓
+解技术的重要性:在NISQ 时代,通过插入特定量子
+门到量子线路中和经典后处理,量子错误缓解保证
+了即便存在噪声,较浅量子线路也可以有效实施．并
+且,量子错误缓解方法可以延伸到连续的量子过程
+中,为实施定量的模拟量子计算提出了一定的可能
+性．故而,错误缓解方法成为发挥近期量子计算机能
+力的必不可少的元素．
+本文还对量子错误缓解的未来可能发展方向进
+行了讨论．我们认为量子错误缓解的发展具有巨大
+的潜力．由于实验上可以控制的量子比特数目,量子
+错误缓解将作为量子纠错的过度技术而存在,且为
+各类量子算法的实施提供保障．特别地,IBM 等行业
+巨头在提供量子计算机云服务的同时,都考虑使用
+相应量子错误缓解技术作为实施算法的必要选项．
+注意到,机器学习算法在与量子纠错方法的结合中
+经历了相对较长时间、多种形式的发展,包括受限玻
+尔兹曼机、卷积神经网络和强化学习等[４０Ｇ４２]．而目
+前,量子错误缓解技术在此领域仍存在大量未探索
+方向．
+参
+考
+文
+献
+[１] PreskillJ．QuantumcomputingintheNISQeraandbeyond
+[J]．Quantum,２０１８,２:７９
+[２] FowlerA G,Mariantoni M,MartinisJ M,etal．Surface
+codes:TowardspracticallargeＧscalequantum computation
+[J]．PhysicalReview A,２０１２,８６(３):０３２３２４
+[３] Peruzzo A, McCleanJ,ShadboltP,etal．A variational
+eigenvaluesolver on a photonic quantum processor [J]．
+NatureCommunications,２０１４,５(１):１７
+[４] McArdleS,Endo S, AspuruＧGuzik A,etal．Quantum
+computationalchemistry [J]．Reviewsof Modern Physics,
+２０２０,９２(１):０１５００３
+[５] EndoS,CaiZhenyu,BenjaminSC,etal．HybridquantumＧ
+classical algorithms and quantum error mitigation [J]．
+Journalofthe PhysicalSociety ofJapan,２０２１,９０(３):
+
+===== PDF PAGE 12 =====
+４
+５
+８
+１
+计算机研究与发展　２０２１,５８(９)
+[６] FarhiE,GoldstoneJ,GutmannS．Aquantumapproximate
+optimizationalgorithm [J]．arXivpreprintarXiv:１４１１．
+４０２８,
+２０１４
+[７] Feynman R P．Simulating physics with computers [J]．
+InternationalJournalofTheoreticalPhysics,１９８２,２１(６):
+４６７４８８
+[８] Korte B H, Vygen J, Korte B,et al．Combinatorial
+Optimization[M]．Berlin:Springer,２０１１
+[９] EndoS,CaiZhenyu,BenjaminSC,etal．HybridquantumＧ
+classical algorithms and quantum error mitigation [J]．
+Journalofthe PhysicalSociety ofJapan,２０２１,９０(３):
+０３２００１
+[１０] AruteF,AryaK,Babbush R,etal．Quantum supremacy
+using a programmable superconducting processor [J]．
+Nature,２０１９,５７４(７７７９):５０５５１０
+[１１] AruteF,Arya K,Babbush R,etal．HartreeＧFockona
+superconductingqubitquantumcomputer[J]．arXivpreprint
+arXiv:２００４．
+０４１７４,２０２０
+[１２] Kohn W．Nobellecture:Electronicstructureof matter—
+Wavefunctions and density functionals [J]．Reviews of
+ModernPhysics,１９９９,７１(５):１２５３１２６６
+[１３] Li Ying, Benjamin S C．Efficient variational quantum
+simulator incorporating active error minimization [J]．
+PhysicalReviewX,２０１７,７(２):０２１０５０
+[１４] TemmeK,BravyiS,GambettaJ M．Error mitigationfor
+shortＧdepthquantum circuits[J]．PhysicalReview Letters,
+２０１７,１１９(１８):１８０５０９
+[１５] KandalaA,TemmeK,CórcolesAD,etal．Errormitigation
+extends the computational reach of a noisy quantum
+processor[J]．Nature,２０１９,５６７(７７４９):４９１４９５
+[１６] EndoS,BenjaminS C,LiYing．Practicalquantum error
+mitigationfornearＧfutureapplications[J]．PhysicalReview
+X,２０１８,８(３):０３１０２７
+[１７] GiurgicaＧTironT,Hindy Y,LaRoseR,etal．Digitalzero
+noiseextrapolationforquantumerrormitigation[C]∕∕Proc
+of ２０２０IEEE Int Conf on Quantum Computing and
+Engineering(QCE)．Piscataway,NJ:IEEE,２０２０:３０６３１６
+[１８] Keen T, Maier T,Johnston S,etal．QuantumＧclassical
+simulationoftwoＧsitedynamicalmeanＧfieldtheoryonnoisy
+quantum hardware [J]．Quantum Scienceand Technology,
+２０２０,５(３):０３５００１
+[１９] Otten M, Gray S K．Recovering noiseＧfree quantum
+observables[J]．PhysicalReview A,２０１９,９９(１):０１２３３８
+[２０] McCleanJR,KimchiＧSchwartzM E,CarterJ,etal．Hybrid
+quantumＧclassicalhierarchyformitigationofdecoherenceand
+determination ofexcited states [J]．Physical Review A,
+２０１７,９５(４):０４２３０８
+[２１] Shen Yangchao,Zhang Xiang,Zhang Shuaining,et al．
+Quantumimplementationoftheunitarycoupledclusterfor
+simulating molecular electronic structure [J]．Physical
+[２２] BarkoutsosP K,GonthierJF,SokolovI,etal．Quantum
+algorithmsforelectronicstructurecalculations:ParticleＧhole
+Hamiltonianand optimized waveＧfunction expansions [J]．
+PhysicalReview A,２０１８,９８(２):０２２３２２
+[２３] McArdleS,YuanXiao,BenjaminS．ErrorＧmitigateddigital
+quantumsimulation[J]．PhysicalReviewLetters,２０１９,１２２
+(１８):１８０５０１
+[２４] BonetＧMonroigX,SagastizabalR,SinghM,etal．LowＧcost
+error mitigation by symmetry verification [J]．Physical
+Review A,２０１８,９８(６):０６２３３９
+[２５] Sagastizabal R, BonetＧMonroig X, Singh
+M, et al．
+Experimentalerrormitigationviasymmetryverificationina
+variationalquantum eigensolver [J]．Physical Review A,
+２０１９,１００(１):０１０３０２
+[２６] McCleanJ R,Jiang Zhang,Rubin N C,etal．Decoding
+quantum errors with subspace expansions [J]．Nature
+Communications,２０２０,１１(１):１９
+[２７] MaciejewskiFB,ZimborásZ,Oszmaniec M．Mitigationof
+readoutnoiseinnearＧtermquantumdevicesbyclassicalpostＧ
+processing based on detectortomography [J]．Quantum,
+２０２０,４:２５７
+[２８] Chen Yanzhu, Farahzad M, Yoo S, et al．Detector
+tomographyonIBMquantumcomputersandmitigationofan
+imperfectmeasurement[J]．PhysicalReview A,２０１９,１００
+(５):０５２３１５
+[２９] Kwon H,BaeJ．A hybrid quantumＧclassicalapproachto
+mitigating measurementerrors [J]．arXiv preprintarXiv:
+２００３．
+１２３１４,２０２０
+[３０] Bravyi S, Sheldon S, Kandala A, et al．Mitigating
+measurementerrorsin multiＧqubitexperiments [J]．arXiv
+preprintarXiv:２００６．
+１４０４４,２０２０
+[３１] RubinNC,BabbushR,McCleanJ．Applicationoffermionic
+marginalconstraintstohybridquantumalgorithms[J]．New
+JournalofPhysics,２０１８,２０(５):０５３０２０
+[３２] TemmeK,BravyiS,GambettaJ M．Error mitigationfor
+shortＧdepthquantum circuits[J]．PhysicalReview Letters,
+２０１７,１１９(１８):１８０５０９
+[３３] Otten M,Gray S K．Accountingforerrorsin quantum
+algorithmsviaindividualerrorreduction [J]．npjQuantum
+Information,２０１９,５(１):１６
+[３４] CzarnikP,ArrasmithA,ColesPJ,etal．Errormitigation
+withCliffordquantumＧcircuitdata[J]．arXivpreprintarXiv:
+２００５．
+１０１８９,２０２０
+[３５] StrikisA,QinDayue,ChenYanzhu,etal．LearningＧbased
+quantum error mitigation [J]．arXiv preprintarXiv:２００５．
+０７６０１,２０２０
+[３６] SunJinzhao,Yuan Xiao,Tsunoda T,et al．Mitigating
+realisticnoiseinpracticalnoisyintermediateＧscalequantum
+devices[J]．PhysicalReview Applied,２０２１,１５(３):０３４０２６
+[３７] Cai Zhenyu．MultiＧexponential error extrapolation and
+combiningerror mitigationtechniquesfornisqapplications
+
+===== PDF PAGE 13 =====
+５
+５
+８
+１
+张宇鹍等:量子错误缓解研究进展
+[３８] CaiZhenyu．Resource estimation for quantum variational
+simulations ofthe hubbard model [J]．Physical Review
+Applied,２０２０,１４(１):０１４０５９
+[３９] BishopCM．PatternRecognitionandMachineLearning[M]．
+Berlin:Springer,２００６
+[４０] TorlaiG,MelkoR G．Neuraldecoderfortopologicalcodes
+[J]．PhysicalReviewLetters,２０１７,１１９(３):０３０５０１
+[４１] ChamberlandC,RonaghP．Deepneuraldecodersfornear
+termfaultＧtolerantexperiments [J]．Quantum Scienceand
+Technology,２０１８,３(４):０４４００２
+[４２] SwekeR,Kesselring M S,van Nieuwenburg E P,etal．
+ReinforcementlearningdecodersforfaultＧtolerantquantum
+computation[J]．MachineLearning:Scienceand Technology,
+２０２０,２(２):０２５００５
+Zhang Yukun,bornin １９９６．Master．His
+main research interests include theories,
+algorithms and techniques for nearＧterm
+quantumdevice．
+张宇鹍,１９９６年生．硕士．主要研究方向为面
+向近期量子设备的理论、算法和技术．
+Yuan Xiao,bornin １９９０．PhD,assistant
+professor．His mainresearchinterestsinclude
+quantum information theory and quantum
+computing．
+袁　骁,１９９０年生．博士,助理教授．主要研究
+方向为量子信息理论、量子计算．

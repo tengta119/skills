@@ -1,0 +1,1533 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２１．２０２１０３４６
+ JournalofComputerResearchandDevelopment                                    ５８(９):１９０６１９１４,２０２１
+
+
+量子假设检验互信息
+
+张淑仪　　　席政军(陕西师范大学计算机科学学院　西安　７１００６２)
+(zsy１８＠snnu．edu．cn)
+Quantum HypothesisTestingMutualInformation
+ZhangShuyiandXiZhengjun
+(CollegeofComputerScience,ShaanxiNormalUniversity,Xi􀆳an７１００６２)
+  Abstract　von Neumann mutualinformationisageneralizationofShannon mutualinformationin
+  quantuminformationtheory,andithasbeenfoundtohaveusefulapplicationsinthechannelcapacity．
+  Themanyclassicalquantifierscanbeextendedforpairsofquantum statesinvariousinequivalent
+  ways,duetothenonＧcommutativityofquantumstates．Quantumhypothesistestingrelativeentropy
+  comesfrom thehypothesistestingquestion,anditisoneofthe mostfundamentalprimitivesin
+  quantum information processing．We discussthe quantum mutualinformation with respectto
+  quantumhypothesistestingrelativeentropy．Wegivesomepropertiesofquantumhypothesistesting
+  relativeentropy,andgivetherelationshipsbetweenitandotherquantumgeneralizedentropies．Using
+  relativeentropy,we define quantum hypothesistesting mutualinformation,and exhibitsome
+  properties,suchas,dataprocessinginequality．Usingthesum between mutualinformationand
+  conditionentropy,wediscussthechainrules,whicharegenerallyanimportanttechnicaltoolin
+  informationtheory．
+  Keywords　quantumhypothesistesting;relativeentropy;mutualinformation;conditionalentropy;
+  chainrules
+ 摘　要　vonNeumann互信息是Shannon互信息在量子信息中的推广,在量子信道容量中有非常好的
+ 应用．由于量子态的非对易性,许多经典信息论中的量化在量子信息中有完全不等价的推广定义．量子
+ 假设检验相对熵来自于假设检验问题,是量子信息处理中常用的基本量化之一．使用量子假设检验相对
+ 熵讨论量子互信息．首先讨论量子假设检验相对熵的一些基本性质,并给出该量化和其他量子广义熵
+ 之间的关系．然后结合相对熵的性质,给出量子假设检验互信息的定义,并讨论其性质,比如:数据处理
+ 不等式．通过互信息与条件熵之和重点讨论互信息的链式法则．
+ 关键词　量子假设检验;相对熵;互信息;条件熵;链式法则
+  中图法分类号　TP３９１
+
+　收稿日期:２０２１－０４－０６;修回日期:２０２１－０６－０９
+　基金项目:国家自然科学基金项目(６１６７１２８０);中央高校基本科研业务费专项资金(GK２０１９０２００７);陕西师范大学优秀学术青年骨干项目
+         (１６QNGG０１３)
+           ThisworkwassupportedbytheNationalNaturalScienceFoundationofChina(６１６７１２８０),theFundamentalResearchFundsfor
+          theCentralUniversities(GK２０１９０２００７),andtheFundedProjectsfortheAcademicLeadersandAcademicBackbones,Shaanxi
+          NormalUniversity(１６QNGG０１３)．
+　通信作者:席政军(xizhengjun＠snnu．edu．cn)
+
+===== PDF PAGE 2 =====
+７
+０
+９
+１
+张淑仪等:量子假设检验互信息
+在经典信息论中,Shannon互信息是刻画两个
+随机变量相互之间独立程度的度量,在信道编码中
+有很重要的应用且给出了信道容量[１]．在量子信息
+论中,通过vonNeumann熵形式给出了互信息的基
+本定义(与Shannon 互信息对应,本文称作von
+Neumann互信息,通常也称作量子互信息[２])．在量
+子信息处理中,vonNeumann互信息可以描述两体
+量子态上的全部关联[３],也用于量子信道容量的刻
+画[４Ｇ５],并在量子资源理论中有非常好的应用[６]．
+von
+Neumann互信息可以由量子相对熵给出４种等价
+的定义．在量子信道容量的研究中,结合信道的n 次
+重复使用(独立同分布)基于量子互信息来描述信道
+容量．而实际中较大量子系统上的操作难以实现且
+独立同分布的量子态难以制备等限制,一般考虑带
+有误差的有限情形或者oneＧshot情形(也就是n＝１
+的情形)．在oneＧshot量子信息论中,涉及到带参数
+的熵,量子假设检验相对熵就是非常重要的一类带
+参数的熵．量子假设检验相对熵来自于量子假设检
+验,量子假设检验类似于２个量子态的区分问题．量
+子假设检验是量子信息处理中的基本问题[７Ｇ８],已得
+到很好的发展和应用[９Ｇ１８]．
+文献[１９]在前人工作的基础上集中讨论了量子
+假设检验相对熵,较为系统地研究了其性质,给出了
+在oneＧshot经典量子信道容量中的应用．文献[２０]
+给出了与文献[１９]等价的另一个量子假设检验相对
+熵,得到了与其他广义熵之间的关系．文献[２１]基于
+量子假设检验相对熵[１９]定义了量子假设检验条件
+熵,刻画了具有量子边信息的数据压缩,得到了最小
+压缩长度的上下界．该文献也给出了量子假设检验
+相对熵和其他相对熵之间的一些关系．在量子假设
+检验相对熵的研究相对成熟的情形下,一个自然的
+问题是:用量子假设检验相对熵给出量子版本互信
+息的定义是否等价? 如果不等价,是否存在序关系?
+本文将采用文献[１９]中关于量子假设检验相对熵的
+定义,较为系统地研究其性质,并讨论与其他相对熵
+之间的关系．在Shannon 互信息中,由于贝叶斯概
+率,容易得到条件熵和互信息的链式法则,但是目前
+还不清楚量子假设检验相对熵版本的互信息是否存
+在链式法则.本文将重点研究基于量子假设检验相
+对熵的互信息定义及其相应的性质．
+１　相关基础知识
+基础知识．首先介绍Shannon熵的基本概念[１]．设X
+是一个离散型随机变量,其字母表为X,概率密度函
+数为px＝Pr(X＝x),x∈X．随机变量X 的Shannon
+熵定义为
+H (X)＝－∑
+x∈Xpxlbpx ．
+本文均使用以２为底的对数．若２个随机变量
+(X,Y)服从联合分布pxy,则Shannon联合熵定义为
+H(X,
+Y)＝－∑
+x∈X,y∈Ypxylbpxy．
+可以定义一个随机变量在给定另一随机变量下
+的条件熵,即
+H (Y|X)＝－∑
+x∈X,y∈Ypxylbpy|x ．
+结合贝叶斯概率公式pxy ＝pxpy|x,得到联合
+熵和条件熵的链式法则,即
+H (X,Y)＝H (X)＋H (Y|X)．
+(１)
+对于同一字符集上的２个概率密度函数为px
+和qx,它们的相对熵定义为
+x∈Xplbpx
+D(px‖qx)＝∑
+,
+(２)
+qx
+其中,约定０lb０
+０＝０,plbp
+０＝¥．对于服从联合概
+率密度函数为pxy 的离散随机变量(X,Y),其边际
+概率密度函数分别为px 和py,它们之间的相对熵
+定义为Shannon互信息,即
+I(X;Y)＝D(pxy‖pxpy)．
+(３)
+Shannon互信息刻画一个随机变量包含另一个
+随机变量的信息量,也描述已知另一随机变量所含
+有的信息量下原随机变量不确定度的减少量．结合
+Shannon熵的定义,Shannon互信息表示为
+I(X;Y)＝D(pxy‖pxpy)＝
+H (X)＋H (Y)－H (X,Y)＝
+H (X)－H (X|Y)＝
+H (Y)－H (Y|X)．
+(４)
+这里,
+I(X;
+Y)＝H(X)－H(X|Y)和I(X;Y)＝
+H (Y)－H (Y|X)这２个等式是双随机变量互信息
+的链式法则．
+量子力学的基本框架建立在Hilbert空间H
+上,本文仅考虑有限维空间,用d 表示Hilbert空间
+的维数．用符号A,B,C 等表示相应的Hilbert空间
+HA ,HB ,HC．用符号I 表示空间上的恒等算子．用
+迹为１的半正定算子描述量子态,通常称为密度算
+子或密度矩阵．在本文中常用的算子集合有２类,
+即D ≤(H)＝{
+ρ∈P(H):０＜tr(ρ)≤１}表示次归一
+化态集合;D(H)＝{
+ρ∈P(H):tr(ρ)＝１}表示所有
+
+===== PDF PAGE 3 =====
+８
+０
+９
+１
+计算机研究与发展　２０２１,５８(９)
+量子态集合．显然,D(H)⊆D ≤(H)．对于量子态ρ,
+其vonNeumann熵定义为S(
+ρ)＝－tr(
+ρ)lbρ．对于
+任意２个量子态ρ和σ,vonNeumann相对熵定义为
+tr(
+ρ)(lbρ－lbσ),
+ì
+í
+ïï
+S(
+ρ‖σ)＝
+若supp(
+ρ)⊆supp(
+σ),
+ïï
+＋¥,其他．
+î
+因为量子力学中并没有与在不同时间变量的
+２个变量的联合概率分布类似的概念[２Ｇ３],从而对于
+两体量子态ρAB ,并没有类似于pxy＝pxpy|x的量子
+态表示形式,即ρAB ≠ρA 􀱋ρB|A ,其中ρA ＝trB (ρA )
+是约化密度算子,类似于边际概率分布．算子ρB|A 并
+不是条件量子态,甚至不是量子态．因此,没有类似
+于Shannon条件熵的量子条件熵的直接定义．结合
+链式法则(１),对于任意的两体量子态ρAB ,基于子
+系统B 的vonNeumann条件熵定义为
+S(A|B)＝S(
+ρAB)－S(
+ρB)．
+(５)
+显然,量子信息论中的vonNeumann条件熵只
+是在形式上类似于经典信息论中的Shannon条件熵,
+在本质上它们之间有很大的区别,比如:当两体量子
+态为纠缠态时,S(A|B)＜０．这说明vonNeumann
+条件熵可以为负．
+vonNeumann互信息定义为
+I(A:B)＝S(
+ρA)＋S(
+ρB)－S(
+ρAB)．
+(６)
+vonNeumann条件熵和互信息在形式上都与
+Shannon条件熵和互信息保持一致．特别地,von
+Neumann互信息也有等式组(４)表示,具体讨论在
+第３节．
+２　量子假设检验相对熵
+量子假设检验问题涉及２个假设:
+１)零假设(nullhypothesis)H０:
+ρ
+􀱋n,
+２)备则假设(alternativehypothesis)H１:
+σ
+􀱋n,
+􀱋n＝ρ􀱋􀆺􀱋ρ 和σ
+􀱋n＝σ􀱋􀆺􀱋σ 表示量子态
+其中ρ
+的n 次独立同分布(independentandidentically
+distributed,i．
+i．
+d．)的拷贝态．需要解决的问题是基
+于量子测量结果确定哪一个假设是真的．量子测量
+由一个POVM(positiveoperatorvalued measure,
+POVM)来描述．本文仅考虑二值的POVM,相应的
+测量算子元为Mn 和In－Mn,分别对应假设H０和
+H１的接受,从而产生２类误差概率:
+αn(Mn)＝tr((In－Mn)
+ρ
+􀱋n),
+βn(Mn)＝tr(Mnσ
+􀱋n),
+其中,
+α(M )是当假设H０为真时接受假设H１的概
+率,
+β(M )是当假设H１为真时接受H０的概率．类似
+于经典假设检验问题,通常希望同时最小化这２类
+概率,但是它们之间存在均衡关系．一般情况下,
+约束其中一个误差概率而对另一个进行最小化．若
+第１类误差概率被限制在很小的参数ε∈(０,１)内,
+讨论第２类误差概率的最小化,量子Stein􀆳s引理给
+出了渐近情形下关于误差概率的最佳可达误差指
+数[８Ｇ９],即
+n→¥－１
+nlbβn(
+ε)＝S(
+ρ‖σ),
+lim
+其中,
+βn (ε)＝
+min
+０≤Mn≤In
+{βn (Mn ):αn (Mn )≤ε},且
+S(
+ρ‖σ)是量子相对熵．
+在非渐近情形下,对第１类误差概率限制下第
+２类误差概率的变化趋势是由量子假设检验相对熵
+来描述的．本文后面的讨论仅考虑单次拷贝的情形,
+且采用文献[１９]中量子假设检验相对熵的定义．
+定义１．设ρ∈D (H),σ∈D ≤(H),且ε∈[０,
+１],量子假设检验相对熵定义为
+h(
+ρ‖σ)＝－
+min
+０≤M ≤I,
+tr(Mρ)≥１－ε
+lbtr(Mσ)．
+(７)
+S
+ε
+量子假设检验相对熵是非负的,即S
+h(ρ‖σ)≥
+ε
+h(ρ‖σ)＝０,并不能得到ρ＝σ．特别
+０．但是若有S
+ε
+地,当ε＝０时,易得tr(Mρ)＝tr(Mσ)＝１,这蕴含着
+ρ 和σ 具有相同的支集．特别地,令σ＝I,量子假设
+检验相对熵退化为
+h(
+ρ‖I)＝－
+min
+０≤M ≤I,
+tr(Mρ)≥１－ε
+lbtr(M )．
+(８)
+S
+ε
+类似于vonNeumann熵,该量化可以看做是量
+子假设检验熵．
+量子假设检验相对熵满足数据处理不等式,也
+就是量子操作不会引起量子假设检验相对熵增
+加[１９,２２],即对于任意的量子操作Λ 都有
+h(Λ(
+ρ)‖Λ(
+σ))．
+进一步地,如果考虑n 次独立同分布的情形,
+h(
+ρ‖σ)≥S
+S
+ε
+ε
+当n 充分大时,量子假设检验相对熵等于量子相对
+熵[１８],也就是渐近均分性(asymptoticequipartition
+property,AEP),即
+１
+nS
+h(
+ρ
+􀱋n)＝S(
+ρ‖σ)．
+(９)
+lim
+􀱋n‖σ
+ε
+n→¥
+结合文献[２０]的方法,基于定义１,使用von
+Neumann相对熵容易给出量子假设检验相对熵的
+一个上界,即
+h(
+ρ‖σ)≤１
+１－ε[S(
+ρ‖σ)＋Hb(
+ε)], (１０)
+S
+ε
+其中Hb(
+ε)＝－εlb(ε)－(１－ε)lb(１－ε)为二元
+Shannon熵．
+
+===== PDF PAGE 4 =====
+９
+０
+９
+１
+张淑仪等:量子假设检验互信息
+量子假设检验相对熵依赖于参数ε,量子态的
+εＧ邻域发生变化,有可能导致量子假设检验相对熵
+发生变化．通过简单的计算可得性质１~４．
+性质１．
+a．设σ１,
+σ２∈D ≤(H),且σ１≤σ２,有
+h(
+ρ‖σ２)≤S
+h(
+ρ‖σ１)．
+(１１)
+S
+ε
+ε
+b．设ε１,
+ε２∈[０,１],且ε１＜ε２,有
+h (
+ρ‖σ)≤S
+h (
+ρ‖σ)．
+(１２)
+ε１
+ε２
+S
+该结果的详细证明见文献[２２]不等式(１１)表
+明:随着备择假设的增强,第２类误差概率变大．而
+不等式(１２)表明:误差参数的越小限制,第２类误差
+概率反而变大．性质１给出了备择假设的变化引起
+的第２类误差概率的变化,结合文献[２０]的结果,容
+易给出零假设的微小变化和参数变化共同引起第２
+类误差概率的变化情形．
+性质２．设ρ,σ∈D (H),且D (ρ,σ)≤δ,对于
+ε∈[０,１],则对于任意次归一化态τ 有
+h
+(
+ρ‖τ)≥S
+h(
+σ‖τ),
+(１３)
+ε＋δ
+S
+ε
+及
+lb
+１
+ε－(１－ε)δ≤S
+h(
+ρ‖σ)≤lb
+１
+１－ε－δ, (１４)
+ε
+其中,
+δ∈(０,１－ε)．
+从定义１可知,量子假设检验相对熵本质上就
+是一个期望值,通过零假设的一些特定限制,可以直
+接估算量子假设检验相对熵的界．文献[２３]首先给
+出了这方面的讨论．
+性质３．设ρ 为任意满秩态,
+σ 为任意量子态,且
+０≤ε＜λmin(
+ρ),有
+h(
+ρ‖σ)≤lb λmin(
+ρ)
+λmin(
+ρ)－ε,
+(１５)
+S
+ε
+其中,
+λmin(
+ρ)是量子态ρ 的最小特征值．
+性质３仅是针对零假设为满秩态的情形,性
+质４给出一般量子态的情形．
+性质４．对于给定的量子态ρ 和任意量子态σ,
+h(ρ‖σ)的最佳测量,k 和d 分别为量子
+设M 为S
+ε
+态ρ 和测量M 的非零特征值数且k≤d,对于０≤
+d
+ε ＜∑
+λi(
+ρ),则
+i＝k
+d
+h(
+ρ‖σ)≤lb ∑
+λi(
+ρ)
+,
+(１６)
+i＝k
+S
+ε
+d
+∑
+λi(
+ρ)－ε
+i＝k
+其中,
+λi(
+ρ)为ρ 的特征值．
+h(
+ρ‖σ)的最佳测量算子元,且
+证明．设M 为S
+{
+λi(
+ρ)}
+d
+i＝１和{μj(M )}
+k
+j＝１分别为量子态ρ 和最佳测
+量元M 的非零特征值,不妨设λ１(
+ρ)≥λ２(
+ρ)≥􀆺≥
+λd(
+ρ),μ１(M )≥μ２(M )≥􀆺≥μk(M )．令μmin(M )
+为M 的最小特征值,则有
+k
+tr Mρ
+(
+) ≤∑
+λi(
+ρ)μi(M )≤
+i＝１
+k－１
+d
+∑
+λi(
+ρ)＋∑
+λi(
+ρ)μmin(M )＝
+i＝１
+i＝k
+d
+d
+１－∑
+λi(
+ρ)＋∑
+λi(
+ρ)μmin(M )．
+i＝k
+i＝k
+结合不等式tr Mρ
+(
+) ≥１－ε,有
+d
+μmin(M )≥∑
+λi(
+ρ)－ε
+i＝k
+．
+d
+∑
+λi(
+ρ)
+i＝k
+从而可得
+d
+M ≥μmin(M )I ≥∑
+λi(
+ρ)－ε
+i＝k
+I．
+d
+∑
+λi(
+ρ)
+i＝k
+则可以得到
+h(
+ρ‖σ)＝－lbtr(Mσ)≤
+S
+ε
+d
+d
+－lbtr ∑
+＝lb ∑
+λi(
+ρ)－ε
+λi(
+ρ)
+æ
+ö
+ç
+çç
+÷
+÷÷
+i＝k
+i＝k
+σ
+．
+d
+d
+∑
+∑
+λi(
+ρ)
+λi(
+ρ)－ε
+è
+ø
+i＝k
+i＝k
+从而命题得证．
+证毕．
+３　量子假设检验条件熵和互信息
+在经典信息论中,对于联合概率分布,依赖于贝
+叶斯概率,得到条件熵等于联合熵与其中一个边际
+分布熵的差,也就是条件熵链式法则(１)．在量子信
+息论中,并不存在条件量子态,从而不能直接推广经
+典条件熵的定义．如果考虑条件量子态,只能基于某
+一个子系统上的测量获得另一个子系统上的量子
+态．但是两体量子态的局部进行测量后整体量子态
+会发生改变,测量前后的状态可能并不相同．依赖于
+测量得到的条件量子熵一般并不等于vonNeumann
+条件熵(５)．研究发现它们的差正好能刻画复合量子
+系统上子系统之间的非经典关联[３]．本节重点讨论
+vonNeumann条件熵的形式,不涉及测量．
+量子条件熵可以通过量子相对熵来表示[５,２１]．
+
+===== PDF PAGE 5 =====
+０
+１
+９
+１
+计算机研究与发展　２０２１,５８(９)
+对于两体量子态ρAB 和次归一化态IA 􀱋σB ,它们的
+vonNeumann相对熵为
+S(
+ρAB ‖IA 􀱋σB)＝
+－S(
+ρAB)－tr[
+ρABlb(IA 􀱋σB)]＝
+－S(
+ρAB)＋S(
+ρB)＋S(
+ρB ‖σB)．
+由于vonNeumann相对熵是非负的,上式两边
+对所有的σB ∈D ≤(HB )取最小,进而得到von
+Neumann条件熵的相对熵表示形式,即
+S(A|B)＝max
+－S(
+ρAB ‖IA 􀱋σB)．(１７)
+σB
+由于本文采用次归一化态,从而vonNeumann
+条件熵的相对熵表示与文献[１]的表述略有不一致．
+以该表示为标准形式,可以方便讨论量子假设检验
+相对熵性质的条件熵[１９Ｇ２２]．
+定义２．设ρAB ∈D(HAB),且ε∈[０,１],则量子
+假设检验条件熵定义为
+h(A|B)＝max
+h(
+ρAB ‖IA 􀱋σB)．(１８)
+－S
+S
+ε
+ε
+σB
+从定义２易得最优化的过程并没有一个精确
+解,即
+h(A|B)≠S
+h(
+ρAB ‖IAB)－S
+h(
+ρB ‖IB)．
+S
+ε
+ε
+ε
+根据Schatten¥Ｇ范数的半正定程序[２０,２２],量子
+假设检验条件熵也可以表示为
+MB
+¥ ,
+(１９)
+h(A|B)＝
+min
+０≤MAB ≤IAB ,
+Sε
+２
+tr(MABρAB )≥１－ε
+其中,MB ＝trAMAB ．显然,并不能从等式(１９)直接
+得到量子假设检验条件熵的精确解,这与von
+Neumann条件熵并不一致．但是对于等式(１９)继续
+使用半正定程序易得到量子假设检验条件熵的许多
+性质以及和其他量化的关系,比如:数据处理不等
+式．该不等式的成立直接导致增加条件减小熵的结
+果．特别地,量子假设检验条件熵并没有类似于
+Shannon条件熵的链式法则(１)．
+在量子信息论中,对量子系统上的状态进行测
+量后会发生变化,测量前后的状态无法保持一致．因
+此无测量的vonNeumann互信息是Shannon互信
+息形式上的直接推广．
+vonNeumann互信息只是在
+形式上保持了Shannon互信息等价形式的一种,但
+在本质还是有所不同的．结合量子相对熵可以给出
+vonNeumann互信息的４种等价形式,有
+I(A:B)＝S(
+ρA)＋S(
+ρB)－S(
+ρAB)＝
+S(
+ρAB ‖ρA 􀱋ρB)＝min
+S(
+ρAB ‖σA 􀱋ρB)＝
+σA
+S(
+ρAB ‖ρA 􀱋σB)＝min
+S(
+ρAB ‖σA 􀱋σB),
+min
+σA ,σB
+σB
+(２０)
+其中,
+ρAB 是两体量子系统上的任意量子态,
+ρA 和ρB
+是对应子系统上的约化态,且σA(B)∈D ≤(HA(B))．
+从等式(１９)可知,涉及的最优化过程都有精确解．由
+于vonNeumann相对熵和量子假设检验相对熵具
+有特殊的关系式(９),那么基于量子假设检验相对熵
+的互信息是否也有vonNeumann互信息的式(２０)
+等价形式．下面首先给出量子假设检验互信息的不
+同方式定义．
+定义３．设ρAB ∈D(HAB),且ε∈[０,１],量子假
+设检验相对熵的互信息定义为
+(１),
+ε
+h
+(A:B)＝S
+h(
+ρAB ‖ρA 􀱋ρB),
+I
+ε
+(２),
+ε
+h
+(A:B)＝min
+h(
+ρAB ‖σA 􀱋ρB),
+I
+S
+ε
+σA
+(３),
+ε
+h
+(A:B)＝min
+h(
+ρAB ‖ρA 􀱋σB),
+I
+S
+ε
+σB
+(４),
+ε
+h
+(A:B)＝min
+h(
+ρAB ‖σA 􀱋σB)．
+I
+S
+ε
+σA ,σB
+(１),
+ε
+h
+(A:B)不涉及最优化,相对简单．
+可知I
+(２),
+ε
+h
+(A:B)和I
+(３),
+ε
+h
+(A:B)的定义只是交换了子系
+I
+统,可以归并为一个定义．而第４种定义I
+(４),
+ε
+h
+(A:B)
+涉及到２个子系统上的最优化,相对比第２个和第
+３个复杂．从定义３直接可得它们之间的一个序关
+系,即
+(１),
+ε
+h
+(A:B)≥I
+(２),
+ε
+h
+(A:B)≥I
+(４),
+ε
+h
+(A:B),
+I
+(１),
+ε
+h
+(A:B)≥I
+(３),
+ε
+h
+(A:B)≥I
+(４),
+ε
+h
+(A:B)．
+I
+由于条件熵式(１８)仅涉及到某一个子系统上的
+最优化,本文的目标是讨论链式关系,从而下面的讨
+论选取第２类定义．结合量子假设检验相对熵,进一
+(２),
+ε
+h
+(A:B),有
+步化简I
+(２),
+ε
+h
+(A:B)＝min
+h(
+ρAB ‖ρA 􀱋σB)＝
+I
+S
+ε
+σB
+－lbtr(MABρA 􀱋σB)＝
+min
+max
+０≤MAB ≤I
+σB
+tr(MABρAB )≥１－ε
+lbtr(MABρA 􀱋σB)．
+－
+min
+０≤MAB ≤I
+max
+σB
+tr(MABρAB )≥１－ε
+进而有
+􀮄
+MB
+¥ ,
+(２１)
+－I(２),
+ε
+h
+(A:B)＝
+min
+０≤MAB ≤I
+２
+tr(MABρAB )≥１－ε
+其中,􀮄
+MB ＝trA [(ρA 􀱋IB )MAB ]．结合文献[２０Ｇ２１]
+的结果,得到２
+－I(２),
+ε
+h
+(A:B)的半正定程序,即
+原问题
+min
+􀮄
+MB
+¥
+s．
+t．０≤MAB ≤IAB
+tr(MABρAB)≥１－ε
+对偶问题
+max (１－ε)η－tr(NAB)
+
+===== PDF PAGE 6 =====
+１
+１
+９
+１
+张淑仪等:量子假设检验互信息
+s．
+t．ηρAB ≤NAB ＋ρA 􀱋σB
+NAB ≥０,
+η≥０
+σB ≥０,tr(
+σB)≤１．
+Anshu等人和Wilde在量子信道编码中提到了
+量子假设检验互信息的概念,并应用其刻画信道编
+码的最佳速率[１６Ｇ１７],但并没有具体讨论量子假设检
+验互信息的性质．下面集合量子假设检验相对熵和
+量子假设检验条件熵的性质来详细讨论量子假设检
+(２),
+ε
+h
+(A:B)的性质．显然,I
+(２),
+ε
+h
+(A:B)≥０．
+验互信息I
+(２),
+ε
+h
+(A:B)的单调
+下面讨论量子假设检验互信息I
+性,也就是数据处理不等式．
+性质５．设ρAB ∈D(HAB ),且εA :A→A′和εB :
+B→B′为完全正且保迹(completelypositiveand
+tracepreserving,CPTP)映射,有
+(２),
+ε
+h
+(A:B)≥I
+(２),
+ε
+h
+(A′:B′)．
+(２２)
+I
+证明．设{NAB ,
+σB ,
+η}为２
+－I(２),
+ε
+h
+(A:B)的对偶问题
+最优解．由于完全正且保迹映射是保不等式关系的,
+从而在不等式ηρAB ≤ρA 􀱋σB ＋NAB 上使用映射
+εA 􀱋εB ,可得
+τA′B′≤１
+[
+εAρA 􀱋εBσB ＋(
+εA 􀱋εB)NAB]≤
+η
+１
+[
+τA′􀱋σB′＋NA′B′],
+η
+其中,NA′B′＝(
+εA􀱋εB)(NAB),
+σB′＝εB(
+σB),且τA′B′＝
+(
+εA 􀱋εB )(ρAB )．从而可知{NA′B′,σB′,η}是
+－I(２),
+ε
+h
+(A′:B′)的对偶问题可行解,有
+２
+－I(２),
+ε
+h
+(A′:B′)≥η(１－ε)－tr(NA′B′)＝２
+－I(２),
+ε
+h
+(A:B)．
+２
+从而命题得证．
+证毕．
+由于量子假设检验互信息与误差参数有关,结
+合量子假设检验相对熵性质１直接可得量子假设检
+验互信息关于参数的序关系．对于０≤ε＜ε′≤１,有
+(２),
+ε
+h
+(A:B)≤I
+(２),
+ε′
+h
+(A:B)．
+I
+在三体量子系统中,对于vonNeumann互信息
+中,丢弃一个子系统,互信息会减少．下面的结果证
+明量子假设检验相对熵的互信息也具有类似的性质．
+性质６．设ρABC ∈D (HABC ),且εA :A →A′和
+εB :B→B′为CPTP 映射,εC 为子系统C 上的偏迹
+映射,有
+(２),
+ε
+h
+(A:BC)≥I
+(２),
+ε
+h
+(A′:B′)．
+(２３)
+I
+性质６的证明与性质５类似．特别地,当εA 和
+εB 均为恒等映射时,可得
+(２),
+ε
+h
+(A:BC)≥I
+(２),
+ε
+h
+(A:B)．
+(２４)
+I
+该关系说明丢弃子系统减少量子假设检验互
+信息．
+经典量子态在具有量子边信息的信源编码中
+有非常重要的应用,也对应于经典信道编码．同时,
+在考虑基于测量的量子条件熵时,经典量子态仅拥
+有经典关联．结合量子假设检验条件熵,下面讨论三
+体经典量子态的情形．
+性质７．设ρXAB ＝∑
+x∈Xpx|x􀎯􀎮x|􀱋ϕ
+x
+AB 是三体
+量子系统ABC 上的量子态,则
+(２),
+ε
+h
+(A:XB)≥I
+(２),
+ε
+h
+(XA:B)≥
+I
+(２),
+ε
+h
+(A:XB)－lbdX ,
+I
+(２),
+ε
+h
+(A:B)≤lbdX ＋I
+(２),
+ε
+h
+(XA:B),
+I
+其中,dX 是经典系统X 的维数．
+该结果的证明结合文献[２１]中条件熵的证明过
+程容易得到．下面讨论两体经典量子态的情形．不妨
+设ρXB ＝∑
+x∈Xpx|x›‹x|􀱋ρ
+x
+B 是经典量子态,则有
+(２),
+ε
+h
+(X:B)＝
+I
+tr ∑
+x
+－max
+lb
+min
+０≤∑
+BσB
+(
+) ＝
+x∈XpxM
+σB
+pxMx
+B ≤IB ,
+x∈X
+tr ∑
+x
+B
+(
+) ≥１－ε
+pxMx
+Bρ
+x∈X
+lb ∑
+x
+B
+¥ ,
+－
+min
+０≤∑
+x∈XpxM
+pxMx
+B ≤IB ,
+x∈X
+tr ∑
+pxMx
+Bρx
+B
+(
+) ≥１－ε
+x∈X
+其中,第２个等号成立是由于在经典量子态的测量
+可表示为MAB ＝∑
+x∈X|x›‹x|􀱋M
+x
+B ．又因为
+x
+B
+¥ ≤∑
+x
+B
+¥ ≤∑
+x
+B
+¥ ,
+min
+x
+M
+x∈XpxM
+x∈Xpx M
+进而可得
+－lb∑
+(２),
+ε
+h
+(X:B)≤
+x
+B
+¥ ≤I
+x∈Xpx M
+－lbmin
+x
+B
+¥ ．
+x
+M
+类似地可以给出经典量子态的量子假设检验
+条件熵的上下界,即
+(２),
+ε
+h
+(X|B)≤
+x
+B
+¥ ≤S
+lbmax
+x
+M
+x
+B
+¥ ,
+lbc＋lb M
+其中,
+c＝|supp{px}|表示概率分布px 的支集维数．
+在量子资源理论以及oneＧshot信息论中,常用
+量子最大相对熵(quantum maxＧrelativeentropy)给
+出所关注的量化的界,再讨论独立同分布的渐近情
+形[２４Ｇ２５]．量子最大相对熵来自于最小量子Renyi散
+度在参数趋于无穷时的极限值[２４]．Ciganovic 等
+人[２６]给出了量子最大互信息的３种定义形式,目前
+
+===== PDF PAGE 7 =====
+２
+１
+９
+１
+计算机研究与发展　２０２１,５８(９)
+只考虑其第２种定义形式．设ρAB ∈D(HAB ),且ε∈
+[０,１],量子最大互信息(quantum maxＧmutual
+information)和量子平滑最大互信息(quantum
+smoothedmaxＧrelativeentropy)定义为
+Imax(A:B)＝min
+Smax(
+ρAB ‖ρA 􀱋σB),
+σB
+max(A:B)＝
+min
+AB ∈Bε(ρAB )Imax(A:B),
+I
+ε
+~
+ρ
+其中,B
+ε(
+ρAB)＝{ρ
+AB|P(ρAB ,ρ
+AB )≤ε},且P(ρ,
+~
+~
+σ)是纯化距离[２４]．
+下面的结果给出量子假设检验互信息与量子最
+大互信息之间的关系．
+性质８．设ρAB ∈D(HAB),且ε∈[０,１],有
+２－２ε
+max
+(A:B)－lb(１－ε)≤I
+(２),
+ε
+h
+(A:B)≤
+I
+Imax(A:B)－lb(１－ε)．
+结合文献[２０Ｇ２１]中结果,使用本文量子假设检
+验相对熵的定义,通过基本的代数运算可以完成证
+明．与之类似的结果,结合不等式(１０),下面的结果
+给出量子假设检验互信息和vonNeumann互信息
+的关系,即
+(２),
+ε
+h
+(A:B)≤１
+１－ε[I(A:B)＋Hb(
+ε)]．(２５)
+I
+根据量子条件熵和量子互信息可以由量子相对
+熵表示,可知量子条件熵与量子互信息有量子互信
+息的链式关系,即
+I(A:B)＝S(
+ρA)＋S(
+ρB)－S(
+ρAB)＝
+S(
+ρB)－S(B|A)＝S(
+ρA)－S(A|B)．(２６)
+一般情况下,基于其他熵度量定义的互信息并
+不一定有等式(２６)成立[２０Ｇ２１,２４Ｇ２５]．下面讨论量子假
+设检验互信息的链式关系．首先基于量子假设检验
+相对熵定义单系统上量子假设检验最大熵．
+定义４．设ρ∈D(H),对于ε∈[０,１],定义
+h(
+ρ)＝－
+min
+０≤M ≤I,
+tr(Mρ)≥１－ε
+lbtr(Mρ)．
+(２７)
+S
+ε
+由于该量化表示能正确识别ρ 的最大熵,因此
+称作量子假设检验最大熵．当M ＝I 或ε＝０时,有
+h(
+ρ)＝０．量子假设检验最大熵与量子假设检验熵
+S
+ε
+并不相同,但不等式S
+h(
+ρ‖I)≤S
+h(
+ρ)成立．
+ε
+ε
+性质９．设ρAB ∈D(HAB )且ε∈[０,１],若所有
+的测量算子是可分的,则有
+h(A|B)≥S
+^ε
+(２),
+ε
+h
+(A:B)＋S
+h(
+ρA),
+(２８)
+I
+ε
+其中,S
+^ε
+h(ρA )＝－
+min
+⌒
+lbtr M
+AρA
+(
+) 是带限制
+⌒
+A ≤IA ,
+０≤M
+⌒
+tr(M
+A )≥１－ε
+~
+Aρ
+的量子假设检验最大熵．
+证明．由等式(１８),不妨设􀮄
+M AB 是S
+h(A|B)的
+ε
+最佳测量,从而得到子系统B 上的测量算子􀮄
+MB ＝
+trA􀮄
+M AB ．再结合I
+(２),
+ε
+h
+(A:B)的定义,有
+(２),
+ε
+h
+(A:B)＝
+I
+tr(MABρA 􀱋σB)≥
+－max
+lb
+min
+０≤MAB ≤IAB ,
+σB
+tr(MABρAB )≥１－ε
+AρA 􀱋􀮄
+MBσB
+(
+) ＝
+⌒
+－max
+lb
+min
+tr M
+０≤M^A 􀱋􀮄
+MB ≤IAB ,
+σB
+⌒
+A 􀱋􀮄
+MBρAB )≥１－ε
+tr(M
+⌒
+AρA
+(
+) －
+－lb
+min
+tr M
+⌒
+A ≤IA ,
+０≤M
+⌒
+tr(M
+A )≥１－ε
+~
+Aρ
+lb 􀮄
+MB
+¥ ＝
+min
+⌒
+A 􀱋􀮄
+MB ≤IAB ,
+０≤M
+⌒
+A 􀱋􀮄
+MBρAB )≥１－ε
+tr(M
+h(A|B),
+⌒
+AρA
+(
+) ＋S
+－lb
+min
+tr M
+ε
+⌒
+A ≤IA ,
+０≤M
+⌒
+tr(M
+A )≥１－ε
+~
+Aρ
+A ＝trB((IA 􀱋􀮄
+M B )ρAB ),第１个不等式是
+其中,ρ
+~
+(２),ε
+h
+(A:B)和条件熵S
+h(A|B)的定
+由于互信息I
+ε
+义中有条件０≤M AB ≤IAB 及tr(M ABρAB )≥１－ε．
+结合最佳测量􀮄
+MB 选取合适的M
+⌒
+A 满足约束条件
+A 􀱋􀮄
+MBρAB)≥１－ε,显然满足该条件的集合一
+tr(M
+⌒
+定小于原始约束条件的集合,从而导致不等式成立．
+第２个等式中的第２项中的约束条件与lb 􀭿
+MB
+¥ 是
+独立的,从而该项等于条件熵S
+h(A|B),进而等到
+ε
+第３个等式．故而有
+(２),
+ε
+h
+(A:B)＋S
+h(A|B)≥
+I
+ε
+⌒
+－lb
+min
+tr M
+AρA
+(
+) ．
+⌒
+A ≤IA ,
+０≤M
+⌒
+~
+tr(M
+A )≥１－ε
+Aρ
+对于该不等式中右边的项,其约束条件０≤
+A ≤IA 和tr(M
+A )≥１－ε 来自于０≤M
+⌒
+⌒
+⌒
+A 􀱋
+M
+~
+Aρ
+􀮄
+MB ≤IAB 和tr(M
+A 􀱋􀮄
+MBρAB)≥１－ε,故可以找到相
+⌒
+应的M
+^
+A)＝tr(M
+^
+A 使得tr(M
+AρA),进而有
+⌒
+~
+Aρ
+tr M
+^
+⌒
+AρA
+(
+) ＝
+min
+min
+tr M
+AρA
+(
+) ．
+０≤M^A ≤IA ,
+⌒
+A ≤IA ,
+０≤M
+⌒
+tr(M^AρA )≥１－ε
+tr(M
+A )≥１－ε
+~
+Aρ
+最后通过简单的代数运算,进而完成命题的
+证明．
+证毕．
+在该命题的证明过程中,得到了带限制的量子
+假设检验熵,该熵的测量算子依赖于条件熵的最佳
+测量,显然易得
+h(
+ρ)≤lb １
+S
+^ε
+h(
+ρ)≤S
+１－ε．
+ε
+
+===== PDF PAGE 8 =====
+３
+１
+９
+１
+张淑仪等:量子假设检验互信息
+另外,该命题仅给出了一个下界,但上界的证明
+目前还是一个开放的问题．虽然能给出互信息和条
+件熵的上下界,但是难以给出一个紧凑的链式关系．
+４　总　　结
+在量子信息论中,基于vonNeumann熵,可以
+得到类似于经典信息论中Shannon熵的好多有用
+量化和关系,在量子信息处理中有非常重要的应用．
+存在一些其他的熵在量子信息中的推广,但并不像
+vonNeumann熵具有良好的性质或者关系,可关键
+是这些熵在oneＧshot量子信息论中有非常好的应
+用,比如假设检验相对熵．我们详细介绍了量子假设
+检验相对熵及其相关性质,并得到了新的上界．然后
+基于量子假设检验相对熵讨论了条件熵,得到量子
+假设检验相对熵形式的条件熵并没有类似Shannon
+熵或vonNeumann熵的链式关系,这是由于假设检
+验相对熵或者新定义的最大熵都依赖于最优化．由
+于纠缠的存在同时并不存在量子版本的贝叶斯公
+式．对于量子假设检验相对熵,我们给出了４种不完
+全等价的互信息定义．结合在信息处理中常用的条
+件熵,主要讨论了其中一类互信息,得到了一些有意
+思的性质,并给出了和其他互信息之间的关系．给出
+了经典量子态的量子假设检验互信息的上下界,得
+到了量子假设检验互信息类似于Shannon熵或von
+Neumann熵的互信息链式关系．
+参
+考
+文
+献
+[１] CoverT M,ThomasJA．ElementsofInformationTheory
+[M]．２nded．Hoboken,NJ:John Wiley& Sons,Inc,２００６
+[２] Nielson A M,Chuang L I．Quantum Computation and
+Quantum Information [M]．Cambridge, UK:Cambridge
+UniversityPress,２０００
+[３] XiZhengjun．TheEntropticMeasureofNonclassicalCorrelations
+andQuantum Coherence[M]．Beijing:SciencePress,２０１９
+(席政军．非经典关联和量子相干的熵度量[M]．北京:科学
+出版社,２０１９)
+[４] CarusoF,GiovannettiV,LupoC,etal．Quantumchannels
+andmemoryeffects[J]．Review ModernPhysics,２０１４,８６
+(４):１２０３１２５９
+[５] Wilde M M．Quantum Information Theory [M]．２nded．
+[６] Chitambar E, Gour G．Quantum resource theories [J]．
+Review ModernPhysics,２０１９,９１(２):No．
+０２５００１
+[７] Helstrom C M．Quantum DetectionandEstimation Theory
+[M]．New York:Academic,１９７６
+[８] HiaiF,PetzD．Theproperformulaforrelativeentropyand
+itsasymptoticsinquantum probability [J]．Communication
+inMathematicalPhysics,１９９１,１４３(１):９９１１４
+[９] OgawaT,NagaokaH．StrongconverseandStein􀆳slemmain
+thequantum hypothesistesting [J]．IEEE Transactionon
+InformationTheory,２０００,４６(７):２４２８２４３３
+[１０] Ogawa T, Hayashi M．On error exponentsin quantum
+hypothesistesting [J]．IEEE TransactionsonInformation
+Theory,２００４,５０(６):１３６８１３７２
+[１１] NagaokaH,HayashiM．AninformationＧspectrumapproach
+to classical and quantum hypothesis testing for simple
+hypotheses[J]．IEEE TransactiononInformation Theory,
+２００７,５３(２):５３４５４９
+[１２] Ogawa T,Nagaoka H．Making goodcodesforclassicalＧ
+quantumChannelcodingviaquantumhypothesistesting[J]．
+IEEE TransactionsonInformation Theory,２００７,５３(６):
+２２６１２２６６
+[１３] BrandãoFGSL,Plenio M B．Ageneralizationofquantum
+Stein􀆳slemma[J]．CommunicationinMathematicalPhysics,
+２０１０,２９５(５):７９１８２８
+[１４] Ke Li．SecondＧorderasymptoticsfor quantum hypothesis
+testing[J]．TheAnnalsofStatistics,２０１４,４２(１):１７１１８９
+[１５] MosonyiM,OgawaT．Twoapproachestoobtainthestrong
+converseexponentofquantumhypothesistestingforgeneral
+sequences of quantum states [J]．IEEE Transaction on
+InformationTheory,２０１５,６１(１２):６９７５６９９４
+[１６] WildeM M．PositionＧbasedcodingandconvexsplittingfor
+privatecommunicationoverquantumchannels[J]．Quantum
+InformationProcessing,２０１７,１６(１０):２６４２９８
+[１７] AnshuA,JainR,WarsiNA．Ahypothesistestingapproach
+for communication over entanglementＧassisted compound
+quantum channel [J]．IEEE Transaction on Information
+Theory,２０１９,６５(４):２６２３２６３６
+[１８] BrandãoFGSL,Harrow A W,LeeJR,etal．Adversarial
+hypothesistestingandaquantumStein􀆳slemmaforrestricted
+measurements [J]．IEEE
+Transaction on Information
+Theory,２０２０,６６(８):５０３７５０５４
+[１９] WangL,RennerR．OneＧshotclassicalＧquantumcapacityand
+hypothesistesting[J]．PhysicalReview Letters,２０１２,１０８
+(２０):２００５０１
+[２０] DupuisF,KramerL,FaistP,etal．Generalizedentropies
+[OL]．[２０２１Ｇ０３Ｇ１８]．https:
+∕∕arxiv．
+org∕abs∕１２１１．
+３１４１v２
+[２１] Tomamichel M, Hayashi M．A hierarchy ofinformation
+quantitiesforfiniteblocklengthanalysisofquantumtasks
+[J]．IEEE Transaction onInformation Theory,２０１３,５９
+
+===== PDF PAGE 9 =====
+４
+１
+９
+１
+计算机研究与发展　２０２１,５８(９)
+[２２] KhatriS,Wilde M M．Principleofquantumcommunication
+theory:A modernapproach [OL]．[２０２１Ｇ０３Ｇ１８]．https:
+∕∕
+arxiv．
+org∕abs∕２０１１．
+０４６７２
+[２３] FangKun,LiuZiwen．NoＧgotheoremsforquantumresource
+purification[J]．PhysicalReview Letters,２０２０,１２５(６):
+０６０４０５
+[２４] TomamichelM．QuantumInformationProcessingwithFinite
+Resources[M]．Berlin:Springer,２０１６
+[２５] VitanovA,DupuisF,TomamichelM,etal．Chainrulesfor
+smooth minＧand maxＧentropies [J]．IEEE Transactionon
+InformationTheory,２０１３,５９(５):２６０３２６１２
+[２６] CiganovicN,BeaudryJN,RennerR．SmoothmaxＧinformation
+asoneＧshotgeneralizationformutualinformation [J]．IEEE
+TransactiononInformation Theory,２０１４,６０(３):１５７３
+１５８１
+ZhangShuyi,bornin１９９７．Mastercandidate．
+Hermainresearchinterestsincludequantum
+information theory and quantum resource
+theory．
+张淑仪,１９９７年生．硕士研究生．主要研究方
+向为量子信息论和量子资源理论．
+XiZhengjun,bornin１９８３．PhD,professor,
+PhDsupervisor．SeniormemberofCCF．His
+main research interests include quantum
+information theory,quantum coding,and
+quantumresourcetheory．
+席政军,１９８３年生．博士,教授,博士生导师．
+CCF高级会员．主要研究方向为量子信息论、
+量子编码、量子资源理论．

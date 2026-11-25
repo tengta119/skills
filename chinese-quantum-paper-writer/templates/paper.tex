@@ -1,0 +1,25 @@
+% 通用中文草稿，非五刊官方模板。建议 XeLaTeX + BibTeX。
+% 先核验 Markdown 证据稿，再映射到真实的 \cite{key}。
+\documentclass[UTF8,a4paper,zihao=-4]{ctexart}
+\usepackage{amsmath,amssymb,graphicx,booktabs}
+\usepackage[margin=2.5cm]{geometry}
+\title{论文题目（待填写）}
+\author{作者（待填写）}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+待填写：研究问题、方法或综述范围、真实结果与结论。
+\end{abstract}
+\noindent\textbf{关键词：}待填写
+\section{引言}
+% 背景、缺口、本文贡献或综述范围。
+\section{相关工作与基础概念}
+\section{研究方法或文献筛选与分类框架}
+\section{实验与结果或分类研究现状}
+\section{讨论与局限}
+\section{结论}
+% references.bib 应由已核验的文献库生成，放在当前编译目录。
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}

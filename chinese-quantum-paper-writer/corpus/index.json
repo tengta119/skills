@@ -1,0 +1,2198 @@
+{
+  "schema_version": 1,
+  "paper_count": 54,
+  "papers": {
+    "q_f27e8575179f": {
+      "key": "q_f27e8575179f",
+      "sha256": "f27e8575179f885eba14cecc6a351bdd8b08ce32da019fb65b59ea59942cea13",
+      "pdf": "pdfs/计算机学报/01 - 2013 - 量子算法和量子启发算法.pdf",
+      "text": "texts/q_f27e8575179f.txt",
+      "note": "notes/q_f27e8575179f.md",
+      "page_count": 8,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子算法与量子衍生算法",
+        "authors": [
+          "张毅",
+          "卢凯",
+          "高颖慧"
+        ],
+        "year": 2013,
+        "journal": "计算机学报",
+        "volume": "36",
+        "issue": "9",
+        "pages": "1835-1842",
+        "doi": "10.3724/SP.J.1016.2013.01835",
+        "topics": [
+          "量子算法",
+          "量子衍生算法",
+          "量子计算",
+          "Shor算法",
+          "Grover算法",
+          "综述"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_046333d76753": {
+      "key": "q_046333d76753",
+      "sha256": "046333d76753d4571a07254fa91785b063f191eb54601fe5dc167c559981e3c8",
+      "pdf": "pdfs/计算机学报/02 - 2016 - 量子计算复杂性理论综述.pdf",
+      "text": "texts/q_046333d76753.txt",
+      "note": "notes/q_046333d76753.md",
+      "page_count": 26,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子计算复杂性理论综述",
+        "authors": [
+          "张焕国",
+          "毛少武",
+          "吴万青",
+          "吴朔媚",
+          "刘金会",
+          "王后珍",
+          "贾建卫"
+        ],
+        "year": 2016,
+        "journal": "计算机学报",
+        "volume": "39",
+        "issue": "12",
+        "pages": "2403-2428",
+        "doi": "10.11897/SP.J.1016.2016.02403",
+        "topics": [
+          "量子计算复杂性",
+          "量子图灵机",
+          "量子线路",
+          "格密码",
+          "抗量子密码",
+          "数据复杂性"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_a1920b2c7ee6": {
+      "key": "q_a1920b2c7ee6",
+      "sha256": "a1920b2c7ee661a6433bc83d3df39be925d55e3702d44179c2d8816028e2539c",
+      "pdf": "pdfs/计算机学报/03 - 2018 - 量子机器学习算法综述.pdf",
+      "text": "texts/q_a1920b2c7ee6.txt",
+      "note": "notes/q_a1920b2c7ee6.md",
+      "page_count": 19,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子机器学习算法综述",
+        "authors": [
+          "黄一鸣",
+          "雷航",
+          "李晓瑜"
+        ],
+        "year": 2018,
+        "journal": "计算机学报",
+        "volume": "41",
+        "issue": "1",
+        "pages": "145-163",
+        "doi": "10.11897/SP.J.1016.2018.00145",
+        "topics": [
+          "量子机器学习",
+          "量子计算",
+          "量子聚类",
+          "量子分类",
+          "量子深度学习"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_07165b427a85": {
+      "key": "q_07165b427a85",
+      "sha256": "07165b427a85b69f294aa1d82c75840c029ad4e2bd783d8a5c061bfec6d7e68d",
+      "pdf": "pdfs/计算机学报/04 - 2020 - 量子计算密码攻击进展.pdf",
+      "text": "texts/q_07165b427a85.txt",
+      "note": "notes/q_07165b427a85.md",
+      "page_count": 17,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "Microsoft Word - 7---2019-8-27-08150 王潮_new_",
+        "author": "Administrator",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子计算密码攻击进展",
+        "authors": [
+          "王潮",
+          "姚皓南",
+          "王宝楠",
+          "胡风",
+          "张焕国",
+          "纪祥敏"
+        ],
+        "year": 2020,
+        "journal": "计算机学报",
+        "volume": "43",
+        "issue": "9",
+        "pages": "1691-1707",
+        "doi": "10.11897/SP.J.1016.2020.01691",
+        "topics": [
+          "量子计算",
+          "量子退火",
+          "Shor算法",
+          "D-Wave",
+          "公钥密码攻击",
+          "侧信道攻击"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_e6f371e87ab2": {
+      "key": "q_e6f371e87ab2",
+      "sha256": "e6f371e87ab2b7dc71dc0c862132d6b08ba0408d9ac2bd3275cdbe5314ccf3a5",
+      "pdf": "pdfs/计算机学报/05 - 2024 - 基于D-Wave Advantage的量子退火公钥密码攻击算法研究.pdf",
+      "text": "texts/q_e6f371e87ab2.txt",
+      "note": "notes/q_e6f371e87ab2.md",
+      "page_count": 15,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于D-Wave Advantage的量子退火公钥密码攻击算法研究",
+        "authors": [
+          "王潮",
+          "王启迪",
+          "洪春雷",
+          "胡巧云",
+          "裴植"
+        ],
+        "year": 2024,
+        "journal": "计算机学报",
+        "volume": "47",
+        "issue": "5",
+        "pages": "1030-1044",
+        "doi": "10.11897/SP.J.1016.2024.01030",
+        "topics": [
+          "量子退火",
+          "D-Wave Advantage",
+          "RSA",
+          "整数分解",
+          "最近向量问题",
+          "量子隧穿"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_b1a3ebc96db9": {
+      "key": "q_b1a3ebc96db9",
+      "sha256": "b1a3ebc96db9a5b0695e128e03cfcd517f227f125d395cb10efad5b905870b19",
+      "pdf": "pdfs/计算机学报/06 - 2024 - 求解最小公倍数问题的量子安全多方计算协议.pdf",
+      "text": "texts/q_b1a3ebc96db9.txt",
+      "note": "notes/q_b1a3ebc96db9.md",
+      "page_count": 20,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "求解最小公倍数问题的量子安全多方计算协议",
+        "authors": [
+          "李子贤",
+          "刘文杰"
+        ],
+        "year": 2024,
+        "journal": "计算机学报",
+        "volume": "47",
+        "issue": "6",
+        "pages": "1393-1412",
+        "doi": "10.11897/SP.J.1016.2024.01393",
+        "topics": [
+          "量子安全多方计算",
+          "最小公倍数",
+          "量子周期查找算法",
+          "星-环混合拓扑",
+          "匿名输出检验",
+          "隐私计算"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_629cd0bda3bc": {
+      "key": "q_629cd0bda3bc",
+      "sha256": "629cd0bda3bcf1ddddbd69260a1fab5390cbb0ff32b255448634e1b9857d37dc",
+      "pdf": "pdfs/计算机学报/07 - 2025 - 基于D-Wave Advantage的量子计算实用化SPN结构对称密码攻击研究.pdf",
+      "text": "texts/q_629cd0bda3bc.txt",
+      "note": "notes/q_629cd0bda3bc.md",
+      "page_count": 15,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于D-Wave Advantage的量子计算实用化SPN结构对称密码攻击研究",
+        "authors": [
+          "裴植",
+          "洪春雷",
+          "王启迪",
+          "胡巧云",
+          "王潮"
+        ],
+        "year": 2025,
+        "journal": "计算机学报",
+        "volume": "48",
+        "issue": "1",
+        "pages": "234-248",
+        "doi": "10.11897/SP.J.1016.2025.00234",
+        "topics": [
+          "对称密码",
+          "SPN结构",
+          "量子退火",
+          "D-Wave Advantage",
+          "积分区分器",
+          "可分性"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_f48c110d61ab": {
+      "key": "q_f48c110d61ab",
+      "sha256": "f48c110d61abd8a0a35cc724f6a8bd54d341f06515f015839699831e70f48594",
+      "pdf": "pdfs/计算机学报/08 - 2025 - 面向含噪中规模量子处理器的量子机器学习.pdf",
+      "text": "texts/q_f48c110d61ab.txt",
+      "note": "notes/q_f48c110d61ab.md",
+      "page_count": 30,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "面向含噪中规模量子处理器的量子机器学习",
+        "authors": [
+          "石金晶",
+          "肖子萌",
+          "王雯萱",
+          "张师超",
+          "李学龙"
+        ],
+        "year": 2025,
+        "journal": "计算机学报",
+        "volume": "48",
+        "issue": "3",
+        "pages": "602-631",
+        "doi": "10.11897/SP.J.1016.2025.00602",
+        "topics": [
+          "量子机器学习",
+          "含噪中规模量子处理器",
+          "参数化量子线路",
+          "量子神经网络",
+          "量子优势",
+          "综述"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_8b5cf11df46f": {
+      "key": "q_8b5cf11df46f",
+      "sha256": "8b5cf11df46f4979a16952e698fb8657bcbae5d24c8ba964bbf56941246715b7",
+      "pdf": "pdfs/计算机工程/01 - 2018 - 量子气体在光晶格中的一维玻色-哈伯德模型模拟.pdf",
+      "text": "texts/q_8b5cf11df46f.txt",
+      "note": "notes/q_8b5cf11df46f.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子气体在光晶格中的一维玻色-哈伯德模型模拟",
+        "authors": [
+          "栾添",
+          "张雪松",
+          "陈徐宗"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "1-5",
+        "doi": "10.19678/j.issn.1000-3428.0051595",
+        "topics": [
+          "量子模拟",
+          "光晶格",
+          "玻色-哈伯德模型",
+          "超流-莫特绝缘态相变",
+          "超冷原子",
+          "飞行时间成像"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_288bd548f9dc": {
+      "key": "q_288bd548f9dc",
+      "sha256": "288bd548f9dcb519c26fcbe61fd0dd0b49f77d4d3a21c99f6872c9e202afe7a8",
+      "pdf": "pdfs/计算机工程/02 - 2018 - 基于IBM Q平台的量子算法研究.pdf",
+      "text": "texts/q_288bd548f9dc.txt",
+      "note": "notes/q_288bd548f9dc.md",
+      "page_count": 7,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于IBM Q平台的量子算法研究",
+        "authors": [
+          "卫佳",
+          "倪明",
+          "周明",
+          "江文兵"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "6-12",
+        "doi": "10.19678/j.issn.1000-3428.0051857",
+        "topics": [
+          "IBM Q",
+          "量子云平台",
+          "Grover搜索算法",
+          "量子随机行走",
+          "量子傅里叶变换",
+          "量子模拟"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_e2387a5faee7": {
+      "key": "q_e2387a5faee7",
+      "sha256": "e2387a5faee7099455b2574a4020fedb20ebcd54d702662eda98750013b7b934",
+      "pdf": "pdfs/计算机工程/03 - 2018 - 基于QS-KMS的VPN增强电网通信安全方案.pdf",
+      "text": "texts/q_e2387a5faee7.txt",
+      "note": "notes/q_e2387a5faee7.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于QS-KMS的VPN增强电网通信安全方案",
+        "authors": [
+          "唐鹏毅",
+          "李国春",
+          "余刚",
+          "钟军",
+          "张英华",
+          "薛路",
+          "赵子岩",
+          "闫龙川",
+          "陈智雨",
+          "卢昌斌",
+          "罗斌",
+          "高松",
+          "刘建宏"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "13-17",
+        "doi": "10.3969/j.issn.1000-3428.2018.12.003",
+        "topics": [
+          "量子安全密钥管理服务",
+          "虚拟专用网络",
+          "量子密钥分发",
+          "密钥池",
+          "动态密钥分配",
+          "后量子密码"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_7e9f7858780c": {
+      "key": "q_7e9f7858780c",
+      "sha256": "7e9f7858780cdd7fc84b713c19dd5420ebf75075aea084acdabc289b0dc07fb0",
+      "pdf": "pdfs/计算机工程/04 - 2018 - 一种基于改进乒乓协议的量子隐写术.pdf",
+      "text": "texts/q_7e9f7858780c.txt",
+      "note": "notes/q_7e9f7858780c.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "一种基于改进乒乓协议的量子隐写术",
+        "authors": [
+          "王金伟",
+          "朱天成",
+          "瞿治国"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "18-22",
+        "doi": "10.19678/j.issn.1000-3428.0051694",
+        "topics": [
+          "量子隐写术",
+          "改进乒乓协议",
+          "受控非门",
+          "贝尔态",
+          "抗噪声稳健性",
+          "量子纠缠"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_cbb6da73ab6f": {
+      "key": "q_cbb6da73ab6f",
+      "sha256": "cbb6da73ab6ff24f2233616def83c30d53589a3663d9da27471293a38fe960ef",
+      "pdf": "pdfs/计算机工程/05 - 2018 - 基于量子五符号混淆信道模型的零错编码方法.pdf",
+      "text": "texts/q_cbb6da73ab6f.txt",
+      "note": "notes/q_cbb6da73ab6f.md",
+      "page_count": 6,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于量子五符号混淆信道模型的零错编码方法",
+        "authors": [
+          "李婧雅",
+          "余文斌",
+          "刘文杰",
+          "王金伟"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "23-27,32",
+        "doi": "10.19678/j.issn.1000-3428.0051106",
+        "topics": [
+          "量子零错信道",
+          "五符号混淆信道",
+          "量子叠加态",
+          "同构",
+          "系数矩阵",
+          "信道容量"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_7e402464bf26": {
+      "key": "q_7e402464bf26",
+      "sha256": "7e402464bf2647528d3283bbc7b97fee0c3955f5000e80487fa68bdbde45747a",
+      "pdf": "pdfs/计算机工程/06 - 2018 - 量子非局域性与量子通信复杂度研究.pdf",
+      "text": "texts/q_7e402464bf26.txt",
+      "note": "notes/q_7e402464bf26.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子非局域性与量子通信复杂度研究",
+        "authors": [
+          "张弘弛",
+          "刘百祥",
+          "文捷"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "28-32",
+        "doi": "10.19678/j.issn.1000-3428.0052199",
+        "topics": [
+          "量子非局域性",
+          "量子通信复杂度",
+          "GHZ 问题",
+          "纠缠态",
+          "SMP 模型",
+          "量子指纹"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_ed10d9b15374": {
+      "key": "q_ed10d9b15374",
+      "sha256": "ed10d9b15374c4342fd680cefdbc6ded38ed30e61a3d18354e92fc54b8285d99",
+      "pdf": "pdfs/计算机工程/07 - 2018 - 基于约瑟夫森结的超导量子芯片进展概述.pdf",
+      "text": "texts/q_ed10d9b15374.txt",
+      "note": "notes/q_ed10d9b15374.md",
+      "page_count": 7,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于约瑟夫森结的超导量子芯片进展概述",
+        "authors": [
+          "余玄",
+          "陆新",
+          "奚军",
+          "邵培南"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "33-38,45",
+        "doi": "10.19678/j.issn.1000-3428.0051917",
+        "topics": [
+          "超导量子比特",
+          "约瑟夫森结",
+          "退相干时间",
+          "耦合与布局",
+          "表面码",
+          "量子芯片"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_9bbc316ab34d": {
+      "key": "q_9bbc316ab34d",
+      "sha256": "9bbc316ab34d0c09a256221d1e0fe7af1e5b8038ac9abc33bc55d2b7becfa50c",
+      "pdf": "pdfs/计算机工程/08 - 2018 - 基于量子门线路神经网络的信息安全风险评估.pdf",
+      "text": "texts/q_9bbc316ab34d.txt",
+      "note": "notes/q_9bbc316ab34d.md",
+      "page_count": 7,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于量子门线路神经网络的信息安全风险评估",
+        "authors": [
+          "周超",
+          "潘平",
+          "黄亮"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "12",
+        "pages": "39-45",
+        "doi": "10.19678/j.issn.1000-3428.0051383",
+        "topics": [
+          "信息安全风险评估",
+          "量子门线路神经网络",
+          "量子旋转门",
+          "信息系统",
+          "BP神经网络"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_1281a96c3b32": {
+      "key": "q_1281a96c3b32",
+      "sha256": "1281a96c3b32719e821cfdb7eaa182db91f6ae9c06d271f2c1780766f92312a6",
+      "pdf": "pdfs/计算机工程/09 - 2011 - 基于改进QGA的T-S模糊控制器设计.pdf",
+      "text": "texts/q_1281a96c3b32.txt",
+      "note": "notes/q_1281a96c3b32.md",
+      "page_count": 3,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "Microsoft Word - 111111D",
+        "author": "Administrator",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于改进QGA的T-S模糊控制器设计",
+        "authors": [
+          "李盼池",
+          "穆殿宝",
+          "张巧翠"
+        ],
+        "year": 2011,
+        "journal": "计算机工程",
+        "volume": "37",
+        "issue": "11",
+        "pages": "22-24",
+        "doi": "10.3969/j.issn.1000-3428.2011.11.008",
+        "topics": [
+          "量子遗传算法",
+          "相位编码",
+          "T-S模糊控制器",
+          "参数优化",
+          "倒立摆"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_527debe6a455": {
+      "key": "q_527debe6a455",
+      "sha256": "527debe6a45521479f4ee59f3d02a8e35e2567ebd9b951706008a7c0790c740f",
+      "pdf": "pdfs/计算机工程/10 - 2011 - 基于量子遗传算法的染缸排产问题研究.pdf",
+      "text": "texts/q_527debe6a455.txt",
+      "note": "notes/q_527debe6a455.md",
+      "page_count": 3,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "1 引言",
+        "author": "dantevan",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于量子遗传算法的染缸排产问题研究",
+        "authors": [
+          "蒋佳颖",
+          "王万良",
+          "徐新黎",
+          "王海燕"
+        ],
+        "year": 2011,
+        "journal": "计算机工程",
+        "volume": "37",
+        "issue": "21",
+        "pages": "159-161",
+        "doi": "10.3969/j.issn.1000-3428.2011.21.054",
+        "topics": [
+          "量子遗传算法",
+          "染缸排产",
+          "批处理调度",
+          "拆单并单",
+          "生产调度"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_0954ec3a4e6b": {
+      "key": "q_0954ec3a4e6b",
+      "sha256": "0954ec3a4e6b978076559cff793f40f7a4f86962ba6c41a02fc2021562cae445",
+      "pdf": "pdfs/计算机工程/11 - 2012 - 基于量子单向函数的身份认证和密钥分配协议.pdf",
+      "text": "texts/q_0954ec3a4e6b.txt",
+      "note": "notes/q_0954ec3a4e6b.md",
+      "page_count": 2,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "Microsoft Word - 120640.doc",
+        "author": "wangxiao",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于量子单向函数的身份认证和密钥分配协议",
+        "authors": [
+          "拱长青",
+          "唐虎",
+          "张大伟"
+        ],
+        "year": 2012,
+        "journal": "计算机工程",
+        "volume": "38",
+        "issue": "6",
+        "pages": "161-162",
+        "doi": "10.3969/j.issn.1000-3428.2012.06.053",
+        "topics": [
+          "量子身份认证",
+          "密钥分配",
+          "量子单向函数",
+          "信息分割",
+          "偏振态"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_4b7b7574b4aa": {
+      "key": "q_4b7b7574b4aa",
+      "sha256": "4b7b7574b4aab64aa19486471f64d34732d997c9f7d4eed6f389bac86232f6eb",
+      "pdf": "pdfs/计算机工程/12 - 2013 - 一种改进的混沌量子粒子群优化算法.pdf",
+      "text": "texts/q_4b7b7574b4aa.txt",
+      "note": "notes/q_4b7b7574b4aa.md",
+      "page_count": 4,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "Microsoft Word - 130854.doc",
+        "author": "Administrator",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "一种改进的混沌量子粒子群优化算法",
+        "authors": [
+          "陈义雄",
+          "梁昔明",
+          "黄亚飞"
+        ],
+        "year": 2013,
+        "journal": "计算机工程",
+        "volume": "39",
+        "issue": "8",
+        "pages": "253-256",
+        "doi": "10.3969/j.issn.1000-3428.2013.08.055",
+        "topics": [
+          "量子粒子群优化",
+          "混沌序列",
+          "佳点集",
+          "量子Hadamard门",
+          "函数优化"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_b0c367075664": {
+      "key": "q_b0c367075664",
+      "sha256": "b0c3670756640856e295571c3a6b456b8dae9adabc817a76eab7adb734b268dc",
+      "pdf": "pdfs/计算机工程/13 - 2018 - 基于量子委托计算模式的半量子密钥协商.pdf",
+      "text": "texts/q_b0c367075664.txt",
+      "note": "notes/q_b0c367075664.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于量子委托计算模式的半量子密钥协商",
+        "authors": [
+          "陈振宇",
+          "杨阳",
+          "季赛",
+          "刘文杰"
+        ],
+        "year": 2018,
+        "journal": "计算机工程",
+        "volume": "44",
+        "issue": "3",
+        "pages": "178-181,188",
+        "doi": "10.3969/j.issn.1000-3428.2018.03.030",
+        "topics": [
+          "半量子密钥协商",
+          "量子委托计算",
+          "单光子混淆策略",
+          "多方密钥协商",
+          "量子密码"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_7f7125a4f2ad": {
+      "key": "q_7f7125a4f2ad",
+      "sha256": "7f7125a4f2ada99b8faaec5e66086e9d278049892238d6021d7de7aa75ff83e2",
+      "pdf": "pdfs/计算机工程/14 - 2019 - 保障内容安全的量子密钥应用综述.pdf",
+      "text": "texts/q_7f7125a4f2ad.txt",
+      "note": "notes/q_7f7125a4f2ad.md",
+      "page_count": 8,
+      "sparse_pages": [
+        8
+      ],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "保障内容安全的量子密钥应用综述",
+        "authors": [
+          "李晓星",
+          "孟坤"
+        ],
+        "year": 2019,
+        "journal": "计算机工程",
+        "volume": "45",
+        "issue": "12",
+        "pages": "19-25,37",
+        "doi": "10.19678/j.issn.1000-3428.0052940",
+        "topics": [
+          "量子密钥",
+          "量子密钥分发",
+          "内容安全",
+          "通信安全",
+          "QKD网络"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_f29ac88a672c": {
+      "key": "q_f29ac88a672c",
+      "sha256": "f29ac88a672ce5dbc7cee4a05d0c608838160f7435dd7485b25082fb2c5107ad",
+      "pdf": "pdfs/计算机工程/15 - 2024 - Falcon后量子算法的密钥树生成部件GPU并行优化设计与实现.pdf",
+      "text": "texts/q_f29ac88a672c.txt",
+      "note": "notes/q_f29ac88a672c.md",
+      "page_count": 8,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "Falcon后量子算法的密钥树生成部件GPU并行优化设计与实现",
+        "authors": [
+          "张磊",
+          "赵光岳",
+          "肖超恩",
+          "王建新"
+        ],
+        "year": 2024,
+        "journal": "计算机工程",
+        "volume": "50",
+        "issue": "9",
+        "pages": "208-215",
+        "doi": "10.19678/j.issn.1000-3428.0068304",
+        "topics": [
+          "后量子密码",
+          "Falcon",
+          "密钥树生成",
+          "GPU并行",
+          "CUDA"
+        ],
+        "paper_type": "系统"
+      }
+    },
+    "q_07a2f70490c3": {
+      "key": "q_07a2f70490c3",
+      "sha256": "07a2f70490c326d1aa5ceb76e64db6cb5e37741c91acd26b748eef72cbe202d1",
+      "pdf": "pdfs/计算机研究与发展/01 - 2021 - 量子优化算法综述.pdf",
+      "text": "texts/q_07a2f70490c3.txt",
+      "note": "notes/q_07a2f70490c3.md",
+      "page_count": 12,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子优化算法综述",
+        "authors": [
+          "何键浩",
+          "李绿周"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1823-1834",
+        "doi": "10.7544/issn1000-1239.2021.20210276",
+        "topics": [
+          "量子优化",
+          "连续变量优化",
+          "离散变量优化",
+          "量子梯度估计",
+          "半正定规划",
+          "综述"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_b6086fd895ca": {
+      "key": "q_b6086fd895ca",
+      "sha256": "b6086fd895ca4012dbd28e13a154c6993e4bababb01cb0816ebaf6d5766bce4f",
+      "pdf": "pdfs/计算机研究与发展/02 - 2021 - 量子谱回归算法.pdf",
+      "text": "texts/q_b6086fd895ca.txt",
+      "note": "notes/q_b6086fd895ca.md",
+      "page_count": 8,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子谱回归算法",
+        "authors": [
+          "潘世杰",
+          "高飞",
+          "万林春",
+          "秦素娟",
+          "温巧燕"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1835-1842",
+        "doi": "10.7544/issn1000-1239.20210366",
+        "topics": [
+          "量子算法",
+          "量子机器学习",
+          "谱回归",
+          "子空间学习",
+          "稠密矩阵",
+          "量子奇异值估计"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_1081c0be6ca0": {
+      "key": "q_1081c0be6ca0",
+      "sha256": "1081c0be6ca083ac7053bf3eacab7bd67c07d76a9bce94d760a01565d5be94b4",
+      "pdf": "pdfs/计算机研究与发展/03 - 2021 - 量子错误缓解研究进展.pdf",
+      "text": "texts/q_1081c0be6ca0.txt",
+      "note": "notes/q_1081c0be6ca0.md",
+      "page_count": 13,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子错误缓解研究进展",
+        "authors": [
+          "张宇鹍",
+          "袁骁"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1843-1855",
+        "doi": "10.7544/issn1000-1239.2021.20210367",
+        "topics": [
+          "量子错误缓解",
+          "含噪中尺度量子计算",
+          "变分量子特征求解器",
+          "外推法",
+          "准概率方法",
+          "量子纠错"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_41ace122eaab": {
+      "key": "q_41ace122eaab",
+      "sha256": "41ace122eaaba3fef862a55782bb2afc2ec9cbc9631e9fac2b0fd484dc0a9f70",
+      "pdf": "pdfs/计算机研究与发展/04 - 2021 - 面向超导量子计算机的程序映射技术研究.pdf",
+      "text": "texts/q_41ace122eaab.txt",
+      "note": "notes/q_41ace122eaab.md",
+      "page_count": 19,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "面向超导量子计算机的程序映射技术研究",
+        "authors": [
+          "窦星磊",
+          "刘磊",
+          "陈岳涛"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1856-1874",
+        "doi": "10.7544/issn1000-1239.2021.20210314",
+        "topics": [
+          "量子计算",
+          "超导量子计算机",
+          "量子程序映射",
+          "并发程序",
+          "社区发现",
+          "任务调度"
+        ],
+        "paper_type": "系统"
+      }
+    },
+    "q_cfb875784fa8": {
+      "key": "q_cfb875784fa8",
+      "sha256": "cfb875784fa825a69fdfa8f2d676d00b6ffff87b80f478c7d7be9eb354686004",
+      "pdf": "pdfs/计算机研究与发展/05 - 2021 - 一种面向含噪中尺度量子技术的量子-经典异构计算系统.pdf",
+      "text": "texts/q_cfb875784fa8.txt",
+      "note": "notes/q_cfb875784fa8.md",
+      "page_count": 22,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "一种面向含噪中尺度量子技术的量子-经典异构计算系统",
+        "authors": [
+          "付祥",
+          "郑宇真",
+          "苏醒",
+          "于锦涛",
+          "徐炜遐",
+          "吴俊杰"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1875-1896",
+        "doi": "10.7544/issn1000-1239.2021.20210368",
+        "topics": [
+          "量子计算体系结构",
+          "量子经典异构计算",
+          "量子程序设计语言",
+          "量子编译",
+          "量子控制微体系结构",
+          "含噪中尺度量子"
+        ],
+        "paper_type": "系统"
+      }
+    },
+    "q_94639156dc7f": {
+      "key": "q_94639156dc7f",
+      "sha256": "94639156dc7f4c4c4d069cf0da5c39df08db8031e61c213ab3eeb3915cbb84e6",
+      "pdf": "pdfs/计算机研究与发展/06 - 2021 - 两硬币量子游走模型中的相干动力学.pdf",
+      "text": "texts/q_94639156dc7f.txt",
+      "note": "notes/q_94639156dc7f.md",
+      "page_count": 9,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "两硬币量子游走模型中的相干动力学",
+        "authors": [
+          "李萌",
+          "尚云"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1897-1905",
+        "doi": "10.7544/issn1000-1239.2021.20210266",
+        "topics": [
+          "量子游走",
+          "两硬币模型",
+          "量子相干",
+          "完美状态转移",
+          "量子隐形传输"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_1ff0a3e334b0": {
+      "key": "q_1ff0a3e334b0",
+      "sha256": "1ff0a3e334b0b5886d51d2360dc2eaa9ef88c5b887514c8fb20636d31e6539ad",
+      "pdf": "pdfs/计算机研究与发展/07 - 2021 - 量子假设检验互信息.pdf",
+      "text": "texts/q_1ff0a3e334b0.txt",
+      "note": "notes/q_1ff0a3e334b0.md",
+      "page_count": 9,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子假设检验互信息",
+        "authors": [
+          "张淑仪",
+          "席政军"
+        ],
+        "year": 2021,
+        "journal": "计算机研究与发展",
+        "volume": "58",
+        "issue": "9",
+        "pages": "1906-1914",
+        "doi": "10.7544/issn1000-1239.2021.20210346",
+        "topics": [
+          "量子假设检验",
+          "相对熵",
+          "量子互信息",
+          "条件熵",
+          "链式法则"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_b3d9dab888c2": {
+      "key": "q_b3d9dab888c2",
+      "sha256": "b3d9dab888c2ef7f0c32e89b67362d8c01314275a08fcf01f4e0c9589ffd94f5",
+      "pdf": "pdfs/计算机研究与发展/08 - 2020 - 量子计算与量子密码的原理及研究进展综述.pdf",
+      "text": "texts/q_b3d9dab888c2.txt",
+      "note": "notes/q_b3d9dab888c2.md",
+      "page_count": 12,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子计算与量子密码的原理及研究进展综述",
+        "authors": [
+          "王永利",
+          "徐秋亮"
+        ],
+        "year": 2020,
+        "journal": "计算机研究与发展",
+        "volume": "57",
+        "issue": "10",
+        "pages": "2015-2026",
+        "doi": "10.7544/issn1000-1239.2020.20200615",
+        "topics": [
+          "量子计算",
+          "量子密码",
+          "Shor 算法",
+          "Grover 算法",
+          "量子密钥分发",
+          "BB84 协议"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_e64433c53bcb": {
+      "key": "q_e64433c53bcb",
+      "sha256": "e64433c53bcbe19fcbc633b023399dba3e31175e57d8277f83230c5b65929779",
+      "pdf": "pdfs/计算机研究与发展/09 - 2020 - 后量子前向安全的可组合认证密钥交换方案.pdf",
+      "text": "texts/q_e64433c53bcb.txt",
+      "note": "notes/q_e64433c53bcb.md",
+      "page_count": 19,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": "关键字"
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "后量子前向安全的可组合认证密钥交换方案",
+        "authors": [
+          "陈明"
+        ],
+        "year": 2020,
+        "journal": "计算机研究与发展",
+        "volume": "57",
+        "issue": "10",
+        "pages": "2158-2176",
+        "doi": "10.7544/issn1000-1239.2020.20200472",
+        "topics": [
+          "认证密钥交换",
+          "后量子密码",
+          "签密",
+          "环上误差学习",
+          "完美前向安全",
+          "可组合安全"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_af07f7a52ee2": {
+      "key": "q_af07f7a52ee2",
+      "sha256": "af07f7a52ee25763a030f8dc468e870ee5d3612fa89ff4d9b099da75250b04b3",
+      "pdf": "pdfs/计算机研究与发展/10 - 2025 - 基于变分量子电路的量子机器学习算法综述.pdf",
+      "text": "texts/q_af07f7a52ee2.txt",
+      "note": "notes/q_af07f7a52ee2.md",
+      "page_count": 31,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于变分量子电路的量子机器学习算法综述",
+        "authors": [
+          "于瑞祺",
+          "张鑫云",
+          "任爽"
+        ],
+        "year": 2025,
+        "journal": "计算机研究与发展",
+        "volume": "62",
+        "issue": "4",
+        "pages": "821-851",
+        "doi": "10.7544/issn1000-1239.202330979",
+        "topics": [
+          "变分量子算法",
+          "量子机器学习",
+          "参数化量子电路",
+          "量子神经网络",
+          "量子强化学习",
+          "NISQ"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_6c9457ffa7ed": {
+      "key": "q_6c9457ffa7ed",
+      "sha256": "6c9457ffa7ed8ced47c0451098b18c35efa7b08f9cb1fb0cac7588563f461c1f",
+      "pdf": "pdfs/计算机研究与发展/11 - 2025 - ECG-QGAN： 基于量子生成对抗网络的心电图生成式信息系统.pdf",
+      "text": "texts/q_6c9457ffa7ed.txt",
+      "note": "notes/q_6c9457ffa7ed.md",
+      "page_count": 17,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "ECG-QGAN：基于量子生成对抗网络的心电图生成式信息系统",
+        "authors": [
+          "瞿治国",
+          "陈韦龙",
+          "孙乐",
+          "刘文杰",
+          "张彦春"
+        ],
+        "year": 2025,
+        "journal": "计算机研究与发展",
+        "volume": "62",
+        "issue": "7",
+        "pages": "1622-1638",
+        "doi": "10.7544/issn1000-1239.202440527",
+        "topics": [
+          "量子生成对抗网络",
+          "心电图生成",
+          "量子双向门控循环单元",
+          "量子卷积神经网络",
+          "变分量子电路",
+          "含噪中规模量子计算"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_2c2db3385087": {
+      "key": "q_2c2db3385087",
+      "sha256": "2c2db3385087592c68f424d37e171c1d9e6a8cda379bff96ced71ecce697e289",
+      "pdf": "pdfs/计算机科学/01 - 2012 - 几种量子程序终止的有效验证.pdf",
+      "text": "texts/q_2c2db3385087.txt",
+      "note": "notes/q_2c2db3385087.md",
+      "page_count": 4,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "几种量子程序终止的有效验证",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "几种量子程序终止的有效验证",
+        "authors": [
+          "雷红轩",
+          "席政军",
+          "李永明"
+        ],
+        "year": 2012,
+        "journal": "计算机科学",
+        "volume": "39",
+        "issue": "11",
+        "pages": "75-78",
+        "doi": "",
+        "topics": [
+          "量子程序",
+          "超算子",
+          "终止概率",
+          "程序验证",
+          "量子信道",
+          "量子马尔可夫链"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_a4461895b2fa": {
+      "key": "q_a4461895b2fa",
+      "sha256": "a4461895b2fad897efcd08e5589b23e426c5d7628c1d1f91d035cfd7d872da07",
+      "pdf": "pdfs/计算机科学/02 - 2020 - 噪声信道下的盲量子计算.pdf",
+      "text": "texts/q_a4461895b2fa.txt",
+      "note": "notes/q_a4461895b2fa.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "噪声信道下的盲量子计算",
+        "authors": [
+          "罗文俊",
+          "雷爽"
+        ],
+        "year": 2020,
+        "journal": "计算机科学",
+        "volume": "47",
+        "issue": "7",
+        "pages": "37-41",
+        "doi": "10.11896/jsjkx.190600020",
+        "topics": [
+          "盲量子计算",
+          "噪声信道",
+          "量子纠错码",
+          "量子比特翻转",
+          "量子相位翻转"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_ff2e4ed24e61": {
+      "key": "q_ff2e4ed24e61",
+      "sha256": "ff2e4ed24e616e4b55a6b7a787ff2bee839ca9e7f6fc57a9676cfd515c995b57",
+      "pdf": "pdfs/计算机科学/03 - 2022 - 早期量子算法在量子通信、量子纠错等领域的应用.pdf",
+      "text": "texts/q_ff2e4ed24e61.txt",
+      "note": "notes/q_ff2e4ed24e61.md",
+      "page_count": 5,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "标题",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "早期量子算法在量子通信、量子纠错等领域的应用",
+        "authors": [
+          "Renata WONG"
+        ],
+        "year": 2022,
+        "journal": "计算机科学",
+        "volume": "49",
+        "issue": "6A",
+        "pages": "645-648",
+        "doi": "10.11896/jsjkx.210400214",
+        "topics": [
+          "量子算法",
+          "Deutsch-Jozsa算法",
+          "Bernstein-Vazirani算法",
+          "Simon算法",
+          "量子密钥分发",
+          "量子纠错"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_fee8bc6ec543": {
+      "key": "q_fee8bc6ec543",
+      "sha256": "fee8bc6ec5432dac4f25e6e9b38e0cb05dd1f9dd1d4159fe39853e00eb9646a4",
+      "pdf": "pdfs/计算机科学/04-2023-量子原型聚类.pdf",
+      "text": "texts/q_fee8bc6ec543.txt",
+      "note": "notes/q_fee8bc6ec543.md",
+      "page_count": 11,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "pdf cover",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子原型聚类",
+        "authors": [
+          "刘翔",
+          "祝静",
+          "仲国强",
+          "顾永建",
+          "崔丽媛"
+        ],
+        "year": 2023,
+        "journal": "计算机科学",
+        "volume": "50",
+        "issue": "8",
+        "pages": "27-36",
+        "doi": "10.11896/jsjkx.220600124",
+        "topics": [
+          "量子机器学习",
+          "量子聚类",
+          "原型聚类",
+          "量子距离",
+          "k均值"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_bcd223d237bd": {
+      "key": "q_bcd223d237bd",
+      "sha256": "bcd223d237bd4ee340813829a487f50ca1b03a55d08833c688716eca8462a4ff",
+      "pdf": "pdfs/计算机科学/05-2023-一种新的基于量子小波变换的图像水印算法.pdf",
+      "text": "texts/q_bcd223d237bd.txt",
+      "note": "notes/q_bcd223d237bd.md",
+      "page_count": 9,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "pdf cover",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "一种新的基于量子小波变换的图像水印算法",
+        "authors": [
+          "苏永红",
+          "夏婷",
+          "王绪梅",
+          "钱小红"
+        ],
+        "year": 2023,
+        "journal": "计算机科学",
+        "volume": "50",
+        "issue": "6A",
+        "pages": "220300034-1~220300034-8",
+        "doi": "10.11896/jsjkx.220300034",
+        "topics": [
+          "量子图像水印",
+          "量子小波变换",
+          "量子Arnold置乱",
+          "量子LSB分块",
+          "NEQR",
+          "鲁棒性"
+        ],
+        "paper_type": "应用"
+      }
+    },
+    "q_6d7f5c6ecdaa": {
+      "key": "q_6d7f5c6ecdaa",
+      "sha256": "6d7f5c6ecdaa2acd8f5e5bb1974619564a90e83bbbb4aa99c280ad0859e6dbae",
+      "pdf": "pdfs/计算机科学/06 - 2025 - 基于矩阵乘积算符的混合量子压缩经典生成对抗网络.pdf",
+      "text": "texts/q_6d7f5c6ecdaa.txt",
+      "note": "notes/q_6d7f5c6ecdaa.md",
+      "page_count": 9,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "pdf cover",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于矩阵乘积算符的混合量子压缩经典生成对抗网络",
+        "authors": [
+          "张曜麟",
+          "刘晓楠",
+          "杜帅岐",
+          "廉德萌"
+        ],
+        "year": 2025,
+        "journal": "计算机科学",
+        "volume": "52",
+        "issue": "6",
+        "pages": "74-81",
+        "doi": "10.11896/jsjkx.240500017",
+        "topics": [
+          "量子生成对抗网络",
+          "矩阵乘积算符",
+          "参数化量子线路",
+          "图像生成",
+          "混合量子经典模型"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_9f2e7bf5522c": {
+      "key": "q_9f2e7bf5522c",
+      "sha256": "9f2e7bf5522ca80e6a8598f929df4c755df6906169f53d052c7a5b95d870e7e4",
+      "pdf": "pdfs/计算机科学/07-2026-基于层次化量子蝙蝠算法的特征选择.pdf",
+      "text": "texts/q_9f2e7bf5522c.txt",
+      "note": "notes/q_9f2e7bf5522c.md",
+      "page_count": 11,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "pdf cover",
+        "author": "作者",
+        "subject": "科目",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于层次化量子蝙蝠算法的特征选择",
+        "authors": [
+          "张兴旺",
+          "贺晓丽",
+          "陈思",
+          "折延宏"
+        ],
+        "year": 2026,
+        "journal": "计算机科学",
+        "volume": "53",
+        "issue": "7",
+        "pages": "195-204",
+        "doi": "10.11896/jsjkx.250500032",
+        "topics": [
+          "特征选择",
+          "量子蝙蝠算法",
+          "信息增益率",
+          "随机森林",
+          "群体智能",
+          "分类"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_3dbbecc706ff": {
+      "key": "q_3dbbecc706ff",
+      "sha256": "3dbbecc706ff184603f2d144848e64d5d575d0d635dc51f100d930a94ad01da6",
+      "pdf": "pdfs/软件学报/01 - 2018 - 量子程序验证.pdf",
+      "text": "texts/q_3dbbecc706ff.txt",
+      "note": "notes/q_3dbbecc706ff.md",
+      "page_count": 9,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "Microsoft Word - 5536_冯元,9页_.doc",
+        "author": "jos-L",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子程序验证",
+        "authors": [
+          "冯元",
+          "应明生"
+        ],
+        "year": 2018,
+        "journal": "软件学报",
+        "volume": "29",
+        "issue": "4",
+        "pages": "1085-1093",
+        "doi": "10.13328/j.cnki.jos.005536",
+        "topics": [
+          "量子程序",
+          "形式化验证",
+          "模型检测",
+          "量子Markov链",
+          "量子通信协议",
+          "互模拟"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_1419d3978243": {
+      "key": "q_1419d3978243",
+      "sha256": "1419d39782430adae0c9d0e72d9046313eea2fa7343a2b8bb41a51ddd98be6bc",
+      "pdf": "pdfs/软件学报/02 - 2024 - 量子计算系统软件研究综述.pdf",
+      "text": "texts/q_1419d3978243.txt",
+      "note": "notes/q_1419d3978243.md",
+      "page_count": 18,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子计算系统软件研究综述",
+        "authors": [
+          "谢磊",
+          "翟季冬"
+        ],
+        "year": 2024,
+        "journal": "软件学报",
+        "volume": "35",
+        "issue": "1",
+        "pages": "1-18",
+        "doi": "10.13328/j.cnki.jos.006908",
+        "topics": [
+          "量子计算",
+          "系统软件",
+          "量子编译器",
+          "运行时系统",
+          "调试器",
+          "错误减缓"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_f89426509ce7": {
+      "key": "q_f89426509ce7",
+      "sha256": "f89426509ce76579e798e11b75882d759c3d45c61522b4ea92de1e1700d2ba2a",
+      "pdf": "pdfs/软件学报/03 - 2024 - 量子机器学习综述.pdf",
+      "text": "texts/q_f89426509ce7.txt",
+      "note": "notes/q_f89426509ce7.md",
+      "page_count": 35,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "量子机器学习综述",
+        "authors": [
+          "王健",
+          "张蕊",
+          "姜楠"
+        ],
+        "year": 2024,
+        "journal": "软件学报",
+        "volume": "35",
+        "issue": "8",
+        "pages": "3843-3877",
+        "doi": "10.13328/j.cnki.jos.007042",
+        "topics": [
+          "量子机器学习",
+          "量子计算",
+          "量子神经网络",
+          "量子支持向量机",
+          "综述"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_a0690f6a0350": {
+      "key": "q_a0690f6a0350",
+      "sha256": "a0690f6a03505bddeaae32f7c77634b2ba647f7447d04151289bd45ea2d1ebe2",
+      "pdf": "pdfs/软件学报/04 - 2025 - 面向分布式超导量子计算架构的量子线路映射.pdf",
+      "text": "texts/q_a0690f6a0350.txt",
+      "note": "notes/q_a0690f6a0350.md",
+      "page_count": 20,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "面向分布式超导量子计算架构的量子线路映射",
+        "authors": [
+          "朱鹏程",
+          "卫丽华",
+          "冯世光",
+          "周祥臻",
+          "郑盛根",
+          "管致锦"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "5",
+        "pages": "2381-2400",
+        "doi": "10.13328/j.cnki.jos.007167",
+        "topics": [
+          "超导量子计算",
+          "分布式量子计算",
+          "量子线路映射",
+          "量子态路由",
+          "模拟退火",
+          "量子网络"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_0e722236d07e": {
+      "key": "q_0e722236d07e",
+      "sha256": "0e722236d07e31749add464e4609b8767b9662470743cda9f8c4714f9d947154",
+      "pdf": "pdfs/软件学报/05 - 2025 - Fast-USYN： 从酉矩阵到高质量量子电路的快速合成.pdf",
+      "text": "texts/q_0e722236d07e.txt",
+      "note": "notes/q_0e722236d07e.md",
+      "page_count": 13,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "Fast-USYN：从酉矩阵到高质量量子电路的快速合成",
+        "authors": [
+          "谭思危",
+          "卢丽强",
+          "郎聪亮",
+          "陈明帅",
+          "尹建伟"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "8",
+        "pages": "3431-3443",
+        "doi": "10.13328/j.cnki.jos.007343",
+        "topics": [
+          "量子电路合成",
+          "酉矩阵分解",
+          "量子编译",
+          "前瞻搜索",
+          "候选剪枝",
+          "希尔伯特-施密特测试"
+        ],
+        "paper_type": "系统"
+      }
+    },
+    "q_a0e4aa4c85f7": {
+      "key": "q_a0e4aa4c85f7",
+      "sha256": "a0e4aa4c85f718c6817255dbf2d00473fd73e518859498093e8e564e463cd770",
+      "pdf": "pdfs/软件学报/06 - 2026 - 格上困难问题量子求解算法综述.pdf",
+      "text": "texts/q_a0e4aa4c85f7.txt",
+      "note": "notes/q_a0e4aa4c85f7.md",
+      "page_count": 27,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "格上困难问题量子求解算法综述",
+        "authors": [
+          "曹金政",
+          "罗向阳",
+          "陈晓峰",
+          "程庆丰"
+        ],
+        "year": 2026,
+        "journal": "软件学报",
+        "volume": "37",
+        "issue": "1",
+        "pages": "398-424",
+        "doi": "10.13328/j.cnki.jos.007437",
+        "topics": [
+          "格密码",
+          "格上困难问题",
+          "量子算法",
+          "最短向量问题",
+          "后量子密码",
+          "复杂度分析"
+        ],
+        "paper_type": "综述"
+      }
+    },
+    "q_302a23deecb7": {
+      "key": "q_302a23deecb7",
+      "sha256": "302a23deecb77509797c5fd7384645744eb7dc3f8a01738e44bbfecea9bde429",
+      "pdf": "pdfs/软件学报/07 - 2025 - 半均匀LWE问题的紧致归约.pdf",
+      "text": "texts/q_302a23deecb7.txt",
+      "note": "notes/q_302a23deecb7.md",
+      "page_count": 12,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "半均匀LWE问题的紧致归约",
+        "authors": [
+          "王洋",
+          "王明强"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4405-4416",
+        "doi": "10.13328/j.cnki.jos.007388",
+        "topics": [
+          "格密码",
+          "LWE问题",
+          "半均匀分布",
+          "紧致归约",
+          "离散高斯分布",
+          "Hint-LWE"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_c3abe9fe29bc": {
+      "key": "q_c3abe9fe29bc",
+      "sha256": "c3abe9fe29bc84e520dfb9f56ade99cecfd83bb7268de70a831ab2661c651cc7",
+      "pdf": "pdfs/软件学报/08 - 2025 - SM3-OTS： 基于国密算法SM3的紧凑型后量子一次签名方案.pdf",
+      "text": "texts/q_c3abe9fe29bc.txt",
+      "note": "notes/q_c3abe9fe29bc.md",
+      "page_count": 13,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "SM3-OTS: 基于国密算法SM3的紧凑型后量子一次签名方案",
+        "authors": [
+          "杨亚涛",
+          "殷方锐",
+          "陈亮宇",
+          "潘登"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4417-4429",
+        "doi": "10.13328/j.cnki.jos.007392",
+        "topics": [
+          "后量子签名",
+          "哈希函数",
+          "SM3",
+          "一次签名",
+          "SPHINCS+",
+          "签名长度"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_a8925751e7b7": {
+      "key": "q_a8925751e7b7",
+      "sha256": "a8925751e7b71cc558c46824076a1eb5e9e88f667bec01a142f020e16a580949",
+      "pdf": "pdfs/软件学报/09 - 2025 - 基于Kyber公钥加密的高效认证密钥交换协议.pdf",
+      "text": "texts/q_a8925751e7b7.txt",
+      "note": "notes/q_a8925751e7b7.md",
+      "page_count": 14,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于Kyber公钥加密的高效认证密钥交换协议",
+        "authors": [
+          "米瑞琪",
+          "江浩东",
+          "张振峰"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4430-4443",
+        "doi": "10.13328/j.cnki.jos.007393",
+        "topics": [
+          "后量子密码",
+          "认证密钥交换",
+          "Kyber",
+          "公钥加密",
+          "FO变换",
+          "前向安全性"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_de4f1661c6f9": {
+      "key": "q_de4f1661c6f9",
+      "sha256": "de4f1661c6f9fccf0cc4df646904f6495cb0e42d1c96706dbb6f1e967b9f6831",
+      "pdf": "pdfs/软件学报/10 - 2025 - 具有用户自主链接及验证者条件撤销的格基群签名.pdf",
+      "text": "texts/q_de4f1661c6f9.txt",
+      "note": "notes/q_de4f1661c6f9.md",
+      "page_count": 17,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "具有用户自主链接及验证者条件撤销的格基群签名",
+        "authors": [
+          "陈颖",
+          "何德彪",
+          "彭聪",
+          "罗敏"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4444-4460",
+        "doi": "10.13328/j.cnki.jos.007390",
+        "topics": [
+          "群签名",
+          "后量子密码",
+          "格密码",
+          "条件隐私保护",
+          "区块链",
+          "可验证随机函数"
+        ],
+        "paper_type": "理论"
+      }
+    },
+    "q_af83a5de0227": {
+      "key": "q_af83a5de0227",
+      "sha256": "af83a5de0227107d59265e4fd9c3518ed41d7cc8d4581ca3977dd72c0c70995c",
+      "pdf": "pdfs/软件学报/11 - 2025 - 基于FPGA的格基数字签名算法硬件优化.pdf",
+      "text": "texts/q_af83a5de0227.txt",
+      "note": "notes/q_af83a5de0227.md",
+      "page_count": 22,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于FPGA的格基数字签名算法硬件优化",
+        "authors": [
+          "胡跃",
+          "赵旭阳",
+          "王威",
+          "袁谦",
+          "郑婕妤",
+          "杨亚芳"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4461-4482",
+        "doi": "10.13328/j.cnki.jos.007389",
+        "topics": [
+          "后量子密码",
+          "格基密码",
+          "数字签名",
+          "Dilithium",
+          "FPGA",
+          "硬件加速"
+        ],
+        "paper_type": "系统"
+      }
+    },
+    "q_6ee3bdb14c8a": {
+      "key": "q_6ee3bdb14c8a",
+      "sha256": "6ee3bdb14c8a2f631086a493e4c368ddf466e605caf2fb1ac69677107f8a9cab",
+      "pdf": "pdfs/软件学报/12 - 2025 - 抗量子的高效区块链认证存储方案.pdf",
+      "text": "texts/q_6ee3bdb14c8a.txt",
+      "note": "notes/q_6ee3bdb14c8a.md",
+      "page_count": 24,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "抗量子的高效区块链认证存储方案",
+        "authors": [
+          "张川",
+          "任旭豪",
+          "邓淏天",
+          "王亚杰",
+          "李春海",
+          "吴桐",
+          "王励成"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4483-4506",
+        "doi": "10.13328/j.cnki.jos.007394",
+        "topics": [
+          "区块链",
+          "抗量子密码",
+          "认证存储",
+          "哈希签名",
+          "随机森林链",
+          "超树"
+        ],
+        "paper_type": "算法"
+      }
+    },
+    "q_8cc42c8db290": {
+      "key": "q_8cc42c8db290",
+      "sha256": "8cc42c8db2900668d021d8885c37215585c409b9a29827093e799e1fdd8e2850",
+      "pdf": "pdfs/软件学报/13 - 2025 - 基于多父链辅助工作量证明共识机制的后量子区块链系统.pdf",
+      "text": "texts/q_8cc42c8db290.txt",
+      "note": "notes/q_8cc42c8db290.md",
+      "page_count": 18,
+      "sparse_pages": [],
+      "duplicate_paths": [],
+      "metadata_hints": {
+        "title": "",
+        "author": "SoWise",
+        "subject": "",
+        "keywords": ""
+      },
+      "status": "reviewed",
+      "metadata": {
+        "title": "基于多父链辅助工作量证明共识机制的后量子区块链系统",
+        "authors": [
+          "王御天",
+          "贾舒瑞",
+          "陈铭希",
+          "董怡帆",
+          "杨亚芳"
+        ],
+        "year": 2025,
+        "journal": "软件学报",
+        "volume": "36",
+        "issue": "10",
+        "pages": "4507-4524",
+        "doi": "10.13328/j.cnki.jos.007391",
+        "topics": [
+          "区块链",
+          "后量子密码",
+          "工作量证明",
+          "辅助工作量证明",
+          "共识机制",
+          "Dilithium-Prime"
+        ],
+        "paper_type": "系统"
+      }
+    }
+  },
+  "errors": [],
+  "orphan_notes": []
+}

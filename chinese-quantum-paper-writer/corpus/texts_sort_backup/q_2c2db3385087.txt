@@ -1,0 +1,364 @@
+===== PDF PAGE 1 =====
+第39卷 第11期             计 算 机 科 学                V o1．39 No．11
+  2012年l1月                     Com puter Science                   Nov 2012
+
+       几种量子程序终止的有效验证
+
+
+                  雷红轩  席政军  李永明
+
+ (陕西师范大学计算机科学学院  西安710062) (内江师范学院数学与信息科学学院  内江641112)
+
+
+  摘 要 基于文献[18]提出的量子程序验证方法，讨论了单量子比特系统上比特翻转、去极化、幅值阻尼、相位阻尼等
+
+  信道刻画的量子程序的验证，通过选取不同的可观测算子对程序终止的情况进行了详细的讨论。研究表明，由这些量
+
+  子信道所描述的量子程序的终止情况不仅依赖于输入态的选取，还依赖于可观测算子的选取。
+
+  关键词 量子程序，超算子，终止概率，程序验证
+
+  中图法分类号  TP301．6   文献标识码 A
+
+
+                    Valid Verification ofTermination forSomeQuantum Programs
+
+                        LEIHong-xuan1’ XIZheng-jun1 LIYong-ming1
+
+                       (sc ho lofComputerScience，Sh~nxiNormalUniversity，Xi’an 710062，China)
+
+               (Sc hoolofMathematicsand Inform ationScience，Neijiang Norm alUniversity，Neijiang 641112，China)
+
+
+    Abstract Usingtheverificationmethodforquantum programsproposedin[18]，theverificationofquantum programs
+
+   on the single qubitsystem descdbed by bit flip channel，depolarizing channel，amplitude dam ping channeland phase
+
+    damping channelwas investigated，and the termination conditionsofaquantum program were discussed in detailby se—
+
+      lecting the differentobservableoperators．Itshowsthattheterm ination conditions ofthequantum program described by
+
+    quantum  channelnotonly dependson the selection ofinputstate，butalso dependson the selection ofobservableopera—
+
+
+      tore．
+
+    Keywords Quantum  program s，Super-operator，Terminationprobability，Program verification
+
+
+                                       Sharir-Pnueli—Hart方法，该方法将量子程序在终态终止的概
+1 引言
+                            率计算归约到在初态的概率计算上。本文对上述文献提出的
+
+  从2O世纪80年代早期以来，各种量子程序协议被先后  量子程序的验证方法给出了一个算法，对量子通讯中常用的
+
+提出，量子密码系统已经广泛应用于Quantique、MagiQ 技  比特翻转、去极化、幅值阻尼、相位阻尼等信道所刻画的量子
+
+术、SmartQuantum和NEC中Ⅲ1]。量子通讯比经典通讯最显  程序在选取不同的可观测算子时终止的情况进行了详细讨
+
+著的优势就是它的安全性，但在设计阶段要想保证协议的正  论。
+
+确性是很难的。由于量子通讯协议可以表示成量子程序，因
+                            2 量子Sharir-Pnneli-Hart方法
+此量子程序的验证问题就显得更为迫切。
+
+    1994年，Shore 提出了著名的量子因子分解算法。1996    本文用到的有关量子计算的基本概念见文献Eli。用D
+
+年，Groverc3j给出了进行数据搜索的量子搜索算法。这些算   (H)表示Hilbert空间H 上所有密度算子之集。算子的
+
+法表明量子计算在某些计算领域比经典计算更有效。当前，  L6wner序定义为：A7_13当且仅当B—A 是一个正算子。设
+
+量子算法还处在较低水平的量子线路的阶段。最近一些学  M 是一个算子，如果M 一M，则称M 为Herm ite算子，其中
+
+者[4-8]开始研究量子程序语言的设计和语义。Apt，Olderog_9  M 表示M 的共轭转置。量子系统的一个可观测算子是一个
+
+在其著作中详细地介绍了序列和并发程序的验证理论和技   Herm ite算子。
+
+术。Sharir，Pnueli和Hrat[ 讨论了概率程序的验证问题，给     定义1l1 设￡是H 上的线性算子空间中的一个线性算
+
+出了称为Sharir-Pnueli-Hart方法的验证方法。Papaniko—  子，如果e满足下列两个条件，则称￡为H 上的超算子：
+
+lao[“ 研究了模型检测量子协议。Akatovc 讨论了量子程序       (1)trEe(p)]≤tr(p)，VpED(H)；
+
+验证的逻辑。特别是最近，应明生教授[1 提出了由量子     (2)完全正性：设HR是一个辅助Hilbert空间，如果A
+
+Markov链所刻画的量子程序验证的思想和方法，称其为量子  是H  H 上的正算子，则(IR ￡)(A)也是正的，其中k 是
+
+
+到稿日期：2012—02—03 返修日期：2012—05—22  本文受国家自然科学基金(60873119)资助。
+
+雷红轩(1967-)，男，博士生，副教授，主要研究方向为自动机理论、量子程序验证和量子模型检测，E-mail：leihx2004@ yahoo．com．cn；席政军
+
+(1983一)，男，博士生，主要研究方向为量子计算、量子信息论与非局域性；李永明(1966一)，男，博士，教授，博士生导师，主要研究方向为计算智
+
+能、模糊系统分析、量子逻辑、量子计算、模型检测。
+
+
+                                                                                                                                                                                            · 75 ·
+
+===== PDF PAGE 2 =====
+HR的单位算子。                       第三步 根据条件(Q )，(Q  )，(QG )选定Q；
+
+   如果条件(1)加强到VpfD(H)，trEe(p)~=tr(p)，则称e   第四步 计算(M-o~PMo+咐QMI> 。
+
+是保迹的。                        其中上述算法中{I)，I)}为  的一组标准正交基。
+
+  用CP(H)表示H 上的所有超算子之集。
+                           3 几种信道终止的判定
+  ￡是H 上的超算子，当且仅当存在一组运算元{E )满足
+
+下列条件：                              本文用j，X，y，Z分别表示C。上的单位矩阵、PauliX、
+
+    (1)￡(10)一∑ E PE ，VlD∈D(H)；                   Pauli-Y、Pauli-Z矩阵，即
+
+   (2)∑
+     E E 口，当e是保迹的超算子时取等号，其中j  一(o)’x一( )，是H    的单位算子[1,18]。
+
+  定义2  设￡，￡ ∈CP(H)，且￡ 把Hermite算子映射
+
+成Hermite算子。如果对任意的Hermite算子M                           ，Vp∈D   y一(： )，z一( )。
+(H)，有                             设  ∈D(H2)，其中 一l )( j，l )一口l0)+
+
+    trEMe(p)]=tr[~ (                       l—a l1)为单量子比特， 为实数。假设正算子Q： l )
+
+则称e和e 是(Schr6dinger-Heisenberg)对偶的。        ( I+ I>( I( ，≥0)，记N=Mo+PMo+A QM1。
+
+  设e有算子和表示￡(P)一∑ EPE ，Vp@D(H)，则对任    下面取P一1O>(01和P一11>(1I，对比特翻转、去极化、
+意的Hermite算子M ，有                  幅值阻尼、相位阻尼等信道所刻画的量子程序的终止情况分
+
+  E ( 一∑ E                    别讨论如下。
+
+  定义3l] 一个量子Markov链是一个三元组(H，￡，    1．比特翻转信道
+
+伪)，其中                             比特翻转信道的运算元为E1。一  I，EI= v厂『二 x，该
+
+   (1)H 是Hilbert空间；                信道将量子比特的状态以概率1一 从JO)翻转到『1>(或者相
+
+  (2)e是保迹的超算子；                      反)，o≤ ≤1。它的Kraus算子和为
+
+   (3)go 是密度算子。                                  s(go)=Elogo   +EllgoEI+I
+
+  假定程序有一个终止空间。在每执行完一步后，检查程     (a)取P— j0)(0l，经计算，得
+
+序是否结束，这里选取测量算子为“yes-no”测量，即{A盘，M1}     N—lO)(Oj+忌I1>(1l，且
+
+测量算子，其中Mo= 10)(0l，M1= l1)(1}。也就是说，当测    e (N)一[p+(1-p)k~}0>(Ol+[ +(1一 )]I1>(1I，
+
+量结果为0时，程序终止，此时程序状态进入一个终止空间；  其中k=Al( f1)l+ 『< I1)I。
+
+否则，当测量结果为1时，程序将进入下一步，继续完成保迹     由条件(Q )￡ (』＼，)=Q，即有
+
+的超算子e。                                志一(1lQl1>=(1le (N)l1>一雎+ (1一p)
+
+  为了方便表示，定义超算子：VlD∈D(H)，￡(p)一   即
+
+M~gW+，：0，1。这样，程序的执行过程完全由量子MarkOV      (1一夕)愚= 1-p                           (1a)
+链所描述，经计算可得程序的终态[】8]：             再经过简单的计算可得
+
+                                                               el。(￡。￡1)(go)一(1～口) l1)(1I
+  p 一∑[e0。(￡。￡1)](go)
+          月一。                                                     tr(Q(~l。(￡。g1)”)(go))= (1-G ) 惫
+   量子Sharir-Pnueli-Hart方法[1明(简记为QSPHM)：为了
+                                      分析如下：(i)当  一1时，(Q )成立，即当JD一1O>(o1
+计算正的可观测算子P在程序的终态P 的平均值(P>*，只
+                             为计算基态时，程序终止的概率为
+需要找到一个正算子Q满足条件：
+                                                     (P>p 一<N ) 一1
+   (Q  )(咐 PMo+M+QM1) <oo；
+                                                        (ii)当  ≠1，p=1时，由(QV3)成立知k=0，此时N—
+   (Q )E (咐PMo+埘QM1)一Q；
+                              lo)(0l，程序终止的概率为
+   (Q  )limtr(Q[￡1。(e。E1)—  ∞          ]( ))一O。                   (P)P 一(N>m一< lNl >一口
+  那么计算(P)*的问题可以归约到计算可观测算子       (iii)当0< <1， ≠1时，(QV3)成立，从式(1a)知惫一
+M PM。+埘QM1在程序的初态go 的平均值<咐P +  1，此时N—I，程序终止的概率为
+
+MIrQMx> ，即等式                              (P) 一(N>  ( {Nl )=1
+
+   (QC)(P)一 (腧PMo+M十QM1>               (b)取P— l1>(1I，类似地计算可得
+
+成立。                             N一  1)(1I，且
+
+  对以上QSPHM，下面给出单量子比特系统中量子程序    ￡ (N)一(1-p)k10)(OI+pkI1)(1l，(1-p)k一0 (1b)
+
+验证时计算(P)*的算法：                       分析如下：(i)当  一1时，(Q )成立，即当p一0)(ol
+
+  第一步 选定初态go 和正的可观测算子P；       为计算基态时，程序终止的概率为
+
+  第二步 取算子Q=Al)( I+ I>< I( · ≥0)，计算       (P)P 一<N )m — O
+
+M o+PM0+  QM 1；                                     (ii)当  V-1， 一1时，由(Q )成立知k一0，此时N=
+
+    · 76 ·
+
+===== PDF PAGE 3 =====
+0，程序终止的概率为                     立，此时N=0，程序终止的概率为
+
+   (P>P 一(N>P0一<9olNl >一0                        (P)p*一(N >Pn一0
+   (hi)当0<p< l， ≠1时，(Q )成立，从式(1b)知是一      (iv)当  一l，p=o时，(Q )成立，从式(2b)知尼为任
+
+0，此时N=O，程序终止的概率为                  意值，N=kl1)(1l，于是程序终止的概率为
+   (P>*一(N>内一( lN l >一O                     (P)*一(N )m=k(1-a )
+
+  从以上(a)，(b)的分析可以看到，对于某些正算子P，程     3．幅值阻尼信道
+序不可能终止。                       幅值阻尼是噪声的理想模型，这个模型刻画了出现于量
+  2．去极化信道                    子力学系统中噪声的许多重要特性。幅值阻尼信道的运算元
+
+  去极化信道是一类重要的量子噪声，它对一个单量子比
+特以概率P使量子比特去极化。去极化信道的运算元为E2o   一(  )，E31=(： ) ≤ 可认
+
+                               为是丢失一个光子的概率Ⅲ。它的Kraus算子和为
+一         ，E2 一  x ，  一  y                    ，E2。一譬z，。≤户≤。                                             e( )一E0   +G~8o聪
+它的Kraus算子和为                             (a)取P— O)<0l，类似地计算可得N—lO><Ol+忌l1><1l，
+   e( )=E2opoE2o~o+ 1 E击+E22I。oE杰+E23 E去     且￡ (』＼，)一l0)(0I+ (卮+ (1一)，)忌)l1)(1【，其中尼一
+   (a)取P— l0>(Ol，类似地计算可得：N— O>(0l+电1>                                             {< 1)I。+ l( l1>I。
+(1l，且￡(N)一1Jo>(ol+(1丢户)忌l1>(1l，其中忌一    由条件(Q )￡ (N)一Q，即有
+                                              意一(1lQl1)一(1￡ (N)l1>一忌+(1一y)忌，即
+Al( l1>l+ l( l1>l。
+                                                  (1一y)k= 0                              (3a)
+   由条件(Q )￡ (N)一Q，即有
+                              经过简单的计算可得
+   志一(1IQI1)一(1-  )忌，pk=O          (2a)      ￡1。(￡。s1)(8o)一(1-G。)(1一y) l1)(1l，
+
+  经过简单的计算可得                                         (Q(￡1。(e。s1) )( ))一(1一口。)(1一’，)k
+
+                                    分析如下：(i)当0< )，< 1时，(Q )成立，由式(3a)得
+ e。(eOe1)”(po)一(1一。。)(1- p)l1><11
+                                  忌一1，N—J，程序终止的概率为
+   tr(Q(E1o(E )一)())一(1G2)(1-专p)意             (P>P 一(』＼，)m 一1
+                                             (ii)当7=0， ≠1时，只有当k=O时(Q )成立，此时
+   分析如下：(i)当0< p< 1时，(Q )成立，由式(2a)pk=
+                             N— lo>(ol，序终止的概率为
+0得k=0，N— l0)(0f，程序终止的概率为
+                                                 (P>P*一(N >m一
+    (P)P 一(N >m 一
+                                                            (iii)当  一1， O时，(Q )成立，从式(3a)知忌一1，N
+    (ii)当  一1， ≠0时，(Q )成立，此时|0一l0>(0I为计
+                                       —I，即 一l0)(0l为计算基态时，程序终止的概率为
+算基态，由(2a)可知k=0，N— lO>(0】，程序终止的概率为
+                                                 (P>P*一(N > 一1
+    (P>P 一<N )PD— a。一1
+                                              (iV)当  一1，’，一0时，(Q )成立，从式(3a)知忌一0，
+   (iii)当Ia}≠1，p一0时，从式(2a)知k一0时，(Q )成
+                           此时N— lO)(Ol，程序终止的概率为
+立，此时N= l0)(Oj，程序终止的概率为
+                                              (P> *一(N> 一1
+   (P>P 一(N >m 一
+                                        (6)取P— I1><1』，类似地计算可得
+   (iV)当  一1，户一0时，(QV3)成立，从式(2a)知k为任
+                                              N=kl1><1I，且￡ (N)一(1一A)是l1><1I，
+意值，N— l0>(0l+志f1)<1l，于是程序终止的概率为
+                                  豫一O                                  (3b)
+   <P>P 一(N )Pn一1
+                                      分析如下：(i)当0< 9<i时，(QG )成立，由式(3b)得k
+   (b)取P— l1>(1l，类似地计算可得
+                                 —O，N=0，程序终止的概率为
+    N=kI1)(1l，且
+                                                 (P>P*一(N > 一O
+ e(N)=-~-pk]O)(01q-(1一lp)kll><ll，            (ii)当y=0， ≠1时，只有当k=0时(Q )成立，此时
+
+   pk= O                                    (2b)  N=0，程序终止的概率为
+
+  分析如下：(i)当0< < 1时，(Q )成立，由式(2b)得        (P>P*  (～>m 一0
+k=0，N=0，程序终止的概率为                             (iii)当I口l一1， O时，(Q )成立，由式(3b)知k=0，N
+    <P)P 一<N )m — O                         —O，即 一lO><Of为计算基态时，程序终止的概率为
+
+    (ii)当  一1，p#o时，(Q )成立，此时p— 10)(Ol为计       (P>P 一<N )Pn一0
+算基态，由(2b)知k=0，N=0，程序终止的概率为              (iV)当IaI：1， 一0时，(Q )成立，从式(3b)知k任
+
+    (P)P 一<N )m — 。一0                    意，此时N=kI1>(1I，程序终止的概率为
+
+    (iii)当  ≠1，p=0时，从式(2b)知当k=0时，(Q )成     (P>P 一(N )内-k(1-a )
+
+                                                                   · 77 ·
+
+===== PDF PAGE 4 =====
+4．相位阻尼信道                   序设计或量子通讯协议设计中就要考虑这些因素，以避免量
+
+  相位阻尼是纯粹量子力学性质的噪声过程，它描述没有  子程序不能终止的情况发生。如何用所讨论的验证算法去验
+
+能量损失下的量子信息的丢失。相位阻尼信道的运算元为  证如BB84这样的协议，我们将在另文中给出。
+
+                       参考文献 ( ) 一(： ) ≤ 可以认
+为是来自系统的一个光子没有能量损失的散射的概率E 。它    Eli NielsenM A，ChuangIL．Quantum computationandquantum
+                                                                        information1,M]．CambridgeUniversityPress，Cambridge，2000
+的Kraus算子和为
+                                                  E2] ShorP W_Algorithmsforquantum computation：discretelo-
+   ￡( )一E4o10。E +E1 聪
+                                                                garithmsandfactoring1'C]fProceedings，35thAnnualSympo-
+   (a)取P— lO)(o ，类似地计算可得N— IO>(0{+kl1)
+                                                                          slum on Foundations of Com puter Science．Los Alamitos，CA ：
+(1f，且￡ (N)一l0)(Ol+矗l1>(1l，其中k— I( I1)l+         IEEE Press，1994：124—134
+『( l1)10。                                           E3] GroverL．A fastquantum mechanicalalgorithm fordatabase
+  由条件(Q )e (N)一Q，即有                                   search1,C]f}Proceedings，28th AnnualACM Symposium onthe
+   k一(1lQIl>一(1{￡ (N)l1)一是               (4a)        TheoryofCo mputing．1996：212—219
+
+  经过简单的计算可得                              [43 KnillEH．Conventionsforquantum pseudocode[R]．LAUR-96—
+
+    ￡1。(e。e]) (po)一(1一  )f1)(1l，                              2724．1996
+                                  1,53 OmerB A proceduralformalism forquantum computing[D]．
+    tr(Q(目。(E。￡1) )( ))一(1一  )是
+                                                                 DepartmentoftheoreticalPhysics，TechnicalUniversity ofVi—
+   分析如下：(i)当  一1，即当po— lO)<OI为计算基态时，
+                                                                   enna，1998
+程序终止的概率为
+                                                 [6] SandersJW，ZulianiP．Quantum programming[c]∥Procee~
+   (P>P*一(N>m一1
+                                                                     dings，MathematicsofProgram Construction 2000，LNCS 1837．
+    (ii)当  ≠1时，只有k=0，(Q )成立，此时N— lO)(0         2000：8O一99
+I，程序终止的概率为                                 [7] ZulianiP．Quantum programmingED]．OxfordUniversity，2001
+   (P> *一(N > 一  。                              E8] SelingerP．Towardsa quantum programming language[J]．
+
+   (b)取P— I1>(1I，类似地计算可得                             MathematicsStructuresin ComputerScience，2004，14(4)：527—
+
+   N一是{1>(1l，且￡ (N)一kl1>(1l，                          586
+   电=(1IQl1)一(1l￡ (N)I1)一是              (4b)  I-9] AptKR，OlderogER．VerificationofSequentialandConcurrent
+                                                            Programs[M]．New York：Springer-Verlag，1997
+   分析如下：(i)当  一1，即 一lO>(Ol为计算基态时，程
+                                                         El0]SharirM，PnueliA，HratS Verificationofprobabilisticpro-
+序终止的概率为
+                                                                gramsEJ]．SIAM JournalofCo mputing，1984，13：292—314
+   (P)P*一(N )m— O
+                                  1,11]PapanikolaouNK．ModelCheckingQuantum Protocols1'D]．De—
+    (ii)当  ≠1时，只有k一0，(Q )成立，此时N一0，程
+                                                                  partmentofCom puterScience，UniversityofW arwick，2008
+序终止的概率为
+                                  1,12]Akatovn TheLogicofQuantum Program Verification[[)]．Ox—
+   (P)P*一(N )m 一0                                             fordU niversity Co m puting Laboratory，2005
+  从以上的分析讨论我们看到，如果选取可观测算子P—  1,13]deAlfarok How tospecifyandverifythelong-runaveragebe
+
+lO>(Ol，则以上讨论的4种量子信道所描述的量子程序终止         haviorofprobabilisticsystems1,C]fProceedingsoftheAnnual
+
+的概率不是1就是 ，当输入态 一lo>(0l为计算基态时，4       IEEE Sym posium on Logic in Co mpter Science(LICS)．1998：
+
+种程序终止的概率都为1，这说明量子程序终止的情况和输          454—465
+入态的选取有关系。然而，当选取可观测算子P— l1>(1l时，  1,14]FengYuan，DuanRun-yao，JiZheng-feng，eta1．Probabilistic
+4种程序终止的概率除去极化信道和幅值阻尼信道中各出现          bisimulationsforquantum processes[J]．Information andCorn—
+
+
+
+
+
+ 一 次不可判定外全为0，即不终止。同时，我们也选取了P一          putation，2007，205：1608—1639
+                                  1,15]FengYuan，DuanRun—yao，JiZheng-feng，eta1．Proofrulesfor
+{+ )(+ l为可观测算子，讨论的结果与选P— l0><Ol时一致，
+                                                         thecorrectnessofquantum programs1'J]．TheoreticalComputer
+这说明量子程序终止的判定和可观测算子P的选取有极大
+                                                                        Science，2007，386：581—600
+关系。
+                                  1,16]YingMing-sheng，DuanRumyao，JiZheng-feng．Analgebraof
+  结束语 本文对文献E18]提出的量子程序的验证方法给
+                                                                quantum process[J]．ACM TransactionsonCo mputationLogic，
+出了计算可观测算子终态平均值的算法，分别就量子通讯中          2009，10(3)：1-36
+常用的比特翻转、去极化、幅值阻尼、相位阻尼等信道所刻画  1,17]YingMingsheng，FengYuarLQuantum loopprogram s[J]．Acta
+
+的量子程序的终止情况进行了讨论。研究表明：这4种量子          Inform atica，2010，47(4)：221—250
+
+信道所描述的量子程序的终止情况不但依赖于输入态的选  1,18]YingMing-sheng，YuNeng-kun，FengYuan，eta1．Verification
+
+取，还与可观测算子的选取有极大关系。因此，我们在量子程       ofQuantum programs1,OL]．arXiv：1106．4063，201l
+
+
+
+
+
+    · 78 ·

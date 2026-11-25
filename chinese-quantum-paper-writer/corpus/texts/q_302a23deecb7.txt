@@ -1,0 +1,2679 @@
+===== PDF PAGE 1 =====
+软件学报 ISSN 1000-9825, CODEN RUXUEW                                                                     E-mail: jos@iscas.ac.cn
+2025,36(10):4405−4416 [doi: 10.13328/j.cnki.jos.007388] [CSTR: 32375.14.jos.007388]                                  http://www.jos.org.cn
+©中国科学院软件研究所版权所有.                                                                                      Tel: +86-10-62562563
+
+
+
+
+                                          *
+半均匀LWE 问题的紧致归约
+
+王 洋 1,2, 王明强 1
+
+
+1(山东大学 数学学院, 山东 济南 250100)
+2(密码科学技术技术全国重点实验室, 北京 100878)
+
+通信作者: 王明强, E-mail: wangmingqiang@sdu.edu.cn
+
+
+摘　要: 在部分实用化的格密码协议设计和应用中, 需要用到公开矩阵服从特定分布的、非均匀的LWE 问题的困
+
+难性来证明相应密码体制的安全性. 近期, 有研究工作给出了半均匀LWE 问题的具体定义, 并采用类似证明熵
+
+LWE 问题困难性的归约路线证明了欧氏格/理想格/模格上半均匀LWE 问题的困难性. 但是, 已知的归约方法(在
+
+维数和误差分布的高斯参数等方面) 会引入较大的归约损失, 同时需要引入额外的、非标准的困难性假设来证明
+
+环上的半均匀LWE 问题的困难性. 利用Hint-LWE 问题困难性的归约技巧, 给出了半均匀LWE 问题困难性更紧
+
+致的归约. 采用的归约方法几乎不受代数结构的影响, 可以统一地应用到欧氏格/理想格/模格上定义的半均匀LWE
+
+问题. 可以基于标准的LWE 假设证明对应欧氏格/理想格/模格上的半均匀LWE 问题的困难性而无需引入任何额
+
+外的非标准困难性假设. 归约结果保持相应LWE 问题的维数不变, 且归约过程中对应LWE 问题的误差高斯参数
+
+的归约损失较小.
+关键词: 基于格的密码学; 格中困难问题的归约; 半均匀LWE 问题; Hint-LWE 问题; 离散高斯分布
+中图法分类号: TP301
+
+
+中文引用格式: 王洋, 王明强. 半均匀LWE问题的紧致归约. 软件学报, 2025, 36(10): 4405–4416. http://www.jos.org.cn/1000-9825/
+7388.htm
+英文引用格式: Wang Y, Wang MQ. Tighter Reductions of LWE Problems with Semi-uniform Seeds. Ruan Jian Xue Bao/Journal of
+Software, 2025, 36(10): 4405–4416 (in Chinese). http://www.jos.org.cn/1000-9825/7388.htm
+
+Tighter Reductions of LWE Problems with Semi-uniform Seeds
+
+WANG Yang1,2, WANG Ming-Qiang1
+
+1(School of Mathematics, Shandong University, Jinan 250100, China)
+2(State Key Laboratory of Cryptology, Beijing 100878, China)
+
+Abstract: In certain designs and applications of practical lattice-based cryptography, the use of a specialized variant of LWE problems,
+
+where the public matrix is sampled from a non-uniform distribution, is required to establish the securities of corresponding cryptographic
+
+schemes. Recently, the formal definition of LWE problems with semi-uniform seeds was introduced in some work, in which the hardness
+
+of Euclidean, ideal, and module lattice-based LWE problems with semi-uniform seeds was proved through reduction roadmaps similar to
+
+those employed in the hardness proofs of entropic LWE problems. However, known reduction introduces significant losses in the Gaussian
+
+parameters of errors and dimensions. Moreover, additional non-standard assumptions are required to demonstrate the hardness of LWE
+
+problems with semi-uniform seeds over rings. In this study, a tighter reduction is proposed for LWE problems with semi-uniform seeds by
+
+incorporating modified techniques from the hardness proofs of Hint-LWE problems. The proposed reduction is largely unaffected by the
+
+algebraic structures of the underlying problems and can be uniformly applied to Euclidean, ideal, and module lattice-based LWE problems
+
+
+* 基金项目: 国家重点研发计划(2021YFB3100200); 保密通信全国重点实验室稳定支持计划(2024, WD202402); 密码科学技术全国重点
+ 实验室开放课题(MMKFKT202207); 山东省自然科学基金(ZR2022QF039)
+ 本文由“抗量子密码与区块链应用”专题特约编辑翁健教授、祝烈煌教授、赵运磊教授推荐.
+ 收稿时间: 2024-06-25; 修改时间: 2024-09-05; 采用时间: 2024-12-30; jos 在线出版时间: 2025-01-20
+  CNKI 网络首发时间: 2025-08-12
+
+===== PDF PAGE 2 =====
+4406
+ 软件学报  2025 年第36 卷第10 期
+with  semi-uniform  seeds.  The  hardness  of  these  LWE  problems  can  be  established  based  on  standard  LWE  assumptions  without  the  need
+for  any  additional  non-standard  assumptions.  Furthermore,  the  dimension  of  the  corresponding  LWE  problems  remains  unchanged,  and  the
+reduction introduces only minimal losses in Gaussian parameters of errors.
+discrete Gaussian distribution
+[−α,α]
+Zm×d
+(
+Zm×d
+{ϕU}U∈Zm×d
+q
+{U + EU : U ←- U
+q
+DLWEd
+Z,m,q,χ1 (χ2;D)
+{(A,A· s+e mod qZ) : A ←- D, s ←- χ2,e ←- χ1}
+(1) 
+.
+{(A,u) : A ←- D,u ←- U(Zm
+q )}
+(2) 
+.
+U ∈Zm×d
+LWE 问题即为区分如下分布.
+{(⌊q
+⌊p
+⌉⌉
+⌊q
+⌊p
+⌉⌉
+· s+e mod qZ
+)
+(
+p ·
+q · A
+,
+p ·
+q · A
+: A ←- U
+q
+}
+(2) 
+.
+⌊p
+⌉⌉
+)
+(
+)
+Zm×d
+,u ←- U(Zm
+p ·
+q · A
+,u
+: A ←- U
+q )
+q
+⌊q
+⌊p
+p ·
+q · A
+A
+设计非常高效的格密码方案[25–29].
+s
+难性假设, 即某种判定版本的 NTRU 问题对应的假设.
+{0,1}
+)
+,EU ←- ϕU}
+D
+⌊q
+⌊p
+⌉⌉
+p ·
+q ·U
+)
+Zm×d
+, s ←- χ2,e ←- χ1
+s
+Key words:  lattice-based  cryptography;  reduction  of  lattice-based  problem;  LWE  problems  with  semi-uniform  seeds;  Hint-LWE  problem;
+欧氏格LWE (learning with errors problem) 问题[1]及其 (代数) 变体环/模LWE 问题[2,3]是目前格密码中应用最
+广泛的一类平均情形的数学困难问题, 基于欧氏格/环/模LWE 问题及其适当形式的变体问题几乎可以设计已知
+的所有密码原语. 到目前为止, 关于LWE 问题实用化变体问题的研究可以粗略地分为3 类 (更具体的分类讨论可
+参考文献[4]). 第1 类是研究LWE 问题的秘密或者误差分布为更一般的分布 (例如 
+ 上的二元分布, 小区间
+上的均匀分布, 熵LWE 问题等) 时, 对应LWE 问题的困难性[5–9]; 第2 类是研究LWE 问题的秘密或者误
+差存在部分泄露信息时, 对应的LWE 问题 (即 Hint-LWE 问题) 的困难性[5,10–15]; 第3 类是研究LWE 问题的公开
+矩阵为非均匀分布时, 对应的LWE 问题 (即非均匀LWE 问题) 的困难性[4,16–18].
+近期, Jia 等人[4,17,18] 系统地研究了一类特殊的非均匀LWE 问题, 即半均匀LWE 问题, 的困难性, 给出了半均
+匀LWE 问题的形式化定义, 并采用类似证明熵LWE 问题困难性的归约路线证明了欧氏格/理想格/模格上对应半
+均匀LWE 问题的困难性. 以欧氏格为例, 称 
+ 上的分布 
+ 为 
+ 如果存在 
+ 上的一族可以有效
+q
+D
+η-半均匀分布,
+Zm×d
+取样的分布 
+, 使得取样过程 
+ 所输出的分布与 
+ 统计不可区分, 且以接
+近于   的概率有 
+ 的谱范数不超过   成立. 在本文中, 离散高斯分布一般使用 D; 当不引起歧义时, 我们使用
+1
+EU
+η
+D
+来表示对应 LWE 问题中的公开矩阵 A 服从的分布, 以突出半均匀 LWE 问题的公开矩阵. 对应地, 可以定义判定
+版本的非均匀LWE 问题 
+ 为区分如下分布.
+−U
+值得注意的是, 对任意的 
+, 当选取 
+ 为特定的固定函数 
+ 时, 对应的半均匀
+q
+ϕU
+EU =
+}
+(1) 
+.
+{(⌊q
+⌉⌉
+值得指出的是, 由   可以很容易地计算 
+. 利用这里一类特殊的半均匀LWE 问题可以证明 NIST
+(National Institute of Standards and Technology) 后量子竞赛第1 轮的候选算法 Kyber 采用的基础公钥加密方案的
+IND-CPA (indistinguishability under chosen plaintext attack) 安全性[19,20]. 也就是说, 可以证明采用 LP 框架[21]和压缩
+公钥的方式来设计的高效公钥加密方案也是满足 IND-CPA 安全的. 早期, 由于缺乏对应非均匀LWE 问题到标准
+LWE 问题的严格归约, Kyber 设计团队从 NIST 第2 轮竞选开始取消了方案中对公钥进行压缩的设计方式[22–24],
+这导致对应方案的通信带宽的增加. 在实践应用中, 这一类特殊的半均匀LWE 问题可以结合密钥共识等技术来
+虽然已知的半均匀LWE 问题困难性的归约结果适用于一般的秘密分布 (即归约中仅要求秘密   的分布在特
+定条件下拥有足够的熵即可,   所服从分布的具体形式可以不定). 但是由于采用的是类似证明熵LWE 问题困难
+性的归约路线, 已知的半均匀LWE 问题的归约在维数和高斯分布参数等方面的归约损失较大[4,17,18]. 具体来讲, 证
+d
+˜d d = O( ˜d ·logq)
+明   维的半均匀LWE 问题的困难性要用的   (
+) 维的标准LWE 问题的困难性. 同时, 对于一般的
+, 归约过程中高斯误差参数的损失与样本数目有关 (特别是样本数为 
+ 时, 误差参数的膨胀
+η-半均匀分布D
+poly(λ)
+倍数较大). 另外, 在证明环中 (求解版本) 半均匀LWE 问题的困难性时, 需要引入额外的、相对而言非标准的困
+
+===== PDF PAGE 3 =====
+王洋 等: 半均匀LWE 问题的紧致归约
+4407
+在实用中, 一般采用的秘密/误差分布为离散高斯分布的LWE 问题来进行密码协议的设计或者困难问题的归
+约讨论. 一个自然的问题是针对特定的离散高斯分布的情形, 能否给出非均匀LWE 问题的更紧致的归约. 这也是
+本研究的主要出发点和研究动机所在.
+来保证.
+保证.
+1   非均匀LWE 问题的相关工作
+A = B·C + E
+(
+)
+Zm×d
+A
+D
+U
+q
+LWE 问题是困难的.
+2   基础知识
+)
+−q
+2, q
+2
+d
+∑
+x = (x1,..., xd)T ∈Rd
+|| x|| :=
+x2
+i=1
+η-半均匀分布D
+(
+)
+Zm×d
+A ←- U
+q
+A
+A
+d
+∑
+i∈[d] |xi|
+A ∈Rd×d
+i
+|| x||1 :=
+|xi|
+|| x||∞:= max
+i=1
+在本文中, 我们推广了 Hint-LWE 问题困难性研究中用到的技巧并将其应用于半均匀LWE 问题困难性的研
+究中, 给出了半均匀LWE 问题困难性更紧致的归约方法. 本文采用的归约方法基本不受代数结构的限制, 可以统
+一地应用于欧氏格/理想格/模格上定义的半均匀LWE 问题. 具体来讲, 本文的归约方式具有以下优势.
+d
+d
+(1) 归约结果是保持维数的: 即   维的半均匀LWE 问题的困难性仅需要用到   维的标准LWE 问题的困难性
+(2) 归约过程中的高斯参数损失较少, 且对于一般的 
+ 
+, 归约中的高斯参数与样本数无关: 即高
+斯参数为   的   维的半均匀LWE 问题的困难性可以由高斯参数为 
+ 的   维的标准LWE 问题的困难性来
+σ
+d
+O(η·σ)
+d
+本文第1 节介绍非均匀LWE 问题的简单研究现状. 第2 节介绍本文所需的基础知识, 包括欧氏格/理想格/模
+格、高斯分布、 LWE 问题/半均匀LWE 问题的定义和一些有用的引理等. 第3 节介绍本文的主要归约, 并将我们
+的归约结果与已知结果做简单比较. 最后, 在第4 节总结全文.
+在初始LWE 问题的样本中, 公开矩阵一般选自随机均匀分布, 即 
+. 在已知的部分LWE 问题的
+变体问题研究中, 经常需要将   换成所谓的 Lossy 形式 (即 
+, 使用多秘密的LWE 样本来替换均匀矩
+A
+A = B·C + E
+阵) 来进行讨论[6–8]. 一般而言, 
+ 对应的分布不是与均匀分布统计不可区分的. 但是在对应LWE 问题
+困难这个计算假设下, 可以证明对应的“非均匀” LWE 问题也是困难的. 在本文中, 非均匀LWE 问题指的是公开
+矩阵   服从的分布 
+ 与 
+ 不是统计或者计算不可区分的情况下对应的LWE 问题.
+据我们所知, 在不考虑某些   为特定的循环矩阵的情况下对应的LWE 问题 (此类问题对应   的系数在某些
+A
+A
+环上均匀选择)[30] 时, Boneh 等人[16]首次讨论了非均匀LWE 问题的困难性, 并证明了当公开矩阵   服从的分布为
+Zd
+k
+{0,1}k
+Zd
+(1) 
+ 上适当参数的离散高斯分布; (2)   足够大时对应的 
+ 上的均匀分布; (3) 
+ 的某些足够大的线性子空
+间上的均匀分布时, 对应的非均匀LWE 问题的困难性可以由标准LWE 问题的困难性来保证. 此外, Bruna
+等人[31]提出的连续LWE 问题 (continuous LWE problem) 对应的公开矩阵   服从适当的连续高斯分布, Gupte 等
+人[32]也证明了适当参数条件下, 此类问题的困难性可以由标准的LWE 问题来保证.
+但是, 上述几类非均匀LWE 问题不适用于某些格密码应用 (例如压缩公钥的方式来设计的加密/密钥封装方
+案[25–29]). 近期, Jia 等人[4,17,18]形式化定义了半均匀LWE 问题, 并采用类似证明熵LWE 问题困难性的归约路线, 结
+合 Renyi 散度、格中正则性结论 (leftover hash lemma) 等工具证明了欧氏格/理想格/模格中适当参数的半均匀
+在本节中, 我们将给出符号说明, 并介绍在本文讨论过程中要经常用到的概念、定义和部分引理.
+使用符号 
+ 来依次表示全体整数/有理数/实数组成的集合. 对于给定的正整数 
+, 定义符号
+Z, Q, R
+q ∈Z
+Zq := Z/q·Z
+[q]
+{1,2,...,q}
+Zq
+[
+并使用符号 
+ 来表示集合 
+. 如无特殊说明, 我们默认 
+ 中陪集的代表元取自集合
+. 本文使用粗体小写字母   来表示向量, 使用斜体大写字母   来表示矩阵或者集合. 如无特殊说明, 在
+∩Z
+x
+A
+本文中默认使用列向量, 并使用符号 
+ 来表示矩阵   的转置 (向量亦看为特殊的矩阵); 符号 
+ 表示 
+ 的单
+AT
+A
+Id
+d ×d
+位矩阵. 对于向量 
+, 定义 
+, 
+, 
+. 对于矩阵 
+,
+使用符号 
+ 来表示矩阵 
+ 的   个不同的奇异值. 我们默认对奇异值按照大小排序为
+sk (A),k ∈[d]
+A
+d
+sd (A) ⩽...
+
+===== PDF PAGE 4 =====
+4408
+ 软件学报  2025 年第36 卷第10 期
+, 此时 
+ 即为   的谱范数. 对于有限集合  , 符号 
+ 表示集合   上的均匀分布. 对于概率分
+⩽s2 (A) ⩽s1 (A)
+s1 (A)
+A
+S
+U(S )
+S
+布 
+, 使用符号 
+ 来表示随机变量   服从分布 
+. 集合   上的离散概率分布 
+ 和 
+ 的统计距离
+D
+x ←- D
+x
+D
+S
+D1
+D2
+∆(D1,D2)
+2 ·
+∑
+Prx←-D1 [x = a]−Pry←-D2
+∆(D1,D2) := 1
+a∈S
+则称概率分布 
+ 和 
+ 是统计接近的/统计不可区分的.
+D1
+D2
+2.1   格与离散高斯分布
+R := Z[x]/(xn +1)
+
+Mcoef (a) :=
+R
+J σcoef (J )
+易知, 对于 
+ 的任意理想 
+, 
+ 为一个满秩格.
+e−π· ||x−c||2
+∑
+ρs,c (x)/ρs,c (Λ)
+x ∈Λ
+ρs,c (Λ) :=
+Σ
+Σ
+Σ =
+矩阵, 则记 
+.
+A > B
+(DZ,s
+DZ,s
+ηε (Λ)
+min
+( √
+)
+( √
+−1 ·Λ
+Σ ⩾ηε (Λ)
+ηε
+Σ
+⩽1
+ρ
+Σ
+们需要用到如下引理[1,8,10,33–35].
+引理1. 以下事实成立.
+(
+Σ
+Λ
+ε ∈
+d
+Zd
+ε = ε(λ)
+ηε
+λc
+n = 2bn
+K := Q[x]/(xn +1)
+
+.
+1
+sd ·ρs,c (x) x ∈Rd
+Λ
+DΛ,s,c
+√
+√
+T
+√
+√
+Σ
+Σ
+Σ ·
+Σ
+( √
+)
+−1 ·Λ
+Σ
+)
+T ·Λ∗\{0}
+−1(Λ∗\{0}) ⩽0
+= ρ √
+Σ
+)
+s1 (Σ) ⩽ηε (Λ)−2
+√
+0, 1
+2
+( √
+(Zd) ⩽ω
+logd
+( √
+)
+logd
+[y = a]
+λ
+f (λ)
+定义为 
+. 我们使用符号   来表示安全参数, 并称一个函数 
+ 是
+c > 0
+λ0
+λ ⩾λ0
+f (λ) ⩽1
+可忽略的, 如果对任意的 
+, 存在 
+, 使得对任意的 
+, 不等式 
+ 恒成立. 当具体的函数形式对我们
+的讨论没有影响时, 一般使用符号 
+ 来表示 (某个或者某些不同的) 可忽略的函数. 如果 
+,
+negl(λ)
+∆(D1,D2) ⩽negl(λ)
+本文仅讨论满秩的整数格. 更确切地说, 本文讨论的 
+ 维欧氏格 
+ 可写成形如 
+ 的形
+d
+Λ := L(B)
+Z· b1 +...+Z· bd
+B := (b1|...|bd) ∈Zd×d d
+Λ
+Λ∗
+Λ∗:= {x ∈Rd :< x, y >∈Z, ∀y ∈Λ}
+式, 其中, 
+, 
+ 为任意正整数. 格 
+ 的对偶格 
+ 的定义为 
+. 我们
+也关心特殊的理想/模格. 为了简化讨论, 本文固定正整数 
+, 并考虑特殊的分圆域 
+ 及其代数
+整数环 
+ (值得注意的是, 采用与本文类似的分析方法, 本文的结论可以推广到一般的代数数域
+中). 对于 
+ 中的多项式 
+, 我们采用系数嵌入 
+ 将其嵌入 
+, 即
+R
+a = a0 +a1 · x+...+an−1 · xn−1
+σcoef
+Zn
+σcoef (a) := (a0,...,
+. 注意到 
+ 中两个元素的多项式乘法可以表示为矩阵乘以向量的形式. 对于给定的
+an−1)T
+R
+a = a0 +a1 · x+...+
+和 
+, 经简单计算可知, 
+. 其中,
+an−1 · xn−1
+b = b0 +b1 · x+...+bn−1 · xn−1
+σcoef (a·b) = Mcoef (a)·σcoef (b) = Mcoef (b)·σcoef (a)
+a0
+−an−1
+−an−2
+...
+−a1
+a1
+a0
+−an−1
+...
+−a2
+a2
+a1
+a0
+...
+−a3
+...
+...
+...
+...
+...
+an−1
+an−2
+an−3
+...
+a0
+对于任意给定的正实数 
+ 和向量 
+, 定义以   为参数、以   为中心的   维高斯函数为
+s ∈R
+c ∈Rd
+s
+c
+d
+ρs,c (x) :=
+. 对应地, 以   为参数、以   为中心的   维连续高斯分布 
+ 对应的概率密度函数为 
+, 
+. 可
+s2
+s
+c
+d
+Ds,c
+以将对应的高斯分布限制在任意的格(或者离散集合) 
+ 上, 对应的离散高斯分布 
+ 的概率分布函数为
+, 
+. 这里, 
+. 当 
+ 或者 
+ 时, 我们省略相关符号中对应的下标, 例如
+x∈Λ ρs,c (x)
+c = 0
+s = 1
+使用 
+, 
+ 等. 给定任意非奇异的矩阵 
+, 矩阵 
+ 是一个实对称正定矩阵 (记为 
+). 定义
+ρs (x) ρ(x)
+B ∈Rd×d
+Σ := B· BT
+Σ > 0
+ρB (x) := ρ(B−1 · x) = e−π·xT·Σ−1·x
+ρB (x)
+Σ
+x
+ρ √
+. 注意到 
+ 的取值仅仅与   和   相关, 因此我们记 
+. 为了简化讨
+Σ (x) := ρB (x)
+√
+论, 这里的 
+ 选择为   的 Cholesky 分解 (即满足条件 
+, 
+ 为下三角矩阵). 事实上, 取 
+ 为任意
+满足条件 
+ 的矩阵   并不会影响后续的讨论. 对于两个实对称正定矩阵 
+, 如果 
+ 仍为实对称正定
+Σ = B· BT
+B
+A,B
+A−B
+当我们在 
+ 中讨论时, 我们使用符号 
+ 来表示多项式   的系数独立地取自参数为   的一维离散高
+R
+f ←- DR,s
+f
+s
+)d = DZd,s
+f ←- DR,s
+f
+DZn,s
+σcoef (f) ←- DZn,s
+斯分布 
+. 由于 
+, 因此 
+ 等价于   的系数组成的向量服从分布 
+, 即 
+.
+特别地, 我们有 
+. 假设 
+ 为某正实数. 对任意的   维格  , 定义格   的 (与   相关的) 光滑参数
+DRd,s = DZn·d,s
+ε > 0
+d
+Λ
+Λ
+ε
+为 
+. 类似地, 对于任意的实对称正定矩阵 
+, 如果条件 
+ 成立, 则记
+⩽1
+√
+s>0 {s : ρ1/s (Λ∗\{0}) ⩽ε}
+Σ > 0
+ηε
+. 根据定义, 条件 
+ 等价于 
+. 在本文后面的讨论中, 我
+Σ ⩾ηε (Λ)
+(1) 假设   是实对称正定矩阵,   为某个格, 实数 
+. 如果 
+, 则有 
+.
+)
+(2) 对于   维格 
+, 存在可忽略的 
+ 使得 
+.
+c ∈Rd
+(3) 假设已知   维格 
+ 的一组格基 
+, 实数 
+. 则对任意的向量 
+ 和满足条件
+d
+Λ = L(B)
+B
+r = ω
+
+===== PDF PAGE 5 =====
+王洋 等: 半均匀LWE 问题的紧致归约
+4409
+Σ > r2 · B· BT
+Σ
+B
+DΛ,
+Σ,c
+ 的实对称正定矩阵  , 存在利用   的多项式时间的取样算法从一个与分布 
+ 统计接近的分布中
+抽取样本.
+Σ
+DRd,
+√
+Σ,c
+(
+)
+0, 1
+2
+ε ∈
+2.2   LWE 问题
+态, 或者视为 
+ 上的 
+ -模同态.
+Rq
+Zq
+DLWEd
+(
+)
+A ←- D s ←- χ2 e ←- χ1 u ←- U
+Rm
+q
+A
+DLWEd
+R,m,q,χ1 χ2;D
+(
+)
+DLWEd
+R,m,q,χ1 (χ2;D)
+AdvA
+R = R
+(
+)
+Rm×d
+D = U
+q
+布[4,17,18].
+下面两个条件成立:
+A
+U + EU mod q·R
+(1) 随机变量   与 
+ 统计不可区分.
+[s1 (σcoef (EU)) ⩽η] ⩾1−negl(λ).
+(2)
+PrU←-U(Rm×d
+q ),EU←-ϕU
+3   半均匀LWE 问题的困难性研究
+的矩阵. 则以下两个取样过程输出的分布相同.
+√
+( √
+)
+logn·d
+3 := Σ−1
+2 +Σ−1
+2
+√Σ3 ⩾ηε
+(Zd)
+q
+D
+R
+m
+D
+R,m,q,χ1 χ2;D
+(
+)
+Rm×d
+D , U
+q
+D
+η
+q
+η
+(
+)
+Rm×d
+EU ←- ϕU
+q
+( 1
+σ12 · I˜n + 1
+σ22 · FT · F
+注意到在 
+ 的作用下, 
+ 对应 
+. 根据引理 1, 对任意的向量 
+ 和满足条件 
+ 的实对
+σcoef
+R
+Zn
+c ∈Rn·d
+Σ > ω
+称正定矩阵  , 我们可以有效地从一个与 
+ 统计不可区分的分布中进行抽样.
+引理2. 假设实数 
+, 
+ 为实对称正定矩阵, 
+ 且满足条件 
+. 则对任意的
+Σ1,Σ2
+Σ−1
+向量 
+, 分布 
+ 与 
+ 的统计距离不超过 
+.
+c ∈Rd
+{x1 + x2 : x1 ←- DZd, √Σ1, x2 ←- DZd, √Σ2,c}
+DZd, √Σ1+Σ2,c
+2·ε
+利用引理 2, 我们可以将某个离散高斯分布拆分为某两个适当参数的离散高斯分布的和.
+LWE 问题最早由Regev[1]提出, 是目前格密码设计中应用最广泛的一类平均情形的格中困难问题.
+本文用符号 
+ 来表示环   或者 
+, 并定义 
+. 在系数嵌入 
+ 的作用下, 
+ 中元素的加法和乘法
+R
+Z
+R
+Rq := R/q·R
+σcoef
+R
+可以使用 
+ 中向量的加法, 以及对应矩阵和向量的乘法来表示. 注意到 
+ 可以平凡地扩展到以 
+ 中的元素为
+Zn
+σcoef
+R
+元素的向量或者矩阵上. 为了讨论方便, 定义   上的 
+ 作用为恒等映射. 这样, 
+ 可以视为 
+ 上的 
+ -模同
+Z
+σcoef
+σcoef
+R
+Z
+对于正整数 
+ 以及 
+ 上的概率分布 
+, 
+ 上的概率分布 
+, 
+ 上的概率分布 
+, 定义环 
+ 相关的
+m,d,q
+Rm
+χ1 Rd
+χ2 Rm×d
+判定版本的LWE 问题 (记为 
+(
+)) 为如下问题: 区分分布 
+ 与分布 
+. 这里,
+R,m,q,χ1 χ2;D
+(A,A· s+e mod q·R)
+(A,u)
+, 
+, 
+, 
+. 注意到在上述定义中, 参数 
+ 对应的是LWE 问题的样本数; 
+ 即为LWE
+问题公开矩阵服从的分布; 
+ 和 
+ 分别为LWE 问题的误差向量和秘密向量服从的分布. 为了下文讨论方便, 当
+χ1
+χ2
+(A,A· s+e mod q·R)
+DLWEd
+样本形式为 
+ 时, 我们称对应的样本取自 
+(
+) 问题的分布. 对于任意的 (量子)
+概率多项式时间的敌手  , 定义其解决 
+(
+) 问题的优势为:
+:= |Pr[A(A,A· s+e mod q·R) = 1]−Pr[A(A,u) = 1]|.
+当 
+ 时, 上述判定版本LWE 问题对应欧氏格上的LWE 问题. 此时, 参数   为对应的 (格的) 维数. 而当
+R = Z
+d
+时, 上述判定版本LWE 问题对应现实中最常用的、扩张次数为 2 的幂次的分圆域上定义的相应LWE 问
+题. 此时, 对应的 (格的) 维数为 
+. 当 
+ 时对应环LWE 问题, 而当 
+ 时对应模LWE 问题.
+n·d
+d = 1
+d ⩾2
+一般而言,LWE 问题的公开矩阵的分布为 
+. 当 
+ 时, 我们称对应的LWE 问题为非均
+匀LWE 问题. 本文关心的是非均匀LWE 问题中的一类特殊的半均匀LWE 问题, 即 
+ 为下面定义的 
+ -半均匀分
+定义1. 假设 
+ 为正整数. 对于任意的正实数 
+, 我们称分布 
+ 为 
+ 上的 
+ -半均匀分布, 如果存在
+m,d
+η > 0
+D
+Rm×d
+上的一族可以有效取样的概率分布 
+ 使得对任意随机取样的 
+ 和 
+,
+Rm×d
+{ϕU}U∈Rm×d
+A ←- D,U ←- U
+本节将给出半均匀LWE 问题相关的更紧的归约方法. 在给出具体的归约之前, 我们需要用到下面这个关键
+引理. 引理3 的证明所采用到的方法与文献[10] 中的方法类似.
+)−1
+引理3. 假设 
+ 为正实数, 
+ 为正整数, 
+ 为任意一个使得矩阵 
+ 存在
+σ1,σ2
+˜m, ˜n
+F ∈Z ˜m×˜n
+Σ0 :=
+s ←- DZ˜n,σ1
+e ←- DZ ˜m,σ2
+z = F · s+e
+(s,z) ∈Z˜n ×Z ˜m
+(1) 先取样 
+ 和 
+, 再计算 
+, 最后输出 
+.
+s ←- DZ˜n,σ1
+e ←- DZ ˜m,σ2
+z = F · s+e
+c = 1
+σ22 ·Σ0 · FT ·z
+˜s ←- DZ˜n, √Σ0,c
+(2) 先取样 
+ 和 
+, 再计算 
+ 和 
+; 随后采样 
+; 最后输
+
+===== PDF PAGE 6 =====
+4410
+ 软件学报  2025 年第36 卷第10 期
+(˜s,z) ∈Z˜n ×Z ˜m
+出 
+.
+(v,w)∈Z˜n ×Z ˜m
+为此, 任取 
+. 在取样过程 (1) 中, 我们有:
+(
+)
+=
+1
+ρσ1 (Z˜n)·ρσ2 (Z ˜m) ·e
+1
+σ12 ·vT·v+
+1
+σ22 ·(w−F·v)T·(w−F·v)
+−π
+0 = Σ−T
+0
+这里, 我们用到了条件 
+. 注意到:
+Σ−1
+∑
+Pr[y = w] = Pr[z = w] =
+a∈Z˜n
+我们可以得到:
+(
+)
+0 ·c+
+1
+σ22 wT·w
+−cT·Σ−1
+−π
+e
+v
+∑
+−π· ||a||2
+1 ·e
+−π· ||w−F·a||2
+σ2
+σ2
+e
+(
+)
+
+2
+0 ·c+
+1
+σ22 wT·w
+−cT·Σ−1
+∑
+−π
+e
+a∈Z˜n
+2
+=
+∑
+−π· ||a||2
+1 ·e
+−π· ||w−F·a||2
+σ2
+σ2
+v∈Z˜n
+e
+a∈Z˜n
+因此,
+3.1   半均匀LWE 问题的归约
+本文的主要定理如下.
+{ √
+(
+√
+σ1,σ2,σ3,σ4,γ ⩾ω
+logm·n,
+logd ·n
+max
+DLWEd
+(
+)
+(
+) 问题.
+DLWEd
+Rm×d
+R,m,q,χ3 χ4;U
+q
+D
+Rm×d
+(
+)
+Rm×d
+{ϕU}U∈Rm×d
+A ←- D U ←- U
+q
+PrU←-U(Rm×d
+q ),EU←-ϕU
+这里, 
+, 
+.
+i ∈[6] (A, b) ∈Rm×d
+q
+×Rm
+q
+Game1
+(A, b)
+DLWEd
+(
+)
+Rm×d
+Game2
+U ←- U
+q
+(
+)
+=
+1
+ρσ1 (Z˜n)·ρσ2 (Z ˜m) ·e
+0 ·(v−c)−cT·Σ−1
+0 ·c+
+1
+σ22 wT·w
+(v−c)T·Σ−1
+−π
+.
+∑
+−π· ||a||2
+1 ·e
+−π· ||w−F·a||2
+σ2
+σ2
+2
+,
+e
+a∈Z˜n
+(
+)
+0 ·c+
+1
+σ22 wT·w
+−cT·Σ−1
+−π
+2
+·e−π·(v−c)T·Σ−1
+0 ·(v−c).
+∑
+−π· ||a||2
+1 ·e
+−π· ||w−F·a||2
+σ2
+σ2
+e
+a∈Z˜n
+∑
+v∈Z˜n
+0 ·(v−c)
+
+−1
+=
+1
+ρ √Σ0,c (Z˜n).
+e−π·(v−c)T·Σ−1
+0 ·(v−c).
+q
+√
+2
++ η2
+3
+1
+σ2
+γ2 +σ2
+3
+⩾ηε (Rm) σ1 =
+γ2 +σ2
+EU ←- ϕU
+A
+U + EU mod q·R
+q
+×Rm
+x
+y
+(v,w)∈Z˜n ×Z ˜m
+证明: 记输出的第1 个随机变量为  , 第2 个随机变量为  . 注意到对任意的 
+:
+Pr[x = v∧y = w] = Pr[y = w]·Pr[x = v|y = w].
+Pr[y = w] = Pr[z = F · s+e = w]
+同时, 在两个取样过程中, 
+ 相同. 因此, 为了证明这两个取样过程最后输出的分
+布相同, 只需证明在取样过程 (1) 中, 在已知 
+ 的情况下,   服从的条件分布为 
+ 即可.
+F · s+e
+s
+DZ˜n, √Σ0,c
+Pr[x = v∧y = w] = Pr[s = v∧F · s+e = w] = Pr[s = v∧e = w−F ·v]
+Pr[s = a]·Pr[e = w−F · s|s = a] =
+1
+ρσ1 (Z˜n)·ρσ2 (Z ˜m) ·
+Pr[x = v|y = w] = Pr[s = v|z = w] = Pr[s = v∧z = w]
+Pr[z = w]
+=
+e
+Pr[s = v|z = w] = 1
+因为公式 
+ 与   无关, 且有概率等式 
+ 成立, 所以我们有:
+Pr[s = v|z = w] =
+1
+ρ √Σ0,c (Z˜n) ·e−π·(v−c)T·Σ−1
+z = F · s+e = w
+s
+DZ˜n, √Σ0,c
+也就是说, 在已知 
+ 的情况下,   服从的条件分布为 
+. 证毕.
+定理1. 假设 
+ 为某可忽略的函数, 
+ 为正整数, 
+ 为 
+ 上的η-半均匀分布, 正实数
+ε = negl(λ)
+m,q,d
+D
+Rm×d
+})
+γ ·σ3
+√
+γ2 <
+1
+2·σ2
+4
+χ1 = DRm,σ1 χ2 = DRd,σ2 χ3 = DRm,σ3 χ4 = DRd,σ4
+A
+δ
+且满足条件 
+, 
+, 
+. 记
+, 
+, 
+, 
+. 如果存在一个 (量子) 概率多项式时间的敌手   可以以   的概率解
+决 
+(
+) 问题, 则存在一个 (量子) 概率多项式时间的敌手 
+ 可以以 
+ 的概率解决
+R,m,q,χ1 χ2;D
+B
+δ−negl(λ)
+证明: 根据假设, 
+ 为 
+ 上的 
+ -半均匀分布. 由定义1, 存在 
+ 上的一族可以有效取样的概率分布
+q
+η
+Rm×d
+使得对任意随机取样的 
+, 
+ 和 
+, 随机变量   与 
+ 统计不可
+[s1 (σcoef (EU)) ⩽η] ⩾1−negl(λ)
+区分. 同时, 有 
+ 成立.
+对任意 (量子) 概率多项式时间的敌手 
+, 我们定义一系列区分游戏 
+, 并定义 
+.
+A
+Gamei
+pi := PrGamei [A(A, b) = 1]
+q
+A
+● 
+: 取样 
+, 
+, 
+; 计算 
+; 最后输出 
+ 给  .
+Game1
+A ←- D s ←- χ2 e ←- χ1
+b = A· s+e mod q·R
+(A, b) ∈Rm×d
+R,m,q,χ1 χ2;D
+注意到 
+ 中输出的样本 
+ 即为 
+(
+) 问题的原始分布.
+EU ←- ϕU s ←- χ2 e ←- χ1
+s1 (σcoef (EU)) > η
+⊥
+● 
+: 取样 
+, 
+, 
+, 
+; 如果 
+, 则输出 
+ (代表采样出错, 游
+
+===== PDF PAGE 7 =====
+王洋 等: 半均匀LWE 问题的紧致归约
+4411
+q
+A
+戏终止); 否则, 计算 
+, 
+; 最后输出 
+ 给  .
+A = U + EU mod q·R b = A· s+e mod q·R
+(A, b) ∈Rm×d
+(
+)
+Rm×d
+Game3
+U ←- U
+q
+Σ3 := γ2 ·σ2
+3
+· IN
+γ ·σ3
+√
+3
+γ2 +σ2
+3
+⩾ηε (Rm) = ηε
+γ2 +σ2
+DRm,√
+3 = χ1
+2·ε
+Game3
+γ2+σ2
+|p2 −p3| ⩽negl(λ)
+所以, 根据上述分析, 我们可以得到 
+.
+(
+)
+Rm×d
+Game4
+U ←- U
+q
+给  .
+Rm×d
+q
+A
+q
+×Rm
+2
++ η2
+(Σ−1
+0
+) ⩽1
+s1
+σ2
+( √
+)
+σ4 ⩾ω
+logn·d
+(
+)
+Rm×d
+Game5
+U ←- U
+q
+σcoef (EU)T ·z
+s1 ←- DRd,√
+Σ0−σ2
+; 最后输出 
+ 给  .
+b = U · ˜s+z+e2 mod q·R
+(A, b) ∈Rm×d
+q
+A
+q
+×Rm
+(Σ0 −σ2
+4 · I ˜N
+) > σ2
+s ˜N (Σ0) > 2·σ2
+4
+s ˜N
+4
+DRd,√
+4·I ˜N,c
+Σ−1
+Σ0−σ2
+(Σ−1
+3
+) ⩽1
+(Σ−1
+2
+) < 2
+4
+⩽(ηε(Rd ))
+s1
+4
++s1
+σ2
+σ2
+DRd,√
+Σ0−σ2
+分. 所以, 我们可以得到 
+.
+|p4 −p5| ⩽negl(λ)
+(
+)
+Rm×d
+Game6
+U ←- U
+q
+( 1
+A = U + EU mod q·R
+z = EU · s+e1
+Σ0 :=
+σ2
+(
+)
+s1 ←- DRd,√
+Rm
+4·I ˜N,c
+u ←- U
+q
+Σ0−σ2
+(
+)
+Rm
+Game6
+u
+U
+q
+Game5
+注意到在 
+ 中,
+q
+×Rm
+q
+A
+q
+×Rm
+3 · IN
+( 1
+)−1
+c = 1
+2
+· I ˜N + 1
+γ2 ·σcoef (EU)T ·σcoef (EU)
+γ2 ·Σ0·
+σ2
+0 = 1
+σ2
+2
+· I ˜N + 1
+γ2 ·σcoef (EU)T ·σcoef (EU)
+4
+Σ0 > σ2
+4 · I ˜N
+DRd, √Σ0,c
+˜s
+( 1
+)−1
+c = 1
+2
+· I ˜N + 1
+γ2 ·σcoef (EU)T ·σcoef (EU)
+γ2 ·Σ0·
+σ2
+1 = 1
+σ2
+4
+· I ˜N Σ−1
+2 = (Σ0 −σ2
+4 · I ˜N)
+−1
+Σ−1
+3 = Σ−1
+1 +Σ−1
+2
+(Rd)
+)−1
+c = 1
+γ2 ·Σ0 ·σcoef (EU)T ·z
+q
+A
+q
+×Rm
+(
+)
+η
+A
+Rm
+b ←- U
+q
+R,m,q,χ1 χ2;D
+根据定义1, 在 
+ 中输出 
+ 的概率是可忽略的. 当 
+ 正常输出 
+ 时, 
+ 中输出的   与
+Game2
+⊥
+Game2
+(A, b)
+Game2
+A
+中输出的   统计不可区分. 因此, 我们有 
+.
+Game1
+A
+|p1 −p2| ⩽negl(λ)
+● 
+: 取样 
+, 
+, 
+; 如果 
+, 则输出 
+; 否则继续取样 
+,
+EU ←- ϕU s ←- χ2
+s1 (σcoef (EU)) > η
+⊥
+e1 ←- DRm,γ
+; 再计算 
+, 
+, 
+; 最后输出 
+ 给  .
+e2 ←- DRm,σ3
+z = EU · s+e1 A = U + EU mod q·R b = U · s+z+e2 mod q·R
+(A, b) ∈Rm×d
+R = Z
+N = m
+˜N = d
+R = R
+N = m·n
+˜N = n·d
+Σ1 := γ2 · IN Σ2 := σ2
+下面当 
+ 时取 
+, 
+; 而当 
+ 时取 
+, 
+. 如果令 
+, 
+ 并取
+(ZN)
+DRm,γ + DRm,σ3
+, 则根据假设 
+ 以及引理 2 可知, 概率分布 
+ 与概率分布
+的统计距离不超过 
+. 在 
+ 中, 我们有:
+b = U · s+z+e2 mod q·R = U · s+ EU · s+e1 +e2 mod q·R = (U + EU)· s+(e1 +e2) mod q·R = A· s+(e1 +e2) mod q·R.
+● 
+: 取样 
+, 
+, 
+; 如果 
+, 则输出 
+; 否则继续取样 
+,
+EU ←- ϕU s ←- χ2
+s1 (σcoef (EU)) > η
+⊥
+e1 ←- DRm,γ
+; 再计算 
+, 
+, 并取 
+,
+e2 ←- DRm,σ3
+A = U + EU mod q·R z = EU · s+e1
+Σ0 :=
+σcoef (EU)T ·z
+˜s ←- DRd, √Σ0,c
+(˜s,z)
+b = U · ˜s+z+e2 mod q·R
+(A, b) ∈
+; 随后取样 
+, 并利用二元组 
+ 来计算 
+; 最后输出
+Game4
+Σ−1
+我们先来分析 
+ 中所需要的分布是否可以有效地取样. 注意到 
+,
+γ2 <
+1
+2·σ2
+4
+s ˜N (Σ0) > 2·σ2
+根据参数选择, 我们有 
+. 所以, 可以得到 
+, 进而有 
+ 成立. 由引理 1
+以及我们选择的参数条件 
+ 可知, 可以有效地从一个与 
+ 统计不可区分的分布中采样  . 当
+所有的分布均可以有效采样时, 
+ 与 
+ 的区别仅仅在于用于计算   的 
+ 与 
+ 的不同. 根据引理 3,
+Game3
+Game4
+b
+(s,z)
+(˜s,z)
+在我们的参数选择下, 
+ 与 
+ 的分布统计不可区分. 因此, 我们有 
+.
+(s,z)
+(˜s,z)
+|p3 −p4| ⩽negl(λ)
+● 
+: 取样 
+, 
+, 
+; 如果 
+, 则输出 
+; 否则继续取样 
+,
+EU ←- ϕU s ←- χ2
+s1 (σcoef (EU)) > η
+⊥
+e1 ←- DRm,γ
+; 再计算 
+, 
+, 并取 
+,
+e2 ←- DRm,σ3
+A = U + EU mod q·R z = EU · s+e1
+Σ0 :=
+; 随后取样 
+ 和 
+ 并计算 
+; 再利用二元组 
+ 来计算
+4·I ˜N,c
+s2 ←- DRd,σ4
+˜s = s1 + s2 mod q·R
+(˜s,z)
+我们已经知道 
+, 所以 
+. 根据引理 1 和我们的参数选择, 可以有效地从一个
+与 
+ 统计接近的分布进行采样. 如果现在取 
+, 
+ 并令 
+, 简
+−2
+√Σ3 ⩾ηε
+单计算即知 
+ 成立. 由引理 1 可知, 
+. 进而根据引理 2, 分布
+与分布 
+ 的统计距离不超过 
+, 即 
+ 和 
+ 中对应的   的分布统计不可区
+4·I ˜N,c + DRd,σ4
+DRd, √Σ0,c
+2·ε
+Game4
+Game5
+˜s
+● 
+: 取样 
+, 
+, 
+ 和 
+; 如果 
+, 则输出 
+; 否则计算
+EU ←- ϕU
+s ←- χ2
+e1 ←- DRm,γ
+s1 (σcoef (EU)) > η
+⊥
+2
+· I ˜N + 1
+γ2 ·σcoef (EU)T ·σcoef (EU)
+和 
+; 令 
+, 
+; 随后
+取样 
+ 和 
+; 计算 
+; 最后输出 
+ 给  .
+b = U · s1 +z+u mod q·R
+(A, b) ∈Rm×d
+在 
+ 中, 由于   是独立随机地取自分布 
+, 因此有 
+ 成立. 根据 
+ -半均匀分布,   服从的
+分布与 
+ 统计不可区分. 根据假设, 
+ 可以以   的概率解决 
+(
+) 问题. 所以我们可以得到
+D
+A
+δ
+DLWEd
+. 综合 
+ – 
+ 的分析, 我们有 
+.
+|p1 −p6| ⩾δ−negl(λ)
+Game1
+Game5
+|p5 −p6| ⩾δ−negl(λ)
+b = U · ˜s+z+e2 mod q·R = U · s1 +z+U · s2 +e2 mod q·R.
+
+===== PDF PAGE 8 =====
+4412
+ 软件学报  2025 年第36 卷第10 期
+(
+)
+(U, ˜b)
+U ←- U
+Rm×d
+q
+(
+)
+˜b ←- U
+. 则 
+ 进行如下操作.
+B
+Rm
+q
+σcoef (EU)T ·z
+.
+s1 ←- DRd,√
+Σ0−σ2
+q
+A
+(4) 输出 
+ 给  .
+(A, b) ∈Rm×d
+q
+×Rm
+B
+A
+最后 
+ 输出   的输出即可.
+(
+)
+DLWEd
+Rm×d
+R,m,q,χ3 χ4;U
+q
+布相同. 因此,
+(
+DLWEd
+R,m,q,χ3(χ4;U(Rm×d
+q
+))
+AdvB
+证毕.
+{ √
+(
+σ1,σ2,σ3,σ4,γ ⩾ω
+max
+{ √
+(
+√
+σ1,σ2,σ3,σ4,γ ⩾ω
+logm,
+max
+√
+γ ·σ3
+√
+γ2 +σ2
+3
+⩾ηε (Rm)
+σ1 =
+γ2 +σ2
+2
++ η2
+e
+1
+σ2
+{ √
+})
+(
+√
+ω
+logm·n,
+logd ·n
+max
+2
++ η2
+1
+σ2
+Game5
+Game6
+DLWEd
+(
+) 问题的实例.
+R,m,q,χ3 χ4;U(Rm×d
+q
+)
+3.2   与已知结果的对比分析
+⌊
+x+ 1
+⌊x⌋
+x
+⌊x⌉:=
+2
+者矩阵上.
+{ √
+2·ω
+(
+√
+√
+σ1,σ2,σ3,σ4,γ ⩾
+logm,
+logd
+max
+DLWEd
+)
+(
+(
+) 问题.
+DLWEd
+Zm×d
+Z,m,q,χ3 χ4;U
+q
+√
+√
+2
++ η2
+2·σ4 ·η
+1
+σ2
+σ2 = 2
+2·σ4
+γ = 2
+γ ·σ3
+√
+3
+=
+γ
+√
+)2 =
+σ3
+√
+1+
+( γ
+1+
+(σ3
+)2
+γ2 +σ2
+σ3
+γ
+(
+)
+B
+Rm×d
+R,m,q,χ3 χ4;U
+q
+(
+)
+Rm×d
+q
+( 1
+)−1
+c = 1
+2
+· I ˜N + 1
+γ2 ·σcoef (EU)T ·σcoef(EU)
+γ2 ·Σ0·
+σ2
+(U, ˜b)
+B
+A
+(A, b)
+)
+= |p5 −p6| ⩾δ−negl(λ).
+})
+√
+R
+R = Z
+logm·n,
+logd ·n
+})
+logd
+x ∈Z
+q
+η
+√
+2
++ η2
+3
+1
+σ2
+γ2 +σ2
+3
+⩾ηε (Zm) σ1 =
+γ2 +σ2
+( √
+)
+γ2 =
+1
+4·σ2
+4
+<
+1
+2·σ2
+4
+ηε (Zm) ⩽ω
+logm
+2·ω
+( √
+)
+γ ·σ3
+√
+√
+3
+⩾
+σ3,γ ⩾
+logm
+γ2 +σ2
+现在, 我们可以利用敌手 
+ 的能力来构造敌手 
+ 以解决 
+(
+) 问题. 假设敌手 
+ 获
+A
+B
+DLWEd
+s2 ←- DRd,σ4
+e2 ←- DRm,σ3
+˜b = U · s2 +e2 mod q·R
+U ←- U
+得的样本为 
+, 其中 
+, 
+, 
+, 
+ 或者 
+,
+EU ←- ϕU s ←- χ2
+s1 (σcoef (EU)) > η
+⊥
+e1 ←- DRm,γ
+(1) 取样 
+, 
+; 如果 
+, 则输出 
+; 否则继续取样 
+.
+(2) 计算 
+ 和 
+, 随后取 
+,
+A = U + EU mod q·R
+z = EU · s+e1
+Σ0 :=
+4·I ˜N,c
+b = U · s1 +z+ ˜b mod q·R
+(3) 取样 
+, 随后计算 
+.
+显然, 根据我们的参数选择, 上述 
+ 的操作可以在概率多项式时间内完成. 下面来分析所构造的敌手 
+ 可以
+B
+B
+成功解决 
+(
+) 问题的概率. 易知, 当 
+ 来自均匀分布时, 
+ 给   的样本 
+ 所服从的
+分布与 
+ 的输出所服从的分布相同. 否则, 
+ 给   的样本 
+ 所服从的分布与 
+ 的输出所服从的分
+Game6
+B
+A
+(A, b)
+Game5
+注意到定理1 中的条件 
+ 是为了对 
+ 进行统一分析. 当
+时, 相应的条件可以改为 
+. 我们对定理1 中所选择的参数条件进行一些简
+单的说明. 条件 
+ 和 
+ 是为了保证从 
+ 到 
+ 的过程中, 我们可以对
+3
+Game2
+Game3
+Game2
+γ2 <
+1
+2·σ2
+4
+σ1,σ2,σ3,σ4,γ ⩾
+中的原始误差   进行拆分; 条件 
+ 是为了保证我们可以应用关键引理3; 本质上讲, 条件
+保证了证明过程中对应的离散高斯分布均可以有效地取样. 同时, 此条件连同条件
+γ2 <
+1
+2·σ2
+4
+Game4
+Game5
+Game4
+s
+也保证了从 
+ 到 
+ 的过渡中可以对 
+ 中的原始误差   进行拆分. 最后得到的
+(以及 
+) 即为所期望的分布形式, 非常便于我们来构造概率多项式时间的算法 (归约) 来嵌入
+⌋
+利用定理1, 可以得到半均匀的(欧氏格/环/模) LWE 问题的困难性结果. 在本节中, 对任意的整数 
+, 使用
+符号 
+ 来表示不超过   的最大整数, 并定义 
+. 相应的取整符号可以平凡的推广到向量 (多项式) 或
+R = Z
+d
+当 
+ 时, 可以得到   维欧氏格对应的半均匀LWE 问题的困难性归约.
+推论1. 假设 
+ 为某可忽略的函数, 
+ 为正整数, 
+ 为 
+ 上的 
+ -半均匀分布, 正实数
+ε = negl(λ)
+m,q,d
+D
+Zm×d
+})
+γ ·σ3
+√
+γ2 <
+1
+2·σ2
+4
+χ1 = DZm,σ1 χ2 = DZd,σ2 χ3 = DZm,σ3 χ4 = DZd,σ4
+A
+δ
+且满足条件 
+, 
+, 
+. 记
+, 
+, 
+, 
+. 如果存在一个 (量子) 概率多项式时间的敌手   可以以   的概率解
+决 
+(
+) 问题, 则存在一个 (量子) 概率多项式时间的敌手 
+ 可以以 
+ 的概率解决
+Z,m,q,χ1 χ2;D
+B
+δ−negl(λ)
+如果选择 
+,  
+,   则 
+.   由引理  1 ,  
+.   而
+, 所以在上述参数设置下, 当 
+ 时, 不等式
+
+===== PDF PAGE 9 =====
+王洋 等: 半均匀LWE 问题的紧致归约
+4413
+ηε (Zm) 恒成立.
+√
+γ2 +σ2
+3
+σ3 = σ4 =: σ
+σ1 =
+(
+(
+))
+DLWEd
+Zm×d
+DZd,σ;U
+Z,m,q,DZm,σ
+q
+问题. 其中, 
+, 
+; 
+, 
+.
+χ1 = DZm,σ1 σ1 = O(η·σ) χ2 = DZd,σ2 σ2 = O(σ)
+η
+( √m·σ+η
+)
+σ1 = ˜O
+0 < p ⩽q
+U ∈Zm×d
+x−
+⌉⌉ ⩽
+⌊q
+⌊p
+⌊q
+⌉
+p ·
+q · x
+Zq
+2p
+⌊p
+⌉⌉
+⌊q
+⌉
+√
+p ·
+q ·U
+m·d ·
+Dp,q,m,d
+2p
+的半均匀LWE 问题.
+{ √
+2·ω
+(
+√
+√
+σ1, σ2, σ3, σ4, γ ⩾
+logm·n,
+logd ·n
+max
+δ
+DLWEd
+(
+)
+决 
+(
+) 问题.
+DLWEd
+Rm×d
+R,m,q,χ3 χ4;U
+q
+(
+)
+DLWEd
+Rm×d
+R,m,q,DRm,σ DRd,σ;U
+q
+χ1 = DRm,σ1 σ1 = O(η·σ) χ2 = DRd,σ2 σ2 = O(σ)
+d = 1
+⌊q
+⌊p
+p ·
+q ·U
+Dp,q,m,d
+U ∈Rm×d
+q
+Dp,q,m,d
+η
+D
+DLWEd
+Z,m,q,χ1(χ2;D)
+e
+σ3 = σ4
+d
+⌊q
+⌊p
+⌉⌉
+p ·
+q ·U
+−U
+x ∈
+⌊q
+⌉
+√
+s1 (EU) ⩽
+m·d ·
+Dp,q,m,d
+U ∈Zm×d
+2p
+Dp,q,m,d
+q
+η
+√
+2
++ η2
+3
+1
+σ2
+γ2 +σ2
+3
+⩾ηε (Rm)
+σ1 =
+γ2 <
+γ2 +σ2
+σ3 = σ4 =: σ
+η
+D
+DLWEd
+R,m,q,χ1 χ2;D
+d ⩾2
+η
+⌉⌉
+⌊q
+⌉
+√
+Dp,q,m,d
+n·
+m·d ·
+2p
+(
+)
+Rd×d
+q
+注意到 
+, 因此当选取参数 
+ 时, 可以将标准 (即秘密与误差服从相同参数的离散高斯
+分布) 的 
+ 问题归约到公开矩阵服从任意 
+ -半均匀分布 
+ 的半均匀
+值得指出的是, 在不计多项式规模样本数的情况下, 误差   所服从的高斯分布的参数大小决定了对应LWE
+问题的困难程度 (例如, 采用文献[36] 的方法可以将秘密取自均匀分布的LWE 问题归约到秘密取自与误差相同
+参数的离散高斯分布的LWE 问题, 即所谓的标准形式 (normal form) 的LWE 问题; 而秘密取自均匀分布的LWE
+问题是同等条件下最难的一类问题). 因此, 我们在这里仅举例说明 
+ 的情形.
+与文献[4] 的归约结果相比, 本文的归约结果是保持格的维数   的, 但是文献[4] 中的归约结果需要依赖于相
+应的低维LWE 问题的困难性. 同时, 在我们的归约结果中, 在渐进意义下两个问题的误差参数大小的归约损失为
+, 与样本数目无关. 但是文献[4] 中的归约结果在渐进意义下两个问题的误差参数大小的归约损失与样本数相关
+(约为 
+). 不过值得注意的是, 本文的归约结果仅仅局限于秘密/误差服从离散高斯分布的情形, 且
+仅适用于判定版本LWE 问题的归约. 而文献[4] 的归约同时适用于求解和判定版本问题的归约, 但是对于判定版
+本的对应问题, 需要额外限制   为素数或者要求秘密   取自 
+ 上的、特定条件下熵足够大的二元分布.
+q
+s
+{0,1}
+假设 
+ 为正整数, 对任意的矩阵 
+, 可以定义固定函数 
+. 对任意的
+q
+EU =
+, 简单计算知 
+. 因此, 我们有 
+. 定义分布 
+ 为: 取样 
+,
+q
+⌊q
+输出 
+, 则 
+ 为特殊的 
+ -半均匀分布. 上述讨论的结论可以自然地应用到 
+ 对应
+R = R
+当 
+ 时, 可以得到对应的判定版本的环/模半均匀LWE 问题的困难性归约.
+推论2. 假设 
+ 为某可忽略的函数, 
+ 为正整数, 
+ 为 
+ 上的 
+ -半均匀分布, 正实数
+ε = negl(λ)
+m, q, d
+D
+Rm×d
+})
+γ ·σ3
+√
+且满足条件 
+,  
+,
+1
+2·σ2
+4
+χ1 = DRm,σ1 χ2 = DRd,σ2 χ3 = DRm,σ3 χ4 = DRd,σ4
+A
+. 记 
+, 
+, 
+, 
+. 如果存在一个 (量子) 概率多项式时间的敌手   可以以
+的概率解决 
+(
+) 问题, 则存在一个 (量子) 概率多项式时间的敌手 
+ 可以以 
+ 的概率解
+R,m,q,χ1 χ2;D
+B
+δ−negl(λ)
+类似于欧氏格中的半均匀LWE 问题的参数分析, 可以推出以下结论. 当选取参数 
+ 时, 可以将标准
+的 
+(
+) 问题归约到公开矩阵服从任意 
+ -半均匀分布 
+ 的半均匀 
+(
+)
+问题. 其中, 
+, 
+; 
+, 
+.
+注意到当 
+ 时, 上述结果即为对应的环上的半均匀LWE 问题的困难性归约结果. 与文献[17] 的结论相
+比, 我们可以将标准的环LWE 问题归约到对应的半均匀环LWE 问题, 而不需要使用额外的困难性假设 (例如某
+些特定形式的 DSPR (decisional small polynomial ratio) 假设, 即对应为判定版本的 NTRU 假设). 当 
+ 时, 与文
+献[4] 的结果相比, 在渐近的意义下, 我们的误差参数的归约损失仅为  , 与其余参数无关. 特别地, 我们的归约也
+是保持格的维数的, 不需要像文献[4,17,18] 那样基于低维度 (更确切地说, 低秩数) 的模LWE 问题的困难性.
+当定义分布 
+ 为: 取样 
+, 输出 
+ 时, 简单计算易知, 
+ 为特殊的 
+ -
+半均匀分布. 利用分布 
+ 对应的半均匀模LWE 问题可以证明, 当采用类似NIST 第1 轮候选算法 Kyber 那
+种压缩公钥的设计方式时, 对应的底层加密方案也满足 IND-CPA 安全性. 具体方案的构造如下. 由于相关方案的
+IND-CPA 安全性的证明是标准的, 我们仅给出大概解释, 证明的具体细节可以参考文献[4,25–29].
+KeyGen(1λ) :
+λ
+A ←- U
+s ←- DRd,σ2 e ←- DRd,σ1
+b = A· s+e
+● 
+ 给定安全参数  , 密钥生成算法采样 
+, 
+, 
+. 计算 
+,
+
+===== PDF PAGE 10 =====
+4414
+ 软件学报  2025 年第36 卷第10 期
+(
+⌊p
+⌉)
+sk = s
+并返回公钥 
+ 和私钥 
+.
+pk =
+A,
+q · b
+(
+⌊p
+⌉)
+Enc(pk,m)
+pk =
+A,
+q · b
+U(Rd×d
+DLWEd
+R,d,q,DRd,σ1 DRd,σ2;U(Rd×d
+(
+Rd
+Dp,q,1,d
+Dp,q,1,d
+u ←- U
+q
+DLWEd
+(
+√
+σ1 = O
+n·
+d ·
+p,q
+O(1).
+√σ1 ·σ2 = O(n1/2 ·d1/2)·σ
+DLWEd
+DLWEd
+R,1,q,DR,σ1 U(Rd
+q);U(Rd
+上这些限制, 文献[4] 的归约结果将更加受限.
+4   总　结
+References:
+[1]
+[2]
+[3]
+565–599. [doi: 10.1007/s10623-014-9938-4]
+⌊q
+⌊p
+⌉⌉
+p ·
+q · b
+⌊2
+q ·(c2 −sT · c1)
+R,d,q,DRd,σ1 DRd,σ2;
+R,1,q,DR,σ1 DRd,σ2;
+⌊p
+⌉⌉
+⌊q
+⌉
+√
+p ·
+q ·u
+Dp,q,1,d
+n·
+d ·
+2p
+R,1,q,DR,σ DRd,σ;U(Rd
+q)
+⌊q
+⌉
+·σ
+)
+σ2 = O(σ)
+2p
+O(n1/2 ·d1/4)
+R,1,q,DR,σ U(Rk
+q);U(Rk
+q)
+(
+⌊q
+⌉
+·σ+σ2
+)
+√
+n·
+d ·
+σ2 = O(σ)
+2p
+σcoef (m) ∈{0,1}n
+˜b =
+● 
+: 假设 
+, 要加密消息 
+, 加密算法先计算 
+. 随后, 采样
+r ←- DRd,σ2 e1 ←- DRd,σ2 e2 ←- DR,σ1
+c1 = AT · r+e1
+c2 = ˜bT · r+e2
+ct = (c1,c2)
+, 
+, 
+, 并计算 
+ 和 
+. 最后返回密文 
+.
+⌉
+● 
+: 假设 
+, 
+. 解密算法计算并返回 
+.
+Dec(sk,ct)
+ct = (c1,c2) sk = s
+m =
+简单计算可知, 对于适当选择的参数, 上述方案可以正确解密. 为证明方案的 IND-CPA 安全性, 需要用到两次
+相应判定版本的LWE 假设. 第1 次是将 
+ 替换为均匀随机的 
+, 用到的假设是 
+(
+(A, b)
+(A,u)
+DLWEd
+) 问题是困难的; 第2 次是将密文替换为随机均匀的元素, 其中替换密文 
+ 用到的假设仍是
+q )
+c1
+(
+) 问题是困难的. 但是, 替换密文 
+ 需要用到的困难性假设是 
+(
+q )
+c2
+DLWEd
+)
+⌊q
+). 这里, 
+ 对应的分布为: 取样 
+, 输出 
+. 注意到分布 
+ 是 
+ -半均匀
+分布, 采用本文的归约结果可知, 
+(
+) 问题的困难性可以由 
+(
+)
+R,1,q,DR,σ1 DRd,σ2;Dp,q,1,d
+DLWEd
+问题的困难性来保证. 对应的参数关系是 
+, 
+. 为兼顾解密错误率和安全强度, 参
+数 
+ 相差的比特数一般为 
+ 采用文献[27] 的经验估计, 非对称LWE 问题的困难性与误差参数约为
+的对称LWE 问题的困难性相当. 因此, 当将本文的归约结果应用于 Kyber 类采用压缩公
+钥的设计方式来设计的公钥加密方案时, 对应的理论归约损失约为 
+. 值得指出的是, 本文的归约方式对
+d
+q
+d = O(1)
+O(n1/2)
+于参数   (和  ) 的限制很小. 可以选择 
+, 此时对应的理论归约损失约为 
+.
+我们采用文献[4] 第 5.2 节的定理来估计采用上述设计方式的公钥加密方案 IND-CPA 安全性的理论归约损
+失. 此时, 
+(
+) 问题的困难性可以由 
+(
+) 问题的困难性和
+R,1,q,DR,σ1 DRd,σ2;Dp,q,1,d
+DLWEk
+(
+) 问题的困难性来保证. 这里, 
+. 如果我们也选择
+q)
+σ1 = O
+的话, 根据离散高斯的性质大致估计文献[4] 中的熵不等式条件可以得到对应模LWE 问题的秩至少应该满足
+d ⩾O(k ·logq+logn+ω(logλ))
+DRd,σ2
+d = O(1)
+q
+(注意到即使是将 
+ 替换为随机均匀分布, 这个条件也应该满足). 因此严格来
+讲, 文献[4] 的归约结果不适用于 
+ 的情形. 此外, 文献[4] 的归约结果对于参数   以及秘密分布也有额外
+的限制. 例如要求   为分裂性质良好的素数, 且要求秘密的分布模 
+ 的每一个素理想均具有足够大的熵. 如果加
+q
+qR
+在本文中, 我们将 Hint-LWE 相关问题研究中的方法进行改进并应用到半均匀LWE 问题的研究之中, 给出了
+非均匀LWE 问题更简单、更紧致的困难性归约. 具体来讲, 本文的归约方法几乎不受代数结构的影响, 可以一致
+地应用到对应的欧氏格/环/模上的半均匀LWE 问题的归约. 相比于已知的半均匀LWE 问题的归约结果, 本文给
+出的归约是保持对应LWE 问题的维数的, 归约损失小且归约损失 (对应的LWE 问题的误差所服从的离散高斯参
+数) 与样本数等条件无关. 当将本文的归约应用到环LWE 问题时, 对应的归约方法可以基于标准的环LWE 问题
+给出非均匀环LWE 问题的困难性证明, 归约结论无需用到 DSPR 等额外的 (相对而言非标准的) 困难性假设.
+Regev O. On lattices, learning with errors, random linear codes, and cryptography. In: Proc. of the 37th Annual ACM SIGACT Symp. on
+Theory of Computing. Baltimore: ACM, 2005. 84–93. [doi: 10.1145/1060590.1060603]
+Lyubashevsky V, Peikert C, Regev O. On ideal lattices and learning with errors over rings. In: Gilbert H, ed. Proc. of the 29th Annual Int’l
+Conf. on the Theory and Applications of Cryptographic Techniques. French: Springer, 2010. 1–23. [doi: 10.1007/978-3-642-13190-5_1]
+Langlois  A,  Stehlé  D.  Worst-case  to  average-case  reductions  for  module  lattices.  Designs,  Codes  and  Cryptography,  2015,  75(3):
+Jia  WJ,  Zhang  J,  Xiang  BW,  Wang  BC.  Hardness  of  (M)LWE  with  semi-uniform  seeds.  Theoretical  Computer  Science,  2024,  994:
+[4]
+
+===== PDF PAGE 11 =====
+王洋 等: 半均匀LWE 问题的紧致归约                                                         4415
+
+
+
+      114481. [doi: 10.1016/j.tcs.2024.114481]
+
+ [5]   Brakerski Z, Langlois A, Peikert C, Regev O, Stehlé D. Classical hardness of learning with errors. In: Proc. of the 45th Annual ACM
+
+      Symp. on Theory of Computing. Palo Alto: ACM, 2005. 575–584. [doi: 10.1145/2488608.2488680]
+
+ [6]  Goldwasser S, Kalai YT, Peikert C, Vaikuntanathan V. Robustness of the learning with errors assumption. In: Innovations in Computer
+
+      Science—ICS 2010. Beijing: Tsinghua University Press, 2010. 230–240.
+
+ [7]  Micciancio D. On the hardness of learning with errors with binary secrets. Theory of Computing, 2018, 14: 13. [doi: 10.4086/toc.2018.
+
+      v014a013]
+
+ [8]   Brakerski Z, Döttling N. Hardness of LWE on general entropic distributions. In: Canteaut A, Ishai Y, eds. Proc. of the 39th Annual Int’l
+
+      Conf. on the Theory and Applications of Cryptographic Techniques. Zagreb: Springer, 2020. 551–575. [doi: 10.1007/978-3-030-45724-
+
+      2_19]
+
+ [9]  Boudgoust K, Jeudy C, Roux-Langlois A, Wen WQ. On the hardness of module learning with errors with short distributions. Journal of
+
+       Cryptology, 2023, 36(1): 1. [doi: 10.1007/s00145-022-09441-3]
+
+[10]  Kim D, Lee D, Seo J, Song Y. Toward practical lattice-based proof of knowledge from Hint-MLWE. In: Handschuh H, Lysyanskaya A,
+
+       eds. Proc. of the 43rd Annual Int’l Cryptology Conf. on Advances in Cryptology (CRYPTO 2023). Santa Barbara: Springer, 2023.
+
+      549–580. [doi: 10.1007/978-3-031-38554-4_18]
+
+[11]   Dottling N, Kolonelos D, Lai RWF, Lin CW, Malavolta G, Rahimi A. Efficient laconic cryptography from learning with errors. In: Hazay
+
+      C, Stam M, eds. Proc. of the 42nd Annual Int’l Conf. on the Theory and Applications of Cryptographic Techniques. Lyon: Springer,
+
+      2023. 417–446. [doi: 10.1007/978-3-031-30620-4_14]
+
+[12]  Agrawal S, Libert B, Stehlé D. Fully secure functional encryption for inner products, from standard assumptions. In: Robshaw M, Katz J,
+
+       eds. Proc. of the 36th Annual Int’l Cryptology Conf. on Advances in Cryptology (CRYPTO 2016). Santa Barbara: Springer, 2023.
+
+      333–362. [doi: 10.1007/978-3-662-53015-3_12]
+
+[13]  Mera JMB, Karmakar A, Marc T, Soleimanian A. Efficient lattice-based inner-product functional encryption. In: Hanaoka G, Shikata J,
+
+      Watanabe Y, eds. Proc. of the 25th IACR Int’l Conf. on Practice and Theory of Public-key Cryptography. Springer, 2022. 163–193.
+
+        [doi: 10.1007/978-3-030-97131-1_6]
+
+[14]   Alperin-Sheriff J, Peikert C. Circular and KDM security for identity-based encryption. In: Fischlin M, Buchmann J, Manulis M, eds. Proc.
+
+       of the 15th Int’l Conf. on Practice and Theory in Public Key Cryptography. Darmstadt: Springer, 2012. 334–352. [doi: 10.1007/978-3-642-
+
+      30057-8_20]
+
+[15]  O’Neill A, Peikert C, Waters B. Bi-deniable public-key encryption. In: Rogaway P, ed. Proc. of the 31st Annual Cryptology Conf. on
+
+      Advances in Cryptology (CRYPTO 2011). Santa Barbara: Springer, 2011. 525–542. [doi: 10.1007/978-3-642-22792-9_30]
+
+[16]  Boneh D, Lewi K, Montgomery H, Raghunathan A. Key homomorphic PRFs and their applications. In: Canetti R, Garay JA, eds. Proc. of
+
+       the 33rd Annual Cryptology Conf. on Advances in Cryptology. Santa Barbara: Springer, 2013. 410–428. [doi: 10.1007/978-3-642-40041-
+
+      4_23]
+
+[17]   Jia WJ, Zhang J, Wang BC. Hardness of module-LWE with semiuniform seeds from module-NTRU. IET Information Security, 2023,
+
+      2023: 2969432. [doi: 10.1049/2023/2969432]
+
+[18]   Jia WJ, Wang BC. Hardness of (Semiuniform) MLWE with short distributions using the Rényi divergence. IET Information Security,
+
+      2023, 2023: 2104380. [doi: 10.1049/2023/2104380]
+
+[19]   National Institute of Standards and Technology. Post-quantum cryptography—Round 1 submissions. 2024. https://csrc.nist.gov/Projects/
+
+       post-quantum-cryptography/post-quantum-cryptography-standardization/round-1-submissions
+
+[20]  Bos J, Ducas L, Kiltz E, Lepoint T, Lyubashevsky V, Schanck JM, Schwabe P, Seiler G, Stehle D. CRYSTALS-Kyber: A CCA-secure
+
+       module-lattice-based KEM. In: Proc. of the 2018 IEEE European Symp. on Security and Privacy (EuroS&P). London: IEEE, 2018.
+
+      353–367. [doi: 10.1109/EuroSP.2018.00032]
+
+[21]  Lindner R, Peikert C. Better key sizes (and attacks) for LWE-based encryption. In: Kiayias A, ed. Topics in Cryptology—CT-RSA 2011.
+
+       Berlin, Heidelberg: Springer, 2011. 319–339. [doi: 10.1007/978-3-642-19074-2_21]
+
+[22]   National Institute of Standards and Technology. Post-quantum cryptography—Round 2 submissions. 2024. https://csrc.nist.gov/Projects/
+
+       post-quantum-cryptography/post-quantum-cryptography-standardization/round-2-submissions
+
+[23]   National Institute of Standards and Technology. Post-quantum cryptography—Round 3 submissions. 2024. https://csrc.nist.gov/Projects/
+
+       post-quantum-cryptography/post-quantum-cryptography-standardization/round-3-submissions
+
+[24]   National Institute of Standards and Technology. Post-quantum cryptography —Selected algorithms 2022. 2024. https://csrc.nist.gov/
+
+       Projects/post-quantum-cryptography/selected-algorithms-2022
+
+[25]   Jin ZZ, Zhao YL. Optimal key consensus in presence of noise. arXiv:1611.06150, 2017.
+
+===== PDF PAGE 12 =====
+4416                              软件学报 2025 年第36 卷第10 期
+
+
+
+[26]   Jin ZZ, Zhao YL. Generic and practical key establishment from lattice. In: Deng RH, Gauthier-Umana V, Ochoa M, Yung M, eds. Proc.
+
+       of the 17th Int’l Conf. on Applied Cryptography and Network Security. Bogota: Springer, 2019. 302–322. [doi: 10.1007/978-3-030-21568-
+
+      2_15]
+
+[27]  Zhang J, Yu Y, Fan SQ, Zhang ZF, Yang K. Tweaking the asymmetry of asymmetric-key cryptography on lattices: KEMs and signatures
+
+       of smaller sizes. In: Kiayias A, Kohlweiss M, Wallden P, Zikas V, eds. Proc. of the 23rd IACR Int’l Conf. on Practice and Theory of
+
+       Public-key Cryptography. Edinburgh: Springer, 2020. 37–65. [doi: 10.1007/978-3-030-45388-6_2]
+
+[28]  Chinese Association for Cryptologic Research. Public key algorithms selected to the second round competition of national cryptographic
+
+       algorithm competitions. 2020 (in Chinese). http://sfjs.cacrnet.org.cn/site/term/list_77_1.html
+
+[29]  Chinese Association  for Cryptologic Research. Announcement of  the  selection  results of  the  national cryptographic algorithm
+
+       competition. 2020 (in Chinese). https://www.cacrnet.org.cn/site/content/854.html
+
+[30]  Micciancio D. Generalized compact knapsacks, cyclic lattices, and efficient one-way functions. Computational Complexity, 2007, 16(4):
+
+      365–411. [doi: 10.1007/s00037-007-0234-9]
+
+[31]  Bruna J, Regev O, Song MJ, Tang Y. Continuous LWE. In: Proc. of the 53rd Annual ACM SIGACT Symp. on Theory of Computing.
+
+     ACM, 2021. 694–707. [doi: 10.1145/3406325.3451000]
+
+[32]  Gupte A, Vafa N, Vaikuntanathan V. Continuous LWE is as hard as LWE & applications to learning Gaussian mixtures. In: Proc. of the
+
+      63rd IEEE Annual Symp. on Foundations of Computer Science. Denver: IEEE, 2022. 1162–1173. [doi: 10.1109/FOCS54457.2022.
+
+      00112]
+
+[33]   Peikert C. An efficient and parallel Gaussian sampler for lattices. In: Rabin T, ed. Proc. of the 30th Annual Cryptology Conf. on
+
+      Advances in Cryptology (CRYPTO 2010). Santa Barbara: Springer, 2010. 80–97. [doi: 10.1007/978-3-642-14623-7_5]
+
+[34]  Gentry C, Peikert C, Vaikuntanathan V. Trapdoors for hard lattices and new cryptographic constructions. In: Proc. of the 40th Annual
+
+    ACM Symp. on Theory of Computing. Victoria: ACM, 2008. 197–206. [doi: 10.1145/1374376.1374407]
+
+[35]  Micciancio D, Regev O. Worst-case to average-case reductions based on Gaussian measures. SIAM Journal on Computing, 2007, 37(1):
+
+      267–302. [doi: 10.1137/S0097539705447360]
+
+[36]  Applebaum B, Cash D, Peikert C, Sahai A. Fast cryptographic primitives and circular-secure encryption based on hard learning problems.
+
+        In: Halevi S, ed. Proc. of the 29th Annual Int’l Cryptology Conf. on Advances in Cryptology (CRYPTO 2009). Santa Barbara: Springer,
+
+       2009. 595–618. [doi: 10.1007/978-3-642-03356-8_35]
+
+
+附中文参考文献:
+
+[28] 中国密码学会. 全国密码算法设计竞赛进入第2 轮公钥算法. 2020. http://sfjs.cacrnet.org.cn/site/term/list_77_1.html
+[29] 中国密码学会. 关于全国密码算法设计竞赛算法评选结果的公示. 2020. https://www.cacrnet.org.cn/site/cont-ent/854.html
+
+
+
+             王洋(1990－), 男, 博士, 助理研究员, 主要研究               王明强(1970－), 男, 博士, 教授, 博士生导师, 主
+
+        领域为格密码, 量子信息, 量子计算.                要研究领域为公钥密码算法的分析与设计, 椭圆
+
+                                                  曲线, 格密码, 量子信息, 量子计算.

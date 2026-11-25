@@ -1,0 +1,996 @@
+===== PDF PAGE 1 =====
+软件学报 ISSN 1000-9825, CODEN RUXUEW                                                                     E-mail: jos@iscas.ac.cn
+2025,36(10):4444−4460 [doi: 10.13328/j.cnki.jos.007390] [CSTR: 32375.14.jos.007390]                                  http://www.jos.org.cn
+©中国科学院软件研究所版权所有.                                                                                      Tel: +86-10-62562563
+
+
+
+
+                                                                       *
+具有用户自主链接及验证者条件撤销的格基群签名
+
+陈  颖, 何德彪, 彭  聪, 罗 敏
+
+
+(空天信息安全与可信计算教育部重点实验室(武汉大学), 湖北 武汉 430072)
+
+通信作者: 何德彪, E-mail: hedebiao@163.com
+
+
+摘　要: 群签名作为一种隐私保护的重要技术, 为用户匿名性提供良好的保障. 然而, 普通群签名方案存在可追溯
+
+签名者身份的群管理员, 与区块链去中心化的特性相悖, 难以满足对于隐私性要求更严格的应用场景. 结合防双重
+
+认证签名技术, 提出一种具有用户自主链接及验证者条件撤销的群签名, 较好地实现了用户隐私与平台管理之间
+
+的平衡, 并给出了格上实例化方案. 通过随机谕言机模型下的安全性分析, 方案满足无私匿名性、可追溯性和不可
+
+诽谤性. 通过性能分析, 方案的时间开销和通信开销均在可接受范围内. 最后, 设计了一种基于区块链的后量子安
+
+全医疗数据共享条件隐私保护系统, 给出方案的具体应用实例.
+关键词: 群签名; 后量子密码; 区块链; 条件隐私保护; 格密码
+中图法分类号: TP309
+
+
+中文引用格式: 陈颖, 何德彪, 彭聪, 罗敏. 具有用户自主链接及验证者条件撤销的格基群签名. 软件学报, 2025, 36(10): 4444–4460.
+http://www.jos.org.cn/1000-9825/7390.htm
+英文引用格式: Chen Y, He DB, Peng C, Luo M. Lattice-based Group Signatures with User-controlled Linkability and Verifier
+Conditional Revocation. Ruan Jian Xue Bao/Journal of Software, 2025, 36(10): 4444–4460 (in Chinese). http://www.jos.org.cn/1000-
+9825/7390.htm
+
+Lattice-based Group Signatures with User-controlled Linkability and Verifier Conditional
+Revocation
+
+CHEN Ying, HE De-Biao, PENG Cong, LUO Min
+
+(Key Laboratory of Aerospace Information Security and Trusted Computing (Wuhan University), Wuhan 430072, China)
+
+Abstract: Recognized  as  a  crucial  privacy-protecting  technology,  group  signatures  provide  robust anonymity  assurances  for  users.
+
+However, conventional group signature schemes often rely on group managers capable of revealing the identities of signers, a feature that
+
+contradicts the decentralized nature of blockchain and  fails to meet  stricter privacy demands in certain applications. To address these
+
+limitations, this study introduces a group signature scheme with user-controlled linkability and verifier conditional revocation, inspired by
+
+double-authentication-preventing signatures and existing linkable and revocable group signatures. The proposed scheme achieves an optimal
+
+balance between user privacy and platform oversight, with a concrete instantiation constructed on lattices. Under the random oracle model,
+
+the scheme  is demonstrated to  satisfy the properties of  selfless anonymity,  traceability, and non-frameability. Performance evaluations
+
+indicate that both time and communication costs remain within acceptable limits, ensuring feasibility for practical deployment. In addition,
+
+a post-quantum secure medical data sharing system has been designed, integrating the proposed group signature scheme with blockchain
+
+technology.
+
+Key words: group signature; post-quantum cryptography; blockchain; conditional privacy protection; lattice
+
+
+
+* 基金项目: 国家重点研发计划 (2022YFB4400700); 国家自然科学基金 (62325209, 62172307, U23A20302); 中央高校基本科研业务费专
+ 项资金 (2042023KF0203, 2042024kf1013, 2042024kf0002)
+ 本文由“抗量子密码与区块链应用”专题特约编辑翁健教授、祝烈煌教授、赵运磊教授推荐.
+ 收稿时间: 2024-06-30; 修改时间: 2024-09-05; 采用时间: 2024-12-30; jos 在线出版时间: 2025-01-20
+  CNKI 网络首发时间: 2025-08-12
+
+===== PDF PAGE 2 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4445
+
+
+1 引　言
+
+  在现代数字化社会中, 以区块链[1]为代表的分布式计算架构为数字资产的确权、交易、流通和计算等提供了
+可靠、安全、公平的解决方案. 具备隐私保护功能的密码技术成为其底层支撑, 以防止因类架构具备的透明性造
+成用户数据、行为记录等隐私泄露问题. 特别地, 群签名、环签名、盲签名等密码原语的引入, 允许用户以匿名的
+方式进行可信数据交换, 为用户隐私提供了有效保护, 推动其在金融、医疗、物联网等敏感领域广泛应用. 然而,
+这种强匿名性也为恶意用户滥用提供了可能. 因此, 如何较好地平衡用户隐私与平台管理, 对匿名签署机制提出了
+新的挑战和要求.
+   群签名(group signature, GS) 技术在隐私保护领域具有重要意义, 最早由Chaum 等人[2]提出. 群签名允许群成
+员代表整个群组签署任意消息, 验证者可以确认该签名来自群组中的某个群成员, 但无法确切地知晓签名者的身
+份. 根据群成员是否可以在系统生成后动态地入群或退出, 群签名又可以被分为静态群签名和动态群签名两大类[3].
+当前, 量子计算机的威胁严重冲击了以大整数分解、离散对数问题等为基础的传统公钥密码体制, 因此, 建立在经
+典困难问题假设上的群签名方案[2,4]已然不能满足抗量子需求. Gordon 等人[5]于2010 年提出了首个基于格的群签
+名方案, 奠定了后量子群签名研究的基础. 以高效率、更安全、多功能为目标, 基于格的群签名研究在近年来得到
+了飞速发展. 在效率方面, 以Libert 等人[6]提出基于默克尔树累加器构造格上群签名为代表的方案, 将群签名尺寸
+从线性级别降低为对数级别; Esgin 等人[7]基于one-out-of-many 技术并解决了多轮重复才可忽略可靠性误差的问
+题, 实现了群(环) 签名效率的进一步优化; Lyubashevsky 等人[8]在LANES 框架的基础上应用BDLOP 承诺和
+Regev 加密形式上的相似性, 使得其中“先加密, 后证明”的代价更小. 在安全方面, Piekert 等人[9]基于带错误学习问
+题构造了相关性难处理(correlation intractability, CI) 性质的哈希函数以替代随机谕言机, 得到公共字符串模型下
+的非交互式零知识证明系统, 进而可转换为群签名方案.
+   然而, 普通群签名中的群管理员可以对签名进行打开, 从而追溯用户身份, 这与区块链去中心化的特性相悖,
+同时, 撤销用户操作将导致其他未撤销用户更新密钥, 造成额外开销, 不便于大规模用户平台采用; 另一方面, 匿名
+方式也使得用户难以在日后有需要时对自己的历史签名进行链接. 验证者本地撤销的群签名(group signature with
+verifier local revocation, GS-VLR)[10]很大程度上削弱了群管理员的权利, 同时撤销用户操作对其他未撤销用户不产
+生任何影响. 其中, 群管理员仅参与群组的维护, 无法对签名进行打开追溯签名者具体身份; 验签算法需额外输入
+一个公开的撤销列表, 用于存放撤销用户的撤销令牌, 当某个用户被撤销时, 其产生的签名无法通过签名验证, 并
+且, 被撤销用户产生的签名可以被链接. 支持用户自主链接的群签名(group signatures with user-controlled linkability,
+GS-UCL)[11]允许用户根据实际需求自主选择自己的历史签名并链接, 证明这些签名都是由自己生成的, 这样的链
+接方式称为隐式链接; 而与此相对, 用户对于同一个事件主题下产生的签名可以自动被链接, 这样的链接方式称为
+显式链接. 近年来, 对于验证者本地撤销的群签名有了后量子方案的迁移, Langlois 等人[12]首次提出了基于格的方
+案, 但这一方案仅支持固定群成员数. 此后, Huang 等人[12]提出了支持群成员动态加入的验证者本地撤销群签名.
+而对于支持用户自主链接的群签名[13], Fiore 等人[13]将自主链接的性质扩展到环签名并给出了基于匿名密钥随机
+化签名转换的格上版本, 但后量子安全的支持用户自主链接群签名尚未有人提出. 同时, 现有验证者本地撤销群签
+名缺乏撤销条件, 且撤销过程较为模糊, 难以避免验证者恶意撤销用户等行为, 极大地限制了其在实际应用中的落
+地. 防双重认证签名(double-authentication-preventing signature, DAPS)[14]旨在对于两个具有相同第1 部分(地址)
+和不同第2 部分(荷载) 的消息生成签名的用户进行私钥提取, 以此作为惩罚, 可视为一种“自发的”条件撤销机制,
+在防止双花攻击、一票多投等场景中有着重要应用.
+  针对现有验证者本地撤销群签名中可能存在的恶意撤销行为, 本文结合防双重认证签名技术的自发条件撤销
+机制, 提出了具有用户自主链接及验证者条件撤销的群签名(group signature with user-controlled linkability and
+verifier conditional revocation, GS-UCL-VCR) 的形式化定义和安全模型, 并以带错误学习问题和带舍入学习问题
+为底层困难问题构造了格上实例化方案. 对于动态加入群组的成员, 限定其在同一个事件主题下仅可以对一个消
+息签名, 否则触发撤销条件, 使得验证者可以很容易地提取其撤销令牌并加入撤销列表, 强迫用户下线, 该过程不
+
+===== PDF PAGE 3 =====
+4446                              软件学报 2025 年第36 卷第10 期
+
+
+
+可逆, 即已撤销的用户只能再次申请注册加入群组而无法恢复原有群成员身份. 同时, 诚实签名者可以自主选择其
+历史签名进行链接并输出链接证明. 与完全匿名且不可追溯的环签名方案相比, 本文方案能更好地实现可控匿名,
+在最大程度保护诚实用户隐私的前提下有效遏制潜在恶意行为, 同时赋予诚实用户选择链接历史签名的权力. 在
+本文方案构造中, 为保证群成员身份匿名性并降低群签名尺寸, 基于Stern 类协议并借助可更新默克尔树累加器[15]
+实现了签名大小与群规模成对数关系的动态群签名方案; 为实现上述条件撤销, 借助对偶Regev 加密方案及逆用
+同态陷门函数进行违规群成员的撤销令牌提取; 为满足用户自主链接需求, 本文基于格上可验证随机函数LaV[16]
+及LEANES[6–8,17,18]、LEANES+[16]高效格上零知识证明架构并设计了批量链接证明方法实现链接证明与验证. 本
+
+文首先给出了基于格的具有用户自主链接及验证者条件撤销的群签名具体构造并进一步证明了该方案在随机谕
+
+言机模型下的安全性. 同时, 通过时间、通信开销分析与测试验证了方案的可用性. 最后, 与区块链技术相结合设
+计了一种基于区块链的后量子安全医疗数据共享条件隐私保护系统, 实现对患者敏感信息的保护, 并保证关键数
+据的真实性、有效性和准确性.
+  本文第2 节回顾格、零知识证明、可更新默克尔树累加器、可验证随机函数相关基础知识. 第3 节定义具有
+用户自主链接及验证者条件撤销的群签名的语法与安全模型. 第4 节给出基于格的具有用户自主链接及验证者条
+件撤销的群签名具体构造, 并进行进一步的正确性、安全性分析. 第5 节对所设计的方案进行性能分析、测试与
+评估. 第6 节提出一种基于区块链的后量子安全医疗数据共享条件隐私保护系统, 将方案应用落地. 第7 节总结本
+文工作.
+
+2 基础知识
+
+2.1 格相关知识
+
+  定义1 (格). 格 L 是 m 维空间中的 n 个线性无关的向量 {b1,b2,..., bn} ∈Rm×n 的所有整线性组合构成的向量集
+合, 表达式如下:
+                   ∑n
+                                          L(b1,b2,..., bn) =       xibi : xi ∈Z                                                                                                                                                                                                                                                                                                                                                                        ,
+                                                                                         i=1
+
+其中, 向量组 b1,b2,..., bn 称为格 L 的基, 其中, m 称为格的维数, 基中向量的个数 n 称为格的秩. 当 m = n 时, 格 L
+为满秩格. 同一个格的格基不唯一.
+   LWE 问题由Regev 在文献[19] 提出, 并证明其在量子归约下至少与最坏情况下的近似最短向量问题(shortest
+vector problem, SVP) 困难度一致. 此外, LWE 问题也有其环上版本RLWE、模格版本MSIS.
+  定义2 (带错误学习问题 (learning with errors, LWE)). 给定 n,m ⩾1, q ⩾2, χ 是 Z 上的概率分布. 对于 s ∈Znq ,
+给定 Ds,χ 是由 a ←Znq, e ←χ 定义的分布, 输出 (a, sT · a+e) ∈Znq ×Zq. LWEn,q,χ 问题要求区分根据 Ds,χ 选择的 m 个
+实例以及从均匀分布 Znq ×Zq 上选取的 m 个实例.
+   LWE 中的误差项是随机选取的, 因此不固定. LWE 问题的变体带舍入学习问题其误差为确定性误差, 由
+Banerjee 等人[20]于2012 年在欧密会上提出, 并证明其困难程度与LWE 问题等价. 相较于LWE, LWR 中确定性误
+差的引入更适宜伪随机函数、可验证随机函数等密码原语的构造.
+  定义3 (带舍入学习问题 (learning with rounding, LWR)). 给定参数 n, m, q, p, B , 满足 q > p, Zq 表示模 q 剩
+余类群, 随机选择矩阵 A ∈Zm×nq 和向量 s ∈Znq , 计算 v = ⌊As⌋p . 要求区分LWR 实例中计算出的 v ∈Zmp 和在均匀分
+布 Zmp 中均匀选取的向量 v′ .
+   由此, 容易得到以下引理.
+                                                                                                                              [  ]n
+                         [ 1 8                                                                                q
+  引理1     ]. 令 u ∈Znq, v ∈Znq , 对于 q > p, p 整除 q , 则 v = ⌊u⌋p 当且仅当存在向量 e ∈Zn 满足 e ∈   且                                                                                            p
+e = u−q ·v mod q .
+      p
+  定义4 (离散高斯分布 (discrete Gaussian distribution)). Λ 上以 c 为中心, σ 为参数的离散高斯分布定义为:
+
+===== PDF PAGE 4 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4447
+
+
+                                                                                 ρσ,c (y)
+                                   ∀y ∈Λ, DΛ,σ,c (y) =                                                                                 ρσ,c (λ),
+
+其中, ρσ,c 是以 c 为中心, σ 为参数的高斯函数, 这里, 以 c 为中心, σ 为参数的高斯函数. 当 c = 0 时, 可以省略不写.
+  定理1 (陷门生成 (trapdoor generation, TrapGen)[21]). 令 q ⩾3 为一个奇数, 整数 l = ⌈logq⌉ . 当 m ⩾O(nlogq)
+时, 存在一个多项式时间算法 TrapGen(1n,1m,q) 可输出一个矩阵 A ∈Zn×mq 及其陷门, 即 Λ⊥(A) 的基 B ∈Zm×nlq    . 这里,
+                                                                          (    )
+矩阵 A 与从 Zn×mq 上均匀选择的矩阵 A′ 不可区分, 且 ||B||2 = O √m  , 以压倒性概率成立.
+  由于本方案设计的需要, 这里描述陷门生成算法的一个特殊形式 GenTrap(1n,1m,q) [22]. 令环 R = Z[X]/
+(Xn +1) , 给定 ζ ∈N, m = O(nlogq), g = q 1                                                                                             ζ ∈Rq, gT = [1|g|...|gζ−1] , 存在一个多项式时间算法 GenTrap(1n,1m,q) 可
+输出一个矩阵 aT ∈R1×mq 及其陷门 Ta ∈Rm×ζ 满足 aTTa=gT . 这里, 矩阵 aT 与从 Z1×mq 上均匀选择的矩阵 aT′ 不可区分.
+  给定 Λ⊥(A) 的基, 存在一个多项式时间算法可以解决(I)SIS 问题, 有以下定理.
+                                                                                                                        ( √     )
+  定理2 (原像采样 (SamPre)[21]). 令 q ⩾3 为一个素数, 整数 m ⩾n,k ⩾1 . 高斯参数 σ ⩾   ˜B ·ω   logn  , 矩阵
+U ∈Zn×kq   , 存在多项式时间算法 SamPre(A, B,σ,U) 输出 S ∈Zm×kq 满足 AS = U mod q . 这里, A, B 是TrapGen 的输出,
+ S 统计上接近分布 GΛu1 (A),σ ×...×GΛuk (A),σ 且 ||S|| ⩽σ √m 以压倒性概率成立.
+  类似于陷门生成, 这里描述原像采样算法的一个特殊形式 PreSample(aT,Ta,σ,u)                                                                                                                                           [22] 输入矩阵 aT ∈R1×mq 及其陷
+                        √   √
+门 Ta ∈Rm×ζ , u ∈Rq , 高斯参数 σ ⩾ηϵ (Z)   g2 +1   ||R||2 , 输出 v 在统计上接近分布 GRmq ,σ 满足 aTv = u mod q.
+  定义5 (同态陷门函数 (homomorphic trapdoor functions, HTDF)[23]). 定义索引空间 X , 输入空间 U , 输出空
+间 V , 一个HTDF 由以下4 个多项式时间算法构成.
+     (1) (pk, sk) ←HTDF.KeyGen(1λ) : 一个密钥生成过程. 输入安全参数 λ , 输出密钥对 (pk, sk) .
+     (2)  fpk,x : U →V : 一个确定性函数由 x ∈X, pk 索引.
+     (3) Invsk,x : V →U : 一个概率性逆向函数由 x ∈X, sk 索引.
+     (4) u∗= HTDF.Evalin (g,(x1,u1),...,(xl,ul)),v∗= HTDF.EvalOut (g,v1,...,vl) : 确定性的输入/输出同态评估算法. 皆
+以函数 g : X l →X 及数值 xi ∈X,ui ∈U,vi ∈V 作为输入, 分别以 u∗∈U,v∗∈V 作为输出.
+  一个HTDF 需要满足与无爪性相似的性质, 即找到两个 u,u′ ∈U 且 x , x′ ∈X , 满足 fpk,x (u) = fpk,x′ (u′) 是困难
+的. 正式地, 我们要求对于任意多项式时间内的敌手 A 需满足:
+                                         fpk,x (u) = fpk,x′ (u′)           (pk, sk) ←HTDF.KeyGen(1λ)
+                    Pr                                         :                                                                                                                                                                                                                                                                                                                    ⩽negl(λ).                            u,u′ ∈U, x, x′ ∈X, x , x′     (u,u′, x, x′) ←A(1λ, pk)
+
+2.2 零知识证明
+
+  零知识证明系统包括两个参与方: 证明者 P 和验证者 V . P 需要在不透露某个陈述 x ∈LR 为真之外任何信息
+的前提下说服 V 相信 x , 在此过程中, V 不知道除了 x 之外的任何信息. 零知识证明最早由Goldwasser 等人[24]提
+出, 对于各类密码方案的构建有着重要的作用. 本节对非交互式零知识证明系统进行回顾, 其包含3 个多项式时间
+算法.
+  定义6 (非交互式零知识证明系统 (non-interactive zero knowledge system, NIZK)). 一个NIZK 系统包含以
+下3 个多项式时间算法.
+     (1) crs ←Setup(1λ) : 输入安全参数 λ , 输出公共参考串 crs .
+     (2) π ←P(crs,w, x) : 输入公共参考串 crs , 陈述 x 和证据 w , 生成证明 π .
+     (3) 1/0 ←V (crs, x,π) : 输入公共参考串 crs , 陈述 x 和证明 x , 验证证明是否合法.若合法则返回1; 否则, 返回0.
+   通常, NIZK 系统需要满足完备性, 可靠性以及诚实验证者零知识性. 具体定义如下.
+   ● 完备性(completeness). 对于正确陈述 x ∈LR 及所有满足 R(x,w) = 1 的证据 w , 我们有:
+                                         [                                 (              (                              Pr (x,π) ←P(crs,w, x) = 1  : V crs ←Setup 1λ))] = 1.
+
+   ● 可靠性(soundness). 对于任意多项式时间内的敌手 A , 我们有:
+
+===== PDF PAGE 5 =====
+4448                              软件学报 2025 年第36 卷第10 期
+
+                           V (crs, x,π) = 1    crs ←Setup(1λ)                                 Pr                            :                                                    = 1.
+                               ∃x < LR           (x,π) ←A(crs)
+
+   ● 零知识性(honest-verifier zero-knowledge). 对于任意陈述 x ∈LR 及所有满足 R(x,w) = 1 的证据 w , 存在一个
+模拟器 S 使得其输出与诚实验证者 V 的视图 V (crs, x,π) 满足计算不可区分性.
+
+2.3 基于陷门的对偶Regev (dual-Regev) 加密方案[21]
+
+  本文方案中用到了对偶Regev 加密方案, 这里对其进行描述. 令安全参数为 λ , m,q 为陷门参数, χ 为上界为 B
+的噪声分布, B = O(q/m) , ΠPKE (PKE.keyGen,PKE,Enc,PKE.Dec) 描述如下.
+     (1) PKE.keyGen(1λ) : 输入安全参数 λ , 输出陷门 (A,TA) ←TrapGen(1n,1m,q) , A ∈Zn×mq    . 输出密钥对 (sk, pk) =
+(TA, A) .
+     (2) PKE,Enc(pk,m) : 输入公钥 pk , 以及一个消息 m ∈{0,1} , 随机选取向量 d, s ←Znq , 噪声向量 e ←χm+1 . 计算
+                    [  ⌈q ⌉    ]
+b = [A|d]Ts+e+ 0    ·m  . 输出密文 ct = (d, b).
+                 2
+     (3) PKE.Dec(sk,ct) : 输入私钥 sk 以及密文 ct , 解析 b = (b0,b1) , 计算 s ←Inv(A,TA, b) , m′ = b1 −dTs .
+   本节所描述的dual-Regev 方案满足正确性及选择明文安全下的不可区分性(indistinguishability against chosen-
+plaintext attacks, IND-CPA). 详细证明过程可参考文献[21].
+
+2.4 可更新默克尔树累加器
+
+   可更新默克尔树累加器[15]可看作Libert 等人[6]所提出的格上默克尔树累加器的扩展, 为构建格上动态群签
+名提供了高效的密码学组件. 与文献[6] 中提出的原始累加器适用于静态群(环) 签名不同, 可更新默克尔树累加
+器方案给出了一个高效的更新算法, 使得对于给定的待修订叶子结点, 可以简单地对该结点所涉及的路径进行修
+改, 从而更新累加值. 如图1 所示, 对于一个叶子结点树为 23 = 8 的默克尔树, 将 R = {d0,..., d7} 累加到根结点 u 中.
+图中 j = 011 以及黄色部分结点(路径) 作为 d3 累加到 u 中的证据 w . 若需要更新 d3 为 d∗3 , 则需要更新其中绿色的
+结点.
+
+
+
+                                                    u
+
+
+                                            u0                                                        u1
+
+
+
+                                u00                             u01                            u10                             u11
+
+
+
+
+                         u000             u001             u010             u011             u100             u101             u110             u111
+
+                      d0             d1             d2             d3            d4             d5             d6             d7
+
+
+                  图 1　可更新默克尔树累加器
+
+  定义7 (可更新默克尔树累加器 (updatable Merkle-tree accumulator)). 一个可更新默克尔树累加器由以下5
+个多项式时间算法构成.
+     (1) pp ←TSetup(λ) : 输入安全参数 λ , 输出公共参数 pp .
+     (2) u ←TAccpp (R) : 输入一个包含 N 个数据的集合 R = {d0,..., dN−1} , 输出累加值 u .
+     (3) w/⊥←TWitnesspp (R, d) : 输入集合 R 及一个数据 d , 若 d < R 则输出 ⊥ , 否则, 输出一个证据 w 说明数据 d
+
+===== PDF PAGE 6 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4449
+
+
+确实在 TAccpp (R) 的累加中.
+     (4) 1/0 ←TVerifypp (u, d,w) : 输入累加值 u , 数据 d 以及对应的证据 w , 输出1 说明 (d,w) 对于累加值 u 合法,
+否则, 输出0.
+     (5) u′ ←TUpdatepp (j, d′) : 输入待修订叶子结点索引 j 以及更新后的值, 输出更新后累加值 u′ .
+  基于格的(可更新) 默克尔树累加器依赖于格上抗碰撞哈希函数族, 这里给出定义.
+  定义8 (格上抗碰撞哈希函数族 (family of lattice-based collision-resistant hash functions)). 哈希函数族
+                                                           {              }
+H : {0,1}nk ×{0,1}nk →{0,1}nk 可以被定义为 H = hA|A ∈Zn×mq     , 其中, A = [A0|A1], A0, A1 ∈Zn×nkq    , 对于任意 (u0,u1) ∈
+{0,1}nk ×{0,1}. 我们有: hA (u0,u1) = bin(A0u0+A1u1 mod q) ∈{0,1}nk. 这里, hA (u0,u1) = u ⇔A0u0+A1u1 = Gu mod q .
+G ∈Zn×nkq  为“2 的幂次”工具矩阵:
+                                              1,2,4,...,2k−1
+                     G =                        ...                              .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                    1,2,4,...,2k−1
+
+2.5 可验证随机函数
+
+  定义9 (可验证随机函数 (verifiable random function, VRF)[16]). 定义一个VRF 函数输入长度为 n(λ) , 输出长
+度为 m(λ) . 一个VRF 函数由以下3 个多项式时间算法构成.
+     (1) (sk,vk) ←Gen(λ) : 输入安全参数 λ , 输出公私钥对 (sk,vk) .
+     (2) (y,π) ←Eval(sk, x) : 输入私钥 sk 以及数值 x ∈{0,1}n(λ) , 返回输出值 y ∈{0,1}m(λ) , 以及证明 π 说明该输出值 y
+确实是在 pk 下以输入 x 生成的.
+     (3) 1/0 ←Verify(vk,π, x,y) : 输入公钥 vk , 证明 π , 以及输入输出 (x,y) , 判断评估算法 Eval 的输出是否合法. 若
+合法则返回1, 否则返回0.
+   VRF 函数需要满足可证明性、唯一性、自适应不可区分性. 具体定义如下.
+   ● 可证明性(provability). 对于任意的安全参数 λ 以及输入 x ∈{0,1}n(λ) , 我们有:
+                                        [                                                 ]
+                                      (sk,vk) ←Gen(λ)
+                               Pr                                  : Verify(pk,π, x,y) = 1 = 1.
+                                       (y,π) ←Eval(sk, x)
+
+   ● 唯一性(uniqueness). 对于任意的安全参数 λ 以及输入 x ∈{0,1}n(λ) , 任意公钥 pk , 存在至多一个单一的输出
+y ∈{0,1}m(λ) 对于存在一个可被接受的证明 π . 若 Verify(pk,π, x,y) = Verify(pk,π′, x,y′) = 1 , y = y′ 一定成立.
+   ● 自适应不可区分性(adaptive indistinguishability). 对于任意多项式时间内的敌手 A , 至多以不可忽略的概率
+negl(λ) 赢得下面的游戏.
+                                      GameA,VRF(λ)
+                          Q := ∅
+                                    b ←{0,1}            O1(sk, x)
+                                         (sk,vk) ←Gen(λ)     (y,π) ←Eval(sk,x)
+                                                (st, x∗) ←AO1(sk,·)(pk)   Q := Q∪{x}
+                                         (y0,π) ←Eval(sk,x∗)       return (y,π)
+                                               y1 ←{0,1}m(λ)
+                                              b′ ←AO1(sk,·) (st,yb)
+                                        return b = b′ ∧x∗< Q
+
+3 具有用户自主链接及验证者条件撤销的群签名的语法及安全模型
+
+  本节介绍具有用户自主链接及验证者条件撤销的群签名的语法定义及安全模型.
+
+3.1 具有用户自主链接及验证者条件撤销的群签名语法定义
+
+  定义10 (具有用户自主链接及验证者条件撤销的群签名 (GS-UCL-VCR)). 一个GS-UCL-VCR 方案包含: 系
+统初始化 Setup , 群密钥生成 GKeyGen , 用户密钥生成 UKeyGen , 入群 Join , 群更新 GUpdate , 签名 Sign , 验签
+
+===== PDF PAGE 7 =====
+4450                              软件学报 2025 年第36 卷第10 期
+
+
+Verify , 提取撤销令牌 Extract , 用户自主链接 UCLink , 链接验证 VLink 共10 个多项式时间算法, 描述如下.
+     (1) pp ←Setup(1λ) : 输入安全参数 λ , 输出系统公共参数 pp. 群管理员 GM 初始化Merkle 树 TSetup(pp,gpk)
+→Tcrt , 将所有叶子结点置为 0 , 初始化用户计数器 c = 0 , 初始化撤销列表 RL = ∅ , 初始化用户注册列表 reg.
+     (2) (gsk,gpk) ←GKeyGen(pp) : 输入公共参数 pp , 输出群密钥对 (gsk,gpk). 由群管理员 GM 执行.
+     (3) (usk,upk) ←UKeyGen(pp,gpk) : 输入公共参数 pp , 群公钥 gpk , 输出用户密钥对 (usk,upk). 由用户本地执行.
+     (4) ⟨(ID,grt),⊥⟩←Join⟨user(upk),GM(gsk)⟩: 该算法由 GM 与用户交互式进行. 用户提交自己的公钥 upk 申
+请入群, 若 GM 同意该入群请求, 用户将得到自己的群成员 ID 和撤销令牌 grt . GM 更新树, 更新用户计数器
+c+ = 1 , 更新用户注册列表 reg , 无输出.
+     (5) infonew ←GUpdate(gpk,gsk,info,RL,reg) : 输入群密钥对 (gsk,gpk) , 当前群消息 info , 撤销列表 RL , 用户注册
+列表 reg , 输出最新群消息 infonew. 由群管理员 GM 执行.
+     (6) Σ ←Sign(gpk,pp,usk[π], M ∈{0,1}∗, scp,upk[π],grt[π]) : 输入群公钥 gpk , 系统公共参数 pp , 用户公私钥对
+(usk[π],upk[π]) , 消息 M , 事件主题 scp , 撤销令牌 grt[π] , 输出消息-签名对 Σ . 由群成员 ID 为 π 的用户执行.
+     (7) 1/0 ←Verify(gpk,pp,infonew,Σ,RL) : 输入群公钥 gpk , 系统公共参数 pp , 最新群消息 infonew , 消息-签名对 Σ ,
+撤销列表 RL . 输出1 表示签名合法, 否则输出0. 由验证者执行. 其中输入的撤销列表 RL 由群管理员 GM 维护.
+     (8) grt[π∗]/ ⊥←Extract(Σ1,Σ2) : 输入两个消息-签名对 Σ1,Σ2 , 若其是同一个事件主题 scp 下的不同签名, 则提
+取对应签名者的撤销令牌 grt[π∗] 并输出, 反馈给群管理员 GM 将其添加在撤销列表 RL 中; 否则返回 ⊥. 由验证者
+执行.
+     (9) (ΠL,nym,Σ) ←UCLink(Σ,usk) : 输入自己的历史消息-签名对集合 Σ = (Σ1,Σ2,...,ΣK) , 以及用户私钥 usk , 生
+成链接证明 ΠL 及聚合假名 nym 说明集合 Σ 中的签名均由自己所签. 由用户执行.
+     (10) 1/0 ←VLink(Σ,nym,ΠL) : 输入某一用户的历史消息-签名对集合 Σ , 聚合假名 nym , 以及对应的链接证明
+ΠL , 输出1 表示证明合法, 否则输出0. 任何人可以执行.
+   GS-UCL-VCR 方案满足正确性, 其同时满足签名验证正确性、链接验证正确性及条件可提取性.
+   ● 签名验证正确性(verification correctness). 一个GS-UCL-VCR 方案满足签名验证正确性, 当且仅当对于所有
+由系统初始化 Setup 产生的 pp , 群密钥生成算法 GKeyGen 产生的 gpk , 群更新算法 GUpdate 所产生的最新群消息
+infonew 及通过加入算法 Join 认证的持有密钥 (usk[i],upk[i]) 和撤销令牌 grt[i] 的群成员( ID = i ) 所产生的签名均合
+法, 除非该成员已被撤销. 正式地:
+     Verify(gpk,pp,GUpdate(gpk,gsk),Sign(gpk,pp,usk[i], M ∈{0,1}∗, scp,upk[i],grt[i]),RL) = 1 ⇔grt[i] < RL.
+
+   ● 链接正确性(link correctness). 一个GS-UCL-VCR 方案满足链接正确性, 当且仅当对于通过加入算法 Join 认
+证的持有密钥 (usk[i],upk[i]) 和撤销令牌 grt[i] 的群成员( ID = i ) 所产生合法消息-签名对集合 Σ = (Σ1,Σ2,...,ΣK) ,
+利用用户自主链接算法 UCLink 为其生成的链接证明 ΠL 及聚合假名 nym , 一定可以通过链接验证算法的验证. 正
+式地,
+                  Σj ←Sign(gpk,pp,usk[i], M ∈{0,1}∗, scp,upk[i],grt[i])
+
+             Pr    j = {1,2,...,K}                                                              : VLink(Σ,nym,ΠL) = 1 = 1.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+            Σ = (Σ1,Σ2,...,ΣK)
+
+   ● 条件可提取性(conditional extractability). 一个GS-UCL-VCR 方案满足条件可提取性, 当且仅当对于所有由
+系统初始化 Setup 产生的 pp , 群密钥生成算法 GKeyGen 产生的 gpk , 群更新算法 GUpdate 所产生的最新群消息
+infonew 及通过加入算法 Join 认证的持有密钥 (usk[i],upk[i]) 和撤销令牌 grt[i] 的群成员( ID = i ) 所产生的任意两
+个消息-签名对 Σ1 ←Sign(gpk,pp,usk[i], M1,scp1,upk[i],grt[i]) , Σ2 ←Sign(gpk,pp,usk[i], M2,scp2,upk[i],grt[i]) , 始
+终满足:
+                                                        grt[i],   if nym1 = nym2 ∧M1 , M2
+                              Extract(Σ1,Σ2) =                                                                ,                                                                                                                                                                                                                                                            ⊥,      otherwise
+
+===== PDF PAGE 8 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4451
+
+其中, Σ1 = (sig1, M1,nym1,τ1,scp1 ),Σ2 = (sig2, M2,nym2,τ2,scp2 ).
+
+3.2 安全模型
+
+  具有用户自主链接及验证者条件撤销的群签名方案应满足无私匿名性、可追溯性、不可诽谤性. 这里, 相较
+于普通完全匿名的群签名方案, 无私匿名性是指不依赖公钥加密可实现的最优匿名性[3], 即敌手不可以获得用于
+挑战的两个用户对应的私钥.
+  定义11 (无私匿名性 (selfless-anonymity)). 定义无私匿名性游戏 Gameselfano , 敌手 A 的目标是判断一个给定签
+名是由两个用户中的哪一个产生的. 游戏定义如下.
+     (1) Setup. 挑战者 C 依次运行系统初始化算法 Setup , 群密钥生成算法 GKeyGen , 用户密钥生成算法 UKeyGen ,
+入群算法 Join 得到公共参数 pp, 群密钥对 (gsk,gpk) , 用户( ID = i ) 密钥对及撤销令牌 (usk[i],upk[i],grt[i]) . 将
+pp,gpk 发送给 A .
+     (2) Queries. A 做如下询问.
+     a) SO : A 自适应选择消息 µ 和主题事件 scp 在 ID = i,i ∈[c] 用户私钥下的签名. C 运行签名算法返回 Σ ←
+Sign(gpk,pp,usk[π],µ ∈{0,1}∗, scp,upk[π],grt[π]) 给 A . 为避免平凡攻击, 对于同一个 ID 下的同一个主题事件 scp
+仅可询问1 次.
+     b) CO : A 询问 ID = i,i ∈[c] 用户的私钥. C 返回对应 usk[i] . 此时, 对应用户被腐化.
+     c) RO : A 询问 ID = i,i ∈[c] 用户的撤销令牌. C 返回对应的 grt[i]. 此时, 对应用户被腐化.
+     d) LO : A 选取 ID = i 所对应的私钥 usk[i] 所生成的历史消息-签名集合 Σ , 询问其链接证明. C 返回对应的 ΠL .
+     (3) Chal. A 输出挑战消息 µ∗ , 主题事件 scp∗ 及两个群成员ID 索引 i0,i1 , 这里索引对应的用户不可以是已被撤
+销的或已在 CO,RO 询问中出现过的同时, 为避免平凡攻击, 若 i0,i1 在 SO 询问中出现过, 则 scp∗ 不可以与对应历
+史 SO 中询问 i0,i1 时的 scp 相同 C 随机选取一个比特 b ←{0,1} , 计算由 usk[ib] 产生的签名 Σ* ←Sign(gpk,pp,usk[ib],
+M∗, scp,upk[ib],grt[ib]) 并发送给 A .
+     (4) Restricted Queries. A 可做与 Queries 阶段中相同的询问, 但在 CO,RO 询问时, 不可以对索引 i0,i1 进行询
+问. 在对索引 i0,i1 进行 SO 询问时, 主题事件 scp , scp∗ 且不可与 Queries 阶段对 i0,i1的SO 询问输入的 scp 相同.
+对于索引 i0,i1 , 在 Queries 和 Restricted Queries 阶段, 分别定义 SO 询问得到返回值 Σ 的集合分别为 SIG,CSIG , LO
+询问得到的返回值集合分别为 LP,CLP , 在对索引 i0,i1 进行 LO 询问时, 若选择的 Σ 满足 (Σ ∧SIG , ∅∧(∗,Σ) ∈LP)∧
+(Σ ∩∧CSIG , ∅∧(∗,Σ) ∈CLP) , 则中止游戏.
+     (5) Output. A 输出一个比特 b′ , 若 b′ = b 则赢得游戏.
+  若 A 赢得游戏 Gameselfano 的优势 AdvGameselfano = Pr[b′ = b]−1 ⩽negl(λ) , 则GS-UCL-VCR 满足无私匿名性.
+                                                      2
+  定义12 (可追溯性 (traceability)). 定义可追溯性游戏 Gametrace , 敌手 A 的目标是伪造一个合法签名(或链接
+证明) 使其不可以被追溯到一个合法群成员. 这里首先定义一个辅助函数 Identity 用于判断一个给定的签名是否由
+群成员生成, Identity(gpk,usk,Σ) →1/0 , 若 Σ 确实是由 usk 生成则返回1, 否则返回0. 其次, 定义询问 LO , A 选
+取 ID = i 所对应的私钥 usk[i] 所生成的历史签名集合 Σ , C 运行用户自主链接算法 UCLink 返回对应的 ΠL ; 若
+∃Σ ∈Σ,Identity(gpk,usk,Σ) = 0∧Verify(gpk,pp,infonew,Σ,RL) = 0 , 游戏中止并返回 ⊥ .
+  可追溯性覆盖了以往群签名中不可伪造的性质, 保证了只有合法有效的群成员才可以代表群签名. 假设 A 伪
+造了 n 个签名( n ⩾1 ), A 赢得签名可追溯(signature traceability, Game1trace ) 和链接证明可追溯(link traceability,
+Game2trace ) 两个游戏的概率:
+                        pp,gsk,gpk,infonew ←Setup,GKeyGen,GUpdate
+                         (Σ1,...,Σn) ←Aso,co(gpk)
+       AdvGame1trace = Pr                         for i = 1,...,n,Verify(gpk,pp,infonew,Σi,RL) = 1∧Σi = (sigi, Mi,nymi,Ti,scpi)  ⩽negl(λ),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ∃Σi s.t. ∀ID ∈reg∪RL : Identity(gpk,ID,Σi) = 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
+===== PDF PAGE 9 =====
+4452                              软件学报 2025 年第36 卷第10 期
+
+
+                                   pp,gsk,gpk,infonew ←Setup, GKeyGen,GUpdate
+
+                              (ΠL,nym,Σ) ←ASO,LO (gpk)
+                   AdvGame2trace = Pr                                                 ⩽negl(λ).
+                             VLink(Σ,nym,ΠL) = 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                         ∃Σ ∈Σ s.t. ∀ID ∈reg∨RL : Identity(gpk,ID,Σi) = 0
+
+  定义13 (不可诽谤性 (non-frameability)). 定义不可诽谤性游戏 Gamenoframe , 敌手 A 的目标是使得诚实用户的
+签名与其从未产生过的签名相链接. 由于在本签名语法设定中, 由同一个 usk 在同一个 scp 下对不同消息产生的两
+个签名可导致条件撤销, 故这里我们仅考虑 A 以不同的事件主题企图与诚实用户链接的情况. A 诽谤诚实用户可
+以通过以下两种途径: (1) 伪造签名使其与诚实用户产生的签名相链接(签名诽谤); (2) 为诚实用户产生一个链接
+证明, 所涉及的签名均由该用户生成, 但该用户没有产生过该证明, 即证明本身是伪造的(链接诽谤). 假设 ID = i
+的诚实用户所产生的历史签名集合为 Σi , A 赢得不可诽谤 Gamenoframe ) 游戏的概率:
+                           pp,gsk,gpk,infonew ←Setup,GKeyGen,GUpdate
+
+                       (ΠL,nym,Σ) ←ASO,LO(gsk,gpk)
+            AdvGamenoframe = Pr                                                                    ⩽negl(λ).                             (1) VLink(Σ,nym,ΠL) = 1 s.t. ∃Σ,Σ′ ∈Σ : Σ ∈Σi ∧Σ′ ∈Σi                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              (2) VLink(Σ,nym,ΠL) = 1 s.t. ∀Σ ∈Σ,Σ ∈Σi ∧(nym,ΠL) < LO (ID = i)                                    
+
+
+4 基于格的具有用户自主链接及验证者条件撤销的群签名设计
+
+  本节描述基于格的具有用户自主链接及验证者条件撤销的群签名的具体构造. 在群签名的构造上, 借助格上
+可更新的默克尔树累加器[15]及基于SIS 和LWE 的Stern 类协议[25]实现对数级群签名尺寸同时保证匿名性. 在条
+件撤销环节, 逆用同态陷门函数使其在既定条件下输出碰撞得到替代陷门求解撤销令牌. 在用户自主链接环节, 受
+到LaV 格上可验证随机函数的启发设计批量链接证明方法[16]. 同时, 我们将第2.3 节中所描述的对偶Regev 公钥
+加密方案 ΠPKE (PKE.keyGen,PKE,Enc,PKE.Dec) 作为黑盒使用. 具体方案描述如下.
+     (1) Setup(1λ) : 输入安全参数 λ , 正整数 n,m,q, p,σ,k,ι,κ,ω,ζ , 其中, k = ⌈log2q⌉,m = 2nk , 设定群成员数量上限
+为 N = 2ι = poly(λ), scp ∈{0,1}∗ 数量上限为 Q , 满足 Q ≪p ; 选取哈希函数 H1 : {0,1}∗→Rn×mq  ,H2 : {0,1}∗→Rm×nq   ,
+H3 : {0,1}∗→{1,2,3}κ,κ = ω(logλ) , 形如定义8 中的工具矩阵 G1,G2 , 定义二进制转换函数 bin : Rn →{0,1}nk , 定义VRF
+函数 LaV : fx (B) = ⌊Bx⌋p mod p. 群管理员 GM 初始化默克尔树 TSetup(pp,gpk) →Tcrt , 将所有叶子结点置为 0 , 初
+                                                                                                                     )
+始化用户计数器 c = 0 , 初始化撤销列表 RL = ∅ , 初始化用户注册列表为 reg ({[i][grt[i]][upk[i]]}i∈[N] = {[i][0m][0nk]} .
+输出系统公共参数集合 pp = {λ,n,m,q, p,κ,ω,ζ,σ,k,N,Q,H1,H2, f,G1,G2,ι} .
+     (2) GKeyGen(pp,gpk) : 由群管理员 GM 执行. 运行 (A,TA) ←TrapGen(1n,1m,q) , 输出群密钥对 (gsk,gpk) =
+(TA, A), A = (A0||A1) ∈Rn×m, A0, A1 ∈Rn×nk 以适配于格上哈希函数族.
+     (3) UKeyGen(pp,gpk) : 由用户本地执行. 运行 (b,Tb) ←GenTrap(1n,1m,q) , 选择 x ←{0,1}m (x , 0) , 计算 d =
+bin(Axp ) , 输出自己的密钥对 (usk,upk) = ((Tb, x),(b, d)) .
+     (4) ⟨(ID,grt),⊥⟩←Join⟨user(upk),GM(gsk)⟩ : 由用户与群管理员交互式进行.
+     a) user : 发送 upk = (b, d) 请求加入群.
+     b) GM : 若同意请求, 则发布用户ID 为 j = bin(c) , 运行 s ←SamPre(A,TA,σ, b), s ⩽σ √m , 将 usk[j] = (Tb, x, s, j),
+grt[i] = s 发送给用户; 更新树 Tcrt 计算新累加值 TUpdateA (j, d) →znew ; 更新用户计数器 c+ = 1 ; 更新用户注册列表
+reg = ({[j][s][d]}) .
+     (5) GUpdate(gpk,gsk,info,RL,reg) : 由群管理员 GM 执行.
+     a) 若 RL = ∅ , 则跳转到步骤b). 否则, 解析 RL = {s1,..., s∗,...} , 对于撤销令牌为 s∗ 作为本次撤销对象, 以 s∗ 为
+索引在注册列表 reg 中找到 grt[I] = s∗ 的用户元组 {[I][s][upk[I]]} , 设置对应的 upk[I] = 0 . 更新用户计数器 c−= 1 .
+
+===== PDF PAGE 10 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4453
+
+
+                                                                                            (
+                                     作为证据说明 di 已累加到     b) 运行 TUpdateA (j, d) →znew , 更新树 Tcrt . 对于每一个 j , 令 wj ∈{0,1}l × {0,1}nk)lj∈[c]
+                                  (          }    )
+                  已经被撤销的用户其对应叶子结点值不累加在 znew 中.znew 中, 发布群消息 infonew = znew,{wj  j∈[c]
+               (                                                   )
+     (6) Sign gpk,pp,usk[π],µ ∈{0,1}*, scp,upk[π],grt[π] : 由用户 π 执行.
+                                                                                          q
+     a) 运行 PKE.Enc(b, s′), 加密 grt[π] : 随机选择 r ←{0,1}mk, f ←Rq,bin(s) →s′ ; 计算 C1= brT, c2 = f · r+    · s′,ct =
+                                                                                          2
+(C1, c2, f).
+     b) 计算 V = H1 (scp), H = H2(scp||µ) , 运行 u ←SamPre(b,Tb,σ,V + HG1).
+     c) 计算假名 nym = V · xp,τ = H · sp.
+     d) 生成非交互式零知识证明协议 Φ 说明: ① 持有具有合法的 x, s , 且累加器验证通过; ② b) 中生成的 u 是合
+法的; ③ 加密 grt[π] 的过程是正确的; ④ nym,τ 是正确计算的. 生成的证明描述如下.
+                                           {                                                         }
+                          Π1 :  (s, b)|As = b mod q,||s|| ⩽σ √m∧bu = V + HG1  ,
+                                  Π2 : {(x, s)|nym = V · xp,τ = H · sp },
+                    {(
+              Π3 :   x, b, d,(j,wj ), r, s· rT) |Axp = G2 · d mod p∧TVerifyA (znew, d,(j,wl,...,w1)) = 1
+
+                                                                       q                                              ∧C1= brT,c2 = f · r+    · s′ ∧d , 0nk}.
+                                                                       2
+  重复 κ = ω(logλ)Φ 以达到可忽略的完备性错误(soundness error). 最终生成的证明 PH3 (X,Z) →Π = {Π1,Π2,Π3} .
+这里, 公开输入 X = (A,u, scp,G1,G2,nym,τ,ct,znew, H,V) , 秘密输入 (s, x, b, d,(j,wj ), r, s· rT) . 通过Fait-Shamir 转换
+                                                       )为非交互式协议 Π = ({CMTi}κi=1 ,CH,{RSP}κi=1  , 其中,
+              CH = H3 (µ,{CMTi}κi=1 , A,u, scp,G1,G2,nym,τ,ct,znew, H,V) →{1,2,3}κ,
+
+其中, d , 0nk 这一不等关系证明参考文献[15] 中的不等关系证明.
+     e) 签名 sig = (Π,ct,u) , 输出消息-签名对为 Σ = (sig,µ,nym,τ, scp).
+     (7) Verify(gpk,pp,infonew,Σ,RL) →1/0.
+     a) 下载 znew , 解析 Σ , 计算 V′ = H1 (scp), H′ = H2(scp||µ).
+     b) 运行 VH3 (X′,Π) 验证证明 Π , 若合法则进行步骤c), 否则输出0 返回.
+     c) 对于 RL 中的每一个 grt[i] →s′j , 检查是否存在 τ = H · sp , 若存在则返回0.
+     (8) Extract(Σ1,Σ2) →grt[π∗]/⊥.
+     a) 运行验证算法 Verify 验证 Σ1,Σ2 合法性.
+     b) 解析 Σ1,Σ2 , 若 nym1 = nym2 ∧µ1 , µ2 则进行步骤c), 否则输出 ⊥.
+     c) 运行解密算法 PKE.Dec(u1 −u2,ct) →grt′ [π∗] , 并将其反馈给群管理员 GM 加入 RL 中以撤销该违规群成员.
+     (9) UCLink(Σ,usk) →ΠL : 由持有私钥 x 的诚实用户执行.
+                                                       )}     a) 解析 Σ →{(nym1,scp1 ),...,(nymi,scpi  i∈K,K ⩽Q.
+         ∑K
+     b) 计算 hscp =                     H1 (scpi ),nym = hscp· xp.                                  i=1
+                             {    (           )                  }
+     c) 生成NIZK ΠL : (x) hscp,nym |nym = hscp· xp  .
+
+     (10) VLink(Σ,nym,ΠL) →1/0.
+                                                       )}     a) 解析 Σ →{(nym1,scp1 ),...,(nymi,scpi  i∈K,K ⩽Q.
+     b) 运行验签算法 Verify 逐一检验每个 Σi 的合法性, 若存在 Σ ∈Σ,Verify(gpk,pp,infonew,Σ,RL) = 0 , 返回0.
+     c) 若对于 ∃i , j ∈[K] , 存在 scpi = scpj 返回0.
+         ∑K
+     d) 计算 snym =                                  i=1 nymi,∆= snym−nym , 验证 ||∆||∞⩽K +1 是否成立. 若成立则输出1 表示 ΠL 合法, 否则输出0.
+
+4.1 正确性分析
+
+   定理3. GS-UCL-VCR 符合正确性, 其同时满足验证正确性, 链接验证正确性及条件可提取性.
+
+===== PDF PAGE 11 =====
+4454                              软件学报 2025 年第36 卷第10 期
+
+
+
+   证明: 下面分别证明验证正确性, 链接验证正确性及条件可提取性.
+   ● 验证正确性: 非交互式零知识证明协议 Φ 的完备性及哈希函数 H1,H2 的抗碰撞性保证了我们方案的验证
+正确性. 根据接收到的信息, 验证者总能正确地通过事件主题 scp 及消息 µ 重新计算 V′ = H1 (scp), H′ = H2(scp||µ) .
+根据非交互式零知识证明协议 Φ 的完备性, 输入 X′ = (A,u, scp,G1,G2,nym,τ,ct,znew, H′,V′) 总能使得验证算法输
+出1.
+   ● 链接验证正确性: 根据引理1, 可验证随机函数构造LaV 的正确性, 以及参数设置条件 Q ≪p , GS-UCL-
+VCR 满足链接验证正确性. 对于某用户( usk = x ) 在一个 scp 下的部分签名(假名 nym ): nym = V · xp , 故存在误差
+向量 e = Vx−q ·nym,||e|| ⩽q 成立, 对于 ei = Vi · x−q ·nymi,i ∈[K] , 存在误差向量 ||ei|| ⩽q , 将上述 K 个等式累加
+            p          p                    p                               p
+可得 E = hscp· x−q ·snym,||E|| ⩽q · K . 故根据方案中相关参数的设定, 考虑四舍五入带来的误差, 容易得到:
+                p            p
+                                   p     p
+                     snym = hscp· x·  −E·  ≈nym−Ep ∓1 ⇒|snym−nym| ⩽|K|+1,
+                                   q     q
+
+即对于诚实用户的 K 个历史签名, ∆= |snym−nym|, ||∆||∞⩽K +1 显然成立.
+  与此同时, 若用户企图在其中链接一个其他用户( usk = x′ ) 在 scpt 下的签名, 类似于上述分析方法, 对于等式
+ei = Vi · x−q ·nymi, i ∈[t −1], et = Vt · x′ −q ·nymt, ei = Vi · x−q ·nymi, i ∈[t +1,K] , 进行累加可得 ||E|| ⩽q · K . 根据
+          p                         p                p                                   p
+                                            p方案中相关参数设定, 容易得到 ∆= snym−nym =   ·Vt (x′ −x)−p · E′ , 又因为 K ⩽Q ≪p , 故 ||Vt (x′ −x)|| > ||E′|| ,
+                                            q           q
+||∆||∞> K +1 . 因此无法通过链接验证.
+   ● 条件可提取性: 利用HTDF 的“碰撞”, 得到陷门 s 的替代 u1−u2 , 作为私钥运行解密算法得到该用户的撤销
+令牌 grt′ [π∗] , 将其反馈给群管理员 GM 将其加入撤销列表 RL .
+  综上所述, GS-UCL-VCR 同时满足验证正确性, 链接验证正确性及条件可提取性, 因此满足正确性. 证毕.
+
+4.2 安全性分析
+
+   定理4. 在随机谕言机模型下, GS-UCL-VCR 满足无私匿名性, 当以下条件同时成立: (1) 基于格的非交互式零
+知识证明协议 Φ,ΠL 满足零知识性; (2) LWE 问题是困难的; (3) 对偶Regev 方案满足IND-CPA 安全; (4) LWR 问
+题是困难的; (5) 可验证随机函数LaV 满足自适应不可区分性.
+   证明: 在挑战者 C 和敌手 A 之间建立以下几个游戏.
+    Game0 : 这一游戏过程与 Gameselfano 一致. C 真实地运行系统初始化算法 Setup , 群密钥生成算法 GKeyGen , 用
+户密钥生成算法 UKeyGen , 入群算法 Join 得到公共参数 pp, 群密钥对 (gsk,gpk) , 用户( ID = i ) 密钥对及撤销令牌
+(usk[i],upk[i],grt[i]) . 将 pp,gpk 发送给 A . 在此游戏中, 所选择的挑战比特 b = 0 .
+    Game1 : 在这一游戏中, A 与模拟器 S1 交互. 不同于 Game0 , S1 运行模拟协议 Sp 生成非交互式零知识证明协
+议 Φ 的证明 Π* . 根据协议 Φ 的零知识性:
+                                                          AdvselfanoGame0 (λ) ≈AdvselfanoGame1 (λ).
+    Game2 : 在这一游戏中, A 与模拟器 S2 交互. S2 与 S1 几乎一致, 密文 c2 及 u 的生成方式除外. 不同于 Game1
+           q
+中 c2 = f · r+    · s′,u ←SamPre(b,Tb,σ,V + H ·G1) 计算得出, 这里 S2 直接从均匀分布中选取 c∗2 ←Rmk,u∗←R1×n ,           2
+根据判定性LWE 的困难性及定理4:
+                                                          AdvselfanoGame2 (λ) ≈AdvselfanoGame1 (λ).
+
+    Game3 : 在这一游戏中, A 与模拟器 S3 交互. S3 与 S2 几乎一致, nym,τ 的生成方式除外. 不同于 Game2 中 nym =
+V · xp,τ = H · sp 计算得出, 这里 S3 直接从均匀分布中随机选取 nym∗←Znp,τ∗←Zmp , 根据LWR 问题的困难性及可
+验证随机函数LaV 的自适应不可区分性:
+                                                          AdvselfanoGame3 (λ) ≈AdvselfanoGame2 (λ).
+
+    Game4 : 这一游戏与 Game3 一致, A 与模拟器 S4 交互. S4 与 S3 几乎一致, ΠL 的生成方式除外. 不同于 Game3
+
+===== PDF PAGE 12 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4455
+
+
+中 ΠL 由 UCLink 算法计算得出, 这里 S4 运行模拟协议 S′p 生成 Π∗ . 根据 ΠL 的零知识性:
+                                                          AdvselfanoGame4 (λ) ≈AdvselfanoGame4 (λ).
+
+    Game5 : 这一游戏与 Game0 一致, 除了所选择的挑战比特 b = 1 . 上述游戏0–5 等价, A 以很大概率不可区分其
+中任意两个. 因此GS-UCL-VCR 满足无私匿名性. 证毕.
+   定理5. 在随机谕言机模型下, GS-UCL-VCR 满足可追溯性, 当以下条件同时成立: (1) LWR 问题是困难的;
+(2) GS-UCL-VCR 满足签名可追溯性.
+   证明: 首先证明签名可追溯性. 在挑战者 C 和敌手 A 之间建立以下游戏.
+    Game0 : 这一游戏与 Game1trace 一致.
+    Game1, Game2, Game3 : 与定理6 证明中的 Game1, Game2, Game3 一致.
+  我们分析 A 赢得游戏 Game1trace 的困难性. 假设 A 可以伪造一个消息-签名对 Σ∗= (Π*,ct∗,u∗,µ∗,nym∗,τ∗,scp∗)
+                                                                                 (           (      )
+满足 Verify(gpk,pp,infonew,Σ∗,RL) = 1 . 根据协议 Φ 的可靠性, 证据  x∗, b∗, d∗,  j∗,w∗j  , r∗, s∗· r∗T) 可以被提取且等式
+                                                                               ))⌊Ax⌋∗p = G2 · d∗mod p 成立, 同时 TVerifyA (znew, d∗,( j∗,w∗l ,...,w∗1  = 1 s.t. ∀ID ∈reg∪RL,Identity(gpk,ID,Σ∗) = 0 . 这
+里, 对于当前有效群成员和已被撤销的群成员其公钥均未被腐化, 因此, xi , x∗ . 考虑以下两种情况.
+     (1) d∗< reg∗ : 此时, 说明 d∗ 不在 znew 的累加中而累加器验证算法仍返回1, 等价于打破了累加器的安全性, 与
+前提假设相悖.
+     (2) d∗∈reg∗ : 此时, d∗=di,i ∈reg∗ . 根据协议 Φ 的可靠性且 xi , x∗,i ∈reg∗ , 必定存在:
+                                        Axi p = G2 · di ∧Ax∗p = G2 · d∗,
+
+由此可以推导出 A·(xi −x∗)p = 0 , 相当于得到了一个LWR 问题的解. 然而, 对于任意多项式时间内的敌手 A , LWR
+问题是困难的. 因此GS-UCL-VCR 满足签名可追溯性.
+  接下来证明链接可追溯性. 若方案满足签名可追溯性, 则等价于不存在 Verify(gpk,pp,infonew,Σ∗,RL)∧∀ID ∈
+ID ∈reg∪RL,Identity(gpk,ID,Σ∗) = 0 , 因此由非合法群成员生成的签名不可能通过验签算法 Verify . 而链接验证算
+法 VLink 包含了 Verify 的过程. 由此GS-UCL-VCR 亦满足链接可追溯性.
+  综上所述, GS-UCL-VCR 满足可追溯性. 证毕.
+   定理6. 在随机谕言机模型下, GS-UCL-VCR 满足不可诽谤性, 当以下条件同时成立: (1) 可验证随机函数
+LaV 满足唯一性; (2) GS-UCL-VCR 满足可追溯性.
+   证明: 我们分别从定义12 中敌手企图赢得不可诽谤性游戏可以采取的两种途径出发进行分析.
+   情形1: 伪造签名使其与诚实用户产生的签名相链接(签名诽谤). 若GS-UCL-VCR 满足链接可追溯性, 则不
+存在 VLink(Σ,nym,ΠL) = 1 s.t. ∃Σ,Σ∗∈Σ : Σ ∈Σi ∧Σ∗< Σi , 其中, Σ 为诚实用户的历史消息-签名集合, Σ∗ 为敌手 A
+伪造的消息-签名对.
+   情形2. 为诚实用户产生一个链接证明, 所涉及的签名均由该用户生成, 但该用户没有产生过该证明, 即证明
+本身是伪造的(链接诽谤). 假设诚实用户所产生的历史消息-签名集合为 Σ , 其私钥 usk = x , 原本该用户可以利用
+                                                     {    (           )                  }
+自己的私钥 x 运行用户自主链接算法 ΠL = (x) hscp,nym |nym = hscp· xp 对 Σ 产生链接证明 UCLink(Σ,usk) →ΠL ,
+这里, 其本质是一个可验证随机函数. 若敌手 A 企图为该诚实用户的这一历史消息-签名集合为 Σ 生成一个链接证
+明 Π∗L , hscp 容易通过已有信息计算, 由于私钥 x 未被腐化, 则 A 用于伪造证明和伪造聚合假名 nym∗ 的私钥 x∗, x ,
+                                          )若 Π∗L 可以满足 VLink(Σ,nym∗,Π∗L = 1 , 存在以下两种情况.
+     (1) nym∗= nym : 此时, 容易推导出 hscp·(x−x∗)p = 0 , 即找到了一个LWR 问题实例的解. 然而, 对于任意多项
+式时间内的敌手 A , LWR 问题是困难的.
+     (2) nym∗, nym : 此时, 由于输入 hscp 相同, 对于能够通过链接验证 VLink 的证明 ΠL , 其输出是唯一的. 这与可
+验证随机函数的唯一性相悖.
+   因此, GS-UCL-VCR 满足不可诽谤性. 证毕.
+
+===== PDF PAGE 13 =====
+4456                              软件学报 2025 年第36 卷第10 期
+
+
+5 性能分析
+
+  本节从时间开销分析及通信开销分析对本文所提出的基于格的具有用户自主链接及验证者条件撤销的群签
+
+名进行性能分析, 并与已有相近方案进行对比.
+  本文在环 R = Z[X]/(Xd +1) 上对本方案进行实例化. 参考文献[26,27] 设置相关参数: d = 256, q = 8380417,
+n = 2048, m = 2048, σ = 7112, k = logq = 23, N = 216, Q = 100 . 根据文献[28] 中安全评估工具, 本方案在此参数设
+定下可达到约254 比特经典安全强度及248 比特量子安全强度.
+
+5.1 时间开销分析
+
+   本文基于文献[16,29] 中源码及Miracl 大整数库, 采用Windows 10 64 位操作系统对本方案及对比方案涉及
+
+的基本算子进行测试, 实验环境为Intel(R) Core(TM) i7-8700 CPU @ 3.20 GHz, 16.0 GB RAM. 其中涉及的基本算
+
+子符号定义及测试结果如表1 所示 (假设群组满员, 即 c = N = 216 ).
+
+             表 1　基本算子符号定义及时间开销测试结果 (ms)
+
+   符号         定义        时间     符号        定义        时间
+      Ttrapgen      陷门生成耗时             44.50           Tgen-proof      P ′H3 (X,Z) →Π耗时        3 900
+     TSamPre      原像采样耗时              2.00             Tver        V ′H3 (X′,Π) →1/0耗时         0.69
+      Tmul      多项式乘法耗时             0.06           TH1      哈希函数 H1 耗时           0.37
+       Tadd       多项式加法耗时         ≈0           TH2      哈希函数 H2 耗时           0.37
+     Tmat-mul     矩阵-向量乘法耗时           0.20           Th      哈希函数 h 耗时[11]          0.005
+      Tvrf-eval      LaV.Eval评估算法耗时         35.75         Tpm           G1群上点乘[11]             1.74
+     Tvrf-Verify      LaV.Verify验证算法耗时         1.19            Tpa           G1群上点加[11]            0.008
+
+   本文考虑与已有文献[11–13,15,30] 进行对比, 主要关注签名算法 Sign , 验签算法 Verify , 链接算法 UCLink 以
+及链接验证算法 VLink , 分析结果如表2 所示 (假设 RL = ∅ , 用户链接签名个数为 K = Q = 100 ).
+
+            表 2　文献[11–13,15,30] 与本文方案时间开销及功能对比
+
+文献              Sign (ms)                    Verify (ms)         UCLink (ms)         VLink (ms)      F1 F2 F3 F4
+ [11]         Tgen-proof +TH1 ≈3900.37              Tver ≈0.69       －         －         √  ×  ×  √
+ [12] Tgen-proof +4Tmat-mul +4Tadd ≈3900.24 Tver +2Tmat-mul ≈0.81     －         －         √  ×  ×  √
+                                                                   2TH1 +3Tmat-mul +TH2+      2TH2 +TVerify
+ [13]  Tgen-proof +TH1 +2Tmat-mul ≈3900.77        Tver ≈0.69                                         ×  √  ×  √
+                                                                   KTadd ≈2.71              +KTadd ≈2.8
+
+             2Tmat-mul +Tmul +Tadd+
+ [15]                                                Tver ≈0.69       －         －         ×  ×  ×  √
+               Tgen-proof ≈3900.46
+
+                                                        (K +1)h+(K +2)Tpm
+ [30]       4(Tpa +Tpm)+2h ≈1.782        4Tpa +9Tpm +2h ≈17.50                      (K +1)h+2Tpm ≈4.0  ×  √  ×  ×
+                                                       ≈178.0
+
+       2Tmul +Tmat - mul +2Tadd +2Tvrf-eval                                   KH1 + KTadd
+本文                                          Tver +TH1 +TH2 ≈1.43 KH1 +Tvrf-eval ≈72.75                   √  √  √  √
+       +TSamPre +Tgen-proof ≈3973.82                                                                +Tvrf-Verify ≈38.19
+
+注: F1 代表是否支持验证者本地撤销, F2 代表是否支持用户自主链接, F3 代表是否支持条件撤销, F4 代表是否具有后量子安
+全性
+
+   由于文献[11–13,15] 及本方案均是基于格构建的群环签名方案, 其基于Stern 协议的零知识证明部分时间开
+
+销参考文献[29] 做估计, 在同一平台下的时间消耗远大于文献[30] 一般群上构建的群签名方案, 故签名部分时间
+开销有较大差异. 根据分析结果, 本文所提出的方案功能最为丰富, 与原始格上动态群签名方案[15]相比, 增加的开
+
+销不大, 签名算法、链接验证算法阶段时间开销虽略高于现有文献[11–13,30], 但均在可接受范围内.
+
+===== PDF PAGE 14 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4457
+
+
+
+5.2 通信开销分析
+
+  对于方案通信开销的评估, 本文关注签名尺寸及链接证明尺寸, 分析结果如表3 所示. 其中, |G1| (32 字节) 是
+群 G1 中元素的长度, Zp 是有限域 Zp 中整数的长度, hlen (32 字节) 是哈希函数 h 的输出长度. 根据文献[16] 中的
+定义, |tL| 代表LEANES 证明[6–8,17,18]的长度, |πL| 代表LEANES+证明[16]的长度( |tL|+|πL| ≈7.1 KB ), |πR| 代表其中松
+弛证明长度(3.18 KB).
+
+              表 3　文献[11,12,30] 与本文方案通信开销对比
+
+  对比项      文献[11]    文献[12]        文献[30]              本文方案
+  签名尺寸     O(nlogN)   O(nlogN)   4×|G1|+5× Zp +hlen   O(nlogN +n×mklogq+mklogq+2mlogq+nlogq)
+
+ 链接证明尺寸   －     －            Zp +hlen                             |tL|+|πL|+|πR|
+
+  根据相关参数设置, 本方案签名尺寸在群成员数量为 N = 216 时约为163 KB, 链接证明尺寸约为10.28 KB, 具
+有较强的可用性.
+
+6 应　用
+
+  医疗数据对于推动医药研究领域前沿技术的发展有着不可替代的作用, 保证其安全共享十分重要. 一方面, 需
+要保护患者隐私, 其敏感信息如姓名、出生日期等信息一旦被盗用将会造成经济损失和法律问题; 另一方面, 关键
+数据的真实性、有效性和准确性对于研究过程至关重要. 同时, 设置合理、适当的奖励机制有助于患者乐于贡献
+自己的病情数据用于医药研究, 有利于维护医患信任, 从而推动医药行业的发展. 因此, 亟需建立新技术为医疗数
+据共享平台提供安全、可靠的条件隐私保护机制.
+  针对以上需求, 本文结合具有用户自主链接及验证者撤销的格基群签名方案和区块链技术, 设计了一种基于
+区块链的后量子安全医疗数据共享条件隐私保护系统, 实现对患者敏感信息的保护, 并保证数据的真实性、有效
+性和准确性, 大致运行流程如图2 所示.
+
+
+
+
+
+  区块链            医院             患者            科研机构
+
+                          初始化系统, 生成群密钥对
+
+                     申请成为数据贡献者
+
+                    审核通过则颁发贡献者证书
+
+
+          提交医疗数据及签名, 相关公开信息上链
+
+
+                       共享医疗数据
+
+                                                    验证签名
+                                                    及数据合
+         生成历史贡献证明,合法则上链
+                                                    法性
+
+                       提供贡献者奖励
+
+                     将提取出的撤销令牌发送给医院以撤销贡献者        数据合法性
+                                                                  存疑, 撤销
+       更新撤销列表, 上链                                  令牌被提取
+
+          图 2　基于区块链的后量子安全医疗数据共享条件隐私保护系统
+
+  该系统主要包含: 患者 PAT 、医疗数据管理中心(医院) HSP 、医药科研机构 MR 、区块链 BC 等模块, 集成了
+具有用户自主链接及验证者撤销的格基群签名模块和区块链模块. 其中, 数据合法性存疑指对于同一患者登记号
+
+===== PDF PAGE 15 =====
+4458                              软件学报 2025 年第36 卷第10 期
+
+
+
+的贡献两份不同病例档案的患者, 视为违规贡献者. 具有用户自主链接及验证者撤销的格基群签名模块提供贡献
+者证书分发、历史贡献证明生成、违规数据提供者撤销, 同时不会揭露患者身份隐私. 区块链模块用于记录公开
+数据及贡献者证书等. 根据本文第4 节描述的基于格的具有用户自主链接及验证者条件撤销群签名, 具体过程
+如下.
+     (1) 初始化系统, 生成群密钥对: 由 HSP 先后运行 Setup、GKeyGen 算法得到系统参数与群密钥对.
+     (2) 申请成为数据贡献者: 由 PAT 运行 UKeyGen 算法得到自己的原始用户密钥对并运行 Join 算法与 HSP 交
+互成为数据贡献者, HSP 向符合条件的 PAT 颁发证书(包含信息 ID,grt ).
+     (3) 贡献医疗数据及签名: PAT 运行 Sign 算法对自己所贡献的医疗信息 µ 签名, 其唯一的登记号为 scp . 将以
+上信息及签名对公开在 BC 上.
+     (4) 共享医疗数据及验证数据合法性: 由 PAT 提交的医疗数据通过 BC 共享, MR 从中获取数据, 运行 Verify 验
+证数据合法性, 运行 Extract , 若提取出撤销令牌, 则数据合法性存疑, 将所提取的撤销令牌反馈给 HSP , 将其加入
+到公开撤销列表中, 在 BC 中上链, 强制违规的 PAT 下线.
+     (5) 诚实数据贡献者可自主选择生成贡献证明以获得奖励: PAT 运行 UCLink 算法选择性地生成历史贡献证
+明, HSP 等运行 VLink 算法验证该证明的合法性, 若合法, 则在 BC 中上链, 对贡献者进行奖励.
+
+7 总　结
+
+  本文探索基于格的具有用户自主链接及验证者条件撤销的群签名. 受到防双重认证签名思想的启发, 实现验
+证者本地条件撤销, 并基于格上可验证随机函数LaV 设计了批量链接证明方法. 本文给出具有用户自主链接及验
+证者条件撤销的群签名的语法及安全模型定义, 同时给出基于格的具有用户自主链接及验证者条件撤销的群签名
+的具体构造及安全性分析. 最后, 通过时间、通信开销分析验证本文方案的实用性. 同时, 本文给出了一个具体应
+用场景, 用于构建基于区块链的后量子安全医疗数据共享条件隐私保护系统. 实际应用时, 需综合考虑多种需求,
+如何进一步提高基于格的群签名效率、丰富其功能, 需在我们的后续工作中研究探索.
+
+
+References:
+  [1]  Liu JW, Fan Y, Sun R, Liu L, Wu C, Mumtaz S. Blockchain-aided privacy-preserving medical data sharing scheme for E-healthcare
+
+       system. IEEE Internet of Things Journal, 2023, 10(24): 21377–21388. [doi: 10.1109/JIOT.2023.3287636]
+
+  [2]  Chaum D, Van Heyst E. Group signatures. In: Proc. of the 1991 Annual Int’l Conf. on the Theory and Applications of Cryptographic
+
+       Techniques. Brighton: Springer, 1991. 257–265. [doi: 10.1007/3-540-46416-6_22]
+
+  [3]  Feng HW, Liu JW, Wu QH. Group signatures and ring signatures with post-quantum security. Journal of Cryptologic Research, 2021,
+
+        8(2): 183–201 (in Chinese with English abstract). [doi: 10.13868/j.cnki.jcr.000430]
+
+  [4]  Yang YT, Cai JL, Zhang XW, Yuan Z. Privacy preserving scheme in block chain with provably secure based on SM9 algorithm. Ruan
+
+       Jian Xue Bao/Journal of Software, 2019, 30(6): 1692–1704 (in Chinese with English abstract). http://www.jos.org.cn/1000-9825/5745.
+
+      htm [doi: 10.13328/j.cnki.jos.005745]
+
+  [5]  Gordon SD, Katz J, Vaikuntanathan V. A group signature scheme from lattice assumptions. In: Proc. of the 2010 Annual Int’l Conf. on
+
+       the Theory and Application of Cryptology and Information Security. Singapore: Springer, 2010. 395–412. [doi: 10.1007/978-3-642-17373-
+
+      8_23]
+
+  [6]   Libert B, Ling S, Nguyen K, Wang HX. Zero-knowledge arguments for lattice-based accumulators: Logarithmic-size ring signatures and
+
+      group signatures without trapdoors. In: Proc. of the 2016 Annual  Int’l Conf. on the Theory and Applications of Cryptographic
+
+       Techniques. Vienna: Springer, 2016. 1–31. [doi: 10.1007/978-3-662-49896-5_1]
+
+  [7]  Esgin MF, Steinfeld R, Liu JK, Liu DX. Lattice-based zero-knowledge proofs: New techniques for shorter and faster constructions and
+
+        applications. In: Proc. of the 39th Annual Int’l Cryptology Conf. on Advances in Cryptology. Santa Barbara: Springer, 2019. 115–146.
+
+        [doi: 10.1007/978-3-030-26948-7_5]
+
+  [8]  Baum C, Damgård I, Lyubashevsky V, Oechsner S, Peikert C. More efficient commitments from structured lattice assumptions. In: Proc.
+
+       of the 11th Int’l Conf. on Security and Cryptography for Networks. Amalfi: Springer, 2018. 368–385. [doi: 10.1007/978-3-319-98113-
+
+      0_20]
+
+===== PDF PAGE 16 =====
+陈颖 等: 具有用户自主链接及验证者条件撤销的格基群签名                                      4459
+
+
+
+ [9]   Peikert C, Shiehian S. Noninteractive zero knowledge for NP from (plain) learning with errors. In: Proc. of the 39th Annual Int’l
+
+      Cryptology Conf. on Advances in Cryptology. Santa Barbara: Springer, 2019. 89–114. [doi: 10.1007/978-3-030-26948-7_4]
+
+[10]  Boneh D, Shacham H. Group  signatures with  verifier-local  revocation.  In: Proc. of  the 11th ACM Conf. on Computer and
+
+      Communications Security. Washington: ACM, 2004. 168–177. [doi: 10.1145/1030083.1030106]
+
+[11]  Diaz J, Lehmann A. Group signatures with user-controlled and sequential linkability. In: Proc. of the 24th IACR Int’l Conf. on Practice
+
+      and Theory of Public Key Cryptography. Springer, 2021. 360–388. [doi: 10.1007/978-3-030-75245-3_14]
+
+[12]  Langlois A, Ling S, Nguyen K, Wang HX. Lattice-based group signature scheme with verifier-local revocation. In: Proc. of the 17th Int’l
+
+      Conf. on Public-key Cryptography. Buenos Aires: Springer, 2014. 345–361. [doi: 10.1007/978-3-642-54631-0_20]
+
+[13]   Fiore D, Garms L, Kolonelos D, Soriente C, Tucker I. Ring signatures with user-controlled linkability. In: Proc. of the 27th European
+
+      Symp. on Research in Computer Security. Copenhagen: Springer, 2022. 405–426. [doi: 10.1007/978-3-031-17146-8_20]
+
+[14]   Bellare M, Poettering B, Stebila D. Deterring certificate subversion: Efficient double-authentication-preventing signatures. In: Proc. of the
+
+      2017 Int’l Conf. on Practice and Theory of Public-key Cryptography. Amsterdam: Springer, 2017. 121–151. [doi: 10.1007/978-3-662-
+
+      54388-7_5]
+
+[15]  Ling S, Nguyen K, Wang HX, Xu YH. Lattice-based group signatures: Achieving full dynamicity with ease. In: Proc. of the 15th Int’l
+
+      Conf. on Applied Cryptography and Network Security. Kanazawa: Springer, 2017. 293–312. [doi: 10.1007/978-3-319-61204-1_15]
+
+[16]  Esgin MF, Steinfeld R, Liu DX, Ruj S. Efficient hybrid exact/relaxed lattice proofs and applications to rounding and VRFs. In: Proc. of
+
+       the 43rd Annual Int’l Cryptology Conf. on Advances in Cryptology. Santa Barbara: Springer, 2023. 484–517. [doi: 10.1007/978-3-031-
+
+      38554-4_16]
+
+[17]  Lyubashevsky V, Nguyen NK, Plançon M, Seiler G. Shorter lattice-based group signatures via “almost free” encryption and other
+
+       optimizations. In: Proc. of the 27th Int’l Conf. on the Theory and Application of Cryptology and Information Security. Singapore:
+
+       Springer, 2021. 218–248. [doi: 10.1007/978-3-030-92068-5_8]
+
+[18]   Libert B, Ling S, Nguyen K, Wang HX. Zero-knowledge arguments for lattice-based PRFs and applications to e-cash. In: Proc. of the
+
+      23rd Int’l Conf. on the Theory and Applications of Cryptology and Information Security. Hong Kong: Springer, 2017. 304–335. [doi: 10.
+
+      1007/978-3-319-70700-6_11]
+
+[19]  Regev O. On lattices, learning with errors, random linear codes, and cryptography. Journal of the ACM (JACM), 2009, 56(6): 34. [doi: 10.
+
+      1145/1568318.1568324]
+
+[20]  Banerjee A, Peikert C, Rosen A. Pseudorandom functions and lattices. In: Proc. of the 31st Annual Int’l Conf. on the Theory and
+
+       Applications of Cryptographic Techniques. Cambridge: Springer, 2012. 719–737. [doi: 10.1007/978-3-642-29011-4_42]
+
+[21]  Gentry C, Peikert C, Vaikuntanathan V. Trapdoors for hard lattices and new cryptographic constructions. In: Proc. of the 40th Annual
+
+    ACM Symp. on Theory of Computing. Victoria British: ACM, 2008. 197–206. [doi: 10.1145/1374376.1374407]
+
+[22]  Blömer J, Bobolz J, Porzenheim L. A generic construction of an anonymous reputation system and instantiations from lattices. In: Proc.
+
+       of the 29th Int’l Conf. on the Theory and Application of Cryptology and Information Security. Guangzhou: Springer, 2023. 418–452.
+
+        [doi: 10.1007/978-981-99-8724-5_13]
+
+[23]  Gorbunov S, Vaikuntanathan V, Wichs D. Leveled fully homomorphic signatures from standard lattices. In: Proc. of the 47th Annual
+
+    ACM Symp. on Theory of Computing. Portland: ACM, 2015. 469–477. [doi: 10.1145/2746539.2746576]
+
+[24]  Goldwasser S, Micali S, Rackoff C. The knowledge complexity of interactive proof-systems. In: Providing Sound Foundations for
+
+      Cryptography: On the Work of Shafi Goldwasser and Silvio Micali. ACM, 2019. 203–225. [doi: 10.1145/3335741.3335750]
+
+[25]  Ling S, Nguyen K, Stehlé D, Wang HX. Improved zero-knowledge proofs of knowledge for the ISIS problem, and applications. In: Proc.
+
+       of the 16th Int’l Conf. on Practice and Theory in Public-key Cryptography. Nara: Springer, 2013. 107–124. [doi: 10.1007/978-3-642-
+
+      36362-7_8]
+
+[26]  Fouque PA, Hoffstein  J, Kirchner P,  et  al. Falcon: Fast-Fourier lattice-based compact signatures over NTRU. 2019.  https://api.
+
+      semanticscholar.org/CorpusID:231637439
+
+[27]  Ducas L, Kiltz E, Lepoint T, Lyubashevsky V, Schwabe P, Seiler G, Stehlé D. CRYSTALS-dilithium: A lattice-based digital signature
+
+      scheme. IACR Trans. on Cryptographic Hardware and Embedded Systems, 2018, 2018(1): 238–268.
+
+[28]  Albrecht MR, Player R, Scott S. On the concrete hardness of learning with errors. Journal of Mathematical Cryptology, 2015, 9(3):
+
+      169–203. [doi: 10.1515/jmc-2015-0016]
+
+[29]   Ishai Y, Su H, Wu DJ. Shorter and faster post-quantum designated-verifier zkSNARKs from lattices. In: Proc. of the 2021 ACM SIGSAC
+
+      Conf. on Computer and Communications Security. ACM, 2021. 212–234. [doi: 10.1145/3460120.3484572]
+
+[30]  Huang XJ, Song JS, Li ZC. Dynamic group signature scheme on lattice with verifier-local revocation. Cryptology ePrint Archive,
+
+      2022/022, 2022.
+
+===== PDF PAGE 17 =====
+4460                              软件学报 2025 年第36 卷第10 期
+
+
+
+附中文参考文献:
+
+ [3] 冯翰文, 刘建伟, 伍前红. 后量子安全的群签名和环签名. 密码学报, 2021, 8(2): 183–201. [doi: 10.13868/j.cnki.jcr.000430]
+ [4] 杨亚涛, 蔡居良, 张筱薇, 袁征. 基于SM9 算法可证明安全的区块链隐私保护方案. 软件学报, 2019, 30(6): 1692–1704. http://www.jos.
+
+     org.cn/1000-9825/5745.htm [doi: 10.13328/j.cnki.jos.005745]
+
+
+
+             陈颖(1999－), 女, 博士生, 主要研究领域为隐私                彭聪(1989－), 男, 博士, 副教授, 博士生导师,
+
+          保护, 格密码.                                      CCF 专业会员, 主要研究领域为抗量子密码, 身
+
+                                           份隐私保护.
+
+
+
+
+
+           何德彪(1980－), 男, 博士, 教授, 博士生导师,                罗敏(1974－), 男, 博士, 教授, 博士生导师, CCF
+
+           CCF 高级会员, 主要研究领域为密码学, 信息           专业会员, 主要研究领域为信息安全, 可信软件,
+
+          安全.                                 数据挖掘.

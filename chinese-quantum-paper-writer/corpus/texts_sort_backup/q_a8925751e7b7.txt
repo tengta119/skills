@@ -1,0 +1,753 @@
+===== PDF PAGE 1 =====
+软件学报 ISSN 1000-9825, CODEN RUXUEW                                                                     E-mail: jos@iscas.ac.cn
+2025,36(10):4430−4443 [doi: 10.13328/j.cnki.jos.007393] [CSTR: 32375.14.jos.007393]                                  http://www.jos.org.cn
+©中国科学院软件研究所版权所有.                                                                                      Tel: +86-10-62562563
+
+
+
+
+                                                                  *
+基于Kyber 公钥加密的高效认证密钥交换协议
+
+米瑞琪 1,2, 江浩东 3, 张振峰 1,2
+
+
+1(中国科学院 软件研究所, 北京 100190)
+2(中国科学院大学, 北京 100049)
+3(河南省网络密码技术重点实验室, 河南 郑州450001)
+
+通信作者: 米瑞琪, E-mail: ruiqi2017@iscas.ac.cn
+
+
+摘　要: Kyber 是一个基于格上困难问题的密钥封装机制, 2023 年被美国国家标准与技术研究院宣布为第1 批标
+
+准化对象. Kyber-AKE 是Kyber 的设计者基于Kyber 构造的弱前向安全的认证密钥交换, 通过使用3 个IND-CCA
+
+安全的密钥封装机制在两轮内协商会话密钥. 介绍Kyber-PFS-AKE, 这是一种新的认证密钥交换协议. Kyber-PFS-
+
+AKE 只使用了3 个IND-CPA 安全的公钥加密, 并通过FO 变换中的重加密技术处理IND-CPA 安全公钥加密中的
+
+解密错误, 从而简化了后量子Kyber-AKE 的设计. 严格证明Kyber-AKE 协议中某些操作是冗余的, 去除这些冗余
+
+后, 协议变得更加简单和高效. 在eCK-PFS-PSK 模型下证明Kyber-PFS-AKE 的会话密钥不可区分性质, 以及完美
+
+的前向安全性等安全性质. 使用量子安全为165-bit 的Kyber-768, PKE 实现了Kyber-PFS-AKE. 实验结果表明,
+
+Kyber-PFS-AKE 相比于Kyber-AKE, 发起者计算时间降低了38%, 响应者计算时间降低了30%.
+关键词: 公钥加密方案; Kyber; 认证密钥交换
+中图法分类号: TP309
+
+
+中文引用格式: 米瑞琪, 江浩东, 张振峰. 基于Kyber公钥加密的高效认证密钥交换协议. 软件学报, 2025, 36(10): 4430–4443. http://
+www.jos.org.cn/1000-9825/7393.htm
+英文引用格式: Mi RQ, Jiang HD, Zhang ZF. Efficient Authenticated Key Exchange Protocol Based on Kyber Public-key Encryption.
+Ruan Jian Xue Bao/Journal of Software, 2025, 36(10): 4430–4443 (in Chinese). http://www.jos.org.cn/1000-9825/7393.htm
+
+Efficient Authenticated Key Exchange Protocol Based on Kyber Public-key Encryption
+
+MI Rui-Qi1,2, JIANG Hao-Dong3, ZHANG Zhen-Feng1,2
+
+1(Institute of Software, Chinese Academy of Sciences, Beijing 100190, China)
+2(University of Chinese Academy of Sciences, Beijing 100049, China)
+3(Henan Key Laboratory of Network Cryptography Technology, Zhengzhou 450001, China)
+
+Abstract: Kyber, a key encapsulation mechanism based on lattice problems, was the first to be standardized by the National Institute of
+
+Standards and Technology (NIST)  in  2023. Kyber-AKE,  a weak  forward-secure  authenticated key exchange (AKE)  protocol, was
+
+constructed by the designers of Kyber and derives session keys in two rounds using three IND-CCA secure key encapsulation mechanisms.
+
+This study introduces Kyber-PFS-AKE, a newly proposed authenticated key exchange protocol. In Kyber-PFS-AKE, only IND-CPA secure
+
+public-key encryption is utilized, and decryption errors within IND-CPA secure encryption are addressed using the re-encryption technique
+
+within  the FO  transformation, thus simplifying  the design of post-quantum Kyber-AKE. A rigorous proof demonstrates  that  certain
+
+operations in the Kyber-AKE protocol are redundant. By eliminating these redundancies, the protocol achieves a simpler and more efficient
+
+design. The session key indistinguishability and perfect forward security of Kyber-PFS-AKE are formally proven within the eCK-PFS-PSK
+
+model. The proposed Kyber-PFS-AKE is implemented using Kyber-768. PKE with 165-bit quantum security. Experimental results show
+
+
+* 基金项目: 国家重点研发计划 (2021YFB3100100)
+ 本文由“抗量子密码与区块链应用”专题特约编辑翁健教授、祝烈煌教授、赵运磊教授推荐.
+ 收稿时间: 2024-07-01; 修改时间: 2024-09-05; 采用时间: 2024-12-30; jos 在线出版时间: 2025-01-20
+  CNKI 网络首发时间: 2025-06-11
+
+===== PDF PAGE 2 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4431
+
+
+
+that compared to Kyber-AKE, the computation time for the initiator is reduced by 38%, while the computation time for the responder is
+
+reduced by 30%.
+
+Key words: public-key encryption (PKE) schema; Kyber; authenticated key exchange (AKE)
+
+   认证密钥交换(authenticated key exchange, AKE) 是网络安全系统中最重要的密码学模块之一. 大多数AKE
+协议依赖Diffie-Hellman (DH) 密钥交换建立会话密钥, 通过数字签名、长期Diffie-Hellman 密钥交换或公钥加密
+进行身份认证. AKE 拥有非常广泛的应用, 如传输层安全协议(transport layer security, TLS), 虚拟专用网络(virtual
+private network, VPN) 协议等. 然而随着量子计算机的发展, 拥有量子计算机的攻击者(以下简称为量子攻击者) 可
+以在短时间内攻破DH 密钥交换并获取会话密钥, 换句话说, DH 密钥交换不具备抵抗量子攻击者的能力. NIST 呼
+吁使用抗量子的公钥加密(以下简称PKE)/密钥封装机制(以下简称KEM), 以替代目前的密钥交换标准.
+  对于抗量子的认证密钥交换协议, 目前存在的主要的设计思路是: 1) 通过抗量子的数字签名(如基于格上困
+难问题、基于编码上的困难问题的数字签名) 完成身份认证, 并通过抗量子的公钥加密建立会话密钥; 2) 仅使用
+抗量子的公钥加密完成身份认证并建立会话密钥. 由于后量子的数字签名方案通常具有较长的公钥和签名, 通过
+公钥和密文长度较小的公钥加密构造认证密钥交换计算效率更高, 传输的代价更小.
+    2016 年, 美国国家标准与技术研究院(NIST) 面向全球征集抗量子密码算法, 包括公钥加密和数字签名算法,
+旨在通过建立抗量子密码标准, 以应对量子计算机带来的安全威胁[1], Kyber[2]是目前唯一被NIST 选作密钥封装
+机制标准的算法[3]. Kyber 基于格上的MLWE 安全性假设, 拥有较小的公钥和密文, 在大多数应用中展现出了卓
+越的性能, 其性能与安全性之间的调整也相对简单. NIST 推荐在绝大多数应用场景下优先使用Kyber. 是否对基
+于其他安全性假设的方案(如, 基于编码、多变量困难问题) 进行标准化仍然在讨论中. 如基于编码的Classic
+McEliece 密钥封装机制目前存在很多安全问题[4], 因此, 设计基于Kyber 的认证密钥交换是较为合理的选择.
+    Kyber 提出了其认证密钥交换方案Kyber-AKE[2], 其基本思想是发起者与响应者各自拥有长期的IND-CCA
+安全的密钥封装机制的公私钥对用于身份认证. 在握手时, 发起者使用IND-CCA 安全的密钥封装机制生成临时
+公私钥对 (epki,eski) , 并用响应者的长期公钥封装出密文和共享秘密 (c1,k1) . 响应者使用收到的 epki 和发起者的长
+期公钥分别封装出密文和共享秘密作为密钥材料. 双方各自用持有的私钥将收到的密文解密, 并将这些密钥材料
+输入密钥导出函数, 导出会话密钥. Kyber-AKE 来自Fujioka 等人[5]提出的通用构造, 在该构造中, 用于生成临时公
+私钥对 (epki,eski) 的可以是IND-CPA 的KEM. Kyber-AKE 握手过程如图1 所示, 发起者与响应者均拥有长期公
+私钥对. 发起者公私钥对为 (spki,sski) , 响应者公私钥对为 (spkr,sskr) .
+
+
+                        发起者     响应者
+
+
+
+
+
+                 图 1　Kyber-AKE 协议握手过程
+
+===== PDF PAGE 3 =====
+4432                              软件学报 2025 年第36 卷第10 期
+
+
+    Kyber-AKE 会话密钥的安全性可以在Canetti-Krawczyk (CK) 模型下证明[6], 但是只能保证会话密钥的弱前向
+安全性, 研究表明, 对于两轮的密钥交换, 难以达到完美前向安全性[6]. 前向安全性指的是即使会话参与方的长期
+密钥遭到泄露, 也不会影响到泄露前生成的会话密钥的安全性. 弱前向安全性要求敌手不能主动参与会话(完美前
+向安全性游戏中敌手可以主动参与会话). 此外, Kyber-AKE 全部使用IND-CCA 安全的密钥封装机制, 可能存在进
+一步提升其计算性能的空间. 这是由于Kyber-AKE 的会话密钥导出过程中, 对已经经过杂凑运算的会话密钥进行
+了进一步杂凑运算, 该设计可能会导致冗余运算, 因此, 通过IND-CPA 安全的PKE 设计AKE 可能会更加简洁. 采
+用IND-CPA 安全的PKE 设计3 轮AKE 需要克服的主要难点在于: (1) IND-CPA 安全的PKE 中存在一定的解密
+错误概率, 需要解决由于解密错误导致的安全性问题. (2) 如何保证协议具有较强的安全性质, 如: 完美的前向安全
+性, Kyber-AKE 并不具备该安全性质. (3) 如何让协议有较好的计算性能.
+  针对上述问题, 本文从IND-CPA 安全的公钥加密(PKE) 出发, 提出了一个安全、简洁且计算性能较高的后量
+子AKE, 并且在eCK-PFS-PSK 模型[7]下给出了该协议的安全性证明. 由于eCK-PFS-PSK 模型保证了当双方共享
+一个没有被敌手窃取的预共享密钥, 或者至少有一方的长期或临时私钥没有被敌手窃取, 则会话密钥保持伪随机
+性, 这意味着会话密钥拥有完美前向保密(perfect forward secrecy, PFS) 性质. 该协议被命名为Kyber-PFS-AKE, 并
+具有更高的计算效率. Kyber-PFS-AKE 构造的主要思想如下.
+     (1) 从IND-CPA 安全的PKE 出发构造认证密钥交换: 认证密钥交换的会话密钥都是由一系列密钥材料(如
+图2 中 C1,C2,C3,... ) 按顺序链式产生. 以Kyber-AKE 为例, 双方会按照协议流程产生KEM 临时公钥、KEM 共享
+密钥或KEM 的密文等, 这些被统称为密钥材料(keying material), 用于生成双方的会话密钥. 在握手过程中, 发起
+者(响应者) 将协议过程中每一步生成的密钥材料连同上一步密钥导出函数(key derivation function, KDF) 的输出
+共同作为密钥导出函数的输入, 最终握手完成后, 密钥导出函数将用于生成传输消息的会话密钥.
+
+            会话            C1                C2              C3                               ...                         KDF       KDF           KDF        KDF
+            密钥
+                                          m
+                             ①               shk=H(pk,m)
+                               IND-CPA  T [PKE,G]                                                    PKE′ ② Um⊥ [PKE′,H]  IND-CCA
+                             PKE                                                    Enc'(m)=Enc(pk,m;G(m))       KEM
+
+                  图 2　会话密钥的派生过程
+
+    NIST 征集的IND-CCA 安全的KEM 都是对IND-CPA 安全的PKE 进行Fujisaki-Okamoto 变换得到(以下简
+称FO 变换). FO 变换由两个变换组成, 分别称为 U 变换和 T 变换, 记为 FO = U ◦T . G 和 H 为密钥导出函数, 给定
+公钥加密方案PKE. T 变换对PKE 进行去随机化和重加密校验, 记作 PKE′ = T[PKE,G] . 具体来说, PKE′ 的加密算
+法定义为 PKE′.Enc′(pk,m) := Enc(pk,m;G(m)) . PKE′ 的解密 PKE′.Dec′(sk,ct) 定义为: 首先通过 PKE.Dec(sk,ct) 将
+密文 ct 解密为 m′ , 并对 m′ 进行重加密校验, 若 Enc(pk,m′;G(m′)) , ct , 则拒绝该密文. U 变换记作 KEM = U[PKE′,H] ,
+其封装算法 KEM.Encaps(pk) 首先从消息空间均匀随机选择 m , 计算密文 ct ←PKE′.Enc′(pk,m) , 并计算共享密钥
+shk ←H(pk,m) . 解封装算法首先进行解密, 计算 m := Dec(sk,ct) , s 为私钥中保存的随机种子. 解封装过程为: 如果
+m , ⊥ , 则 KEM.Decaps(sk,c) = H(pk,m) , 否则 KEM.Decaps(sk,c) = H(s,ct) .
+    Kyber-AKE 直接将IND-CCA 安全的密钥封装机制(KEM) 的会话密钥输入链式密钥中, 链式会话密钥在这
+一步骤中形如 KDF(H(pk,m)) . 会话密钥的生成过程如图2 中的②③所示. 实际上, 链式密钥派生过程中的密钥派
+生函数(KDF) 可以扮演与 U 变换中的密钥派生函数相同的作用. 因此, Kyber-PFS-AKE 的设计中, 从一个IND-
+CPA 安全的PKE 出发, 对其进行 T 变换, 随后用链式密钥计算中的密钥派生函数代替 U 变换, 这样做的好处是简
+化了协议设计, 提高了效率并减小了代码规模. Kyber-PFS-AKE 生成会话密钥的过程如图2 中的①所示.
+     (2) 去除对完整公钥的杂凑运算: 为了进一步提升协议的计算性能, 在会话密钥导出过程中, 发起者与响应者
+均需要使用对方的公钥计算IND-CCA 安全的KEM 的共享密钥, 并将共享密钥作为密钥派生函数的输入, 计算公
+钥 pk 的杂凑值是为了提供多用户安全性, 即当存在多个拥有不同公钥接收者的情况下, 敌手可能将同一个消息 m
+
+===== PDF PAGE 4 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4433
+
+
+用不同公钥加密. 研究表明, 在特定的RSA 参数设定下, 敌手可以解密出该消息[8]. 为了抵抗这种攻击, Kyber 在设
+计中添加对完整公钥的杂凑运算. 然而, 对整个公钥进行密钥导出非常影响性能, 基于格的密钥封装机制(如:
+Kyber 和Saber[9]) 的公钥长达1–3 KB, 对完整的公钥做导出会占据较大的计算资源, 特别是当连接请求较多的时
+候. 为了提高计算效率, 我们移除了将双方的整个公钥包含到最终会话密钥计算中的步骤. 对Kyber-768 来说, 对
+整个公钥进行杂凑计算的时间占据Kyber-768 的密钥封装的总时间的50% 以上. 根据Duman 等人[10]的工作, 将
+公钥的不可预测部分(例如前32 个字节) 包含到最终会话密钥计算中已足以达到与包含整个公钥相同的安全目标.
+  总结前方的所有构造思想, 本文提出的Kyber-PFS-AKE 构造如图3 所示, 发起者与响应者均拥有长期公私钥
+对. 发起者公私钥对为 (spki, sski) , 响应者公私钥对为 (spkr, sskr) . 发起者与响应者可以协商预共享密钥 psk . 需要
+注意的是, 下面的构造并不是完整的Kyber-PFS-AKE 协议. 为了实现更强的安全性质(如: 完美的前向安全性), 需
+要添加密钥确认消息(conf 消息). 完整的Kyber-PFS-AKE 协议详见第3 节.
+
+                        发起者     响应者
+
+
+
+
+
+               图 3　Kyber-PFS-AKE 协议设计简化示意图
+
+   ● Kyber-PFS-AKE 的安全性质与安全证明: Kyber-PFS-AKE 能够达到的安全性质为: 1) 完美前向安全性: 如
+果双方各自至少有一个私钥没有被敌手窃取, 或者双方共享一个没有被敌手窃取的预共享密钥, 则会话密钥保持
+伪随机性. 这也意味着会话密钥拥有完美前向安全性. 前向安全性通常指的是在某个时间点敌手窃取了用户的私
+钥, 保证在该时间点前协商的会话密钥仍然保持伪随机性; 2) 会话密钥唯一性: 构造出的会话密钥以极大的概率
+不会重复出现, 成立的前提是敌手不主动更改用户公私钥对; 3) 实体认证(entity authentication): Kyber-PFS-AKE
+提供实体认证, 但是需要除去两种非平凡的情况. 如果敌手拿到了Alice 的长期私钥以及Alice 和Bob 之间所有预
+共享的密钥, 或者反过来敌手拿到了Bob 的长期私钥以及Alice 和Bob 之间所有预共享的密钥, 那么认证就无法
+实现. 此外, Kyber-PFS-AKE 还可以抵抗KCI 攻击、MEX 攻击、UKS 攻击等. KCI 攻击指的是敌手拿到Bob 的
+全部长期私钥后, 尝试在Bob 面前扮演Alice.
+   我们在eCK-PFS-PSK 模型[11]下给出了Kyber-PFS-AKE 的安全证明. 证明中的一个技术难点是, 如何处理
+IND-CPA 安全的公钥加密中出现的解密错误(尽管解密错误的概率很低). 由于我们保持了转换 T[PKE,G] (去随
+机化和重加密). U[PKE′,H] (哈希) 的角色由密钥派生过程中的密钥派生函数 KDF 扮演. 因此, 通过将 KDF 建模
+为随机预言机, 我们仍然可以通过类似FO 变换中构造解密预言机的证明技术, 将挑战者返回的值嵌入游戏中.
+   ● 计算性能: 我们的构造在计算性能上相比Kyber-AKE 有明显的提升: 发起方时间计算时间减少了38%, 响
+应者计算时间减少了30%.
+   ● 与通用AKE 构造[7]的对比: 通用的3 轮AKE 构造基于DH 密钥交换, DH 运算天然具有对称的特性, 发起
+
+===== PDF PAGE 5 =====
+4434                              软件学报 2025 年第36 卷第10 期
+
+
+
+者和响应者各自拥有长期的DH 公私钥对. 在握手过程中, 双方将各自的公钥和对方的长期私钥结合, 如果双方能
+够计算出相同的DH 值则可以认证对方的身份, 同时, 双方在握手中各自生成临时的DH 公私钥对, 并且将各自的
+临时DH 公钥发送给对方, 将对方的临时DH 公钥与自己的临时DH 私钥结合, 直观上说, 如果双方导出相同的
+DH 值, 则可以保证协议的前向安全性.
+  通过公钥加密和密钥封装构造AKE 与通过DH 密钥交换构造AKE 具有较大区别, 由于公钥加密并不具备
+和DH 运算类似的对称性质, 因此在身份认证和会话密钥的导出上存在较大的区别. 具体来说, 发起者和响应者各
+自有用于认证身份的长期公私钥对. 在握手过程中, 发起者使用响应者的公钥进行加密, 并发送给响应者. 如果响
+应者可以解密该密文, 代表响应者拥有相应的私钥, 从而向发起者认证自己的身份. 响应者使用发起者的公钥进行
+加密, 并发送给发起者, 如果发起者可以解密该密文, 代表发起者拥有相应的私钥, 从而向响应者认证自己的身份.
+此外发起者在握手过程中会生成临时公私钥对, 并将临时公钥发送给响应者, 响应者使用该临时公钥加密后将密
+文发送给发起者, 如果发起者能够解密该密文可以保证了握手的前向安全性. 因此, Kyber-AKE 将这三者各自的共
+享密钥(其计算过程为 KDF(pk,m) , 其中 pk 为公钥, m 为明文) 进行密钥导出(即对共享密钥进行 KDF 运算), 作为
+双方的会话密钥. 同时, Kyber-AKE 是一个两轮协议, 无法达到完美的前向安全性. 而本文的Kyber-PFS-AKE 的构
+造中, 添加了密钥确认消息, 取消了共享密钥的导出过程, 将明文 m 和部分公钥直接进行密钥导出, 对使用长期密
+钥的解密运算, 通过重加密技术解决了IND-CPA 安全的PKE 的解密错误, 在保证完美前向安全性的同时, 使得协
+议拥有更好的计算性能.
+  在考虑到网络延迟的情况下, Kyber-PFS-AKE 的运行时间通常会高于两轮的Kyber-AKE. 根据文献[12] 中的
+研究, 广域网上的网络延迟通常要超过20 ms, 甚至高达数百毫秒, 而后量子的公钥加密(PKE/KEM), 以及杂凑、
+AEAD 的运行时间通常不会超过10 ms, 因此3 轮的AKE 协议在传输时间上会显著慢于两轮的AKE. 然而, Kyber-
+PFS-AKE 能够达到完美的前向安全性, 因此这是一个取舍的问题, 在不需要达到完美前向安全性的场景下Kyber-
+AKE 具有性能上的优势, 在需要前向安全性的场合, Kyber-PFS-AKE 显然有更强的安全性质. 因此需要根据安全
+性和性能需求选择合适的协议.
+    PQ-WireGuard[11]可以看成WireGuard 的后量子版本, 基于IND-CCA 安全的Classic McEliece 密钥封装机制
+和IND-CPA 安全的密钥封装机制Saber 构造的认证密钥交换. 作者同样在eCK-PFS-PSK 模型下给出了安全性证
+明. 在设计上, Kyber-PFS-AKE 与之有很多相似之处. 然而, 两者在困难问题、计算效率和使用场景上差别较大. 具
+体来说: (1) PQ-WireGuard 基于IND-CCA 安全的Classic McEliece 和Saber, Classic-McEliece 是一个基于编码困
+难问题的密钥封装机制, 该方案是否成为NIST 标准目前仍在第4 轮讨论中; 此外, PQ-WireGuard 选用IND-CPA
+版本的Saber, Saber 已经不被NIST 考虑成为标准. 另外, PQ-WireGuard 使用的Saber 参数并非是NIST 提案中的
+参数, 而是作者自己选择的新参数(被命名为Dagger), 其解密错误率被升高到 2−25 , 是否能够使用Dagger 仍然需
+要讨论. (2) 关于计算性能: Classic McEliece 密钥封装机制在封装运算和解封装运算中均显著慢于Kyber, 以NIST
+规定的安全级别3 为例, Classic McEliece 的封装时间与解封装时间分别为Kyber-768 的加解密时间的2.5 倍和
+6 倍, Saber 的封装时间与解封装时间与Kyber-768 类似. 因此在计算效率方面, Kyber-PFS-AKE 显然更具有计算
+性能上的优势. (3) 使用场景: PQ-WireGuard 是一个基于UDP 协议的VPN (虚拟专用网络), 双方无需传输证书, 此
+外, PQ-WireGuard 的数据可以在一个IP 包内传输完成而无需分片, 而Kyber-PFS-AKE 需要IP 分两片完成传输,
+此时PQ-WireGuard 比Kyber-PFS-AKE 更有优势. 但是Classic-McEliece 的公钥长度为524 160 字节, 在很多需要
+传输证书的场景中(如: 国密SSL 协议), 如此长的公钥传输是需要耗费相当长的时间的. 而Kyber 公钥与密文长
+度仅为1 184 字节, 在这种场景下, 选择Kyber-PFS-AKE 是更有优势的.
+  本文第1 节介绍后量子认证密钥交换构造相关工作与研究现状. 第2 节介绍本文所需的基础知识. 第3 节介
+绍Kyber-PFS-AKE 协议构造. 第4 节给出协议在eCK-PFS-PSK 模型下的安全性证明(内容梗概, 完整证明发布在
+公开平台CSDN 上: https://blog.csdn.net/weixin_38238086). 第5 节通过对比实验验证我们的协议对比Kyber-AKE
+有更高的效率. 最后总结全文. 在完整的安全性证明中, 我们给出协议在eCK-PFS-PSK 模型下的完整安全性证明,
+包括完整的安全模型、敌手能力、证明过程等.
+
+===== PDF PAGE 6 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4435
+
+
+1 后量子认证密钥交换构造相关工作与研究现状
+
+  抗量子AKE 有两种主要的设计思路.
+  第1 种设计思路是通过抗量子的数字签名进行身份认证, 并通过抗量子的公钥加密(KEM/PKE) 替代DH 密
+钥交换建立会话密钥. 这种思路的代表性工作是Paquin 等人[12]在TLS 中进行的实验, 该实验中测试了全部NIST
+后量子算法征集中的签名算法与公钥加密组合的表现, Sosnowski 等人[13]做了类似的工作, 他们发现在同一证书
+链中混合使用不同的签名可以提升握手性能.
+
+  第2 种AKE 设计思路是仅使用抗量子的公钥加密(PKE/KEM) 完成身份认证并建立会话密钥. 由于后量子的
+
+数字签名方案通常具有较长的公钥和签名长度, 而公钥加密或者密钥封装机制的公钥和密文长度通常较小, 因此
+
+构造的认证密钥交换计算效率更高, 且传输的代价更小. 第2 种设计思路可以更加细分为: 1) 使用密钥封装机制
+
+(KEM) 构造AKE; 2) 通过被动安全的公钥加密方案(PKE) 构造AKE. 使用密钥封装机制(KEM) 构造AKE 的代
+表性工作为Schwabe 等人[14]提出的KEMTLS, 该工作是在TLS 1.3 协议的基础上, 通过IND-CCA 安全的KEM
+
+构造的后量子TLS 协议, 认证通过密钥封装机制完成, 其基本思想是, 能够成功解密对方发来的密文即可证明自
+
+己是私钥的持有者. 作者测试了NIST 算法征集中的所有KEM 在KEMTLS 的表现. 此外, 作者还给出了KEMTLS
+的安全性证明. 另一个代表性工作是Hülsing 等人[11]提出的PQ-WireGuard 协议, 这是一个虚拟专用网络(VPN) 协
+议, 作为WireGuard[15]协议的后量子版本. PQ-WireGuard 使用了IND-CCA 安全的Classic McEliece 替代使用长期
+DH 密钥交换用于身份认证, 使用了Saber 变体[9]的IND-CPA 安全的Dagger KEM 替代临时DH 密钥交换. PQ-
+
+WireGuard 实现了WireGuard 的所有安全属性, 例如享受单程密钥交换的好处, 固定的密码套件, 并在性能上优于
+IPsec 和OpenVPN. PQ-WireGuard 比WireGuard 慢不到60%. 此外, 李子臣等人[16]提出了基于环上的LWE 假设
+
+(RLWE) 的认证密钥交换, 并在eCK 模型下给出了安全性证明. 这是一个两轮的密钥交换, 根据文献[6] 分析, 两
+
+轮的AKE 无法做到完美的前向安全性.
+  对于通过PKE 构建AKE 的研究, 代表性工作包括Xue 等人[17]提出的AKE, 该工作从所谓的“2-key” KEM 出
+发, 提供了一个通用的构造方法. 直接从弱安全(IND-CPA) 的PKE 构造AKE, 因此可以去除一些冗余操作(例如
+哈希函数). 另一项具有类似思路的工作是由Hövelmanns 等人[18]提出的一种通用的方法, 主要技术是将一些FO
+变换的机制移入AKE, 这是一个两轮的密钥交换. 作者并未对这种通用框架进行实例化, 此外, 该构造的安全性证
+明使用的模型要弱于eCK-PFS-PSK 模型, 无法达到完美的前向安全性.
+
+2 基础知识
+
+    Kyber-PFS-AKE 主要基于公钥加密(PKE), 下面就相关概念和基本安全性定义予以介绍.
+  给定 n ∈N , [n] 表示 {1,2,...,n} . 对于有限集S, |S | 表示其基数. x $←−S 表示从 S 中均匀随机选择元素 x . x $←−D
+表示从分布D 中随机采样元素x. ?= 为布尔表达式, 如果等式成立则值为1, 否则为0. 对于一个确定性算法 A , 其
+输入为x, 输出为y, 记作 y ←−A(x) . 对于一个概率算法 A , 其输入为x, 输出为y, 记作 y $←−A(x) . 如果敌手 A 可以访
+
+问预言机 O , 记作 AO . 如没有特殊说明, 算法均默认为概率算法.
+   定义1. 公钥加密方案. 密钥空间为 K 的公钥加密方案 PKE = (KeyGen,Enc,Dec) 由以下算法组成: (1) 密钥生
+成算法 KeyGen : 给定安全参数 1n 和公共参数 pp , 概率算法 KeyGen 输出一对公私钥 (pk, sk) . 密钥生成过程表示为
+(pk, sk) ←KeyGen(1n; pp) . (2) 公钥加密算法 Enc : Enc 输入公共参数 pp 、公钥 pk 以及待加密明文 m , 输出其加密
+结果 ct . 公钥加密过程表示为 ct ←Enc(pp; pk,m) . (3) 解密算法 Dec : 确定性算法 Dec 输入私钥 sk 和密文 ct , 输出
+解密结果 m′ . 解密过程表示为 m′ ←Dec(sk,ct) .
+   ● 公钥加密方案的正确性. 解密过程存在一定的错误概率, 如果对于明文空间中任意 m ∈M , 满足 Pr[m =
+Dec(sk,ct)] ⩾1−δ , 其中 (pk, sk) ←KeyGen(1n; pp) , ct ←Enc(pp; pk,m) , 概率来自于 KeyGen 和 Enc 中的随机采样,
+则称公钥加密方案是 δ -正确的.
+
+===== PDF PAGE 7 =====
+4436                              软件学报 2025 年第36 卷第10 期
+
+
+   定义2. 公钥加密方案在选择明文攻击下的不可区分安全性 (IND-CPA 安全性). 公钥加密方案PKE 满足选择
+明文不可区分安全敌手 A 和挑战者之间进行如算法1 所示游戏, 敌手的获胜优势为:
+                                       AdvIND-CPAPKE,A = Pr[GIND-CPAPKE,A ⇒1]−1 ⩽negl(n).
+                                                         2
+
+算法1. GIND-CPAPKE,A  .
+
+输入: 安全参数 λ ;
+输出: 敌手是否取得成功(即 b′ ?=b ), 成功则输出0, 失败则输出1.
+
+1. (pk, sk) ←Gen(1λ)
+2. b $←−{0,1}
+
+3. (m0,m1) ←AEnc(pk)
+4. c∗←Enc(pk,mb)
+5. b′ ←AEnc(pk,c∗)
+6. return b′ ?=b
+
+  本文中, 密钥导出函数KDF 用于导出链式会话密钥. KDF 具有两个输入, 我们用 KDF(X,Y) = Z 表示密钥导出
+函数, 其中输入为 X, Y , 输出为Z, Z 中包含3 个块 Z = Z1||Z2||Z3 , KDF(X,Y) 输出的第i 个分块记作 KDFi(X,Y) . 每
+个分块长度为32 字节.
+   定义3. 带关联数据的认证加密(authenticated encryption with associated data, AEAD)[7]. AEAD = {KeyGen,
+Enc,Dec} , 其安全参数为 λ , 定义空间 K , N ∈{0,1}l , M ∈{0,1}∗H,   ∈{0,1}∗ : (1) 密钥生成算法 KeyGen 的输入为 1λ ,
+输出 k ∈K , 该过程记作 k ←KeyGen(1λ) . (2) 加密算法 Enc 的输入为 k ∈K , 一次性随机数 N ∈N , 头 H ∈H , 消息
+M ∈M , 输出为密文 C ∈{0,1}∗ , 该过程记作 C := Enc(k,N,H, M) . (3) 解密算法 Dec 的输入为密钥 k ∈K , 一次性随
+机数 N ∈N , 头 H ∈H , 密文 C , 若解密成功, 则返回 M′ , 若解密失败则返回 ⊥ .
+  对于概率多项式时间的敌手 A , 其输入为安全参数 λ , A 可以访问加密预言机 Enc(·,·,·) , 加密预言机的输入为
+(N,H, M) , 预言机会随机选择 k ∈K , 输出 Enc(k,N,H, M) . 如果敌手能够输出 (N,H,C) , 满足 M :=Dec(k,N,H,C),⊥
+且 (N,H, M) 从未询问过加密预言机 Enc(·,·,·) , 则称敌手 A 伪造密文成功. 如果敌手伪造密文成功的概率 Advaead-authAEAD,A(λ)
+可以忽略, 我们称AEAD 为aead-auth 安全的.
+
+3 Kyber-PFS-AKE 协议设计
+
+    Kyber-AKE 握手过程的3 次封装和解封装计算分别起到不同的作用. 发起者和响应者各自拥有用于认证身份
+的长期公私钥对, 分别记作 (spki,sski) 和 (spkr,sskr) , 响应者有能力解密发起者使用 spkr 加密的密文, 代表响应者可
+以向发起者认证自己的身份. 发起者有能力解密响应者使用 spki 加密的密文, 代表发起者可以向响应者认证自己
+的身份. 发起者能够解密响应者通过临时公钥加密的密文可以保证了握手的前向安全性. 因此, Kyber-AKE 将这三
+者各自的共享密钥进行密钥导出, 作为双方的会话密钥.
+   然而, 这种设计中存在无法抵御的攻击. 如: (1) MEX (maximal exposure) 攻击[5]. 在 MEX 攻击中, 敌手可以获
+得握手过程中生成的所有临时密钥和随机数. 这类攻击通常发生在运行环境或使用的随机数生成器被破坏的情
+况下. 此外, eCK-PFS-PSK 模型允许敌手获取发起者或者响应者的长期私钥. 在基于DH 设计的AKE 中, 可以通
+过双方的长期私钥进行DH 密钥交换处理. 但是在使用公钥加密的情况下, 无法将双方的长期私钥通过公钥加密
+或者密钥封装结合在一起. 因此一种可能的处理方式[11]是双方各自保持长期的随机数 σ 和短期的(定期更新的)
+随机数 r , 即: 发起者持有长期随机数 σi 和短期随机数 ri , 响应者持有长期随机数 σr 和短期随机数 rr . 发起者通过
+密钥派生函数计算 KDF(σi,ri) 作为其PKE 中被加密的对象 m1 , 响应者通过密钥派生函数计算 KDF(σr,rr) 作为
+其PKE 中被加密的对象 m3 . 通过这种方式将双方各自的长期/临时随机数放入会话密钥中, 以抵抗MEX 攻击.
+
+===== PDF PAGE 8 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4437
+
+
+
+(2) UKS (unknown key share) 攻击, 一种经典的攻击模式为中间人攻击. 抵抗UKS 攻击的典型措施是将双方的公
+钥做杂凑运算, 整合到最终会话密钥. (3) 如果能够在第1 条消息中使用双方的长期DH 密钥进行DH 运算, 通过
+第1 条消息即可对发起方进行身份验证, 从而能简单缓解DoS (拒绝服务) 攻击, 因为响应方一旦接收到发起方的第1 条
+消息就可以检测到消息来源非法并中止握手. 因此, Kyber-PFS-AKE 的设计中, 引入了发起方和响应方之间的预共
+享密钥 psk , 可以将 H(spki ⊕spkr) 作为默认值, 其中H 为密钥导出函数, 并将 psk 哈希到最终会话密钥. 这使得会话
+密钥计算中涉及的两方的静态公钥, 这种方法最早出现在PQ-WireGuard 中, 能够在一定程度上抵御UKS 攻击.
+    Kyber-AKE 中使用的KEM 均为IND-CCA 安全的KEM. IND-CCA 安全的KEM 是对IND-CPA 安全的PKE
+进行FO 变换得到. FO 变换的简要介绍见引言部分第8 自然段. 根据FO 变换的设计特性, 可以将IND-CCA 安全
+的KEM 共享密钥 shk 的链接密钥的密钥导出过程表示为 C3,κ3 = KDF(C2,H(spkr,m1)) ( C8 = KDF(C7,H(spki,m3)) ).
+    Kyber-PFS-AKE 的构造保持了 T 变换. 从本质上讲, 链式密钥中的密钥派生函数 C3,κ3 = KDF(C2,∗) ( C8 =
+KDF(C7,∗) ) 可以扮演与密钥导出函数 H 在 U 变换(“hashing”) 相同的角色. 因此, 我们保留变换 T , C3,κ3 和 C8 的
+派生形式为 C3,κ3 = KDF(C2,spkr,m1) ( C8 = KDF(C7,spki,m2) ), 让链式密钥中的 KDF(C2,∗) 发挥同样的作用.
+   此外, T 变换中存在额外的耗时因素. 第1 个额外耗时因素是 T 变换将整个公钥都作为密钥派生函数的输入,
+这是不必要的浪费. 事实上, 将公钥的不可预测部分(例如前32 字节) 包含在最终会话密钥计算中足以实现与包
+括整个公钥在内的会话密钥计算提供的相同安全性[10]. 因此, C3,κ3 的计算形式为 C3,κ3 = KDF(C2, spkr,m1) , C8 =
+KDF(C7, spki,m2) , 其中 spki 、 spkr 表示密钥的一个小的(例如32 字节) 不可预测部分. 基于格的PKE/KEMs 中的
+公钥大小(Kyber 和Saber 中约为1 KB) 明显大于32 字节, 这会对速度产生显著影响. 减少哈希函数的输入长度
+在Kyber 的密钥生成和封装过程中可以加快2–3 倍的速度, 并且在Kyber、Saber 中可以将封装过程提速高达50%
+以上. 因此, 我们只将公钥的一个小的不可预测部分(例如32 字节) 包含在最终会话密钥计算中, 而不是包含整个公钥.
+    Kyber-PFS-AKE 握手协议如图4 所示, 会话密钥导出的过程(链式密钥 C1,C2,...,C10 ) 在图5 中给出, 包括种
+子值(seed, Ck )、AEAD 密钥( κk ) 和杂凑值计算. 对于 分为行的k 值, 第1 行表示发起者的计算, 第2 行表示响应
+者相应的计算, spki, spkr 表示密钥的小部分(例如, 32 字节) 的不可预测部分. 图4 中 CPAPKE = (KeyGen,Enc,Dec)
+是一个IND-CPA 安全的公钥加密方案, KDF 是一个密钥派生函数, 而MAC 是消息认证码. 发起者和响应者的最终
+会话密钥分别是 tki 、 tkr . 我们将IND-CPA 安全的PKE 记作 CPAPKE = (CPAPKE.Gen,CPAPKE.Enc,CPAPKE.Dec) ,
+协议的发起者拥有一对长期公私钥对 (sski, spki) , 响应者拥有一对长期公私钥对 (sskr, spkr) . now 表示当前时间, 用
+time 表示时间戳, 该时间戳用于保证攻击者无法通过重放攻击破坏当前在发起者和响应者之间的会话. ltk 表示发
+起者的身份, 包含使用AEAD 加密的 H(spki) . 每个会话有其独立的会话标识符 sid , 发起者的会话标识符为 sidi ,
+响应者的会话标识符为 sidr , 用于将后续的消息回应和本条消息绑定在一起.
+   我们在eCK-PFS-PSK 模型[11]下完成了安全性证明. 由于Kyber-AKE 使用了IND-CCA 安全的密钥封装机制,
+其安全性证明可以通过使用随机比特串替换IND-CCA 安全的密钥封装机制的会话密钥完成. 因此其安全性可以
+直接归约到密钥封装机制的IND-CCA 安全性. 由于Kyber-PFS-AKE 的设计中没有使用IND-CCA 安全的密钥封
+装机制, 因此Kyber-AKE 的安全性证明中归约到密钥封装机制的IND-CCA 安全性的部分不能被平凡地推广到公
+钥加密的IND-CPA 安全性.
+   然而, 在Kyber-PFS-AKE 的设计中, IND-CPA 安全的公钥加密经过去随机化和重加密后, 结合外层的密钥导
+出函数, 仍然具有和IND-CCA 安全的密钥封装机制类似的结构. 因此, 可以将外层的密钥导出函数建模为随机预
+言机, 在安全性证明中需要IND-CCA 挑战者回答解密询问的部分, 可以通过密钥导出函数模拟对解密询问的回应.
+   此外, 为了添加一定的对拒绝服务攻击(DDoS) 攻击的缓解手段, 可以通过cookie 机制缓解: 当服务器过载时,
+它不会立即处理握手, 而是返回一个cookie. 响应者根据网络状态选择是否接受. 响应者维护一个随机秘密值, 该
+随机秘密值每两分钟更新一次, 响应者使用该随机秘密值作为MAC 密钥, 计算发起者IP 的MAC 值. 在高负载的
+时候, 响应者会将该cookie 返回给发起者. 发起者在重新发送消息的时候, 会使用这个cookie 作为MAC 密钥, 计
+算其消息的MAC 值. 响应者接到发送者再次发来的消息的时候, 如果处于高负载状态, 可以根据是否使用了cookie
+计算正确的MAC 来选择是否接受和处理这个消息. 这种机制将发起者发送的消息与其 IP 地址绑定, 证明了 IP 的
+所有权.
+
+===== PDF PAGE 9 =====
+4438                              软件学报 2025 年第36 卷第10 期
+
+
+
+
+            发起者                           响应者
+
+
+
+
+
+                 图 4　Kyber-PFS-AKE 握手协议
+
+
+                                                         −
+                                                         −
+
+
+
+
+
+                            −                            −
+                                                         −
+
+
+                                                         −                   −
+
+
+
+
+
+                                                         −                   −
+
+
+
+
+
+                            −                                                −
+
+              图 5　Kyber-PFS-AKE 的会话密钥导出过程
+
+===== PDF PAGE 10 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4439
+
+
+   上述cookie 方案使用在DTLS[19]和IKEv2[20]中. 但该cookie 机制存在3 个主要缺点. 首先, 为了尽可能避免暴
+露服务器, 原则上, 不应当给任何不能确认身份的包回应任何消息. 在服务器高负载的情况下, 如果给收到的每个
+消息都发送cookie 回复会破坏这个特性. 第2 个问题是, cookie 不应以明文发送, 因为中间人可能会利用它发送伪
+造的信息, 引导消息的发送者和中间人握手. 第3 个问题是, 攻击者可以给发起者发送大量的虚假cookie, 随后发
+起者会使用这些虚假的cookie 计算消息的MAC, 这样计算出来的MAC 值是无效的, 但是会大量消耗发起者的计
+算资源.
+  为解决这个问题, 我们采用了双MAC 机制[15] (以下用msg.mac1 和msg.mac2 指代) 解决了上述3 个问题. 针
+对第1 个问题, 无论是否处于高负载状态下, 发送的每一条消息都必须包含一个MAC 值, 记作msg.mac1. 发起者
+使用响应者的公钥作为计算msg.mac1 的密钥, 这意味着发起者至少能够确定响应者的身份. 只有发送有效的
+msg.mac1 才能引发响应者的cookie 响应. 尽管响应者的公钥并非保密的值, 但是在保证服务的隐秘性的要求下,
+能够算出正确的msg.mac1 的响应者的公钥能够证明消息的发起方知道响应者的存在. 从而可以保证握手确实在
+发起者和响应者之间进行.
+  为了解决第2 个问题, 可以使用AEAD 加密cookie. AEAD 的加密密钥为响应者的公钥. 在拒绝服务攻击模
+型中, 这些大多是公开的值已经足够满足我们的目的. 如果存在中间人利用该cookie 进行欺诈, 如果接收者身份
+(公钥) 不正确则无法对cookie 解密, 从而可以识别出恶意发送的cookie. 当响应者负载过高时, 只接受包含msg.mac2
+的消息. msg.mac2 的运算使用安全传输的 cookie 作为MAC 的密钥. 总的来说, 响应者在计算msg.mac1 与msg.mac2
+并将其与消息中接收到的 MAC 进行比较后, 必须拒绝带有无效msg.mac1 的消息, 并且在负载过高时也可能会拒
+绝带有无效 msg.mac2 的消息. 如果响应者收到一个带有有效 msg.mac1 但无效msg.mac2 的消息, 并且处于负载状
+态, 它可以回应一个包含cookie 的回复消息.
+   最后, 为了解决第3 个问题, 即攻击者可能给发起者发送大量的虚假cookie, 欺骗发起者会使用这些虚假的
+cookie 计算消息的MAC, 这样计算出来的MAC 值是无效的, 攻击者可能通过这种方式对发起者进行DDoS 攻击.
+为了解决这个问题, WireGuard 采用的解决方案是使用AEAD 加密cookie 的时候, 将AEAD 的“附加数据”字段设
+定为msg.mac1. cookie 回复消息中cookie 对初始消息的第1 个 MAC (msg.mac1) 进行额外认证. 如果攻击者没有站
+在中间人位置, 由于cookie 的计算中, 使用AEAD 的关联数据部分绑定了初始消息, 攻击者无法向发起者发送大
+量无效的cookie 回复消息阻止发起者使用正确的 cookie 进行认证. 对于处于中间人位置的攻击者(可以任意改变
+或阻止消息传输), 阻止cookie 的方法是直接去掉cookie 回应从而阻止发起者和响应者之间建立连接. 此外, 在
+msg.mac1 和msg.mac2 的运算中, 可以不包含对消息中密文的MAC 运算. 发起者给响应者发送的消息中, 包含使用
+响应者公钥计算的密文 ct1 , 响应者给发起者发送的消息中, 包含使用发起者临时公钥计算密文 ct2 和发起者公钥
+计算密文 ct3 . 计算上千字节的杂凑值本身是个非常耗时的行为, 计算密文的杂凑值耗时几乎占据计算整个握手消
+息的一半. 因此, 这种做法可以极大地提升Kyber-PFS-AKE 的计算性能. 这种做法不会影响会话密钥的安全性, 这
+是因为在Kyber-PFS-AKE 的协议设计中包含对密文的解密和重加密校验. 重加密校验会检出无效的密文, 并拒绝
+无效的zero 值, 因此无效密文会被拒绝. 验证MAC 的过程可以和重加密校验并行完成, 消息中其他内容(如:
+time,ltk ) 长度均非常短(32 字节), 对其进行MAC 计算耗时很短.
+
+4 算法安全性分析
+
+   本节给出Kyber-PFS-AKE 协议在eCK-PFS-PSK 模型下的安全性证明概述. 我们参照在eCK-PFS-PSK 模型
+下的AKE 的证明, 基于游戏跳跃(game hop) 给出了Kyber-PFS-AKE 的安全性证明. 因篇幅有限, 证明过程中, 情
+况(case) 和游戏(game) 的详细内容可以查阅本文的电子附件https://blog.csdn.net/weixin_38238086.
+    Kyber-PFS-AKE 的证明将证明分为3 种情况讨论, 假设敌手选中用于测试随机性的会话为 πsi , 敌手需要判断
+挑战者返回给他的比特串是均匀随机选取的, 还是会话 πsi , 3 种情况的区分是 πsi 会话是否具有匹配的会话.
+     1) 情况1: πsi 为发起者的会话, 不存在与之匹配的会话(意味着敌手在另一端欺骗发起者完成会话并协商出会
+
+===== PDF PAGE 11 =====
+4440                              软件学报 2025 年第36 卷第10 期
+
+
+
+话密钥).
+     2) 情况2: πsi 为响应者的会话没有与之匹配的会话(意味着敌手在另一端欺骗响应者完成会话并协商出会话
+密钥).
+     3) 情况3: πsi 会话有匹配的会话(但是敌手依然不能区分真实的会话密钥与均匀随机的字符串).
+  这几种不同情况的区别在于, 敌手是否尝试伪装成某个参与方, 或者敌手是否能获取关于已建立的会话密钥
+的, 以及对手是否被允许拿到某个参与方的私钥. 在每种情况下, 都可以通过一系列游戏跳跃证明敌手必须直接突
+破AEAD 方案的安全性, 或者区分两个信息论意义上不可区分的比特串以获取关于密钥的任何非平凡的信息, 才
+能成功进行攻击. 大多数游戏跳跃是使用prf 或对偶prf 假设的. 在这些游戏跳跃中, 用于组合两个中间值的KDF
+的输出(其中至少一个是随机的, 具体取决于敌手能够破坏哪一个) 被替换为一个随机值.
+  证明中的一个技术难点是, 如何在IND-CPA 安全性假设下, 处理IND-CPA 安全的PKE 的解密错误(尽管解
+密错误的概率很低). 由于我们在保持了转换 T[PKE,G] (“去随机化”和“重加密”). 转换 U[PKE′,H] (“哈希”) 的角色
+由密钥派生过程中的密钥派生函数 KDF 扮演. 因此, 通过将 KDF 建模为随机预言机, 我们仍然可以通过类似FO
+变换中构造解密预言机的证明技术, 将挑战者返回的值嵌入游戏中. 这些步骤涉及的游戏跳跃主要涉及情况1 的
+游戏5 (Case 1: Game 5), 情况2 的游戏5 (Case 2: Game 5), 情况3.2 的游戏3 (Case 3.2: Game 3), 情况3.3 的游戏3
+(Case 3.3: Game 3), 情况3.4 的游戏3 (Case 3.4: Game 3) 和情况3.5 的游戏3 (Case 3.5: Game 3). 在这些游戏中, 情
+况3.2 的游戏3 是唯一依赖于IND-CPA 安全性的游戏.
+   在eCK-PFS-PSK 模型中, 敌手 A 和挑战者 C 之间进行的实验记作 ExpeCK-PFS-PSKKE,nP,nS ,A (λ) , 其中KE 表示密钥交换协
+议. 在该实验中, 挑战者维持着 nP 个参与方 P1,...,PnP , 这些参与方通过协议和其他参与方交流. 每个参与方都可
+以运行最多 nS 个会话. πsi 表示协议中用户 Pi 进行的第 s 个会话. 敌手可以通过向挑战者的不同询问来创建会话,
+发送或删除用户之间发送的消息, 同时通过 CorruptASK(i) 获取用户 i 的长期PKE 私钥, 通过 CorruptEPK(i, s) 获
+取会话 πsi 中用户 i 的临时PKE 私钥, 并获取任意两个用户之间商定的预共享密钥.
+  在研究敌手是否有能力获得会话密钥的时候, 需要排除敌手最简单的打破协议安全性的方法. 敌手 A 最简单
+的方法就是在两个会话 πsi 与 πtj 之间运行协议, 其中下标 i, j 代表用户编号, 上标 s,t 代表会话编号. 敌手只要诚实
+地将双方发送的消息转发给对方, 最后对会话 πsi 进行测试 Test(i, s) , 挑战者给敌手 A 返回真实的会话密钥或随机
+生成的会话密钥. 此时敌手只需要对另一个会话 πtj 进行泄露操作 Reveal , 泄露操作会向敌手返回会话密钥. 敌手
+A 可以直接将拿到的会话密钥和 Test 返回的密钥进行对比. 如果 Test(i, s) 返回的密钥和 Reveal 返回的密钥进行对
+比, 如果两者一致, 则敌手 A 可以判定 Test(i, s) 返回的密钥是会话密钥, 否则判定 Test(i, s) 返回的是随机生成的密
+钥. 在这种情况下敌手可以平凡的打破协议的安全性. 因此, 在eCK-PFS-PSK 模型中, 需要通过贡献式密钥份额
+(contributive keyshares) 和清洁谓词( cleaneCK-PFS-PSK ) 的定义排除这种情况, 两个定义如定义4、定义5 所示.
+   定义4. 贡献式密钥份额. 令 πsi.kid 为会话 πsi 在协议执行过程中发送的所有用于生成会话密钥的材料, πsi.mr 为
+会话 πsi 在协议执行过程中收到的所有消息的连接. 如果 πtj.kid 是 πsi.mr 的子串, 则称 πtj 为 πsi 的贡献式密钥份额会
+话(contributive keyshares session), 简称两个会话匹配(match).
+  清洁谓词( cleaneCK-PFS-PSK ) 定义了安全实验中可以向敌手 A 泄露且不会平凡的破坏协议的安全性的密钥组合.
+符合清洁谓词的要求意味着满足完美前向安全性(PFS) 以及可以抵抗KCI (key compromise impersonation) 攻击.
+KCI 攻击指的是敌手拿到Bob 的全部长期私钥后, 尝试在Bob 面前扮演Alice.
+   定义5. 清洁谓词 ( cleaneCK-PFS-PSK ) 会话. πsi 如果满足以下所有条件, 且 πsi 最终接受了会话密钥, 则称该会话是
+清洁的: 1) 敌手未泄露 πsi 会话密钥; 2) 对于所有与 πsi 匹配的会话 πtj , 敌手未泄露 πtj 的会话密钥; 3) 如果用户 i, j 之
+间的预共享密钥被泄露, 则敌手不能同时通过查询 CorruptASK(i) 和 CorruptEPK(i, s) 获得用户 i 的长期私钥以及
+πsi 的临时私钥; 4) 如果用户 i, j 之间的预共享密钥被泄露, 且 πsi 与 πtj 匹配, 则敌手不能同时通过查询 CorruptASK(j)
+和 CorruptEPK(j,t) 获得用户 j 的长期私钥以及 πtj 的临时私钥; 5) 如果不存在与 πsi 匹配的会话 πtj , 则在 πsi 接受会
+话密钥之前, 敌手不能查询 CorruptASK(j) (防止敌手平凡的扮演用户 j ).
+
+===== PDF PAGE 12 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4441
+
+
+   定理1. Kyber-PFS-AKE 在满足清洁谓词的情况下, 是eCK-PFS-PSK 安全的. 即任意敌手 A 在密钥不可区分
+游戏中的优势 AdveCK-PFS-PSK                                 cleaneCK-PFS-PSK,nP,nS ,A(λ) 都被限制在敌手 A 在对偶-PRF, IND-CPA 以及auth-aead 游戏中的优势, 具体
+来说:
+                                        (nS                                                    f                                  f swap                     )
+              AdveCK-PFS-PSK                             cleaneCK-PFS-PSK,nP,nS ,A(λ) ⩽n2PnS  2λ + Adv(A′)+6· AdvprKDF,R(λ)+ AdvprKDF,R(λ)+ Advauth-aeadAEAD,R(λ)
+                                          (nS                                                    f                                  f swap                     )
+                             +n2PnS   + Adv(A′)+3· AdvprKDF,R(λ)+ AdvprKDF,R(λ)+ Advauth-aeadAEAD,R(λ)
+                                              2λ
+                                                n2Pn2S(2· AdvprKDF,R(λ)+f        AdvprKDF,R(λ))f swap
+                                                n2Pn2S(AdvIND-CPACPAPKE,R(B)+4· AdvprKDF,R(λ)+f        AdvprKDF,R(λ))f swap
+                                                n2Pn2S(Adv(A′)+7· AdvprKDF,R(λ))f                                                         ,                         +max
+                                                n2Pn2S(Adv(A′)+3· AdvprKDF,R(λ)+f        AdvprKDF,R(λ))f swap
+                                                 (nS                                                    f       )                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         n2Pn2S   + Adv(A′)+7· AdvprKDF,R(λ)
+                                                     2λ
+其中, AdvIND-CPAPKE   (B) 是任意敌手 B 对IND-CPA 安全的PKE 游戏中获胜的概率. 在多用户设置中(即存在多个拥有
+不同公钥的接收者, 将同一个消息m 使用对应的公钥发送给这些接收者, 随后敌手尝试解密该消息. 在特定的参
+数设置下, 敌手可以解密出RSA 密文. 考虑攻击者破解多个用户密文的优势. 在量子随机预言模型(QROM) 下, 敌
+手 A′ 的优势为:
+               √               √qC ·n   n2     √ n               q2C
+               Adv(A′) ⩽2   qAdv(n,qc)-IND-CPAPKE     (B)+4q     +   +4(qF +1)    +16q2δ(n)+                                             |M|    2l                  2l           |M|,
+
+其中, q := qF +qD +1 , n 是用户的数量, qC 是挑战密文的个数, qF 是(Q)ROM 查询的最大次数, qD 是解密查询的最
+大次数.
+
+5 算法实现性能评估
+
+   我们使用Kyber-768 进行实验, 用于对比Kyber-PFS-AKE 和Kyber-AKE 的性能. Kyber-768 是Kyber 向
+NIST 算法竞赛提交的算法实现代码中, 安全级别为III (其经典安全强度为182 比特, 其量子安全强度为165 比
+特). 我们参照NIST 颁布的标准, 使用Kyber 的第3 轮提案提供的AVX2 指令集上实现的代码基础上进行实验.
+注意到Kyber-768 提供了两个版本, Kyber-768 和Kyber-768-90s, 两者的区别在于随机数发生器不同. 尽管Kyber-
+768-90s 拥有更高的计算性能, 但根据NIST 给出的报告, Kyber-768-90s 不会被标准化, 因而我们只选用了Kyber-
+768 的实现代码. 此外, 由于Kyber-AKE 来自Fujioka 等人给出的通用构造[5], 其用于生成临时公私钥对 (epki,eski)
+的KEM 可以为IND-CPA 安全的KEM, 在实验中我们采用IND-CPA 安全的KEM 进行该部分计算.
+  协议中存在的其他模块, 对于密钥导出运算(即KDF), 我们使用BLAKE2s 算法[21], 对于AEAD, 我们采用了
+ChaCha20-Poly1305 算法[22]. 这两种算法的也在WireGuard、Noise 中使用. 因此我们采取了与其一致的代码. 所有
+基准测试均在Intel Core i7-6700 处理器上进行, 时钟频率为900 MHz (查询/proc/cpuinfo 获得), 关闭了TurboBoost
+和超线程, 基准测试机器具有16 GB 的RAM, 运行Ubuntu 操作系统, 内核版本为5.4.0. 报告的所有循环计数均为
+各自函数的10 000 次执行的中值. 对比结果如表1 所示.
+
+                    表 1　实验数据集
+
+         性能指标          Kyber-AKE       Kyber-PFS-AKE   计算性能提升百分比 (%)
+       发起者计算时间          258 464             158 445                      38.6
+       响应者计算时间          234 297             162 289                      30.7
+
+  如表1 所示, 与Kyber-AKE 相比, 我们的设计在发起方和响应方设备上均节省了近30% 的计算工作量. 影响
+握手时间的另一个重要因素是数据传输, 而在我们的构建和Kyber-AKE 中传输的数据长度相同, 这意味着两个协
+
+===== PDF PAGE 13 =====
+4442                              软件学报 2025 年第36 卷第10 期
+
+
+
+议的数据传输时间大致相同, 握手时间的差异主要来自它们不同的计算性能.
+
+6 总　结
+
+    Kyber 是一个基于格上困难问题的密钥封装机制(KEM), 在2023 年被美国国家标准与技术研究院(NIST) 宣
+布为第1 个被标准化的KEM. Kyber-AKE 是Kyber 的设计者基于Kyber KEM 构造的弱前向安全的认证密钥交
+换(AKE), 通过使用3 个IND-CCA 安全的KEM 在两轮内协商会话密钥,
+  在本文中, 我们介绍了Kyber-PFS-AKE, 这是一种新的AKE 构造方法. Kyber-PFS-AKE 只使用了IND-CPA
+安全的公钥加密(PKE) 方案, 从而简化了后量子Kyber-AKE 的设计. 我们严格证明了基于IND-CCA KEM 的Kyber-
+AKE 协议中某些操作是冗余的. 去除这些冗余后, 协议变得更加简化和高效. 通过仅使用具有被动安全性的PKE,
+并通过FO 变换中的类似技术处理被动安全的PKE 的解密错误. 我们在eCK-PFS-PSK 模型下证明了Kyber-PFS-
+AKE 的会话密钥不可区分性质, 以及完美的前向安全性等安全性质. 根据eCK-PFS-PSK 模型的定义, 以及清洁谓
+词的要求, 保证了Kyber-PFS-AKE 协议的完美前向安全性. 通用的从IND-CPA 安全的AKE 构造框架是无法做到
+完美的前向安全性的. 我们使用量子安全为165 比特的Kyber-768. PKE 实现了Kyber-PFS-AKE. 我们的实验结果
+表明, 与Kyber-PFS-AKE 相比, 我们的构造使得协议发起者的计算时间上降低了38%, 在响应者计算时间上降低
+了30%.
+
+
+References:
+  [1]  NIST. Call for proposals. 2017. https://csrc.nist.gov/Projects/post-quantum-cryptography/post-quantum-cryptography-standardization/
+
+       Call-for-Proposals
+
+  [2]  Bos J, Ducas L, Kiltz E, Lepoint T, Lyubashevsky V, Schanck JM, Schwabe P, Seiler G, Stehlé D. CRYSTALS-Kyber: A CCA-secure
+
+       module-lattice-based KEM. In: Proc. of the 2018 IEEE European Symp. on Security and Privacy (EuroS&P). London: IEEE, 2018.
+
+      353–367. [doi: 10.1109/EuroSP.2018.00032]
+
+  [3]  Alagic G, Apon D, Cooper D, Dang Q, Dang T, Kelsey J, Lichtinger J, Miller C, Moody D, Peralta R, Perlner R, Robinson A, Smith-
+
+      Tone D, Liu YK. Status report on the third round of the NIST post-quantum cryptography standardization process. US Department of
+
+      Commerce, NIST, 2022.
+
+  [4]  Narisada S, Uemura S, Okada H, Furue H, Aikawa Y, Fukushima K. Solving McEliece-1409 in one day—Cryptanalysis with the
+
+      improved BJMM algorithm. In: Proc. of the 27th Int’l Conf. on Information Security. Arlington: Springer, 2025. 3–23. [doi: 10.1007/978-
+
+      3-031-75764-8_1]
+
+  [5]  Fujioka A, Suzuki K, Xagawa K, Yoneyama K. Strongly secure authenticated key exchange from factoring, codes, and lattices. In: Proc.
+
+       of the 15th Int’l Conf. on Practice and Theory in Public Key Cryptography. Darmstadt: Springer, 2012. 467–484. [doi: 10.1007/978-3-642-
+
+      30057-8_28]
+
+  [6]   Canetti R, Krawczyk H. Analysis of key-exchange protocols and their use for building secure channels. In: Proc. of the 2001 Int’l Conf.
+
+      on the Theory and Application of Cryptographic Techniques. Innsbruck: Springer, 2001. 453–474. [doi: 10.1007/3-540-44987-6_28]
+
+  [7]  Dowling B, Paterson KG. A cryptographic analysis of the WireGuard protocol. In: Proc. of the 16th Int’l Conf. on Applied Cryptography
+
+      and Network Security. Leuven: Springer, 2018. 3–21. [doi: 10.1007/978-3-319-93387-0_1]
+
+  [8]  Håstad J. Solving simultaneous modular equations of low degree. SIAM Journal of Computing, 1988, 17(2): 336–341. [doi: 10.1137/
+
+      0217019]
+
+  [9]  D’Anvers JP, Karmakar A, Roy SS, Vercauteren F, et al. Saber: Mod-LWR based KEM algorithm specification and supporting
+
+       documentation. 2019. https://www.esat.kuleuven.be/cosic/pqcrypto/saber/
+
+[10]  Duman J, Hövelmanns K, Kiltz E, Lyubashevsky V, Seiler G. Faster lattice-based KEMs via a generic Fujisaki-Okamoto transform using
+
+       prefix hashing. In: Proc. of the 2021 ACM SIGSAC Conf. on Computer and Communications Security. Springer, 2021. 2722–2737. [doi:
+
+      10.1145/3460120.3484819]
+
+[11]  Hülsing A, Ning KC, Schwabe P, Weber FJ, Zimmermann PR. Post-quantum WireGuard. In: Proc. of the 2021 IEEE Symp. on Security
+
+      and Privacy (SP). San Francisco: IEEE, 2021. 304–321. [doi: 10.1109/SP40001.2021.00030]
+
+[12]  Paquin C, Stebila D, Tamvada G. Benchmarking post-quantum cryptography in TLS. In: Proc. of the 11th Int’l Conf. on Post-quantum
+
+       Cryptography. Paris: Springer, 2020. 72–91. [doi: 10.1007/978-3-030-44223-1_5]
+
+[13]  Sosnowski M, Wiedner F, Hauser E, Steger L, Schoinianakis D, Gallenmüller S, Carle G. The performance of post-quantum TLS 1.3. In:
+
+===== PDF PAGE 14 =====
+米瑞琪 等: 基于Kyber 公钥加密的高效认证密钥交换协议                                        4443
+
+
+
+       Proc. of the 19th Int’l Conf. on Emerging Networking Experiments and Technologies. Paris: ACM, 2023. 19–27. [doi: 10.1145/3624354.
+
+      3630585]
+
+[14]  Schwabe P, Stebila D, Wiggers T. Post-quantum TLS without handshake signatures. In: Proc. of the 2020 ACM SIGSAC Conf. on
+
+      Computer and Communications Security. ACM, 2020. 1461–1480. [doi: 10.1145/3372297.3423350]
+
+[15]  Donenfeld JA. WireGuard: Next generation kernel network tunnel. In: Proc. of the 24th Annual Network and Distributed System Security
+
+      Symp. San Diego: The Internet Society, 2017. [doi: 10.14722/ndss.2017.23160]
+
+[16]  Li ZC, Xie T, Zhang JM, Xu RH. Post quantum authenticated key exchange protocol based on ring learning with errors problem. Journal
+
+       of Computer Research and Development, 2019, 56(12): 2694–2701. (in Chinese with English abstract) [doi: 10.7544/issn1000-1239.2019.
+
+      20180874]
+
+[17]  Xue HY, Lu XH, Li B, Liang B, He JN. Understanding and constructing AKE via double-key key encapsulation mechanism. In: Proc. of
+
+       the 24th Int’l Conf. on the Theory and Application of Cryptology and Information Security. Brisbane: Springer, 2018. 158–189. [doi: 10.
+
+       1007/978-3-030-03329-3_6]
+
+[18]  Hövelmanns K, Kiltz E, Schäge S, Unruh D. Generic authenticated key exchange in the quantum random oracle model. In: Proc. of the
+
+      23rd IACR Int’l Conf. on Practice and Theory of Public-key Cryptography. Edinburgh: Springer, 2020. 389–422. [doi: 10.1007/978-3-
+
+      030-45388-6_14]
+
+[19]  Rescorla E, Modadugu N. Datagram transport layer security version 1.2. RFC 6347. 2012.
+[20]  Kaufman C, Hoffman P, Nir Y, Eronen P. Internet key exchange protocol version 2. RFC 5996. 2010.
+[21]  Aumasson JP, Neves S, Wilcox-O’Hearn Z, Winnerlein C. BLAKE2: Simpler, smaller, fast as MD5. In: Proc. of the 11th Int’l Conf. on
+
+      Applied Cryptography and Network Security. Banff: Springer, 2013. 119–135. [doi: 10.1007/978-3-642-38980-1_8]
+
+[22]  Nir Y, Langley A. ChaCha20 and Poly1305 for IETF protocols. IETF RFC 8439, 2018. [doi: 10.17487/RFC8439]
+
+
+附中文参考文献:
+
+[16] 李子臣, 谢婷, 张卷美, 徐荣华. 基于RLWE 的后量子认证密钥交换协议. 计算机研究与发展, 2019, 56(12): 2694–2701. [doi:
+
+       10.7544/issn1000-1239.2019.20180874]
+
+
+
+            米瑞琪(1995－), 女, 博士生, 主要研究领域为后               张振峰(1972－), 男, 博士, 研究员, 博士生导师,
+
+        量子密码的设计与分析.                     主要研究领域为密码学与数据安全.
+
+
+
+
+
+            江浩东(1989－), 男, 博士, 主要研究领域为抗量
+
+        子密码研究, 量子可证明安全理论, 格密码学设
+
+         计与分析, 量子算法与量子查询复杂度理论.

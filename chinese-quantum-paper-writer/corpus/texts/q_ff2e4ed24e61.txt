@@ -1,0 +1,657 @@
+===== PDF PAGE 1 =====
+早期量子算法在量子通信、量子纠错等领域的应用
+
+Renata WONG
+
+引用本文
+
+Renata WONG. 早期量子算法在量子通信、量子纠错等领域的应用[J]. 计算机科学, 2022, 49(6A): 645-648.
+
+Renata WONG. Application of Early Quantum Algorithms in Quantum Communication,Error Correction and
+
+Other Fields[J]. Computer Science, 2022, 49(6A): 645-648.
+
+
+
+相似文章推荐（请使用火狐或IE 浏览器查看文章）
+
+Similar articles recommended (Please use Firefox or IE to view the article)
+
+Shor 整数分解算法的线路优化
+
+Optimization for Shor's Integer Factorization Algorithm Circuit
+
+计算机科学, 2022, 49(6A): 649-653. https://doi.org/10.11896/jsjkx.210600149
+
+一种量子安全拜占庭容错共识机制
+
+Quantum Secured-Byzantine Fault Tolerance Blockchain Consensus Mechanism
+
+计算机科学, 2022, 49(5): 333-340. https://doi.org/10.11896/jsjkx.210400154
+
+Grover 算法改进与应用综述
+
+Survey on Improvement and Application of Grover Algorithm
+
+计算机科学, 2021, 48(10): 315-323. https://doi.org/10.11896/jsjkx.201100141
+
+噪声信道下的盲量子计算
+
+Blind Quantum Computation over Noise Channels
+
+计算机科学, 2020, 47(7): 37-41. https://doi.org/10.11896/jsjkx.190600020
+
+直觉主义视角下量子逻辑的进一步解释
+
+Deeper Explanation of Quantum Logic in Intuitionistic Perspective
+
+计算机科学, 2020, 47(5): 1-6. https://doi.org/10.11896/jsjkx.191200056
+
+===== PDF PAGE 2 =====
+RenataWONG
+南京大学计算机科学与技术系　南京２１００２３
+中图法分类号　TP３Ｇ０,TP３９
+RenataWONG
+rithm,Quantumkeydistribution,Quantumerrorcorrection
+１　引言
+在计算机科学和物理学中,量子计算均是一门新兴学科.
+第一批量子算法在上世纪８０年代和９０年代才被发现.其中
+一些最值得注意的算法有DeutschＧJozsa算法[１]、BernsteinＧ
+Vazirani算法[２]、Simon 算法[３]、Grover 搜索算法[４]和Shor
+的整数分解算法[５].Shor的整数分解算法有具体的用途,通
+常被用于加密系统.Grover算法亦有具体用途,即在数据库
+里寻找一个或多个具有所需特征的元素.它与Shor算法的
+不同之处在于它有较多其他的用途,譬如,确定所需特征元素
+的数量[６]、求解分团问题[７]、求解最大独立集问题[８]和求解蛋
+白质折叠问题[９].
+在Shor和Grover的量子算法被认为具有实际用途的同
+时,DeutschＧJozsa,BernsteinＧVazirani和Simon的算法多半被
+视为仅具有理论价值.与经典算法相比,这些量子方法提供
+通信作者:RenataWONG (renata．wong＠protonmail．com)
+http://www．
+jsjkx．com
+DOI:１０．１１８９６/jsjkx．２１０４００２１４
+了指数级加速.这几种算法分别对此演示出一个既简单亦重
+要的证明.尽管曾经被认为没有什么实际用途,这些算法在
+近期都成功地扩展到新的应用领域,尤其在量子通信、量子密
+码学和纠错方面.
+本文讨论了对这些算法进行的一些最新修改,修改的目
+的是使其适用于其他领域.尽管看起来简单,这些修改却都
+要求对量子计算和量子信息原则有充分的理解.有关量子计
+算的基本概念以及量子力学的假设,可参考文献[１０].
+２　DeutschＧJozsa量子算法及其在量子密钥分发领
+域的应用
+２．１　DeutschＧJozsa量子算法
+DeutschＧJozsa算法[１]用于判定具任意引数量的一个布
+尔函数f(x):{０,１}
+n→{０,１}为常数或平衡.如f(x)＝c∈
+{０,１},则该函数为常数.如该函数的输入域一半的输出为
+早期量子算法在量子通信、量子纠错等领域的应用
+摘　要　当今量子算法的一个发展方向是对早期量子算法的再思考.在量子计算领域,每一种早期量子算法都提出了突破性
+概念.一般认为它们在很大程度上仅属理论范畴,原因它们所求解的问题几乎都没有实用价值.但这些早期量子算法依然重
+要,因为它们在解决问题的速度上相比经典算法呈指数级别的增长.文中做了两件工作:一方面详细阐述对早期量子算法再思
+考的最新进展,另一方面则对早期量子算法进行所谓的重新目的化,即重新用于量子密钥分发、纠错等领域.DeutschＧJozsa算
+法、BernsteinＧVazirani算法和Simon算法是关注的重点.DeutschＧJozsa算法用于判定多引数函数(MultiＧargumentFunction)是
+平衡的还是常数的.最近的研究表明,其应用可以扩展到量子通信和形式语言(FormalLanguages)领域.BernsteinＧVazirani
+算法能够搜索出在函数中编码的字符串,其应用可以扩展至量子密钥分发领域和通信中对信息的纠错处理.Simon算法则用
+于求解具有特定属性字符串的识别问题,它的现代应用包括量子通信和纠错.
+关键词:量子算法;量子计算;DeutschＧJozsa算法;BernsteinＧVazirani算法;Simon算法;量子密钥分发;量子纠错
+ApplicationofEarlyQuantumAlgorithmsinQuantumCommunication,ErrorCorrectionand
+OtherFields
+DepartmentofComputerScienceandTechnology,NanjingUniversity,Nanjing２１００２３,China
+Abstract　Atpresent,adevelopmentdirectionofquantumalgorithmistorethinktheearlyquantumalgorithms．EachoftheminＧ
+volvesanimportant,groundbreakingconceptinquantumcomputing．TheyaregenerallyconsideredtoonlybelongtothetheoretiＧ
+calcategoryduetothefactthattheproblemstheysolveareoflittlepracticalvalue．However,theyarestillimportantastheycan
+solveaproblemexponentiallyfasterthanaclassicalalgorithm．Here,thispaperelaboratesonsomerecentdevelopmentsinrepurＧ
+posingtheearlyquantumalgorithmsforquantumkeydistributionandotherfields．ItespeciallyfocusesonDeutschＧJozsaalgoＧ
+rithm,BernsteinＧVaziranialgorithmandSimon’salgorithm．TheDeutschＧJozsaalgorithmisusedtodeterminewhetheramultiＧ
+argumentfunctionisbalancedorconstant．Asrecentresearchshows,itcanbeextendedtoapplicationinthefieldofquantum
+communicationandformallanguages．TheBernsteinＧVaziranialgorithmfindsastringencodedinafunction．Itsapplicationcanbe
+extendedtoquantumkeydistributionanderrorcorrection．Simon’salgorithmtacklestheproblemofidentifyingastringwitha
+particularproperty．Itsmodernapplicationsincludequantumcommunicationanderrorcorrection．
+Keywords　Quantum algorithms,Quantum computing,DeutschＧJozsaalgorithm,BernsteinＧVaziranialgorithm,Simon’salgoＧ
+
+===== PDF PAGE 3 =====
+６
+４
+６
+ComputerScience 计算机科学
+Vol．４９,No．６A,June２０２２
+０,而另一半的输出为１,则该函数为平衡.
+在这个算法中,函数f 以量子oracle(黑盒)Uf:|x›|y›→
+|x›|f(x)􀱇y›执行,其中􀱇是模２加法.该算法从|ψ０›＝
+|０›􀱋n|１›态开始.前n 个量子位构成第一个寄存器(RegisＧ
+ter),包含了Uforacle,而最后一个量子位则是第二个寄存器,
+包含用于相位反冲(PhaseKickback)的量子位.接下来,将
+n＋１量子位的Hadamard变换应用于两个寄存器,从而得出
+|０›－|１›
+|x›
+|ψ１›＝
+∑
+２
+[
+] .然后,应用oracleUf后得出
+２
+n
+n
+x∈{０,１}
+|０›－|１›
+(－１)
+f(x)|x›
+|ψ２›＝±
+∑
+２
+[
+] .这时,最后一个量
+２
+n
+n
+x∈{０,１}
+子位可以忽略,因为相位反冲已发挥了作用.此后,该量子位
+再也不会有变化.下一步将Hadamard 变换应用于第一个寄
+(－１)
+f(x)＋x􀅰y|y›
+存器并得出|ψ３›＝±
+∑
+n
+,其中,
+n　
+∑
+２
+n
+x∈{０,１}
+y∈{０,１}
+x􀅰y 是模２的按位内积.这时,可以测量第一个寄存器.如
+f 是常数,则能够观察到|y›＝|０›􀱋n的概率是１(相长干涉).
+如f 是平衡,则观察到|y›＝|０›􀱋n的概率是０,并且可以观察
+到不同于|０›􀱋n的态(相消干涉).
+２．２　DeutschＧJozsa量子算法在密钥分发上的应用
+与现有的任何确定性经典算法相比,DeutschＧJozsa 算法
+提供了指数加速,因而有可能在其他领域中提供类似的加速.
+Nagata等[１１]考虑了一个有趣的情节,即使用DeutschＧJozsa算
+法,让Alice和Bob通过一个密钥分发机制来安全地进行通信
+(Alice,Bob和Eve属于量子通讯领域中的常规称呼,即Alice
+通常指通讯发起者,Bob指通讯接收者,Eve则指通讯的潜在窃
+听者).Alice和Bob 的这个情节利用了形式为|GHZ›＝
+|０›
+􀱋m＋|１›
+􀱋m
+的GHZ(GreenbergerＧHorneＧZeilinger)态,以及
+２
+Ekert’９１协议[１２].文献[１１]中提出的算法以量子态|ψ０›＝
+|１›
+n|０›＋|０›
+n|１›
+n＋１
+为起点.根据此态的结构/形式,我们可以
+２
+轻易确认如何制备此态:将PauliX闸应用于前n个量子位,将
+Hadamard闸应用于最后一个量子位,再应用n 个CNOT 闸
+(每个CNOT 闸都将最后一个量子位用作其控制量子位,而
+将第一个寄存器中的n 个量子位中的一个用作其目标量子
+位).然后应用n＋１Hadamard 量子闸,从而得出|ψ１›＝
+n |０›＋|１›
+n |０›－|１›
+|０›－|１›
+２
+[
+] ＋|０›＋|１›
+１
+２
+[
+]
+æ
+è
+ç
+ö
+ø
+÷ .
+２
+[
+]
+２
+[
+]
+２
+再然后,应用oracleUf,随后再应用一次n＋１Hadamard 量
+子闸. 若该函数为常数,则结果为纠缠态|ψ２›＝
+±|１›
+n|０›±|０›
+n|１›
+;若该函数为平衡,则结果为非纠缠态|ψ２›＝
+２
+±|１›
+n|０›±|１›
+n|１›
+.最后一步是执行GHZ测量,而其４个
+２
+基态为|Ψ＋›＝|１›
+n|０›＋|０›
+n|１›
+,|Ψ－›＝|１›
+n|０›－|０›
+n|１›
+,
+２
+２
+|Φ＋›＝|１›
+n|１›＋|０›
+n|０›
+和|Φ－›＝|１›
+n|１›－|０›
+n|０›
+. 对
+２
+２
+|ψ２›进行GHZ测量时,我们将看到GHZ４个基态中的一个.
+若该函数为常数,则看到此态的概率为１;若该函数为平衡,
+则看到此态的概率为１
+[１１]
+.
+为了安全地分发量子密钥,Alice和Bob按照文献[１１]中
+给出的Ekert’９１协议[１２]所指示的步骤进行操作:１)Alice制
+备|ψ１›,然后将其发送给Bob;２)Bob选定一个函数,然后先
+将oracle、再将Hadamard 闸应用于|ψ１›;３)Bob将|ψ２›态的
+前n个量子位发送回Alice;４)Alice进行一次GHZ测量,以
+了解该函数是平衡还是常数.因此,Alice和Bob共享一个密
+钥,即该函数的类型.此外,若该函数属常数而测量结果不为
+１,则Eve(第三方)必然进行了窃听,因此必须放弃原来的密
+钥.若Bob选择一个平衡函数,此协议则无法检测Eve的监
+听.这是因为的窃听破坏了GHZ 纠缠态,而平衡函数的
+|ψ２›态本来就是纠缠态.
+２．３　DeutschＧJozsa量子算法的其他应用领域
+综上,修改后的DeutschＧJozsa算法可用于基于Ekert９１
+协议的安全量子密钥分发.Ekert协议是第一个使用纠缠态
+的量子密钥分发协议.使用经过修改的DeutschＧJozsa算法
+的量子密钥分发以O(２
+n)倍优于经典算法.关于DeutschＧ
+Jozsa算法的新应用,比较受关注的有文献[１３],用于另一种
+量子密钥分发协议;另一方面,文献[１４]对原来的算法进行
+了修改,然后在形式语言的脉络中用于区分平凡和非平凡的
+单词.
+３　BernsteinＧVazirani量子算法及其在量子密钥分
+发和量子纠错中的应用
+３．１　BernsteinＧVazirani量子算法
+Bernstein和Vazirani要求解如下问题.对于ξ∈{０,１}
+n
+来说,函数f:{０,１}
+n →{０,１}被定义为f(x)＝ξ􀅰x＝
+n
+i＝０ξ
+ixi(mod２)＝ξ
+ixi􀱇􀆺􀱇ξnxn,然后任务是要找出ξ.
+∑
+与DeutschＧJozsa算法的情况一样,初始态为|ψ０›＝
+|０›
+n|１›.通过Hadamard 变换(|ψ１›)和oracleUf:|x›|y›→
+|x›|y􀱇f(x)›的应用,我们取得|ψ２›态.再执行一次HadＧ
+(－１)
+f(x)＋x􀅰y|y›
+amard变换后取得|ψ３›＝±
+∑
+n
+.根
+n　
+∑
+２
+n
+x∈{０,１}
+y∈{０,１}
+据该函数的定义,我们有(－１)
+f(x)＋x􀅰y ＝(－１)
+ξ􀅰x＋x􀅰y ＝
+(－１)
+x􀅰(
+ξ􀱇y).这时我们观察到,对于y 的任一特定值来说,
+n(－１)
+x􀅰(
+ξ􀱇y)＝２
+nδξ,y,其中δξ,y ＝１仅当ξ＝y.按此即
+∑
+x∈{０,１}
+nδξ,y|y›
+２
+有|ψ３›＝±
+∑
+n
+＝±|ξ›＝±|ξ１ξ２􀆺ξn›.
+２
+n
+y∈{０,１}
+n/２＋１个查询.量子算法则只需要一个
+经典算法需要２
+查询即可建立字符串.因此,BernsteinＧVazirani算法以指数
+级别优于经典算法.
+３．２　BernsteinＧVazirani量子算法在密钥分发上的应用
+上述算法可用于文献[１５]中提出的量子密钥分发.假设
+Alice和Bob同意使用函数f(x)＝ξ􀅰x.Bob知悉值|ξ›,但
+值|ξ›却不为Alice所知悉.因此,Alice首先要确立Bob所
+选择的字符串.在经典情节中,Alice需要向Bob提问n个问
+题.在量子情节中,Alice则只需要问一个问题即能获知该字
+符串.为了问这个问题,Alice先要准备好n＋１个量子位的
+|ψ０›态.她会对该态进行Hadamard 变换,然后将所得态
+|ψ１›发送给Bob.Bob使用他选定的|ξ›将BernsteinＧVazirani
+算法用于该态. 然后,他将|ψ２›的前n 个量子位发送回
+Alice.Alice应用Hadamard 变换,并取得|ψ３›,从而获悉
+Bob所选定的字符串|ξ›. 从而Alice亦获悉函数f(x).
+
+===== PDF PAGE 4 =====
+７
+４
+６
+RenataWONG:早期量子算法在量子通信、量子纠错等领域的应用
+经过此程序,此时Alice和Bob共享n位信息.
+在经典的情节中,Alice至少需要与Bob进行n次通信才
+能共享n位信息.因此,使用上面给出的BernsteinＧVazirani
+算法的量子密钥分发协议比经典协议快n倍.
+３．３　BernsteinＧVazirani量子算法在纠错上的应用
+上述量子通信协议没有指定任何针对Eve窃听的保护措
+施,因此不如使用DeutschＧJozsa算法安全,而且它还可能包
+含传输错误.误码不一定与窃听相关.低检测效率、传输损
+耗、不完善的纠缠源以及许多其他因素均会导致误报.纠错
+是一个重要的后处理过程,可以容忍实现制约,但又可同时确
+保传输密钥的准确性.通常,量子密钥分发协议通过协调机
+制来处理错误,例如Alice和Bob同意使用一个比特子集作
+为共享密钥,而不用整个字符串.文献[１５]中演示了一种使
+用BernsteinＧVazirani算法纠正错误的方法.纠正方法如下.
+Nagata等[１５]将函数重新定义为f(x)＝g(x)􀱇h(x),其中
+g(x)＝γ􀅰x 及h(x)＝η􀅰x,而γ 是Bob 拥有的字符串,η是
+n
+Alice拥有的字符串.由此而得出f(x)＝∑
+i＝０(γi􀱇η
+i)􀅰xi(mod
+２).前面给出的BernsteinＧVazirani算法中的|ψ３›态因而变为
+(－１)
+f(x)＋x􀅰y|y›
+|ψ３›＝±
+∑
+n　
+∑
+n
+＝±
+∑
+n　
+∑
+２
+n
+n
+x∈{０,１}
+y∈{０,１}
+x∈{０,１}
+y∈{０,１}
+(－１)
+g(x)􀱇h(x)＋x􀅰y|y›
+(－１)
+x􀅰(γ＋η)＋x􀅰y|y›
+n
+.
+n
+＝±
+∑
+n　
+∑
+２
+２
+n
+x∈{０,１}
+y∈{０,１}
+此时我们有γ＋η＝(γ１􀱇η１,􀆺,γn 􀱇ηn),随之取得
+∑
+n
+x∈{０,１}
+(－１)
+x􀅰(γ＋η)＋x􀅰y＝２
+nδγ＋η,y;最后得出|ψ３›＝±|γ＋η.换言
+之,Alice能观察到|γ１􀱇η１,γ２􀱇η２,􀆺,γn􀱇ηn›态.因此,如
+果Alice测量第一个寄存器并获得字符串|０１０􀆺０›,那么她
+知道第二个量子位上出错,因为γ２􀱇η２＝１表示这些字符串
+元素彼此有异.据此,Alice可以检测出与Bob进行量子通信
+时发生的错误.
+３．４　BernsteinＧVazirani量子算法的其他应用
+如上所述,使用BernsteinＧVazirani算法的这种量子密钥
+分发不如使用DeutschＧJozsa算法的协议,但是它的性能仍然
+以n倍优于经典协议.文献[１６]给出了该算法的其他一些
+延伸应用,主要用于攻击分组密码.
+４　Simon量子算法及其在量子密钥分发中的应用
+４．１　Simon量子算法
+Simon要针对的问题可具体说明如下. 假设有函数
+f(x):{０,１}
+n→{０,１}
+n将n 位字符串映射到n 位字符串.我
+们进一步假设该函数满足所有x 的特性f(x)＝f(x􀱇ξ),其
+中x􀱇ξ＝(x１􀱇ξ１,x２􀱇ξ２,􀆺,xn􀱇ξn).任务是找出字符串
+ξ.Simon量子算法求解了这个问题,速度比任何确定性或概
+率性经典算法更快,而且呈指数级别的加速.窍妙之处在于
+其设计减少了对oracle所需的查询数量,因而能够在确定ξ
+时实现这种加速.
+该算法如下. 初始态是|ψ０›＝|０›􀱇n|０›􀱇n. 将HadaＧ
+|x›
+mard变换应用于前n个量子位取得|ψ１›＝
+∑
+n |０›
+n
+２
+n
+x∈{０,１}
+态.然后,应用oracleUf:|x›|y›→|x›|f(x)􀱇y›,从而取得
+|x›
+|ψ２›＝
+∑
+n|f(x)›态.使用恒等式f(x)＝f(x􀱇ξ)后
+２
+n
+x∈{０,１}
+|x􀱇ξ›
+亦可取得|ψ３›＝
+∑
+n
+|f (x)›态. 接下来,
+我们观察第二个寄存器.如果对其进行测量,那么第一个寄
+存器所呈现的态将与第二个寄存器上观察到的态相应(由量
+子叠加现象所造成),即第一个寄存器仅包含致使f(x)＝y
+的x.因此,通过所假设的恒等式f(x)＝f(x􀱇ξ),我们可以
+|x›＋|x􀱇ξ›
+将该态记为|ψ４›＝１
+２(|ψ２＋ψ３)＝
+∑
+２
+n＋２
+n
+x∈{０,１}
+|f(x)›.最后,我们在第一个寄存器上应用Hadamard变换
+􀱇n|ψ４›＝１
+而获得|ψ５›＝H
+n (－１)
+x􀅰y＋(x􀱇ξ)􀅰y|y›
+n
+∑
+２
+y∈{０,１}
+|f(x)›.这与１
+n(－１)
+x􀅰y(１＋(－１)
+y􀅰ξ)|y›|f(x)›
+n
+∑
+２
+y∈{０,１}
+相对应.若y􀅰ξ＝１,则概率幅度变作０.因此,该态可以简
+化为|ψ５›＝１
+y􀅰ξ＝０(－１)
+x􀅰y|y›|f(x)›.现在我们可以通
+n　∑
+２
+过多次重复上述程序及测量寄存器|y›来确定字符串ξ.该
+算法只需要对oracle进行O(n)个查询,经典算法则至少需要
+Ω(２
+n/２)个查询.
+与最佳确定性经典算法相比,DeutschＧJozsa算法展示出
+指数级别的量子改进;与最佳随机经典算法相比,BernsteinＧ
+Vazirani算法展示出多项式的改进,其误差概率小于１/３.
+Simon算法结合了这两个特色,即在指数级别上优于有界误
+差随机经典算法的速度.Simon 算法只需要对oracle 进行
+O(n)个查询.经典算法则至少需要Ω(２
+n/２)个查询,这使得
+该问题成为一个经典的困难问题,即使使用经典概率算法亦
+是一个困难问题.
+４．２　Simon量子算法在密钥分发上的应用
+文献[１７]给出了Simon算法的一个可能应用:Alice和
+Bob希望能安全地进行通信,于是就多周期函数f 达成共识,
+即同意:对所有的x 来说,f(x)＝f(x􀱇ξ).Bob知悉周期ξ,
+Alice不知道.Alice要获知ξ,因此她制备了一个２n 量子位
+的|ψ０›态,执行Hadamard 变换后将|ψ１›态发送给Bob.
+Bob选定一个n位的字符串ξ,然后将oracle应用于|ψ１›态而
+获得|ψ２›.他将|ψ２›发送给Alice.Alice将Hadamard变换
+应用于前n个量子位并对其进行测量.经过这个程序,Alice
+获悉字符串ξ.这时Alice和Bob共享n位信息,而这n位信
+息就是他们两人的密钥.
+与BernsteinＧVazirani算法的情况一样,这个密钥分发协
+议的安全性不及基于DeutschＧJozsa算法的密钥分发协议的
+安全性.BernsteinＧVazirani协议和Simon算法协议均未使用
+纠缠现象,而纠缠是安全量子密钥分发中经常使用的特性.
+Simon算法通常被应用于量子通信和密码学领域,文献[１８]
+对此作出了一些引介.
+５　隐子群问题
+有些计算问题可以归约为隐子群问题(HiddenSubgroup
+Problem),而求解这类问题的量子算法在时间复杂度上相比
+经典算法有可能提供指数级加速.
+定义１(隐子群问题)　G 为一个有限群,H≤G 是G 的子
+群,X 为一个集合.如映射f:G→X 满足∀g１,g２∈G:f(g１)＝
+f(g２)≡g１H＝g２H,则我们说映射f:G→X 隐藏了子群H .
+f 以oracle形式实现.通过查询oracle而对f 求值,我们可
+以确定H 的生成集S.作为一个数学事实,生成集h１,h２,􀆺
+hk∈H 具有k＝O(logn)个元素.
+
+===== PDF PAGE 5 =====
+８
+４
+６
+ComputerScience 计算机科学
+Vol．４９,No．６A,June２０２２
+其中可以归约为隐子群问题的一些最著名的量子算法有
+Shor的整数分解和离散对数算法[５].整数分解算法可以归
+约为周期查找问题,因此用于其中的群G 为Zn,而用于离散
+对数问题的群G 为Z/nZ×Z/nZ,其中的Z/nZ是模n 整数
+的加法群.我们知道,当有关群属阿贝尔群时,多项式运行时
+间是可以实现的;但对于非阿贝尔群来说,通常不可以实
+现[１９].这一事实使Shor算法特别适合用于密码学领域.
+如前文所示,这３个早期量子算法均可用于密码学.不
+出所料,这３个算法同时亦可以轻易地归约为隐子群问题.
+对于DeutschＧJozsa算法来说,群G＝Zn
+２,其中Z２是整数模２
+的循环群.若该函数f 是常数的,则我们要寻找的隐藏子群
+２;若f 是平衡的,则我们要寻找的隐藏子群是H＝
+是H＝Zn
+{０},０∈Zn
+２.对于BernsteinＧVazirani算法来说,G＝Zn
+２,而其
+隐藏子群是H＝{z∈Zn
+２:ξ􀅰z＝０}.对于Simon算法来说,
+２,但其隐藏子群是H＝{０,
+ξ},其中０,
+ξ∈Zn
+２.
+G＝Zn
+结束语　本文论述了有关早期量子算法用于量子密钥分
+发和其他领域的最新研究(见表１).这些早期量子算法的一
+个重要优势是,相比经典算法,它们提供了指数级别的加速.
+在量子计算领域中寻找以指数级别优于经典算法的新量子算
+法非常困难.然而,某些算法可以归约为特定问题,譬如隐子
+群问题.因此,未来可以多个方向寻找新的多项式时间算法,
+譬如在隐子群问题框架内尝试各种阿贝尔群,看能否引出新
+的快速算法.另一种做法是为现有的快速量子算法寻找新的
+应用领域.这两个方向在量子计算研究中都十分活跃.值得
+注意的是,第一个方向的一个例子就是最近将Grover的搜索
+算法[４]、量子模拟算法[２０]和整数分解算法[５]求解的问题归约
+为奇异值转换问题(SingularValueTransformation)
+[２１].直
+至文献[２１]发表前,上述３个算法都被认为是不属于同一类
+型的问题.本文对第二个方向进行了调查.
+表１　应用综述
+Table１　Summaryofapplications
+算法
+原来的应用
+新应用
+布尔函数是平衡的/常数
+的
+安全量子密钥分发,形式语言
+中的单词区分
+DeutschＧJozsa
+查找具有f(x)＝ξ􀅰x 属
+性的字符串ξ
+量子密钥分发,纠错,对付分组
+密码
+BernsteinＧ
+Vazirani
+查找具有f(x)＝f(x􀱇ξ)
+Simon
+量子密钥分发
+属性的字符串ξ
+参考文献
+[１] DEUTSCH D,JOZSA R．RapidsolutionsofproblemsbyquanＧ
+tumcomputation[J]．ProceedingsoftheRoyalSocietyofLonＧ
+donA,１９９２,４３９:５５３Ｇ５５８．
+[２] BERNSTEIN E,VAZIRANI U．Quantum Complexity Theory
+[J]．SIAMJournalonComputing,１９９２,２６(５):１４１１Ｇ１４７３．
+[３] SIMON D．OnthePowerofQuantum Computation [C]∥ProＧ
+ceedingsofthe３５thAnnualIEEESympoＧsiumonFoundationsof
+ComputerScience．１９９４:１１６Ｇ１２３．
+[４] GROVERLK．Afastquantum mechanicalalgorithmfordataＧ
+basesearch[C]∥Proceedingsofthe２８thAnnualACM SympoＧ
+siumontheTheoryofComputing．１９９６:２１２．
+[５] SHORP．PolynomialＧtimealgorithmsforprimefactorizationand
+discretelogarithmsonaquantumcomputer[J]．SIAM Journal
+[６] BRASSARDG,HOYERP,TAPPA．Automata,Languagesand
+Programming[C]∥２５thInternationalColloquiumICALP’９８．
+Aalborg,Denmark．１９９８:８２０Ｇ８３１．
+[７] CHANG W L,YU Q,LIZ,etal．QuantumSpeedupinSolving
+theMaximalＧCliqueProblem [J]．PhysicalReview A,２０１８,９７:
+０３２３４４．
+[８] CHANG W L,CHEN J C,CHUNG W Y,et al．Quantum
+Speedupand MathematicalSolutionsfrom Implementing BioＧ
+molecularSolutionsfortheIndependentSetProblemonIBM’s
+Quantum Computers[J]．IEEE Transactions on NanoBioＧ
+science,２０２１,２０(３):３５４Ｇ３７６．
+[９] WONGR,CHANG W L．QuantumSpeedupforProteinStrucＧ
+ture Prediction[J]．IEEE Transactions on NanoBioscience,
+２０２１,２０(３):３２３Ｇ３３０．
+[１０]WONG R．The Uncertainty Principleasrelatedto Quantum
+Computing[J]．ComputerScience,２０２０,４７(１):４０Ｇ５０．
+[１１]NAGATA K,NAKAMURA T,FAROUK A．Quantum CrypＧ
+tographyBasedontheDeutschＧJozsa Algorithm [J]．InternaＧ
+tionalJournalofTheoreticalPhysics,２０１７,５６:２８８７Ｇ２８９７．
+[１２]EKERTAK．QuantumCryptographyBasedonBell’sTheorem
+[J]．PRL,１９９１,６７(６):６６１Ｇ６６３．
+[１３]NGUYEN D M,KIM S．Quantum Key Distribution Protocol
+BasedonModifiedGeneralizationofDeutschＧJozsaAlgorithmin
+dＧLevelQuantumSystems[J]．InternationalJournalofTheoretＧ
+icalPhysics,２０１９,５８:７１Ｇ８２．
+[１４]BATTY M,CASSACCINO A,DUNCAN AJ,etal．AnAppliＧ
+cationoftheDeutschＧJozsaAlgorithmtoFormalLanguagesand
+the WordProbleminGroups[C]∥TQC:TheoryofQuantum
+Computation,CommunicationandCryptography．２００８:５７Ｇ６９．
+[１５]NAGATA K,NAKAMURA T．Quantum Cryptography,QuanＧ
+tum Communication,andQuantum ComputerinaNoisyEnviＧ
+ronment[J]．InternationalJournalofTheoreticalPhysics,２０１７,
+５６:２０８６Ｇ２１００．
+[１６]XIE H Q,YANGL．UsingBernsteinＧVaziraniAlgorithmtoAtＧ
+tackBlockＧciphers[J]．Designs,CodesandCryptography,２０１９,
+８７:１１６１Ｇ１１８２．
+[１７]NAGATA K,NAKAMURA T,GEURDES H,etal．Quantum
+CommunicationBasedonSimon’sAlgorithm [J]．International
+Journalof Emerging Engineering Research and Technology,
+２０１７,５(８):２８Ｇ３１．
+[１８]CUIJY,GUOJS,DINGSZ．ApplicationsofSimon’sAlgoＧ
+rithminQuantum AttacksonFeistelVariants[J]．QIP,２０２１,
+２０:１１７．
+[１９]KITAEV A Y．Quantum measurementsandtheAbelianstabiＧ
+lizerproblem [J]．arXiv:quantＧph/９５１１０２６．
+[２０]FEYNMANR．Simulatingphysicswithcomputers[J]．InternaＧ
+tionalJournalofTheoreticalPhysics,１９８２,２１(６/７):４６７Ｇ４８８．
+[２１]GILYEN A,SU Y,LOW G H,etal．Quantum singularvalue
+transformationandbeyond:exponentialimprovementsforquanＧ
+tum matrixarithmetic[C]∥STOC２０１９．２０１９:１９３Ｇ１０４．
+Renata WONG,Ph．D．Her main reＧ
+searchinterestsincludequantum comＧ
+puting,foundationsofphysicsandlinＧ
+guistics．

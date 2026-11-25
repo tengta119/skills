@@ -1,0 +1,1167 @@
+===== PDF PAGE 1 =====
+量子原型聚类
+刘翔, 祝静, 仲国强, 顾永建, 崔丽媛
+
+引用本文
+
+刘翔, 祝静, 仲国强, 顾永建, 崔丽媛.量子原型聚类[J]. 计算机科学, 2023, 50(8): 27-36.
+
+LIU Xiang, ZHU Jing, ZHONG Guoqiang, GU Yongjian, CUI Liyuan. Quantum Prototype Clustering [J].
+
+Computer Science, 2023, 50(8): 27-36.
+
+
+
+
+
+相似文章推荐（请使用火狐或 IE 浏览器查看文章）
+
+Similar articles recommended (Please use Firefox or IE to view the article)
+
+基于人工蜂群的三支k-means聚类算法
+
+Three-way k-means Clustering Based on Artificial Bee Colony
+
+计算机科学, 2023, 50(6): 116-121. https://doi.org/10.11896/jsjkx.220800150
+
+
+面向轻量化医学图像分割网络的神经结构搜索
+
+Neural Architecture Search for Light-weight Medical Image Segmentation Network
+
+计算机科学, 2022, 49(10): 183-190. https://doi.org/10.11896/jsjkx.210800052
+
+
+基于特征相似度聚类的空中目标分群方法
+
+Aerial Target Grouping Method Based on Feature Similarity Clustering
+
+计算机科学, 2022, 49(9): 70-75. https://doi.org/10.11896/jsjkx.210800203
+
+
+早期量子算法在量子通信、量子纠错等领域的应用
+
+Application of Early Quantum Algorithms in Quantum Communication,Error Correction and Other
+
+Fields
+
+计算机科学, 2022, 49(6A): 645-648. https://doi.org/10.11896/jsjkx.210400214
+
+
+基于注意力门控图神经网络的文本分类
+
+Text Classification Based on Attention Gated Graph Neural Network
+
+计算机科学, 2022, 49(6): 326-334. https://doi.org/10.11896/jsjkx.210400218
+
+===== PDF PAGE 2 =====
+http://www．jsjkx．com
+                                                                                 DOI:１０．１１８９６/jsjkx．２２０６００１２４
+
+量子原型聚类
+
+刘　翔１,３  祝　静１  仲国强１  顾永建２  崔丽媛１
+１中国海洋大学计算机科学与技术学院　山东青岛２６６１００
+２中国海洋大学物理与光电工程学院　山东青岛２６６１００
+３中国海洋大学创新教育实践中心　山东青岛２６６１００
+ 　(liuxiang＠stu．ouc．edu．cn)
+　
+摘　要　经典机器学习算法的量子化重构是量子机器学习领域的一个重要研究方向.聚类作为一类在机器学习领域被广泛应
+用的算法,其量子化重构也拥有较高的研究价值.目前的量子机器学习算法大多存在复现难度大、难以与经典算法形成直观对
+比等问题.为解决这些问题,提出了一种量子原型聚类算法(Quantum PrototypeClustering,QPC),该算法可以很方便地在现有的通用性量子计算设备上部署.该方法首先结合单量子位旋转特性,寻找信息损失最小的特征映射方式,使用双维度特征数
+据制造单量子位旋转;然后,基于多量子位纠缠及纠缠系统坍缩的特性,设计了一种用于制造特定量子纠缠系统和测量纠缠系
+统坍缩结果的量子线路.根据纠缠系统中受控量子位旋转角和纠缠系统坍缩结果的关系,并结合闵可夫斯基距离的定义,推导
+了一种用于评估输入样本相似性的量子距离.该量子距离测量模块与经典计算机中的距离计算模块具有相同的输入输出形
+式,可以不加修改地替换掉原型聚类中的闵可夫斯基距离计算,从而将经典的原型聚类算法重构为QPC.在来自kaggle和scikitＧ
+learn的多组公开数据集上进行的多次重复实验表明,在平均样本中心距等评价指标上,QPC与经典的原型聚类算法无明显差别.
+关键词:量子计算;量子机器学习;聚类算法;原型聚类
+中图法分类号　TP１８１
+　
+QuantumPrototypeClustering
+LIU Xiang１,３,ZHUJing１,ZHONGGuoqiang１,GU Yongjian２andCUILiyuan１
+１CollegeofComputerScienceandTechnology,OceanUniversityofChina,Qingdao,Shandong２６６１００,China
+２CollegeofPhysicsandOptoelectronicEngineering,OceanUniversityofChina,Qingdao,Shandong２６６１００,China
+３InnovationCenter,OceanUniversityofChina,Qingdao,Shandong２６６１００,China
+　
+Abstract　Quantitativereconstructionofclassicalmachinelearningalgorithmsisoneofthesignificantresearchdirectionsinthe
+fieldofquantum machinelearning．Thequantitativeimplementationofclusteringalgorithm,whichhasbeenwidelyusedinthe
+machinelearningarea,isworthstudying．Mostofthecurrentquantum machinelearningalgorithmssufferfromthedifficultyof
+reproductionandthedifficultyofformingdirectcomparisonswithclassicalalgorithms．Toaddresstheseproblems,thispaperproＧ
+posesthequantumprototypeclusteringalgorithmthatcanbeeasilydeployedonexistinggeneralＧpurposequantumcomputingdeＧ
+vices．Combiningtherotationpropertyofsinglequantumbit(qubit),andfindingthefeaturemappingmethodwithminimalinforＧ
+ mationloss,thesinglequbitrotationiscreatedusingtwoＧdimensionalfeaturedata．Then,basedonthepropertiesofmultiＧqubit
+entanglementandthecollapseoftheentangledsystem,aquantumcircuitisdesignedforgeneratingaspecificquantumentangled
+systemandmeasuringthecollapsedresultofentangledsystem．Basedontherelationshipbetweentherotationangleofcontrolled
+qubitsintheentangledsystemandthecollapseresultoftheentangledsystem,andcombinedwiththedefinitionofMinkowski
+distance,aquantumdistanceforevaluatingthesimilarityofinputsamplesisthenderived．Boththequantumdistancecalculation
+moduleanditscounterpartinclassiccomputerhavethesameformsofinputandoutput,sothatthelattercanbereplacedbythe
+formerwithoutmodification,hencetheprototypeclusteringalgorithmisquantitativelyreconstructedintoQPC．Severalreplicated
+experimentsonmultiplepubliclyavailabledatasetsfromkaggleandscikitＧlearnshowthattheQPCperformssimilarlytoclassic
+prototypeclusteringalgorithmintermsofmanyevaluationmetrics,suchasthemeansampleＧcentroiddistance．
+ 到稿日期:２０２２Ｇ０６Ｇ１３　返修日期:２０２２Ｇ１１Ｇ２３
+基金项目:国家重点研发计划(２０１８AAA０１００４００);山东省自然科学基金(ZR２０２０MF１３１);山东省重大基础研究项目(ZR２０２１ZD１９);青岛市科
+ 技计划项目(２１Ｇ１Ｇ４ＧnyＧ１９Ｇnsh)
+ThisworkwassupportedbytheNationalKeyResearchandDevelopmentProgramofChina(２０１８AAA０１００４００),NaturalScienceFoundationof
+ShandongProvince,China(ZR２０２０MF１３１),MajorBasicR&DProjectsinShandongProvince(ZR２０２１ZD１９)andScienceandTechnologyProＧ
+gramofQingdao(２１Ｇ１Ｇ４ＧnyＧ１９Ｇnsh)．
+ 通信作者:仲国强(gqzhong＠ouc．edu．cn)
+
+===== PDF PAGE 3 =====
+８
+２
+ComputerScience 计算机科学
+Vol．５０,No．８,Aug．２０２３
+Keywords　Quantumcomputation,Quantum machinelearning,Clusteringalgorithm,Prototypeclustering
+１　引言
+近年来,信息空间数据量的大幅增长对处理大规模数据
+的算力提出了更高的要求.同时,现行冯氏结构计算机具有
+指令串行执行、数据串行输入输出、软硬件完全分离等特征,
+这天然限制了其拥有更高效率的并行计算能力.为了突破冯
+氏结构计算能力的限制,研究者尝试构建了光子计算机、量子
+计算机、DNA 计算机等非冯结构计算机,其中量子计算机利
+用量子系统的并行计算优势来提高运算效率,是突破冯氏结
+构束缚的一个比较有前景的方向[１Ｇ３].相比二进制电子比特,
+量子比特具有叠加性,N 个电子比特的信息只需log２N 个量
+子比特即可表示;又由于量子纠缠性的存在,多量子比特纠缠
+系统可以表现出比多个单量子比特单独作用更加丰富的信
+息,实现更复杂的操作.
+随着用于大数质因子分解的Shor算法[４]和用于数据搜
+索的Grover算法[５]的提出,量子计算逐渐展现出其实用
+性[６].量子机器学习属于量子计算和机器学习的交叉领域.
+对经典机器学习算法(在冯氏结构计算机上实现的机器学习
+算法,下同)进行量子化重构,并实际部署到量子计算机上,是
+量子机器学习的一个重要研究方向.随着２００９年Harrow 等
+提出通过量子计算方式求解稀疏且具有良好条件数的线性方
+程组的HHL (HarrowＧHassidimＧLloyd)算法[７],经典机器学习
+算法的量子化重构逐渐吸引了越来越多研究人员的注意力[８].
+原型聚类是一类经典的聚类算法[９].学习向量量化、高
+斯混合模型和著名的kＧmeans聚类都属于原型聚类.该类算
+法假设聚类结构能由一组原型(样本空间中具有代表性的点)
+刻画,通过对原型进行迭代求解获取最终聚类结构,往往具有
+较强的鲁棒性,实现其量子化算法也具有重要的科学意义.
+因此,本文对原型聚类算法进行量子化重构,实现了量子原型
+聚类算法.受量子计算理论以及当前量子硬件的限制,多量
+子态解纠缠不可避免地会导致更大的系统误差.出于验证量
+子算法的可行性及有效性之目的,本研究采用以双维度数据
+制造单量子位旋转的方法,对经典机器学习算法的量子重构
+进行研究.
+目前,由于缺少通用量子计算框架,量子聚类算法的研究
+并不成熟.一方面,虽然有部分研究在理论上推导了基于距
+离的量子聚类算法的实现过程及效率[７,１０Ｇ１１],但受限于当时
+的硬件条件,这些研究没有在实际量子计算机上进行实验验
+证.Casper等的研究详细介绍了通过QRAM (Quantum
+Random AccessMemory)加载数据到量子计算机进而实现量
+子算法的过程[１２Ｇ１４],然而就目前的条件而言,使用QRAM 加
+载大规模数据集仍难以实现[１５Ｇ１７].同时,以上研究又大都缺
+乏对实际运行结果,尤其是实际运行结果与理论分析对比的
+讨论.Xiao等提出的使用特征映射实现量子位旋转的构
+建[１８],是目前较为可行的一种方法,但其基于特征压缩和非
+线性映射的方式会大幅损失有效信息.
+本文综合相关研究的优缺点,设计了一种新的QPC 算
+法.首先,通过双维度特征的线性映射与归一化制造单量子
+位多角度旋转,并将其输入到特定的量子线路,构建量子纠缠
+系统.通过辅助量子比特测量该量子系统坍缩后两输入量子
+位的相似概率.然后,基于观测得到的量子位相似概率,并结
+合闵可夫斯基距离的定义,采用根据量子位旋转角度的差异
+程度来评估样本相似度的方法,推导出一种量子距离,并将其
+作为独立距离计算模块.最后,在保持数据输入输出形式不
+变的情况下,保留并复用原型聚类算法中除距离计算外的其
+他模块,直接将闵可夫斯基距离计算替换为量子距离测量模
+块,既简化了量子聚类算法的构建和使用,又便于与经典算法
+形成直观对比.值得强调的是,由于与经典算法中的距离计
+算模块保持了一致的数据输入输出形式,该量子距离测量模
+块可以嵌入到任意基于距离的算法框架中.为验证量子距离
+测量模块的有效性,本文使用公开数据集进行了距离计算对
+比实验.实验结果表明,基于本文方法的量子样本相似度与
+基于欧氏距离(闵可夫斯基距离的一种表现形式)的真实样本
+相似度达到了９７％的关联度,这一数值在此前公开的项目中
+[１９].随后,本文在多组公开数据集进行了多
+的最大值是６１％
+组多次对比实验,结果表明,本文设计的量子原型聚类算法与
+经典算法在多个指标上的表现不相上下.最后在IBM 量子
+计算机上进行了进一步实验,验证了本文提出的量子原型聚
+类算法在真实量子计算环境中的有效性.
+２　相关工作
+量子聚类是量子机器学习领域的一个重要分支,而量子
+机器学习又属于量子计算与机器学习的交叉领域[２０Ｇ２２].随
+着该领域研究的不断深入,许多代表性的工作不断涌现,此处
+择其要者而述之.
+２．１　量子计算
+量子计算领域最著名的成果之一是Shor
+[４]于１９９４年提
+出的在多项式时间内对大数进行质因式分解的Shor算法.
+经典算法求解N 位十进制整数质因子分解问题的时间复杂
+[２３]
+３６４
+,Shor算
+９n(logn)
+２
+æ
+è
+ç
+ö
+ø
+÷
+æ
+è
+ç
+ö
+ø
+÷
+度达到了指数级别的O exp
+法通过量子傅里叶变换方法将该问题的时间复杂度降低至多
+项式级的O(n
+３logn).
+对于在随机排序数据库中查找特定项这一任务,经典计
+算机所能达到的最低复杂度为O(n),而量子算法Grover算
+法则将该数值降低至O(n)
+[６].同时,Bennett等发现量子图
+灵机对上述搜索任务的复杂度最低值的理论极限就是
+O(n),从而证明了Grover算法是目前通过量子计算解决同
+类问题的最优解[２４].
+这两个算法是最早的具有实用意义的量子算法,对后来
+量子算法的设计具有重要参考意义.
+２．２　量子机器学习
+→的HHL算法[７]作为量子机器学习
+→＝b
+求解线性方程Ax
+领域的奠基之作,已经在多种量子计算设备上得到了验
+证[２５Ｇ２７].该算法采用的相位估计Ｇ受控旋转Ｇ反相位估计过程
+
+===== PDF PAGE 4 =====
+９
+２
+刘　翔,等:量子原型聚类
+为包括量子支持向量机(QuantumSupportVectorMachines,
+QSVM)和量子主成分分析(Quantum PrincipalComponent
+Analysis,QPCA)在内的许多机器学习算法所使用,本文提出
+的量子聚类算法也不例外.
+支持向量机是主流的有监督机器学习模型,最初用于执
+行分类任务. 记样本量为N,特征维度为M,通过在
+[２８]上计算内核矩阵,使用类似HHL 的算法求解线性
+QRAM
+方程等步骤,Rebentrost等提出的qSVM 算法可以以O(log
+NM)的复杂度在量子计算机上执行最小二乘支持向量机
+(LeastSquareSVM,LSＧSVM)
+[２９].
+PCA(PrincipalComponentAnalysis,PCA)
+[３０]是一种重
+要的无监督机器学习算法,常用于对高维数据降维.对已中
+心化样本的协方差矩阵进行特征值分解后,取最大的d 个特
+征向量即是PCA 的解.Lloyd等提出的量子PCA
+[３１]通过对
+M
+i＝１pi|ψi›‹ψi|的酉算子e
+量子密度矩阵ρ＝∑
+－iρt进行相位估计实
+现了特征降维[２８].
+２．３　量子聚类算法
+在量子聚类方向上,目前已经出现了少量探索性的工
+作[１７,３２],也有部分受量子计算思想启发而探索经典聚类算法
+新的可能实现方法的工作[１０,３３],例如微软团队和Schuld等研
+究者探究了kＧmeans算法的量子实现[３４Ｇ３５];根据量子的叠加
+特性,Casper等探索了基于量子特性的模糊聚类方法[３５].但
+是基于这些技术的算法在真实数据集上的测试结果不尽人
+意[１１].近些年也有一些表现较为出色的量子聚类算法被提
+出[１６],但是它们往往又因为苛刻且繁多的数学约束而难以通
+过量子编程实际实现.由于基于距离的原型聚类算法具有广
+泛适用性和鲁棒性,因此本文在尽可能多地复用经典原型聚
+类算法框架的基础上,使用自行设计的量子距离测量模块替
+换原有的闵可夫斯基距离,对原型聚类算法进行量子化重构.
+该实现具有效率高、易复现等优点.
+３　量子原型聚类算法的设计与实现
+原型聚类算法的核心是距离计算.此类算法假设聚类结
+构能通过一组原型刻画,先对原型进行初始化,然后对原型进
+行迭代更新求解.采用不同的原型表示、不同的求解方法,将
+产生不同的算法,比如k 均值聚类、学习向量量化、高斯混合
+模型等.
+考虑到k均值聚类是原型聚类算法中最具代表性的算
+法,同时它又具有实现简单、简洁易懂、适用领域较广、鲁棒性
+极强等优势,本节从k均值算法出发,通过总结分析算法关键
+步骤,引入本文所研究的量子原型聚类算法.由于两者之间
+的唯一区别在于进行簇分类时,量子算法需要使用基于受控
+状态交换门的量子距离对输入的数据点之间的差异性进行比
+较,因此本文又介绍了相关的量子位旋转制作方法和量子算
+法线路设计与实现.最后详细推导用于QPC 的量子距离测
+量模块.
+３．１　算法流程简述
+本文以k均值聚类算法为例介绍原型聚类算法的量子化
+过程,首先对k 均值聚类算法做简要介绍.k 均值聚类算法
+通过迭代训练将一组无标签的数据集划分成不同类簇,并且
+最小化每个样本点与其聚类中心点之间的距离和.详细流程
+如算法１所示.
+算法１　k均值聚类算法
+输入:样本xi,(
+i:１→m),m 是样本总数;索引ci,(i:１→m),距离xi最
+近的聚类中心点索引,共K 个可能取值
+输出:聚类中心点μk,(k:１→K),K 是聚类中心总数
+i
+c,(
+i∶１→m,k∶１→K),样本点xi对应的聚类中心点μ
+i;
+样本聚类点μ
+损失函数:J(c１,􀆺,cm,μ１,􀆺,μK)＝１
+m
+i＝１‖xi－μc(i)‖２;
+m ∑
+１．随机初始化K 个聚类中心μ１,μ２,􀆺,μK∈Rn;
+２．DO:{
+３．　FOR(
+i:１→m):
+４．　　赋值ci为最接近xi的聚类中心点索引∗;
+５．　FOR (k:１→K):
+６．　　赋值μk为所有被分类为ci的数据点xi的平均值;
+７．}UNTIL:损失函数J收敛.
+算法１的核心可以总结为迭代执行如下两步,直至损失
+函数收敛.
+(１)归类样本点到与之距离最近的聚类中心;
+(２)更新聚类中心为到同一类样本点平均距离最小的
+位置.
+其中第(１)步是k 均值算法的核心所在,也是其与QPC
+的重要区别,即距离计算方式不同.
+通过测量两个量子位的相似概率,本文推导出一种量子
+距离:根据输入样本的特征值对两个处于|０›状态的量子位分
+别进行特定角度的旋转,这两个旋转角越接近,两个量子位相
+似的概率就越大,即距离越小.
+在未标注数据集中,本文使用Elbow 方法设置合适的聚
+类中心点数量:在可接受范围内对每一个可能的K 值计算一
+个初始J(损失函数)值,以K 为自变量、J 为因变量绘制曲
+线,曲线曲率最大的点所对应的自变量(即肘点,elbow
+points)值取整为最合适的K 值.
+３．２　量子位旋转制作方法
+量子位旋转是将经典信息转化成量子信息的关键手段,
+也是使用QPC聚类经典数据的前提.受量子位旋转参数量
+的限制,本研究需要将多维样本点部署到单量子位,这就面临
+着需要通过双维度数据制造单量子位旋转的挑战.Casper
+等提出以两特征比值作为单一量子位的新特征[１４],通过量子
+位旋转的方式实现信息的量子化.这一实现虽然简单,但是
+特征维度的压缩会导致有效信息的大量丢失.此外,KereniＧ
+dis等提出了将更多维的信息装载到QRAM 的方法[１７],即通
+过QRAM 实现信息的量子化.就理论分析而言,这是最有
+效的实现,但事实上,对特征维度不多的数据而言,QRAM 方
+法太过复杂,而较高维度特征的数据(文献[１７]中基于δＧkＧ
+Means算法对MNIST 数据集进行聚类),其实验又难以在现
+有的通用量子计算机上部署.
+本文综合这两种实现的利弊,采取不压缩特征、不使用
+QRAM、直接将双维度特征映射为单量子位的旋转参数的方
+法.首先,在量子计算中,由于概率守恒及全局相位不可检测
+性,因此只需要两个参数θ角和φ 角进行量子位旋转来表示
+
+===== PDF PAGE 5 =====
+０
+３
+ComputerScience 计算机科学
+Vol．５０,No．８,Aug．２０２３
+一个单量子比特量子态|ψ›＝cos θ
+２
+(
+)|０›＋sin θ
+iϕ|１›,
+２
+(
+)e
+取值范围分别为０≤ϕ≤２π,０≤θ≤π,
+i是虚数单位.其次,为
+避免特征映射后丢失其可聚类性,所以选取简单的、单调的映
+射函数,比如反正切函数x→arctan(x),x∈[０,＋¥),反余弦
+函数x→arccos(x),x∈[－１,１]等.通过对特征的归一化、取
+平方(考虑k均值算法使用的欧氏距离存在平方项)等处理,
+组合出多种不同的映射方式,进而计算量子距离与欧氏距离
+的相关度.本文考虑的映射原始特征数据的方式有:
+(１)归一化到[－１,１]再线性映射到[０,π];
+(２)零均值化后进行反正切,再增加０．５π到[０,π];
+(３)直接反正切并增加０．５π到[０,π];
+(４)归一化到[０,１]后反正切,再线性缩放到[０,π];
+(５)归一化到[０,１]并取平方,再线性缩放到[０,π];
+(６)归一化到[－１,１]后通过反余弦映射到[０,π].
+本文通过实验对上述６种可行的数据映射方式进行验证
+后,选出量子距离与相应两点间欧氏距离关联度最高的一种
+方式来处理原始数据.最后,将映射后的特征作为量子位的
+旋转角的参数θ和ϕ,其直观表现如图１的布洛赫球所示,其
+中单个非纠缠态的量子位可表示为布洛赫球面上的一个点:
+|ψ›＝cos θ
+２
+(
+)|０›＋sin(θ
+２)e
+iϕ|１›.
+图１　布洛赫球
+Fig．１　Blochsphere
+３．３　量子距离测量线路设计
+量子计算区别于冯氏结构计算的最大特点之一是其依靠
+具体硬件线路实现算法,而非算法与硬件分开,从而需要首先
+设计出量子距离测量的量子线路.在IBM Q Experience平
+台通过量子编程实现的量子距离测量硬件部署情况示意图如
+图２所示,其实现逻辑可描述如下.
+以输入向量x和y 进行特征映射后得到的θ 角和ϕ 角作
+为最一般性幺正量子门U３的参数,对初始态量子位|０›进行
+特定角度旋转,可将向量转化为量子位x→|x›,y→|y›.将
+这两个经受控旋转后的量子位加入到量子线路,再使用受控
+状态交换门(ControlledＧSWAP,CSWAP)进行状态交换,该步
+骤将３个独立的量子位建立为纠缠态系统.CSWAP门中起
+控制作用的量子比特(辅助量子比特)以初始态|０›作为输入,
+经哈德马门构造为标准叠加态|＋›＝１
+(|０›＋|１›).完成
+２
+对CSWAP门的控制后,对控制位进行反哈德马变换(哈德马
+门的反是其本身).最后对整个系统进行测量,观测辅助量子
+比特坍缩到稳定态的表现.
+图２　基于IBM５Ｇqubit量子计算机实现的量子距离测量线路的
+硬件部署情况示意图
+Fig．２　Schematicofhardwaredeploymentofaquantumdistance
+measurementlinebasedonIBM５Ｇqubitquantumcomputer
+我们注意到,图２比上文中对量子距离测量线路实现的
+逻辑描述要复杂得多,这是因为IBM Q Experience中只有最
+一般性幺正量子门U３有对应的物理组件,退化的一般性幺正
+量子门U１和U２则是限定参数的U３门,其相应矩阵如式(１)－
+式(３)所示:
+cos θ
+iλsin θ
+æ
+ö
+２
+(
+)
+－e
+２
+(
+)
+ç
+çç
+÷
+÷÷
+U３(
+θ,φ,
+λ)＝
+(１)
+iϕsin θ
+iλ＋iφcos θ
+e
+２
+(
+)
+e
+２
+(
+)
+è
+ø
+１
+－e
+iλ
+U２(φ,
+λ)＝U３
+π
+２,φ,
+λ
+(
+) ＝１
+i(φ＋λ)
+æ
+è
+ç
+ö
+ø
+÷
+(２)
+２
+e
+iφ
+e
+１
+０
+iλ
+æ
+è
+ç
+ö
+ø
+÷
+(３)
+U１(λ)＝U３(０,０,
+λ)＝
+０e
+而其他专用量子门则需要依靠一般性量子门组合实现,
+因此,逻辑描述上很简单的一个过程实际却需要多个量子硬
+件组合才能完成.对整个量子线路系统的运行流程分析
+如下.
+记系统初始状态为|０anc›|x›|y›,其中|０anc›作为辅助
+(Ancillary)量子比特.为使受控状态交换门CSWAP 起作
+用,对辅助量子比特做哈德马变换,成为标准叠加态H (|
+０anc›)＝|＋anc›＝１
+(|０anc›＋|１anc›)后再加入CSWAP 门作
+２
+为控制位,即CSWAP门作用前的系统状态为:
+１
+(|０›
+ancxy›＋|１ancxy›)
+(４)
+２
+在受控状态交换门CSWAP 中,量子比特|＋anc›作为控
+制比特,当其为|１›时,量子线路可以交换两个向量|x›和|y›.
+于是经过CSWAP系统状态变为:
+１
+(|０ancxy›＋|１ancyx›)
+(５)
+２
+对辅助量子比特进行反哈德马变换后,系统状态为:
+１
+２(|０ancxy›＋|１ancxy›＋|０ancyx›－|１ancyx›)
+(６)
+根据辅助量子比特状态简化整合式(６),得到该量子系统
+的输入输出关系:
+|０anc›|x›|y›→１
+２|０anc›(|xy›＋|yx›)＋１
+２|１anc›(|xy›
+－|yx›)
+(７)
+此处需要特别注意辅助量子比特|０anc›,该量子比特经过
+一次哈德马门和一次反哈德马变换,且两次变换之间仅作为
+CSWAP门的控制位而不参与计算,按照经典二进制计算
+
+===== PDF PAGE 6 =====
+１
+３
+刘　翔,等:量子原型聚类
+模型思想而言,其应当坍缩为H(H(|０›))＝H(|＋›)＝|０›,
+即最终观测到|０›的概率应当为１或无限接近１.但在量子
+力学体系中,经过CSWAP受控交换门后,辅助比特|＋anc›已
+经和量子化的输入向量|x›|y›组成的双量子比特构成了新的
+纠缠系统.在纠缠建立后对辅助量子比特进行观测,其结果
+会受量子化输入|xy›影响.
+３．４　量子距离
+在３．３小节构建的量子系统中,本文以辅助量子比特坍
+缩到|１›的概率而非经典聚类算法中的欧氏距离,作为两个样
+本点相似程度的评判.由前者结合闵可夫斯基距离定义,可
+以推导出适用于QPC的量子距离.
+由式(７)可知,辅助量子比特坍缩到|１›的概率取决于|x›
+和|y›:
+P(|１anc›)＝１
+２(|xy›－|yx›)
+(８)
+由于n量子比特量子态可以表示成n 个量子位的张量
+积,也即２
+n维的向量,于是可将式(８)以向量形式表示:
+０
+æ
+ö
+x１y２－y１x２
+ç
+ç
+çç
+÷
+÷
+÷÷
+P(|１anc›)＝１
+(９)
+２
+x２y１－y２x１
+０
+è
+ø
+对式(９)做内积可得:
+P(|１anc›)＝１
+２(x
+２
+１－２x１x２y１y２)
+(１０)
+２
+２＋x
+２
+１y
+２
+２y
+考虑概率守恒又有:
+２
+１＋y
+２
+２＝x
+２
+１＋x
+２
+２
+y
+２
+２＝１
+(１１)
+＝x
+２
+１＋x
+２
+２＋x
+２
+１＋x
+２
+１y
+２
+１y
+２
+２y
+２
+２y
+结合式(１０)和式(１１),对该量子系统输出的辅助量子比
+特单独进行观测(也称测量),其最终状态坍缩为基态|１›的概
+率就可以简化为:
+P(|１anc›)＝１
+２－１
+２
+２|‹x|y›|
+(１２)
+其中,‹x|y›表示输入量子位|x›和|y›做内积.
+于是可以得到结论:输入向量之间的相似度越低,|x›和
+|y›之间的内积绝对值越小,观测到辅助量子比特坍缩为
+|１anc›的概率P(|１anc›)就越大(显然最大为１
+２).这一点可以
+通过实验更直观地体现,图３子图从左到右两个量子位的旋
+转角θ分别取为π－π,π－０．５π和π－０,柱状图横轴最后一
+位表示辅助量子比特坍缩结果,纵轴是概率.如图所示,当两
+个量子都取φ＝０,其中一个量子位固定θ＝０时,当另一个量
+子位的旋转角θ＝π,即认为这两个量子位表现相同,相似度
+最高,图３所示的实际观测结果也显示辅助量子比特坍缩到
+|１anc›的概率为０;当另一个量子位旋转角θ＝π
+２,辅助量子比
+特坍缩到|１anc›的概率超过了前者,达到了１
+４;当另一个量子
+位旋转角θ＝０,辅助量子比特坍缩到|１anc›的概率达到了最大
+值１
+２.从而得到量子聚类线路给出的辅助量子比特坍缩到
+|１anc›的概率与输入向量x和y 的相似度是负相关的.
+图３　对量子聚类算法中两个受控量子位以不同的θ角旋转后
+坍缩到稳定态表现的观测
+Fig．３　Observationofthecollapsetosteadystateperformanceof
+twocontrolledquantumbitsrotatedatdifferentθanglesin
+quantumclusteringalgorithm
+原型聚类算法认为,数据点之间距离越小,其相似度越
+高.从而在QPC 中,应当使观测后的辅助量子比特坍缩到
+|１anc›的概率和输入量子比特|x›和|y›之间的量子距离呈正
+相关.考虑闵可夫斯基距离:
+n
+１
+p
+(１３)
+Dm＝(∑
+i＝１|xi－yi|p)
+当取p＝２,n＝２,闵可夫斯基距离转化为用于计算双维
+度样本点之间距离的欧氏距离:
+De＝
+(x１－y１)
+２＋(x２－y２)
+２＝
+２－２‹x,y›
+(１４)
+其中,‹x,y›表示向量x 和y 的内积.结合式(１１)、式(１２)和
+式(１４),最终可以定义量子距离为:
+Dq＝
+(２)２,‹x|y›|)
+(１５)
+４　实验与结果分析
+基于来自kaggle和scikitＧlearn的多组公开数据集,本节
+首先展示在本地环境进行的量子和经典算法的对比实验结
+果,并对比分析两种聚类算法的表现.此外,本文还在云端量
+子模拟环境和５Ｇqubit真实量子计算机中进行了典型数据集
+上的实验,并简要总结了量子算法在量子模拟机/计算机中的
+表现.其中,量子算法中单次执行距离计算线路的重复次数
+为１０２４次.
+４．１　数据集
+实验使用到的数据集包括来自Kaggle的市场细分数据
+集Mall_Customers(下文简写为Mall)、基于scikitＧlearn创建
+的随机聚类数据集,以及来自scikitＧlearn的Toy,Iris和Blob
+聚类数据集.５个数据集的整体信息如表１所列,其中Mall
+属于未标注数据集,需要先行选择合适的聚类中心点数量,其
+余４组数据集已有类别划分.
+表１　实验使用到的５组数据集
+Table１　Fivedatasetsusedinexperiment
+数据集
+Mall
+Iris
+Blob
+Random
+样本量和
+原始特征数
+２００×５
+１５０×２
+２００×２
+４５０×２
+标签
+无
+有
+有
+有
+最佳聚类点数
+５
+２
+２
+３
+以特征较多的Mall为例,首先通过数据分析库pandas
+提取该数据集的部分数据,如表２所列.可以观察到该数据
+集的特征数在个位数级别.为了说明是否存在明显的聚类关
+系,我们先在常规的笛卡尔坐标系中,对该数据集各特征两两
+之间的关系进行可视化分析,以对各特征之间的关系产生
+
+===== PDF PAGE 7 =====
+２
+３
+ComputerScience 计算机科学
+Vol．５０,No．８,Aug．２０２３
+感性认识,可视化结果如图４所示.可以看出,以笛卡尔坐标
+系为参考,CustomerID 与SpendingScore、AnnualIncome与
+SpendingScore这两组特征之间有明显的可聚类关系;并且
+CustomerID 与AnnualIncome之间符合连续变化的、近乎一
+一对应的某种函数关系.从而对于该数据集可以考虑只使用
+其中一组(选择AnnualIncome与SpendingScores)特征进行
+聚类分析.
+表２　Mall_Customers数据集部分数据
+Table２　Partofdatafrom Mall_Customers
+ID
+Gender
+Age
+Annual
+Income_k＄
+Spending
+Score_１_to_１００
+１
+Male
+１９
+１５
+３９
+２
+Male
+２１
+１５
+８１
+３
+Female
+２０
+１６
+６
+４
+Female
+２３
+１６
+７７
+５
+Female
+３１
+１７
+４０
+图４　Mall_Customers数据集各特征之间的关系
+Fig．４　RelationshipbetweenthefeaturesofMall_Customersdataset
+Mall属于无标签数据集,为了加快算法收敛速度、优化
+聚类效果,需要自行设定聚类中心点数量.本文通过Elbow
+方法选择合适的聚类中心点数量K.在Mall数据集中,对
+AnnualIncome和SpendingScore两项特征进行聚类,设置聚
+类中心点数量范围为１~２０,分析结果如图５所示.显然,在
+聚类中心点数量取值为５时,损失曲线曲率达到最值.ElＧ
+bow 方法分析的结果与观测结果相互印证,因此聚类中心点
+数量取５.
+图５　Elbow 方法分析Mall数据集最佳聚类中心点曲线
+Fig．５　BestclusteringcentroidcurveofMalldatasetobtained
+byElbow methodanalysis
+其余４组随机创建的和来自scikitＧlearn库的数据集则简
+单得多.一方面,由于其已经是二维特征数据集,无需进行分
+析和选择特征;另一方面,数据本身具有类别标签,可以用来
+评判聚类准确率.但需要指出的是,量子算法实现过程中数
+据集需要被映射到适合量子旋转的范围.
+根据３．２节对量子位旋转制作方法的介绍,本文基于
+Mall数据集对最佳特征映射方法进行探索.首先,随机抽取
+２０个样本点以３．２小节提到的６种不同的映射方式产生旋
+转参数θ和φ;通过该参数制造量子位旋转并输入到量子距
+离测量模块后可以测量样本点两两之间的量子距离. 以
+pandas库中的corr方法衡量两组数据之间的相关度,２０个样
+本点两两之间的欧氏距离和量子距离相关度如表３所列,其
+中,１)归一化到[－１,１]后再线性映射到[０,π];２)零均值化后
+反正切再增加０．５π到[０,π];３)直接反正切后增加０．５π到
+[０,π];４)归一化到[０,１]后反正切再线性缩放到[０,π];５)归
+一化到[０,１]后取平方再线性缩放到[０,π];６)归一化到
+[－１,１]后反余弦到[０,π].由表３易知,将原始特征作归
+一化缩放后再线性映射为量子位在布洛赫球上的旋转参
+数,得到的量子距离与反应样本点在笛卡尔系真实间距的
+欧氏距离最为接近.
+表３　不同特征比值映射方式对应的量子距离与相应两点间
+欧氏距离的关联度
+Table３　Correlationbetweenthequantumdistancecorresponding
+todifferenteigenratiomappingmethodsandthecorresponding
+Euclideandistancebetweentwopoints
+映射方式
+１
+２
+３
+４
+５
+６
+关联度/％
+９７
+９４
+９３
+９２
+９１
+８７
+采用最佳关联度对应的特征比值映射方式,图６给出了
+２０个样本点两两之间共４００组的量子距离与欧氏距离的分
+布关系图,可以看出欧氏距离与量子距离呈近似线性的正相
+关关系.其他数据集依照此方法进行特征映射.
+图６　２０个样本点两两之间的欧氏距离和量子距离的分布关系图
+Fig．６　PlotofEuclideandistanceandquantumdistancedistribution
+betweentwoof２０samplepoints
+４．２　量子算法与经典算法的对比
+
+===== PDF PAGE 8 =====
+３
+３
+刘　翔,等:量子原型聚类
+距离的QPC两种算法在５组数据集上的表现进行对比分析
+(其中原型的表示和求解方法为k 均值聚类算法),图７为各
+(a)RepresentationofBlodfrom
+(b)RepresentationofBlodfrom
+classicclustering
+quantumclustering
+(e)RepresentationofRandomfrom
+(f)RepresentationofRandomfrom
+classicclustering
+quantumclustering
+图８为各算法在计算过程的平均样本中心距/准确率Ｇ迭
+代次数关系折线图.图８(a)－图８(d)分别给出了算法在
+Toy,Random,Iris,Blob这４个数据集上的表现,４个子图中
+均以左侧轴为平均样本中心距,右侧轴为聚类准确率.蓝色/
+红色折线分别为经典/量子算法的平均样本中心距,绿色/
+黄色折线分别为经典/量子算法的聚类准确率. 观察两组
+图可以发现,在样本点分布有明显边界的Toy和Blob数
+据集上,量子算法与经典算法实现的聚类效果相差无几,
+算法在数据集上的聚类结果散点图,其中左侧为经典算法,右
+侧为量子算法.
+(c)RepresentationofIrisfrom
+(d)RepresentationofIrisfrom
+classicclustering
+quantumclustering
+(g)RepresentationofToyfrom
+(h)RepresentationofToyfrom
+classicclustering
+quantumclustering
+并且如图８中Toy和Blob子图所示,聚类算法执行过程中
+的指标变化也几乎一致,这说明量子算法与经典算法对强
+可聚类数据集的处理效果无明显差别. 而在样本点无明
+显分界的Random 和Iris数据集上,两种算法的最终实现
+结果有显著差别.结合样本点的分布范围和数据量,就图
+８中Random 和Iris子图所示的折线来看,量子算法和经
+典算法表现出较明显的差别,但并没有哪一种算法绝对优
+于另一种.
+图７　经典算法与量子在Blob,Iris,Random,Toy数据集上执行聚类的结果散点图
+Fig．７　ScatterplotoftheresultsofclassicalalgorithmandquantumperformingclusteringonBlob,Iris,Random,andToy
+(a)Blod
+(b)Iris
+(c)Random
+(d)Toy
+图８　经典与量子两种原型聚类算法在部分数据集的计算过程中平均样本中心距/准确率－迭代次数折线图
+(电子版为彩图)
+Fig．８　Meansamplecentroid/accuracyＧiterationlinegraphsoftheclassicalandquantumprototypeclusteringalgorithms
+forselecteddatasets
+
+===== PDF PAGE 9 =====
+４
+３
+ComputerScience 计算机科学
+Vol．５０,No．８,Aug．２０２３
+４．３　多次重复实验的表现
+实际上,图７、图８所展现的是典型的、具有代表性的
+结果.从多次重复实验的表现来看,经典算法或量子算法
+并没有各自的“优势”数据集,即其在该数据集中的表现并
+没有恒优于另一种算法. 我们仍以Mall数据集为例,分
+析多次重复实验中的算法表现,图９给出了４次典型对比
+实验的损失Ｇ迭代关系折线图,蓝色线代表经典算法的表
+现,红色线代表QPC 的表现. 可以看出,即使在同一个
+(a)Mall_Customers,No．１
+(b)Mall_Customers,No．２
+为减小量子计算随机性对结果的影响,本文对每组数据
+集都进行１０次重复实验,结果如表４所列,其中原型d 的表
+示和求解方法为k 均值.
+表４　５组数据集上分别重复１０次量子/经典原型聚类算法对比
+实验的结果
+Table４　Resultsoftenrepeatedquantum/classicalprototype
+clusteringalgorithmcomparisonexperimentsoneachofthe
+fivedatasets
+数据集
+Toy
+Random
+Iris
+Blob
+Mall
+量子算法平均样本中心距
+０．４４２
+０．３１６
+０．１２２
+０．３００
+０．１８３
+量子算法平均准确率
+１．００
+０．９５５
+０．７５５
+０．９５９
+－
+经典算法平均样本中心距
+０．４４２
+０．３１０
+０．１０９
+０．３０５
+０．１７８
+经典算法平均准确率
+１．００
+０．９６２
+０．７７５
+０．９５０
+－
+量子算法表现更好的次数
+－
+３
+３
+６
+４
+可以看出,在多数据集上的多组重复实验中,QPC 在
+Mall,Random,Iris数据集上表现优于经典算法的次数明显比
+Toy和Blob少.这说明在本研究的实验环境下,在较复杂的
+经典数据集中,QPC的表现仍稍弱于经典算法.需要强调的
+是,这一方面是因为当前通用量子计算平台更适用于处理具
+有量子效应的问题,对经典机器学习算法部署的支持不够;
+数据集上,多次实验中的量子算法和经典算法的表现也略
+有差别,互有优劣.随机选择一组量子算法与经典算法对
+Mall数据集进行聚类的结果散点图进行比对,结果如图１０
+所示,其中左图是量子算法,右图是经典算法.只有在被圆圈
+围住的小部分类别交汇区域,量子算法与经典算法会产生些
+许差别.这是单次量子距离测量具有随机性导致的,如果在
+类似的有强可聚类性特征的数据集上多次执行基于欧氏距离
+的聚类算法,其结果通常不会有差别.
+(c)Mall_Customers,No．３
+(d)Mall_Customers,No．４
+的支持仍不完善,任何原始数据输入量子系统之前都不得不
+进行量子化处理,这不可避免地会损失部分原始信息.总体
+而言,在当前有限的量子计算条件下,QPC 达到了和当前著
+名原型聚类算法几乎一致的结果,这说明了本文提出的QPC
+的有效性.
+４．４　真实量子环境中的表现
+本文在本地模拟环境、云端量子模拟机和IBM 量子计算
+机３种环境下进行了Mall数据集的量子原型聚类算法实验,
+结果如表５所列.由表５可知,就３种量子环境而言,使用云
+端量子模拟机和真实量子计算机进行QPC 聚类的效果与本
+地模拟环境并无明显差别.究其原因,就数据集而言,无论是
+量子算法还是经典算法,它们在该数据集上的聚类结果几乎
+都达到了最佳状态,没有更多的上升空间;从较为普遍的观点
+来看,由于本文使用的经典数据没有进入复空间,其本身亦无
+量子噪声干扰,因此量子计算机/模拟机对有量子效应问题的
+处理优势无法展现.关于量子模拟机和量子计算机的总耗时
+远大于本地环境和经典算法的问题,一方面是由于使用IBM
+QExperience执行量子算法时每次计算都要重新搭建硬件
+线路,无法实现保留线路并多次复用.具体而言,使用量子模
+拟机时,每次距离计算都需要重新搭建线路、上传数据,因此,
+图９　在Mall_Customers数据集上多次重复执行原型聚类算法和QPC得到的４幅典型的平均样本中心距Ｇ迭代次数折线图
+(电子版为彩图)
+Fig．９　FourtypicalmeansamplecentroidＧiterationcountlineplotsobtainedbymultipleiterationsoftheprototypeclusteringalgorithm
+andQPConMall_Customersdataset
+(a)Clusteringresultobtainedbyquantumalgorithmin Mall
+(b)Clusteringresultobtainedbyclassicalgorithmin Mall
+图１０　在Mall数据集执行量子原型聚类算法与经典原型聚类算法的结果对比
+Fig．１０　ResultsofexecutingthequantumprototypeclusteringalgorithmversustheclassicalprototypeclusteringalgorithmonMalldataset
+
+===== PDF PAGE 10 =====
+５
+３
+刘　翔,等:量子原型聚类
+进行２００个样本点、５个聚类中心、１０次迭代共１万次距离计
+算需要上传１万次数据,重新搭建１万次硬件线路.搭建和
+解除线路的时间会算入运行时间中.特别地,由于现阶段量
+子计算机本身更多地被用于解决粒子物理学、物理化学等具
+有量子效应的问题,因此那些用于解决复杂的有量子力学效
+应问题[５Ｇ６]的线路的复杂程度不会明显高于、甚至会低于本文
+研究的用于解决经典数据问题的量子机器学习算法线路[３６].
+另一方面,由于量子距离的衡量依赖于对同一量子系统数千
+次坍缩结果的统计,也就是说实验中进行１万次量子距离测
+量,会执行量子线路千万余次.而经典算法完成一次欧氏距
+离计算只需要CPU 执行一次二维向量平方和运算.最后,如
+图１１所示,由于目前量子计算资源有限,向IBM 量子计算机
+部署实验时,任务排队和线路合法性验证会消耗极为可观、甚
+至远超过线路运行本身的时间(根据前方任务序列的长度,排
+队和合法性验证时间从数毫秒到数分钟乃至十余分钟不等).
+刨除线路合法性验证和任务排队时间后的纯计算时间如表５
+所列,可以发现量子算法的纯计算耗时远小于总耗时.虽然
+其与经典算法的计算耗时仍有显著差距,但事实上这是当前
+量子计算框架和量子硬件研究仍未成熟、缺少工程优化等原
+因所导致的,并非是量子计算本身的性能缺陷.就验证量子
+原型聚类算法在不同环境中的有效性而言,本文研究显然是
+成功的.
+图１１　量子计算机单次执行量子计算的流程和时间消耗
+Fig．１１　Processandtimeconsumptionofquantumcomputers
+performingasinglequantumcomputation
+表５　Mall数据集重复１０次量子/经典聚类算法实验的结果
+Table５　Resultsoftenrepeatedquantum/classicalclustering
+algorithmexperimentsonMalldataset
+实验环境
+本地
+云端
+量子机
+经典算法
+平均样本中心距
+０．１７９
+０．１８３
+０．１８３
+０．１８３
+总耗时
+２６９s
+３d
+５d
+０．１９s
+计算耗时/s
+１４
+３０
+３０
+０．１９
+结束语　本文提出了一种量子原型聚类算法,通过对两
+个量子位之间的相似程度进行度量,推导出了一种量子距离,
+并将量子距离测量模块化.该模块的数据输入输出形式与经
+典算法完全一致,且由于量子距离定义与欧氏距离定义具有
+相当的一致性,该模块可以以“即插即用”的方式直接替换掉
+经典的原型算法中的闵可夫斯基距离计算模块,将经典的原
+型聚类算法进行量子化重构.相比从头设计一整套独立的量
+子算法,本文算法的实现更加易于复现、更容易与经典算法形
+成直接对比.在多个公开数据集进行的多组重复实验证明,
+了与经典算法几乎一致的聚类结果.最后,本文还在量子模
+拟机和真实量子计算机上进行了量子原型聚类算法的实际实
+验,探究了现阶段量子算法在真实量子计算环境中的实际运
+行效率,并对其实际运行时间与理论分析之间的差距进行了
+分析解释.
+近年来,研究人员对量子计算的深入研究,尤其是国内量
+子计算领域的重大突破[３７],为量子机器学习算法的研究创造
+了良好条件.本文提出的量子原型聚类算法对基于双量子位
+纠缠的量子无监督学习算法研究的一个可能的方向进行了较
+为充分的研究,可以作为更先进量子机器学习算法研究的
+参考.
+由于量子状态数与量子比特数呈指数型对应关系,当量
+子比特数进一步增多时,量子线路设计将更加复杂,测量误差
+将更加难以预测.但受IBM 量子机所能提供的最大量子位
+限制,本文并没有对３个及以上量子位纠缠线路进行过多讨
+论.这无疑是进一步研究必须要讨论和验证的.
+参考文献
+[１] CILIBERTOC,HERBSTER M,IALONGO AD．Quantum maＧ
+chinelearning:aclassicalperspective[J]．Proceedingsofthe
+Royal Society A:Mathematical,Physical and Engineering
+Sciences,２０１８,４７４(２２０９):２０１７０５５１．
+[２] BIAMONTE J,WITTEK P,PANCOTTI N,et al．Quantum
+machinelearning[J]Nature,２０１７,５４９(７６７１):１９５Ｇ２０２．
+[３] MISHRA N,KAPIL M,RAKESH H．Quantum MachineLearＧ
+ning:AReviewandCurrentStatus[J]．DataManagement,AnaＧ
+lyticsandInnovation,２０１９,２:１０１Ｇ１４５．
+[４] SHOR W P．Algorithmsforquantumcomputation:DiscreteloＧ
+garithmsandfactoring[C]∥Proceedings３５th AnnualSympoＧ
+siumonFoundationsofComputerScience．１９９４:１２４Ｇ１３４．
+[５] GROVER L K．Quantum mechanicshelpsinsearchingfora
+needleinahaystack[J]．PhysicalReviewLetters,１９９７,７９(２):
+３２５．
+[６] HUANG Y M,LEIH,LIX Y．OverviewofQuantum machine
+learningalgorithms[J]．Journalof ComputerScience,２０１５,
+４１(１):１４５Ｇ１６３．
+[７] HARROW A W,HASSIDIM A,LLOYDS．Quantumalgorithm
+forlinearsystemsofequations[J]．PhysicalReview Letters,
+２００９,１０３(１５):１５０５０２．
+[８] BHARTIK,HAUG T,VEDRAL V．MachineLearning meets
+QuantumFoundations:A BriefSurvey[J]．arXiv:２００３．１１２２４,
+２０２０．
+[９] ZHOUZH．MachineLearning[M]．Beijing:TsinghuaUniversiＧ
+tyPress,２０１６:２０２Ｇ２１１．
+[１０]WIEBEN,BRAUN D,LLOYDS．Quantumalgorithmfordata
+fitting[J]．PhysicalReviewLetters,２０１２,１０９(５):０５０５０５．
+[１１]CHILDS A M,KOTHARI R,SOMMA R D．Quantum algoＧ
+rithmforsystemsoflinearequations withexponentiallyimＧ
+proveddependenceonprecision[J]．SIAM JournalonCompuＧ
+ting,２０１７,４６(６):１９２０Ｇ１９５０．
+[１２]SCHULD M,SINAYSKIYI,PETRUCCIONEF．AnintroducＧ
+
+===== PDF PAGE 11 =====
+６
+３
+ComputerScience 计算机科学
+Vol．５０,No．８,Aug．２０２３
+２０１５,５６(２):１７２Ｇ１８５．
+[１３]WITTEKP．Quantum machinelearning:WhatquantumcompuＧ
+tingmeanstodatamining[M]．AcademicPress,２０１４:１３２Ｇ１３３．
+[１４]CASPERE,HUNGCC,JUNGE,etal．AquantumＧmodeledkＧ
+meansclusteringalgorithmformultiＧbandimagesegmentation
+[C]∥Proceedingsofthe２０１２ACM ResearchinAppliedComＧ
+putationSymposium．Texas,USA,２０１２:１５６Ｇ１６３．
+[１５]ARUNACHALAM S,DE W R．Guestcolumn:A survey of
+quantum learning theory[J]．ACM SIGACT News,２０１７,
+４８(２):４１Ｇ６７．
+[１６]ADCOCKJ,ALLEN E,DAY M,etal．Advancesinquantum
+machinelearning[J]．arXiv:１５１２．０２９００,２０１５．
+[１７]KERENIDISI,LANDMANJ,LUONGO A,etal．QＧmeans:a
+quantumalgorithmforunsupervised machinelearning[J]．arＧ
+Xiv:１８１２．０３５８４,２０１９．
+[１８]XIAO J,YAN Y,ZHANG J．etal．QuantumＧinspired genetic
+algorithmforkＧmeansclustering[J]．ExpertSystemswithApＧ
+plications,２０１０,３７(７):４９６６Ｇ４９７３．
+[１９]ENNIOGI T．Quantum KＧMeans [EB/OL]．https://github．
+com/enniogit/Quantum_KＧmeans．
+[２０]ZHANG Y,NIQ．Recentadvancesinquantum machinelearning
+[J]．QuantumEngineering,２０２０,２(１):e３４．
+[２１]O’QUINN W,MAOS．Quantum MachineLearning:RecentAdＧ
+vancesandOutlook[J]．IEEE WirelessCommunications,２０２０,
+２７(３):１２６Ｇ１３１．
+[２２]DUNJKO V,WITTEK P．A nonＧreview ofQuantum Machine
+Learning:trendsandexplorations[J]．Quantum Views,２０２０,４:
+３２Ｇ４５．
+[２３]POMERANCEC．Ataleoftwosieves[J]．NoticesoftheAmeriＧ
+canMathematicalSociety,１９９６,４３(１２):１４７３Ｇ１４８５．
+[２４]BENNETT C
+H,BERNSTEIN
+E,BRASSARD
+G,et al．
+Strengthsand weaknessesofquantum computing[J]．SIAM
+JournalonComputing,１９９７,２６(５):１５１０Ｇ１５２３．
+[２５]BARZS,KASSALI,RINGBAUER M,etal．AtwoＧqubitphoＧ
+tonicquantumprocessoranditsapplicationtosolvingsystemsof
+linearequations[J]．ScientificReports,２０１４,４:６１１５Ｇ６１２０．
+[２６]CAIXD,WEEDBROOK C,SU ZE,etal．ExperimentalquanＧ
+tumcomputingtosolvesystemsoflinearequations[J]．Physical
+ReviewLetters,２０１３,１１０(２３):２３０５０１．
+[２７]ZHENG Y,SONGC,CHEN MC,etal．SolvingsystemsoflineＧ
+arequations withasuperconductingquantum processor[J]．
+PhysicalReviewLetters,２０１７,１１８(２１):２１０５０４．
+[２８]LLOYD S,MOHSENI M,REBENTROST P．Quantum algoＧ
+rithmsforsupervisedandunsupervised machinelearning[J]．
+arXiv:１３０７．０４１１,２０１３．
+[２９]REBENTROSTP,MOHSENIM．LLOYDS．Quantumsupport
+vectormachineforbigdataclassification[J]．PhysicalReview
+Letters,２０１４,１１３(１３):１３０５０３．
+[３０]WOLDS,ESBENSEN K,GELADIP．PrincipalcomponentanaＧ
+lysis[J]．ChemometricsandIntelligent Laboratory Systems,
+１９８７,２(１/２/３):３７Ｇ５２．
+[３１]LLOYDS,MOHSENIM,REBENTROSTP．Quantumprincipal
+componentanalysis[J]．NaturePhysics,２０１４,１０(９):６３１Ｇ６３３．
+[３２]SENTÍS G,BAGAN E,CALSAMIGLIA J,et al．Quantum
+changepoint[J]．Physical Review Letters,２０１６,１１７(１５):
+１５０５０２．
+[３３]ADACHISH,HENDERSON MP．ApplicationofquantumanＧ
+nealingtotrainingofdeepneuralnetworks[J]．arXiv:１５１０．
+０６３５６,２０１５．
+[３４]SCHULD M,KILLORAN N．Quantum machinelearninginfeaＧ
+tureHilbertspaces[J]．PhysicalReview Letters,２０１９,１２２(４):
+０４０５０４．
+[３５]CASPER E,HUNG C C．Quantum modeled clustering algoＧ
+rithmsforimagesegmentation[J]．ProgressinIntelligentComＧ
+putingandApplications,２０１３,２(１):１Ｇ２１．
+[３６]ZHANG H,MAOS,WU W,etal．A ReviewofquantumcomＧ
+putingcomplexitytheory[J]．Journalof Computer Science,
+２０１６,３９(１２):２４０３Ｇ２４２８．
+[３７]ZHONG H,HUI W,DENG Y,etal．Quantumcomputational
+advantageusingphotons[J]．Science,２０２０,３７０:１４６０Ｇ１４６３．
+LIUXiang,bornin１９９８,mastercandiＧ
+date,isa memberofChina Computer
+Federation．Hismainresearchinterests
+includelightweightneuralnetworksdeＧ
+signing,underwatervisionsystem and
+quantum machinelearning．
+ZHONGGuoqiang,bornin１９８１,Ph．D,
+professor,Ph．
+Dsupervisor,
+isamember
+of China Computer Federation．His
+mainresearchinterestsincludepattern
+recognition,machinelearningandimage
+processing．
+(责任编辑:何杨)

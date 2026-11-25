@@ -1,0 +1,622 @@
+===== PDF PAGE 1 =====
+噪声信道下的盲量子计算
+罗文俊
+雷　爽
+重庆邮电大学计算机科学与技术学院　重庆４０００６５
+(luowj＠cqupt．edu．cn)
+中图法分类号　TP３０１
+BlindQuantumComputationoverNoiseChannels
+LUO WenＧjunandLEIShuang
+１　引言
+量子纠错(Quantum ErrorCorrection,QEC)
+[１Ｇ３]技术是
+量子计算[４]过程中应对量子噪声的一种必要的方法.与经典
+计算不同,量子计算的优越性主要体现在量子并行计算上,量
+子计算利用量子态的相干叠加特性完成高效的复杂运算,可
+以实现短时间内对现有密码体制的暴力破解.但是量子计算
+对计算环境的要求极高,由于实际的量子环境中量子态很容
+易被环境破坏,一旦量子态被破坏,那么量子就会向被破坏的
+态上偏转,并且这个过程是不可逆的.所以,在有噪信道或者
+通信作者:雷爽(ls８８９９３３＠１６３．com)
+http://www．
+jsjkx．com
+DOI:１０．１１８９６/jsjkx．１９０６０００２０
+第三方攻击的情况下,量子计算会失去其计算优势.因此,量
+子纠错在整个量子计算中起到重要的作用.为实现量子纠
+错,量子纠错编码应运而生.文献[５]对二元非线性等重码的
+经典纠错码的性能进行研究,证明了n≠２ω 时Fu等提出的
+改进的王氏猜想成立[６].本文对量子纠错码进行探究,量子
+纠错码是在复Hilbert空间实现的,相对于经典纠错码,其在
+对错误信息检错和纠错时存在３种难题:１)量子态不可克隆;
+２)错误是连续的;３)量子信息不可测量.因此为解决上述问
+题,shor量子纠错码[７]将单比特量子态编码成一个纠缠态,
+量子相干性不受影响,错误也能被正常测出.
+摘　要　盲量子计算(BlindQuantumComputation,BQC)区别于传统的量子计算(Quantum Metrology),它将客户端的计算任
+务通过量子信道委托给服务器端完成,解放客户端的计算压力,这就要求在信道的传输过程中,量子尽量精确传输.由于量子
+信道的噪声问题,理想情况下的无噪传输协议是不可能实现的,需要使用量子纠错码(Quantum ErrorＧCorrectingCode,QECC)
+来纠正由噪声信道引起的量子比特翻转和量子相位翻转错误.在盲量子计算协议的基础上,文中针对噪声比特翻转信道和噪
+声相位翻转信道分别设计抗噪声的盲量子计算协议,客户端通过不同的方式编码量子比特,利用编码后的量子比特传输量子信
+息给服务器,服务器利用量子纠错码恢复正确的量子信息与客户端完成盲量子计算.协议分析表明,文中提出的两个盲量子计
+算协议分别在量子比特翻转和量子相位翻转噪声信道中,通过纠错计算达到了盲量子计算协议对于量子尽量精确传输的要求,
+并且不改变盲量子计算的正确性和盲特性,不会降低量子计算的无条件安全性.最后展望所提协议可以适用于其他量子纠错码.
+关键词:盲量子计算;噪声信道;量子比特翻转;量子相位翻转;量子纠错码
+CollegeofComputerScienceandTechnology,ChongqingUniversityofPostsandTelecommunications,Chongqing４０００６５,China
+Abstract　BlindQuantumComputation(BQC),
+isakindofprotocolthatremarkablydistinguishesfromtraditionalquantumcomＧ
+putation,delegatescomputingtasksfromclientstotheserversthroughthequantumchannelswhicheventuallyalleviatesthecomＧ
+putingpressuregeneratedbytheclients．Consequently,BQCrequiresthatthequantumisteleportedinanaccuratemannerof
+transmissionviathechannels．Duetotheproblemofnoiseofquantumchannel,apurelynoiselesstransmissionchannelunderideal
+circumstancecannotberealizedwithoutquantumerrorcorrectioncodesthatareimplementedtorectifythefliperrorsintermsof
+quantumbitandphaseresultedfromnoisechannels．BythebasisofBQCprotocol,twoantiＧnoiseBQCprotocolsareproposed
+fromtheperspectivesofnoisebitflipchannelsandnoisephaseflipchannels,respectively．Explicitly,theclientencodesthequbits
+viavariousways,thentheencodedqubitsareusedtotransmitthequantuminformationtotheserverbywhichthequantumerror
+correctioncodesareexploitedtorecoverthecorrectquantuminformationforthepurposeofcompletionofBQCwiththeclient．A
+protocolanalysisindicatesthatviacorrectioncomputation,therequirementofaccuratetransmissionbyBQCprotocolcanbemet
+duringthecomputationofBQCoverthequantumbitflipandquantumphaseflipnoisechannelswithneitherthesacrificeofcorＧ
+rectnessandblindnessofBQC,northereductioninunconditionalsecurityofquantumcomputing．Finally,thispaperhopesthat
+thenewBQCprotocolscanbeappliedtootherquantumerrorcorrectioncodesaswell．
+Keywords　Blindquantumcomputation,Noisechannel,Quantumbitflip,Quantumphaseflip,Quantumerrorcorrectingcode
+到稿日期:２０１９Ｇ０６Ｇ０５　返修日期:２０１９Ｇ０８Ｇ２１　　本文已加入开放科学计划(OSID),请扫描上方二维码获取补充信息.
+
+===== PDF PAGE 2 =====
+８
+３
+ComputerScience 计算机科学
+Vol．４７,No．７,July２０２０
+现在的量子纠错码分为两类.一类是对称量子码,上文
+阐述的经典shor量子纠错码就属于这一类.与此同时,CSS
+构造码的构造方法解决了构造量子码的难题[８Ｇ９].而后,研究
+者们提出利用几何特性构造量子纠错码,具有几何特性的量
+子纠错码的代表为Quantum Low DensityParityCheck(LDＧ
+PC)码[１０Ｇ１２],它降低了计算复杂度.另一类量子纠错码是非
+对称量子码.最初,Steane讨论了在非对称信道构造量子纠
+错码的方法[１３],随着研究的深入,越来越多的研究者开始研
+究非对称量子码.２００７年,Ioffe等利用量子CSS构造原理
+得到了非对称量子BCHＧLDPC 码[１４].２０１０年,Aly等[１５]提
+出运用经典循环码生成的多项式获得自对偶纠错码,再利用
+非对称构造定理得到一系列非对称量子纠错码.同年,Wang
+等[１６]针对非加性对称量子码的特性,扩展得到不对称的非加
+性量子码.对于某些高效的现代码,找到它的对偶码比较困
+难.基于这个问题,研究者们提出了算子量子纠错码和基于
+纠缠辅助的量子纠错码[１７Ｇ１９].Hsieh 等[２０]利用经典的欧式
+几何与射影几何LDPC码来构造低纠缠度的高性能纠缠辅助
+量子LDPC 码,仿真结果证实了具有低纠缠消耗率的高性能
+纠缠辅助量子LDPC码优于标准量子LDPC码.
+本文将纠错码运用到盲量子计算[２１Ｇ２４]中.在盲量子计
+算过程中,由于Alice要通过量子信道向Bob发送量子比特,
+理想状态下的量子无噪信道无法实现,会出现量子比特翻转
+或者量子相位翻转错误,因此使用量子纠错码,选择辅助量子
+比特作为纠错码.辅助量子纠错码理论[１８,２５Ｇ２７]已经证明,基
+于辅助构造的量子纠错码可以对抗量子信道引起的噪声问
+题,只要其满足构造条件就不会出错,能更快地传输信息.
+本文首先介绍量子纠错码的研究现状,将其应用于盲量
+子计算中;接着将量子纠错码重新编码,使其适用于有噪声信
+道的盲量子计算;然后提出拟定的基于量子纠错码的盲量子
+计算协议;最后对协议进行分析和展望.
+２　理论基础
+量子发生的错误分为３种,对应Pauli矩阵XYZ 的线性
+组合,所以只需纠正这３个错误就可以解决所有的量子错误.
+２．１　量子纠错码
+QEC基于３个核心思想:噪声的数字化、错误操作符的
+操作和量子纠错码(QECC)的构造.QEC 的成功程度依赖于
+噪声的物理学.本文在讨论了３个核心思想后,根据辅助量
+子纠错的原理,对噪声信道下的量子比特进行编码并设计新
+的盲量子计算协议.
+２．１．１　噪音数字化
+“噪音数字化”指一组量子比特与另一个系统(如环境)之
+间的相互作用形式,用|φ›|φ０›
+e→∑
+i (Ei|ϕ›|φi›
+e)表示.其
+中,每个错误运算符Ei 是Pauli算子作用于量子位的张量积,
+|ϕ›是初始值量子比特的状态和,|φi›
+e 是环境状态,|φi›
+e 不
+一定正交或标准化.因此,本文用Pauli算子σx,
+σy,
+σz 表示一
+般噪声或退相干量子比特,表示为X≡σx,Z≡σz,Y≡－iσy＝
+XZ.
+２．１．２　错误算子的提取
+考虑由{I,X,Y,Z}组成的集合以及３个Pauli运算符.
+Pauli操作全部表示为与I 有关的操作:X
+２＝I,且
+特征值为±１.集合中的两个操作必须对易(XI＝IX)或反对
+易XZ＝－ZX.Pauli算子的张量积,即错误算子也需要对易
+或反对易.如果量子系统中有n 个量子位,则错误算子的长
+度也为n.
+２．１．３　量子纠错码的构造条件
+令C 为一个量子码,P 为C 的投影算子,具有运算元
+{Ei}的量子运算用ε来表示.则量子码C 上的纠错运算ε 存
+在的充分必要条件为:对某个负数Hermite矩阵α 成立:
+PEi∗EjP＝αijP
+(１)
+２．２　盲量子计算
+在通用盲量子计算[２３]中,(
+i,j)为量子位索引,其中i为
+列,
+j为行,图态|G(
+θ)›的产生规则如下:
+若行imod２＝１,列j≡３mod８,则对满足条件的(
+i,j),
+(
+i＋１,
+j),(
+i,
+j＋２)和(
+i＋１,
+j＋２),执行ControlledＧZ操作.
+若行imod２＝０,列j≡７mod８,则对满足条件的(
+i,j),
+(
+i＋１,
+j),(
+i,
+j＋２)和(
+i＋１,
+j＋２),执行ControlledＧZ操作;对
+于每一行所有(
+i,
+j)和(
+i＋１,
+j),执行ControlledＧZ操作.
+一个Brickwork中一个任意角测量的结构如图１所示.
+图１　任意角测量结构图
+Fig．１　Structureofarbitraryanglemeasuring
+假设客户想要完成量子计算,且他已经考虑到对应于图
+G 的n 量子位图态的量子计算,想要执行的量子操作是在基
+|±δi›下测量第i个量子位,则盲量子计算协议步骤如下:
+S１:客户准备n个量子比特并发送给服务器.每个量子
+位的状态是|θi›＝|０›＋e
+iθi|１›(
+i＝１,２,􀆺,n),其中θi 从集
+合S(S＝{０,π
+４,􀆺,７π
+４})中一致地选择.
+S２:服务器产生图态|G(
+θ)›.
+S３:对于i＝１,２,􀆺,n,客户随机选择ri∈{０,１},计算
+δi＝(
+θi＋ϕi′＋riπ)mod２π,其中ϕi′根据前面的测量得到.
+如果客户端需要服务器测量|G(θ)›的第i个量化位,则将δi
+发送到服务器.
+S４:服务器在|±δi›基础上对第i(
+i＝１,２,􀆺,n)个量子
+位进行测量,并通知客户有关测量结果.
+３　噪声信道下的盲量子计算协议
+在盲量子计算中,由于量子信息传输的过程不可避免地
+会受到外部环境的影响(外部环境极有可能是噪声状态),那
+么在噪声信道下,Bob收到的量子会被移位或者翻转.在这
+个情况下,一般有两种应对方式,一种是量子容错,另一种是
+量子纠错.容错的盲量子计算虽然效率高,但是牺牲了结果
+的正确性,所以本文利用量子纠错,即加入量子纠错码,使得
+Bob在进行盲量子计算之前,先用纠错码对收到的量子比特
+进行纠错,再完成计算,以提高结果的正确性.因此,本文利
+用辅助码对盲量子计算协议进行重新设计,Alice通过编码量
+子比特利用编码后的量子比特传输量子信息,在信息比特通
+过有噪量子信道后,Bob根据解码的量子比特恢复出正确的
+量子消息,满足量子纠错条件.
+
+===== PDF PAGE 3 =====
+９
+３
+罗文俊,等:噪声信道下的盲量子计算
+３．１　噪声信道下单量子比特翻转错误纠正
+本文协议首先设定盲量子计算中的噪声信道只对单量子
+比特进行翻转.
+本文设计的基于单量子比特翻转错误纠正的盲量子计算
+协议如下.
+S１:Alice制备n个单量子比特,每个量子位的状态是|φ›＝
+|０›＋e
+iθi|１›(
+i＝１,２,􀆺,n),其中θi从集合S 中随机选择.
+在这个情况下,只有Alice知道θi的值.
+S２:Alice编码单量子比特.
+C(|φ›|００›)＝|φE›＝|０００›＋e
+iθi|１１１›
+(２)
+编码线路如图２所示.
+图２　Alice编码线路图
+Fig．２　CodedcircuitofAlice
+S３:Alice通过量子噪声信道发送|φE›给Bob.
+在量子噪声信道中,由于发生了一位量子比特翻转,此时
+错误算子的集合为:
+ε＝{I１I２I３,X１I２I３,I１X２I３,I１I２X３}
+那么,当p１,p２,p３分别为错误发生的概率时,E１,E２,E３分别
+为其操作元.
+E１＝
+p１X１I２I３
+ì
+í
+ïï
+(３)
+E２＝
+p２I１X２I３
+ïï
+E３＝
+p３I１I２X３
+î
+此时,Alice发送的|φE›通过量子噪声信道变为|φE›
+′,即:
+|φE›→|φE›
+′＝∑
+aEa|φE›
+(４)
+aEa|φE›＝( p１X１I２I３＋
+p２I１X２I３＋
+p３I１I２X３)
+∑
+(|０００›＋e
+iθi|１１１›)
+S４:Bob收到Alice的编码比特|φE›
+′后,利用|００›辅助态
+纠缠量子编码比特.Bob 利用伴随算子A:|a１a２a３００›→
+|a１a２a３,a２􀱇a３,a１􀱇a３|计算A(∑
+aEa|φE›|００›).具体过程
+如图３所示.
+图３　Bob编码路线图
+Fig．３　CodedcircuitofBob
+S５:Bob对辅助比特进行测量操作,根据测量结果执行对
+应门操作从而进行量子纠错,如表１所列.测量结果集合为
+{０１,１０,１１,００}.
+表１　量子纠错操作
+Table１　Quantumerrorcorrection
+测量结果
+量子塌缩态
+门操作
+‹００›
+|０００›＋eiθi|１１１›
+I１I２I３
+‹０１›
+|１００›＋eiθi|０１１›
+X１I２I３
+‹１０›
+|０１０›＋eiθi|１０１›
+I１X２I３
+‹１１›
+|００１›＋eiθi‹１１０›
+I１I２X３
+此时,纠错后的量子比特为|φE›.
+S６:Bob利用投影算子|０›＋|１›,使纠错后的量子比特
+|φE›塌缩到|０›＋e
+iθi|１›,即|φ›态.
+S７:Bob利用|φ›态量子比特排列图G,从通用盲量子计
+算步骤S３开始,与Alice进行经典盲量子比特计算.
+量子码的译码即纠正量子在信道中发生移位、翻转等错
+误.在本文协议中,纠错的过程如下:
+Alice将kＧqubit量子态|φ›
+k 编码为nＧqubit序列S＝
+|φ１φ２􀆺φn›,编码操作如下:
+|φn›＝UE|ϕ›
+A
+c|φk›|０›
+n－c－k
+(５)
+Bob对经由量子噪声信道输出的Alice发送信息的量子
+态序列|φn′›进行错误伴随式测量,接着进行迭代译码,对错
+误的恢复操作为:
+|φk′›＝DE
+∧|φn′›|ϕ›
+B
+c
+∧E|φn›|ϕ›
+B
+c
+＝DE
+∧EUE|ϕ›
+A
+c|φk›|０›
+n－c－k|ϕ›
+B
+c
+＝DE
+∧EUE|φk›
+(６)
+＝DE
+根据错误伴随式S 对辅助量子纠错码进行译码,得到最
+∧
+∧
+,当E
+＝E 时,可通过算符DE
+可能的信道错误算子E
+∧的操作恢
+复出正确的量子态序列.
+３．２　噪声信道下单量子比特相位翻转错误纠正
+在噪声信道中有可能发生相位翻转错误,相位翻转噪声
+下,Alice发送的量子比特可能变为:
+|φE›＝|０００›＋e
+iθi|１１１›→|φE›
+′＝|０００›－e
+iθi|１１１›(７)
+这时,Alice用比特翻转编码协议无法满足对错误的修正
+了.因此,本文对量子相位翻转的盲量子协议设计如下:
+S１:同基于单量子比特翻转错误纠正的盲量子计算协议
+的S１.
+S２:Alice利用哈达玛门(Hadamard)编码单量子比特.
+C(|φ›|００›)＝|φE›＝|＋＋＋›＋e
+iθi|－－－›
+(８)
+编码线路如图４所示.
+图４　Alice编码线路图
+Fig．４　Alicecodedcircuit
+S３:Alice通过量子噪声信道发送|φE›给Bob.
+在量子噪声信道中,由于发生了一位量子相位翻转,但这
+时量子比特已经被编码成|φE ›,因此相位翻转错误作用在
+|φE›上的错误算子集合等效为:
+ε＝{I１I２I３,X１I２I３,I１X２I３,I１I２X３}
+Bob收到的|φE›
+′有如下４种情况:
+|φE›
+０′＝|＋＋＋)＋e
+iθi|－－－)
+|φE)
+１′＝|－＋＋)＋e
+iθi|＋－－)
+(９)
+|φE)
+２′＝|＋－＋)＋e
+iθi|－＋－)
+|φE›
+３′＝|＋＋－)＋e
+iθi|－－＋)
+可以看出,协议通过哈达玛门转化,已经将相位翻转变为
+比特翻转,即:
+|φE›→|φE›
+′＝∑
+aEa|φE›
+(１０)
+
+===== PDF PAGE 4 =====
+０
+４
+ComputerScience 计算机科学
+Vol．４７,No．７,July２０２０
+S４:Bob收到Alice的编码比特|φE›
+′后,利用|＋＋›辅助
+态纠缠量子编码比特,如图５所示.
+图５　Bob编码线路图
+Fig．５　Bobcodedcircuit
+Bob利用伴随算子A:|a１a２a３＋＋›→|a１a２a３,a２􀱇a３,
+a１􀱇a３›计算A(∑
+aEa|φE›|＋＋›).
+S５:Bob对辅助比特进行测量操作,根据测量结果执行对
+应门操作从而进行量子纠错,如表２所列.测量结果集合为
+{＋＋,＋－,－＋,－－}.
+表２　量子纠错操作
+Table２　Quantumerrorcorrection
+测量结果
+量子塌缩态
+门操作
+|＋＋›
+|＋＋＋›＋eiθi|－－－›
+I１I２I３
+|＋－› |－＋＋›＋e
+iθi|＋－－›
+X１I２I３
+|－＋› |＋－＋›＋e
+iθi|－＋－› I１X２I３
+|－－› |＋＋－›＋e
+iθi|－－＋› I１I２X３
+S６:Bob利用哈达玛门对纠错后的量子|φE›还原量子态.
+因为哈达玛门的平方等于１,再次利用哈达门编码量子比特
+可以不改变量子态,如图６所示.
+图６　Bob编码线路图
+Fig．６　Bobcodedcircuit
+S７,S８:与基于单量子比特翻转错误纠正的盲量子计算
+协议步骤S６,S７相同.
+４　协议分析
+４．１　可行性证明
+４．１．１　单量子比特翻转错误纠正的盲量子计算协议
+本节对基于单量子比特翻转错误纠正的盲量子计算协议
+的纠错能力进行可行性证明和盲特性证明.
+由于Alice控制θi 的值,控制了计算的盲特性,Bob不知
+道θi,不能得到最终的计算结果.下面从协议整体流程分析
+θi 所在位置的变化情况以及其拥有者,如表３所列.
+表３　量子态变化情况
+Table３　Quantumstatetransformation
+步骤
+量子态
+量子态拥有者
+θi 控制者
+１
+|φ›
+Alice
+Alice
+２
+|φΕ›
+Alice
+Alice
+３
+|φΕ›
+′
+Bob
+Alice
+４
+|φΕ›
+′|００›
+Bob
+Alice
+５
+|φΕ›
+Bob
+Alice
+６
+|φ›
+Bob
+Alice
+由表３可以看出,在整个协议中,θi 值由Alice 保存,
+Alice通过控制θi 达到控制计算的目的,保证了协议的可行
+性和盲特性.
+４．１．２　单量子比特相位翻转错误纠正的盲量子计算协议
+本节对基于单量子比特相位翻转错误纠正的盲量子计算
+协议的纠错能力进行可行性证明和盲特性证明.
+Alice在这个协议中依然通过控制θi 的值来控制计算流
+程.由于经过的噪声信道不同,与比特翻转协议不同的是,纠
+正相位翻转运用了哈达玛门,使其可以等同于比特翻转,等效
+证明过程如下:
+→１
+H
+|０００›
+(|０›＋|１›)⊗(|０›＋|１›)⊗(|０›＋|１›)
+２２
+＝|＋＋＋›
+＝１
+(|０００›＋|００１›＋|０１０›＋|０１１›＋|１００›＋
+２２
+|１０１›＋|１１０›＋|１１１›)
+(１１)
+→１
+H
+|１１１›
+(|０›－|１›)⊗(|０›－|１›)⊗(|０›－|１›)
+２２
+＝|－－－›
+＝１
+(|０００›－|００１›－|０１０›＋|０１１›－|１００›＋
+２２
+|１０１›＋|１１０›－|１１１›)
+(１２)
+即:
+→１
+H
+|０００›＋|１１１›
+(|０›＋|１›)⊗(|０›＋|１›)⊗(|０›＋
+２２
+|１›)＋１
+(|０›－|１›)⊗(|０›－|１›)⊗(|０›－|１›)
+２２
+＝|＋＋＋›＋|－－－›　
+(１３)
+这个过程不改变其协议的可行性和盲特性.
+４．２　安全性分析
+窃听者Eve的目的是获得发送者Alice发送的信息,需
+要通过窃听或者纠缠的方法推测出Alice的角度值θi.
+Eve通过窃听得到Alice传送的某一个粒子,对其进行测
+量来推测θi 的值.Eve利用截取/重发攻击方案,当Alice发
+送量子比特|φE›＝|０００›＋e
+iθi|１１１›给Bob时,Eve在量子噪
+声信道截获量子,随机产生基序列对截获的量子进行测量,希
+望以此获得比特序列.然后,Eve随机选取基,发送制备的量
+子.Bob将收到Eve发送的量子得到错误的运算结果.本文
+对Eve进行分析,当Eve窃听到|０›＋e
+iθi|１›时,由于θi 是
+Alice的随机值,Eve得到|０›＋e
+iθi|１›也推测不出θi;当Eve
+窃听到|０›量子时,不会得到任何收获.接下来对Bob得到的
+结果进行分析.当Bob得到的值是|φE›经过噪声信道传过
+来的|φE›
+′时,Bob能成功恢复出Alice的量子比特|φ›,然后
+对量子比特进行纠缠图态操作.Alice通过选取和Bob相同
+的基作为测试位,得到正确的计算结果.当Bob得到的值是
+Eve重发过来的量子比特时,Alice计算的误码率必然大于０,
+可以确定Eve窃听.因此,本文协议可以抵抗Eve截取/重发
+攻击.
+纠错码的作用是判定Bob收到的量子态是否受到噪声
+环境的影响,发生XYZ 错误.如果错误发生,则按照译码操
+作恢复量子信息.纠错码参数的选择关系到编码粒子传回给
+
+===== PDF PAGE 5 =====
+１
+４
+罗文俊,等:噪声信道下的盲量子计算
+Bob过程中的安全性,即第二次窃听检测问题.在无噪声的
+理想信道条件下,检测码单纯用以判定Bob 是否正确接收
+Alice发送的信息.
+基于单量子比特相位翻转错误纠正的盲量子计算协议的
+安全性与基于单量子比特翻转错误纠正的盲量子计算协议
+相同.
+结束语　本文提出了在噪声信道下,基于辅助比特纠错
+的盲量子计算协议,利用量子纠错码纠正信道引起的比特翻
+转、相位移位等错误,论证了协议计算过程中的正确性,并对
+协议的可行性和安全性进行分析.分析表明,该协议可以抵
+御第三方量子攻击,是盲量子计算协议的一个扩展,使其盲量
+子计算可以适用于噪声信道环境;协议中的纠错步骤可以替
+换为最新的纠错算法,具有适应延展性,对量子计算机的发展
+提供了一种新的可能性.
+参考文献
+[１] GOTTESMAND．ClassofquantumerrorＧcorrectingcodessatuＧ
+ratingthequantum Hammingbound [J]．PhysicalReview A,
+１９９６,５４(３):１８６２Ｇ１８６８．
+[２] CHIAVERINIJ,LEIBFRIED D,SCHAETZ T,etal．RealizaＧ
+tionofquantumerrorcorrection[J]．Nature,２００４,４３２(７０１７):
+６０２Ｇ６０５．
+[３] CÃRCOLESAD,MAGESANE,SRINIVASANSJ,etal．DemＧ
+onstrationofaquantumerrordetectioncodeusingasquarelatＧ
+ticeoffoursuperconductingqubits [J]．Nature CommunicaＧ
+tions,２０１５,６:６９７９．
+[４] TÓTH G,APELLANIZI．Quantum metrologyfromaquantum
+informationscienceperspective[J]．JournalofPhysicsA MatheＧ
+matical& Theoretical,２０１４,４７(４２):１５Ｇ２２．
+[５] LUO W J．ErrorCorrectionPerformanceofBinary Nonlinear
+EqualWeightCodes[J]．ChineseScienceBulletin,２０００,４５(１３):
+１４４１Ｇ１４４６．
+[６] FUF W,XIAST．ErrordetectionperformanceofbinarynonＧ
+linearequalweightcodes[J]．ScienceBulletin,１９９７,４２(４):３４３Ｇ
+３４７．
+[７] SHORP W．SchemeforreducingdecoherenceinquantumcomＧ
+putermemory [J]．PhysicalReview A,１９９５,５２(４):R２４９３Ｇ
+R２４９６．
+[８] CALDERBANK A R,SHORPW．Goodquantum errorＧcorrecＧ
+tingcodesexist[J]．PhysicalReviewA,１９９６,５４(２):１０９８Ｇ１１０５．
+[９] ZHAO S M．Construction ofaquantum CSScodebasedon
+sparsesequence[J]．JournalofNanjingUniversityofPostsand
+Telecommunications(NaturalScienceEdition),２０１１,３１(２):１Ｇ５．
+[１０]FUJIWARAY,CLARKD,VANDENDRIESSCHEP,etal．EnＧ
+tanglementＧassisted quantum lowＧdensity parityＧcheck codes
+[J]．PhysicalReview A,２０１０,８２(４):２７２Ｇ２７７．
+[１１]DJORDJEVIC,IVAN B．Quantum LDPCCodesfrom Balanced
+IncompleteBlockDesigns [J]．IEEE CommunicationsLetters,
+２００８,１２(５):３８９Ｇ３９１．
+[１２]WANGX Y,ZHANG Y C,YUS,etal．HighspeederrorcorＧ
+rectionforcontinuousＧvariablequantum keydistribution with
+[１３]STEANE,ANDREW M．Error Correcting Codesin Quantum
+Theory[J]．PhysicalReviewLetters,１９９６,７７(５):７９３Ｇ７９７．
+[１４]IOFFEL,MEZARD M．Asymmetricquantumerrorcorrecting
+codes[J]．Phys．Rev．A,２００７,７５(３):７２３Ｇ７２７．
+[１５]ALYSA,ASHIKHMINA．NonbinaryquantumcyclicandsubＧ
+systemcodesoverasymmetricallyＧdecoheredquantumchannels
+[C]∥２０１０IEEEInformationTheoryWorkshoponInformation
+Theory．Cairo:IEEE,２０１０:１Ｇ５．
+[１６]WANG L,FENG K,LING S,et al．Asymmetric Quantum
+Codes:CharacterizationandConstructions [J]．IEEE TransacＧ
+tionsonInformationTheory,２０１０,５６(６):２９３８Ｇ２９４５．
+[１７]DAVIDK,LAFLAMMER．Unifiedandgeneralizedapproachto
+quantumerrorcorrection [J]．PhysicalReview Letters,２００５,
+９４(１８):１８０５０１．１Ｇ１８０５０１．４．
+[１８]BRUNT,IGORD,AND MINＧHSIU H．CorrectingquantumerＧ
+rorswithentanglement[J]．Science,２００６,３１４(５７９８):４３６Ｇ４３９．
+[１９]LUOL,ZHIM A,WEIZ,etal．NonＧbinaryentanglementＧassisＧ
+tedquantumstabilizercodes[J]．ScienceChina(InformationScieＧ
+nces),２０１７,６０(４):２１０Ｇ２２３．
+[２０]HSIEH M H,YEN W T,HSU LY．HighPerformanceEntanＧ
+glementＧAssistedQuantum LDPCCodesNeedLittleEntangleＧ
+ment[J]．IEEE TransactionsonInformation Theory,２０１１,
+５７(３):１７６１Ｇ１７６９．
+[２１]NAYAKC,SIMONSH,STERNA,etal．NonＧAbelianAnyons
+andTopologicalQuantum Computation [J]．ReviewofModern
+Physics,２００８,８０(３):１０８３Ｇ１１５９．
+[２２]KASHEFI E,WALLDEN P．Garbled Quantum Computation
+[J]．Cryptography,２０１７,１(１):６Ｇ３６．
+[２３]LOSS D,DIVINCENZO D P．Quantum Computation with
+Quantum Dots[J]．Phys．Rev．A,１９９７,５７(１):１２０Ｇ１２６．
+[２４]BRIEGEL H J,BROWNE D E,DüR W,etal．MeasurementＧ
+basedquantumcomputation[J]．NaturePhysics,２００９,５:１９Ｇ２６．
+[２５]LAIC Y,BRUN T．EntanglementIncreasestheErrorＧCorrecＧ
+tingAbilityofQuantum ErrorＧCorrectingCodes [J]．Physical
+Review A,２０１０,８８(１):２３４３Ｇ２３４７．
+[２６]BRUNTA,DEVETAKI,HSIEH M H．CatalyticQuantumErＧ
+rorCorrection[J]．IEEETransactionsonInformationTheory,
+２００６,６０(６):３０７３Ｇ３０８９．
+[２７]TANGJ,LIUJW,CAO Y Q．Cognitivespectrumallocationon
+demandbasedonquantumcodingandmimicphysicaloptimizaＧ
+tion[J]．ComputerEngineering,２０１５,４１(１２):１３５Ｇ１３９．
+LUO WenＧjun,bornin１９６６,professor,
+Ph．
+D,isa memberofChinaComputer
+Federation．Hismainresearchinterests
+includecyberspacesecurityandcrypＧ
+tography．
+LEI Shuang,born in １９９５,postgraＧ
+duate．Her main research interests
+includecryptography,quantum compuＧ
+tingandquantumsecurity．

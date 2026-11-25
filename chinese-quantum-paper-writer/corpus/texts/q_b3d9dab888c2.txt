@@ -1,0 +1,1243 @@
+===== PDF PAGE 1 =====
+计算机研究与发展                                                        DOI:１０．７５４４∕issn１０００Ｇ１２３９．２０２０．２０２００６１５
+ JournalofComputerResearchandDevelopment                                   ５７(１０):２０１５２０２６,２０２０
+
+
+量子计算与量子密码的原理及研究进展综述
+
+王永利１ 　　　徐秋亮２
+１(山东大学数学学院　济南　２５０１００)
+２(山东大学软件学院　济南　２５０１０１)
+ (wyl＠mail．sdu．edu．cn)
+PrincipleandResearchProgressofQuantumComputationandQuantumCryptography
+
+WangYongli１andXuQiuliang２
+１(SchoolofMathematics,ShandongUniversity,Jinan２５０１００)
+２(SchoolofSoftware,ShandongUniversity,Jinan２５０１０１)
+  Abstract　Quantum computationandquantum cryptographyarebasedonprinciplesofquantum
+  mechanics．In１９８４,BennettandBrassardproposedthefirstquantumkeydistributionprotocolcalled
+  BB８４,whichstartedthestudyofquantumcryptography．Sincethen,agreatdealofworkhasbeen
+  carriedoutinvariousfieldssuchasquantum encryptionandquantum signature．In１９９４,Shor
+  designedthefirstpracticalquantum algorithm whichcanfactorlargeintegersinpolynomialtime．
+  Shor􀆳salgorithmusedQuantumFourierTransform,whichisthekernelofmostquantumalgorithms．
+  In１９９６,Groverdesignedanewalgorithm whichcansearchtheunstructureddatatogettherequired
+  resultinthetimeofapproximatelythesquarerootofthetotalaccountofthedata．Shor􀆳salgorithm
+  andGrover􀆳salgorithmnotonlyembodytheadvantagesofquantumcomputing,butalsoposeathreat
+  tothetraditionalcryptographybasedonmathematicaldifficultiessuchasRSA．Afterhalfacentury􀆳s
+  development,quantumcomputingandquantumcryptographyhaveachievedfruitfulresultsintheory
+  andpractice．Inthispaper,wesummarizethecontentsfromtheperspectivesofthe mathematical
+  frameworkofquantum mechanics,basicconceptsandprinciples,basicideasofquantumcomputing,
+  researchprogressandmainideasofquantumcryptography,etc．
+  Keywords　quantum computation;quantum cryptography;Shor􀆳salgorithm;Grover􀆳salgorithm;
+  quantumkeydistribution
+ 摘　要　量子计算与量子密码是基于量子效应的计算技术和密码技术．１９８４年Bennett和Brassard提出
+ 了第一个量子密钥分发协议,开启了量子密码学的研究,此后相继在量子加密、量子签名等领域进行了
+ 大量研究．１９９４年,Shor利用量子Fourier变换,设计了第一个实用的量子算法,在多项式时间内对大整
+ 数进行因子分解．１９９６年,Grover提出了量子搜索算法,能够对无结构数据进行二次加速．Shor算法和
+ Grover算法的提出不仅体现了量子计算的优越性,还对传统基于数学困难问题的密码学体制造成威胁．
+ 经过半个世纪的发展,量子计算与量子密码在理论与实践的研究上都取得了丰硕的成果．从量子力学的数
+ 学框架、基本概念和原理、量子计算基本思想、量子密码研究进展及主要思想等方面进行总结梳理．
+　收稿日期:２０２０－０８－１４;修回日期:２０２０－０９－０４
+　基金项目:国家自然科学基金项目(６１６３２０２０)
+           ThisworkwassupportedbytheNationalNaturalScienceFoundationofChina(６１６３２０２０)．
+　通信作者:徐秋亮(xql＠sdu．edu．cn)
+
+===== PDF PAGE 2 =====
+６
+１
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+关键词　量子计算;量子密码;Shor算法;Grover算法;量子密钥分发
+中图法分类号　TP３０９
+量子计算与量子密码是基于量子力学机制的信
+息处理技术,被认为是下一代计算与信息安全的核
+心,已成为时代发展的需要,被世界各国寄予厚望．
+其实,将量子效应应用到信息技术领域的思想,
+早在２０世纪６０年代末就开始出现了．
+１９６９年,哥伦
+[１] 在他的论文“Conjugate
+比亚大学的Wiesner
+Coding”中提出了利用量子力学的不确定性原理制
+造不可伪造的量子钞票的思想．由于当时技术的限
+制,该思想没有被人们接受．
+１０年后,Wiesner又与
+IBM 公司的研究人员Bennett提及了这一思想,引起
+了Bennett的注意．在１９８２年的美密会上发表的论文
+中,Bennett和加拿大Montreal大学的Brassard利用
+量子比特的储存来实现量子密码并提出量子公钥密
+码算法．此后不久,他们意识到量子比特的传输比量
+子比特的储存更便于实现和利用,基于该出发点,
+１９８４年他们提出了著名的量子密钥分发的概念[２],
+并构造了现在被称为BB８４协议的密钥分发协议．
+BB８４协议的提出标志着量子密码学研究的真正开始．
+１９９４年,Shor
+[３]提出了著名的量子整数分解算
+法,该算法使用量子计算机可以在多项式时间内找
+到大整数的因子．Shor 算法的核心是利用量子
+Fourier变换求函数周期,这一算法不仅对大整数分
+解有效,对求解离散对数也有同样的效果．Shor算
+法的出现,让人们对量子计算的优越性有了新的认
+识,具有里程碑意义．后来,Grover
+[４]提出了一种量
+子搜索算法,可以对无结构数据的搜索加速,它虽然
+不像Shor算法那样具有指数级加速效果,但也大大
+提升了搜索速度．这些量子算法的出现,不仅展现了
+量子计算的威力,同时也对现有基于大整数分解和
+离散对数等数学困难问题的密码体制造成很大的威
+胁,使得人们意识到后量子密码学研究的必要性．
+经过近半个世纪的研究与发展,量子计算与量
+子密码不但在理论上形成了自身的框架体系,在技
+术上也取得了突破性进展．国际上许多大学和科研
+单位纷纷成立了从事量子计算和量子密码研究的机
+构．除了这些研究机构外,国际上也开始出现了专门
+从事研发量子密码技术产品、量子通信技术产品和
+量子计算机的公司,如早期瑞士的ID Quantique公
+司、美国的MagiQ 公司,后来加拿大的DＧWave,现
+在的IBM 公司、Google公司等．特别是在量子计算
+机研发方面,２０１９年１月,IBM 在消费电子展
+(CES)上展示了世界首款商业化量子计算机IBM Q
+System One,同年１０月Google 制造的一台
+“Sycamore”量子计算机声称超越了传统计算机实
+现量子霸权,２０２０年６月,Honeywell公司发布了
+声称是世界最强的量子计算机,量子体积(quantum
+volume)达到６４．虽然这些产品更多的是只有实验
+研究价值,距离真正的量子计算还有很大的距离,但
+这已经迈出了向量子时代前进关键的一步,正如莱
+特兄弟第一架飞机的意义,因此很有必要对量子计
+算和量子密码的发展进行梳理．
+本文对量子力学的数学框架、基本概念和原理、
+量子计算基本思想、量子密码研究进展及主要思想
+等方面作了总结．
+１　量子力学的数学框架[５]
+量子力学理论给出了研究物理系统规律的数学
+框架,通过这个框架,物理世界和量子力学的数学描
+述得以联系起来．量子力学所描述的微观世界,与人
+们熟悉的宏观世界有很大的不同,从而显得奇妙而
+神秘,但如果将其放在量子力学的数学视角下,则不
+过是普通的Hilbert空间向量的运算与变换．本节对
+量子力学的基本数学框架进行简要介绍．
+一个孤立的物理系统对应一个复Hilbert空
+间,该空间称为系统的状态空间,系统的状态由
+Hilbert空间中的向量描述,为了描述和运算方便,
+一般用英国理论物理学家狄拉克引入的狄拉克符号
+表示,如|φ›．这里需要注意的是,该数学描述并没有
+给出Hilbert空间的具体形式．
+孤立物理系统的状态随时间的变化由Hilbert
+空间中的酉变换描述,如果系统在t１时的状态为
+|φ１›,
+t２时变为|φ２›,则存在一个仅与t１和t２有关
+的酉变换U,使得|φ２›＝U|φ１›．同样需要注意的是
+这一数学描述没有给出酉变换的具体形式．
+复合物理系统使用张量积描述,即复合系统的
+状态空间表示为各分系统状态空间的张量积．这一
+描述也提供了用分系统构造复合系统的方法．
+对量子系统的测量与经典测量有很大的不同,
+量子测量由一组满足完备性的测量算子{Mm }描
+述,其中,m 表示可能的结果．如果测量前系统为
+|φ›,则测量后以概率‹φ|M
+mMm|φ›得到结果m,且
+†
+系统变为Mm|φ›∕‹φ|M
+mMm|φ›．
+†
+
+===== PDF PAGE 3 =====
+７
+１
+０
+２
+王永利等:量子计算与量子密码的原理及研究进展综述
+２　基本概念和原理[５]
+２．
+１　量子比特
+量子比特是二维Hilbert空间中的一个单位向
+量．在取定２个正交的基态|０›和|１›后,量子比特可
+表示为α|０›＋β|１›,其中α 和β 是复数,且满足|α
+２＝１．多个量子比特可以复合,如果每个量
+|
+２＋|β|
+子比特取定基|０›和|１›,则n 个量子比特复合后的
+２n－１
+２n－１
+系统可表示为∑
+αi|i›,其中αi 为复数,且∑
+i＝０|αi
+i＝０
+２＝１,|i›为复合系统的基,称为计算基．复合量子
+|
+比特是量子计算的基础．
+在复合量子比特中,如果其状态向量不能表示
+为各量子比特状态向量的直积形式,则称该系统处
+于纠缠态．通俗来讲,处于纠缠态的系统,各子系统
+状态不能分开．纠缠态在量子计算与量子信息中起
+着重要作用,常用的纠缠态有两粒子纠缠的Bell
+态、三粒子纠缠的GHZ态等．
+２．
+２　态叠加原理
+如果|φi›(
+i＝０,１,２,􀆺,n)是系统的可能状态,
+n
+则其线性叠加∑
+αi φi›也是系统的可能状态．从数
+i＝０
+学的观点看,因为系统状态是Hilbert空间中的向量,
+而Hilbert空间是线性空间,所以线性叠加性成立．
+在量子计算中,一般会使用计算基的叠加态,由
+于酉算子是线性算子,酉算子在叠加态上的作用,相
+当于在各计算基上作用的叠加,从而获得真正意义
+上的并行计算能力．
+２．
+３　不确定性原理
+不确定性原理是量子系统的内在属性,与测量
+设备的精度以及测量设备对系统的扰动无关．原理
+指出:如果２个力学量所对应的算符不对易,则不能
+同时确定这２个力学量．如在测量光子偏振状态的
+过程中,线偏振状态和圆偏振状态不能同时确定,这
+也是BB８４协议工作的理论基础．
+更一般地,测量一个量子态时,能否获得精确测
+量结果依赖于该量子态是否为测量算符对应的本征
+态,如果该状态是测量算符对应的本征态,则可得到
+精确测量结果,否则,无法得到精确测量结果．
+２．
+４　未知量子态不可克隆
+１９８２年Wootters和Zurek
+[６]首次提出了著名
+的量子不可克隆定理:在量子力学中,不存在一个对
+未知量子态精确复制的物理过程,即未知量子态不
+可能精确复制,使得每个复制比特和初始量子比特
+完全相同．
+１９８６年,Yuen
+[７]推广了量子不可克隆定
+理,指出表示克隆过程的酉变换使得２个量子态被
+克隆,当且仅当它们相互正交,即非正交态不可克隆．
+未知量子态的不可克隆性,虽然对量子计算中
+比特复制造成一定困难,但对量子密码学中安全体
+制的设计提供了重要保障．
+２．
+５　非正交量子态不可区分
+对于２个非正交量子态,没有一个物理过程可
+对其进行完美区分．这是由未知量子态的不可克隆
+性决定的．例如,对于２个量子比特,如果它们是非
+正交的,则任何操作或测量都不能将它们完美区分
+开来,总是会产生一些错误的结果．
+同不可克隆性一样,非正交量子态的不可区分
+性给量子计算带来了很多困难,但在量子密码学中
+的应用,有着举足轻重的价值．
+３　量子计算基本思想[５]
+量子计算通过量子逻辑门和连线构造量子线路
+实现．量子逻辑门在数学上由复Hilbert空间的酉变
+换描述．
+１９８５年,Deutsch
+[８]引入了量子线路模型．
+１９９５年,Barenco,Bennett和Cleve等人[９]证明了单
+量子比特门和受控非门(controlledＧNOT,CNOT)
+的通用性,为量子线路模型提供了完善的理论保证．
+酉变换是可逆的,即量子逻辑门是可逆的,然而
+经典逻辑门大多不可逆,这些不可逆的经典逻辑门
+没有对应的量子逻辑门,所以不能用量子线路直接
+模拟经典线路．幸运的是我们可以用可逆的Toffoli
+门实现经典逻辑门,从而等价地构造经典线路．
+Toffoli门是可逆门,可以用量子逻辑门实现,从而
+使得量子线路可以间接模拟经典线路,在量子线路
+上实现任何经典计算．
+量子计算中,常用的量子逻辑门有PauliＧX 门、
+PauliＧY 门、PauliＧZ门、Hadamard门、相位门、受控
+门、交换门等．
+量子态的叠加性决定量子计算具有并行性的特
+征,它可以同时计算一个函数在许多点处的函数值,
+使得量子计算的能力从本质上超越经典计算的能
+力．然而由于量子测量的特点,无法直接从叠加态中
+直接抽取信息,大大限制了量子计算的能力．虽然如
+此,还是可以通过巧妙的设计,有效利用量子计算的
+优越性,为计算问题加速,这也是量子算法设计的一
+个重要特点．从早期的DeutshＧJozsa算法[１０]和Simon
+
+===== PDF PAGE 4 =====
+８
+１
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+算法[１１]开始,出现了许多量子算法,其中最具有里
+程碑意义的是Shor算法[３]和Grover算法[４],它们
+分别使用了量子Fourier变换和量子搜索,本节对
+其思想进行简要介绍．
+３．
+１　量子Fourier变换
+量子Fourier变换是定义在标准正交基|０›,
+|１›,􀆺,|２
+n－１›上的一个酉变换,在这些基态上的
+２n－１
+作用为:|j›→１
+２πijk∕２n |k›,通过代数计算,
+n∕２∑
+e
+２
+k＝０
+变换后的结果可以表示为
+通过量子Fourier变换可以实现相位估计,设
+|u›是酉算子U 的特征值为e
+２πiφ 的一个本征态,则
+可大概率得到φ 的指定精度的近似值．相位估计是
+众多量子算法的关键部分,结合经典算法,可以有效
+解决求阶、求周期问题,更一般地,可有效解决隐含
+子群问题．DeutschＧJozsa算法、Shor大整数分解算
+法、求离散对数等都是隐含子群问题的特例．目前大
+整数分解和求离散对数在经典计算机上还没有有效
+的求解方法,通过量子Fourier变换,在量子计算机
+上可有效求解,这也体现了量子计算较之经典计算
+的优越性．
+３．
+２　量子搜索
+量子搜索对无结构数据的搜索提供了二次加
+速．设在一个大小为N 的无结构数据空间中有M
+个解,量子搜索通过大约
+N 次操作,可以找到一个
+解．虽然没有基于量子Fourier算法的指数加速效
+果,但由于搜索问题的普遍性,量子搜索算法仍具有
+很大的意义．
+算法中使用了称为Grover迭代的算子,Grover
+迭代可表示为(２|ψ›‹ψ|－I)O,其中|ψ›＝H
+􀱋n|０›,
+O 为识别搜索问题解的Oracle．直观上看,Grover
+迭代实现了由初始量子态和搜索问题解组成的均匀
+叠加态张成的二维空间中的一个旋转,如图２所示．
+其中|α›＝∑
+x |x›∕N －M 为归一化的非搜
+索问题解的叠加态,|β›＝∑
+y |y›∕
+M 为归一化
+２n－１
+１
+２
+２πijk∕２n |k›＝
+n∕２∑
+e
+k＝０
+１
+２
+n∕２(|０›＋e
+２πi０．
+jn|１›)􀆺(|０›＋e
+２πi０．
+j１j２􀆺jn|１›),
+其中j１j２􀆺jn 是j 的二进制表示,０．
+j１􀆺jn 为二进
+制小数．
+上述变换可通过图１所示量子线路实现．
+线路中使用了Hadamard门H 、相位门Rk 和
+交换门×,其中Rk 的矩阵表示为１
+０
+２πi∕２k
+æ
+ö
+ø
+÷ ．
+è
+ç
+０e
+Fig．２　ThegeometricintuitiveofaGroveriterative
+图２　Grover迭代几何直观
+的搜索问题解的叠加态,G 为Grover迭代算子,θ
+满足cos(θ∕２)＝
+(N－M )∕N ．每经过一次Grover
+迭代,初态|ψ›向|β›方向靠近θ．经过O( N )次迭
+代,|ψ›接近|β›,在计算基中测量将以很高的概率
+输出搜索问题的一个解．
+４　量子密码研究进展及主要思想
+BB８４协议提出后,量子密码学正式登上历史的
+舞台．量子密码学以量子密钥分发为核心,对应于经
+典密码学领域的其他研究分支也得到了广泛关注,
+并形成各个不同的研究分支．本文对量子密钥分发、
+量子加密、量子签名和其他研究领域这４个方面的
+主要思想及进展情况进行介绍．
+４．
+１　量子密钥分发
+密钥分发用来在通信双方(Alice和Bob)安全
+Fig．１　ThecircuitofquantumFouriertransform
+图１　量子Fourier变换线路
+
+===== PDF PAGE 5 =====
+９
+１
+０
+２
+王永利等:量子计算与量子密码的原理及研究进展综述
+分发一个密钥,后续可以用该密钥安全通信．BB８４
+协议是第一个量子密钥分发协议,被研究的最多,也
+最具代表性,在量子密码研究中占有重要地位,我们
+在此以Bennett和Brassard提出的原始协议为基础
+对其进行介绍．
+BB８４协议使用光子作为量子态的载体,使用２
+组偏振基编码数据．一种为线偏振基(记为“＋”),水
+平偏振状态记为|↔›,垂直偏振状态记为|↕›;另一
+种为圆偏振基(记为“○”),左旋偏振状态记为| ›,
+右旋偏振状态记为| ›．在这２组基下,比特“０”分
+别被编码为|↔›和| ›,比特“１”分别被编码为|↕›
+和| ›．描述光子线偏振和圆偏振的力学量算符不
+可对易,由Heisenberg不确定性原理,这２种偏振
+状态无法被同时确定．
+BB８４协议需要一条量子信道和一条经典信道．
+量子信道可以是光纤或自由空间,经典信道为普通
+的公共信道,安全性不需考虑．这２种信道都允许第
+三方(Eve)监听．
+在BB８４协议工作的过程中,Bob收到Alice发
+送的光子序列后,并不知道Alice编码这些光子所
+用的基,他在随机选择测量基时,有１∕２的概率和
+Alice使用的基相同,因此在作基比对后,他们能得
+到大概原始比特数一半的比特形成的序列,在这个
+比特序列中,由于设备、环境等因素的影响,会出现
+一定的错误,记错误率为ξ０．如果协议过程中存在
+Eve监听,Eve截获Alice发送的光子序列后,受未
+知量子态不可克隆原理的限制,他无法对光子序列
+BB８４协议工作的过程如下:
+１)Alice对于某个安全参数n,随机选择稍多
+于４n 个比特,对每个比特随机选取线偏振基或圆
+偏振基进行编码,并将编码后的光子序列通过量子
+信道发送给Bob;
+２)Bob收到光子序列后,随机选取线偏振基和
+圆偏振基对光子序列进行测量;
+３)Bob与Alice通过经典信道联系,对比他们
+所选择的基序列,舍弃选择不同基的比特,一般而
+言,他们将得到稍多于２n 个比特;
+４)Alice选择n 个比特与Bob对比检查是否有
+第三方监听,如果错误率超过某一个阈值,则放弃本
+次协议(监听会造成对量子态的干扰,从而显著增大
+错误率);
+５)Alice和Bob对剩下的n 个比特执行密钥纠
+错和安全性增强,得到最终的密钥．
+BB８４协议的工作过程可用图３所示的例子直
+观描述:
+进行复制,为了获取信息,Eve必须在原始光子序列
+上测量．然而,Eve也不知道Alice编码光子所用的
+基,他只能随机选择测量基,在测量的过程中必然会
+对光子产生扰动,使得在Alice和Bob作比特比对
+时,得到的错误率超过ξ０,由此可以发现监听．
+Alice和Bob在比特比对后,需要对剩下的比特
+序列纠错,其基本思想是将这些比特序列分为若干
+区,对每个区进行奇偶校验,如果校验通过,则放弃一
+个比特后保留该区,如果校验不通过,则放弃整个区,
+Fig．３　TheprocessofBB８４protocol
+图３　BB８４协议的工作过程
+
+===== PDF PAGE 6 =====
+０
+２
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+经过若干次重复,可确保他们有非常高的概率持有
+相同的比特序列．纠错后,Alice和Bob对共享比特
+序列进行安全性增强,如随机选择Hash函数对其
+进行压缩,得到最终的共享密钥．
+不同于经典密码学的安全性基于数学困难问
+题,BB８４的安全性基于量子不可克隆和不确定性原
+理等物理学定律,它提供了无条件安全性,Shor和
+[１２]于２０００年对其进行了证明,确认了这是
+Preskill
+一个可证安全的密钥分配方案,符合现代密码学设
+计的基本要求．
+BB８４协议提出后,人们对这一领域的研究产生
+了极大热情．
+１９９１年,Ekert
+[１３]提出了利用纠缠光子
+对实现密钥分发的协议,称为E９１协议,该协议也
+是目前最具代表性的QKD 协议之一．协议执行开始
+时,Alice和Bob共享一组量子比特纠缠对(|０１›－
+|１０›)
+∕２,其中|０›,|１›为PauliＧZ算符的本征态．随
+后Alice从Bloch球xＧy 平面上方位角分别为０,π∕４,
+π∕２的３个基矢中随机选择测量基,Bob从Bloch球
+xＧy 平面上方位角分别为π∕４,π∕２,３π∕４的３个基矢
+中随机选择测量基,分别对自己持有的量子比特进
+行测量．接下来,他们在公开信道上比对测量基,得
+到２组结果:一组是使用不同测量基得到的结果,利
+用这组结果通过Bell不等式检验[１４]来确定是否存
+在第三方监听,如果发现监听则终止协议;另一组是
+使用相同测量基得到的结果,Alice和Bob的测量
+结果具有反关联性,他们中的任一人翻转持有的比
+特就得到一致的共享比特序列．最后同BB８４协议一
+样通过密钥纠错和隐私增强,得到最终的共享密钥．
+１９９２年,Bennett
+[１５]独立提出一个量子密码分
+发协议,称为B９２协议．其工作原理与BB８４协议类
+似,但不同于BB８４使用了４种量子态,B９２只使用
+了|↕›和| ›这２种量子态．
+Bob随机选择线偏振基
+或圆偏振基进行测量,如果测得|↔›或| ›,则可以
+肯定Alice发送的是| ›或|↕›,否则Bob不能确
+定Alice发送的量子比特．随后Bob告诉Alice在哪
+些量子比特上得到确定的结果,并对相应的测量基
+进行编码(如线偏振基编为“０”,圆偏振基编为“１”),
+得到共享密钥．同年,Bennett等人[１６]结合纠缠态和
+BB８４的思想,提出了BBM９２协议,该协议也使用
+纠缠量子比特对,但与E９１协议使用Bell不等式检
+验判断监听的方法不同,BBM９２协议使用和BB８４
+协议类似的方法确定监听是否存在．此外他们还证
+明了BBM９２协议与BB８４协议本质上的等价性．
+BB８４协议中使用单光子作为量子比特,然而在
+实际系统中,理想的单光子很难制备,一般通过对光
+源发出的激光进行衰减,产生弱相干光代替单光子,
+这就会产生多光子脉冲,使协议容易受到光子数分
+离攻击[１７]．鉴于此,２００３年,Hwang
+[１８]提出了诱骗
+态思想,２００５年,Lo等人[１９]和Wang
+[２０]分别独立地
+提出了诱骗态协议,通过在光信号中混入诱骗态,
+Bob可以通过测量统计结果的异常发现第三方监
+听．诱骗态协议的提出,有力地推进了量子密钥分发
+由理论到实际应用的进程．
+在实际应用过程中,上述量子密钥分发协议还
+有很多问题,它们一般依赖于理想状态的设备,这在
+现实中很难实现,因此人们开始考虑在协议层面避
+免对理想设备的过度依赖．
+２００７年,Acín等人[２１]提
+出了设备独立的QKD 协议(DIＧQKD),它通过检测
+Bell不等式不成立来保证协议的安全,不依赖于设
+备细节,甚至在敌手提供设备的情况下也可以安全
+执行协议．然而,DIＧQKD 协议对探测设备的效率要
+求很高,大大降低了协议的实用性．
+２０１２年,Lo等
+人[２２]提出了测量设备独立的QKD 协议(MDIＧ
+QKD),不仅可以彻底抵御探测器端的攻击,还大大
+提高了协议执行的效率,此后人们对MDIＧQKD 又
+做了许多研究[２３Ｇ２６]．
+２０１４年,Lim 等人[２７]提出了探
+测设备独立的QKD 协议(DDIＧQKD),进一步提高
+了效率,该协议不是完全的测量设备无关协议,但可
+天然抵抗时移攻击[２８]．
+２０１６年,Boaron
+[２９]对DDIＧ
+QKD的安全性作了理论分析,解释了其依赖的安全
+假设,并说明了与MDIＧQKD 协议不等价．
+２０１８年,
+Lucamarini等人[３０]提出了双场量子密钥分发协议
+(TFＧQKD),在保证密钥安全的前提下突破了成码
+率和传输距离极限,引起很大轰动．
+除了在理论研究方面取得引人瞩目成果外,量
+子密钥分发协议在具体实现方面也取得了许多成
+果,如基于光纤的长距离传输方案[３１Ｇ３２]和基于自由
+空间的传输方案[３３Ｇ３４]等．可以说,在量子密码学领
+域,量子密钥分发是被研究的最广泛、最深刻的一个
+方向,但仍存在许多问题与挑战,尤其是在具体的实
+现过程中,在密钥生成效率、传输距离、抗噪声、抗设
+备缺陷等方面,还有很多的工作要做．
+４．
+２　量子加密
+１)量子一次一密
+１９１７年,Vernam
+[３５]提出了一种完善保密的加
+密方法,称为“一次一密”(oneＧtimepad)．与之对应,
+量子密码学也有量子“一次一密”算法．根据明文、密
+钥和密文分别是经典比特还是量子比特,量子“一次
+一密”算法主要有３种类型．
+①使用２位经典比特加密一位量子比特明文,
+
+===== PDF PAGE 7 =====
+１
+２
+０
+２
+王永利等:量子计算与量子密码的原理及研究进展综述
+得到一位量子比特密文．该算法由Boykin 和
+[３６]提出．算法中加密过程为:|c›＝
+Roychowdhury
+αZβ|m›,其中|m›为明文文比特,|c›为密文比特,
+X
+α,
+β∈{０,１}是两比特密钥,X 为PauliＧX 门,Z 为
+PauliＧZ门．解密是加密的逆过程:|m›＝ZβX
+α|c›．
+②超密编码．由Bennett和Wiesner
+[３７]首先提
+出．超密编码开始需要通信双方Alice和Bob共享
+一对处于纠缠态的量子比特,如Bell态．Alice对自
+己手中的量子比特作Pauli门操作或不作任何操作
+后,将其发送给Bob,Bob通过对这一对纠缠比特作
+合适测量,可得到Alice想要发送的２位经典比特
+明文．超密编码可以看作是使用一位量子比特作为密
+钥,加密２位经典比特明文,得到一位量子比特密文．
+③量子隐形传态[３８]．开始时Alice和Bob共享
+一个EPR 对,每人拥有EPR 对的一个量子比特．
+Alice将待发送的量子态|φ›与自己手中的一半
+EPR 对作联合测量,得到两比特的经典信息,然后
+其发给Bob,Bob可以根据这两比特信息对自己的
+一半EPR 对作相应测量,得到|φ›．Gisin等人[３９]将
+其视为明文、密钥和密文都是量子比特的一次一密．
+量子一次一密在构造量子签名等其他密码学应
+用时,有着广泛的应用．
+２)量子公钥加密
+２０００年,Okamoto等人[４０]在美密会上首先提
+出了量子公钥加密方案．方案中,消息的发送方、接
+收方以及敌手都被抽象成量子多项式时间图灵机,
+并且在量子计算模型下构造了量子单向陷门函数．
+在这之后,多种多样的量子公钥密码方案被提出．
+２００３年,Yang
+[４１]提出了一个基于经典NP 完全问
+题的量子公钥加密方案．
+２００８年,Nikolopoulos
+[４２]
+基于量子比特旋转变换提出了一个公钥加密方案．
+２００９年,Gao等人[４３]使用对称密钥构造了量子公
+钥加密方案．
+２０１２年,Liang等人[４４]提出了一个信息
+论安全的加密方案．
+２０１４年,Zheng等人[４５]提出了
+面向比特的概率型量子公钥加密方案．２０１５年,
+Vlachou等人[４６]提出了基于量子随机游走的方案．
+２０１７年,Wu等人[４７]提出了基于Bell态的公钥加密
+方案．
+下面基于Nikolopoulos的方案,以加密一个比
+特为例,简要说明量子公钥加密的原理．
+①密钥生成．随机选取正整数n≫１,随机选取
+s∈Z２n ,将|０›绕y 轴旋转sθn 后得到|φs›＝
+Ry(
+sθn)|０›,其中θn＝２π∕２
+n,y 轴垂直纸面向外,如
+图４所示．私钥为(n,
+s),公钥为|φs›．
+Fig．４　|０›rotatessθnaroundyＧaxis
+图４　|０›绕y 轴旋转sθn
+②加密．设m∈{０,１}为明文,将|φs›绕y 轴转
+mπ得密文|c›＝Ry(mπ)|φs›＝Ry (
+sθn ＋mπ mod
+２π)|０›．
+③解密．将|c›绕y 轴旋转－sθn 得到状态
+Ry(－sθn)|c›＝Ry(mπ)|０›＝|０›,m＝０
+|１›,m＝１
+{
+在基{|０›,|１›}下进行测量,然后根据测量结果恢复
+明文m．
+在该公钥加密方案中,私钥为经典数据,公钥为
+量子数据,方案通过量子比特旋转变换,将经典比特
+加密为量子比特．
+３)量子同态加密
+２０１２年,Rohde等人[４８]使用玻色子采样和量子
+行走模型实现了有限的量子同态加密．２０１５年,
+[４９]基于通用量子线路,构造了量子全同态加
+Liang
+密方案,该方案中可以对加密数据执行任意量子变
+换．
+２０１５美密会上,Broadbent和Jeffery
+[５０]基于经
+典FHE的存在提出了２种QHE 方案．他们提供了
+２种不同的方法来完成具有有限数量的非Clifford
+门线路的同态加密,还提出了QFHE及其安全性的
+正式定义．
+２０１６年,Dulek等人[５１]扩展了这项工作,
+以便有效地评估任意多项式大小的线路,并提供了
+一种新的紧凑型QHE 方案．２０１７年,Ouyang 等
+人[５２]提出了一种(n,n)阈值秘密共享方案,该方
+案允许对共享秘密上的量子线路进行评估而无需
+对其进行解码．此外还有一些其他的量子同态加密
+方案[５３Ｇ５５]．
+４．
+３　量子签名
+量子签名是量子密码学的一个重要分支,在
+２００１年由Gottesman 等人[５６]首次提出,它通过量
+子力学原理保证数据签名的安全性．同经典签名一
+样,其安全性需要满足３个属性:
+１)不可伪造．没有人能伪造一个合法的签名．
+２)不可否认．签名者不能对自己的签名否认．
+
+===== PDF PAGE 8 =====
+２
+２
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+３)可公开验证．接收到消息的任何人均可通过
+公钥验证消息签名的合法性．
+人们最开始研究的量子签名是依赖于仲裁的,
+第一个具体方案由Zeng等人[５７]在２００２年提出,此
+后Curty等人[５８]、Zou等人[５９]、Gao等人[６０]利用经
+典签名协议的分析方法,给出了该方案的一些安全
+漏洞．
+２００９年,Li等人[６１]提出了基于Bell态的仲裁
+量子签名．
+２０１５年,Li和Shi
+[６２]提出了基于CNOT
+链加密的仲裁量子签名．
+２０１８年,Feng等人[６３]提出
+了基于连续变量量子态的仲裁量子签名．
+以签名一个量子比特为例,简要介绍基于Bell
+态的仲裁量子签名的思想．
+１)初始化．Alice和Bob与仲裁分别共享密钥
+＋›＝１
+kA 和kB,仲裁制备Bell态|ψ
+(|００›＋|
+２
+１１›),并分发给Alice和Bob各一个粒子．
+２)签名．Alice制备３份待签名消息|p›＝α|０›＋
+β|１›(α,
+β∈C,α
+２＝１),然后用kA 将一份
+２＋β
+|p›加密得|r›＝EnckA (|p›),接下来将另一份
+|p›与自己持有的Bell态粒子联合作Bell测量,
+＋›＝１
+|p›􀱋|ψ
+２{|ψ
+＋›
+A(α|０›
+B＋β|１›
+B)＋
+－›
+A(α|０›
+B－β|１›
+B)＋|φ
+＋›
+A(α|１›
+B＋
+|ψ
+β|０›
+B)＋|φ
+－›
+A(α|１›
+B－β|０›
+B)},
+其中,|ψ
+＋›＝(|００›＋|１１›)
+∕２,|ψ
+－›＝(|００›－
+|１１›)
+∕２,|φ
+＋›＝(|０１›＋|１０›)∕２和|φ
+－›＝
+(|０１›－|１０›)∕２为Bell基,下标A,B 分别代表
+Alice和Bob．记结果为M A．最后Alice用kA 加密
+|r›和M A 得签名s＝EnckA (|r›,M A),并将第３份
+|p›和s 发给Bob．
+３)验证．
+Bob在收到Alice的消息|p›和签名s
+后,用kB 将其加密得yB＝EnckB(|p›,s),并发送
+给仲裁．仲裁收到yB 后,用kB 解密得|p›和s,再
+用kA 解密s 得|r′›和M A,然后比较|r′›和|r›＝
+EnckA (|p›)得
+０,|r′›≠|r›＝EnckA (|p›)
+γ＝
+１,|r′›＝|r›＝EnckA (|p›)
+{
+仲裁用kB 加密M A,|p›,
+s 和γ 得y′
+B＝EnckB(M A,
+|p›,s,γ)并发给Bob．Bob 收到y′B 并解密,如果
+γ＝０,则拒绝签名,如果γ＝１,则作进一步验证．
+Bob
+＋›→I,|ψ
+－›→σz,|φ
+＋›→
+首先根据M A 按规则|ψ
+σx,|φ
+－›→σzσx(其中,I 为单位变换,σx 为PauliＧX
+变换,
+σz 为PauliＧZ变换)对自己持有Bell态粒子做
+酉变换,然后将结果与|p›比较,如果相等则接受签
+名,如果不相等则拒绝签名．
+近年来,除了普通量子签名外,人们还对量子盲
+签名、量子群签名、量子代理签名等分支进行了大量
+研究,取得了丰硕成果．
+量子盲签名是一种特殊的签名,签名前先将消
+息盲化,签名者对盲化的消息进行签名,最后消息拥
+有者对签字除去盲因子,得到签名者关于原消息的
+签名．盲签名要求签名有可验证性、不可伪造性、不
+可否认性和盲性,即可验证去掉盲化因子的原消息
+签名,盲签名不能被伪造,签名者不能否认签名和签
+名者不知道所签署消息的内容．量子盲签名的研究
+成果主要有文献[６４Ｇ７０]．
+量子群签名允许群体中任意一个成员可以以匿
+名的方式代表整个群体对消息进行签名,并可以被
+公开验证．群签名要求可验证性、匿名性、不可伪造
+性、不可否认性和可追踪性,即消息接收者可以验证
+签名的有效性,但不能确定是哪个成员签署了消息,
+签名不能被伪造,签名者不能否认签名,有争议时管
+理员可揭示签名者的身份．量子群签名的研究成果
+主要有文献[７１Ｇ７５]．
+量子代理签名允许原始签名人将其签名权委托
+给代理签名人,代理签名人可以代表原始签名人进
+行签名．代理签名要求可验证性、不可伪造性、不可
+否认性、可区分性和可注销性,即签名的有效性可被
+验证,代理签名人和原始签名人都不能冒充对方伪
+造签名,也不能否认代签和委托,代理签名中包含代
+理签名人和原始签名人的信息,与普通签名可区分,
+原始签名人可注销代理签名人的签名权．量子代理
+签名的研究成果主要有文献[７６Ｇ８０]．
+４．
+４　其他研究领域
+目前,量子密码以量子密钥分发为主要研究方
+向,加密、签名等也有不同程度的研究,而在其他密
+码学领域也有着一定的研究,形成了不同的研究分
+支．主要有量子秘密共享[８１Ｇ８５]、量子比特承诺[８６Ｇ９０]、
+量子不经意传输[９１Ｇ９５]、量子安全直接通信[９６Ｇ１００]、量
+子隐私查询[１０１Ｇ１０５]、量子身份认证[１０６Ｇ１１０]等,但总体
+来说还处于起步阶段．
+５　面临的问题与挑战
+量子计算由于其真正意义上的并行计算机制,
+可以进行指数级加速,大大超越经典计算的能力．然
+而,由于量子态制备、从量子态中提取信息等受客观
+
+===== PDF PAGE 9 =====
+３
+２
+０
+２
+王永利等:量子计算与量子密码的原理及研究进展综述
+规律的限制,量子计算的广泛应用受到很大影响．想
+要有效发挥量子计算的威力,需要非常巧妙的设计
+硬件和软件．量子世界遵循的规律与经典世界有很
+大的不同,由于人们在日常生活中对经典世界的习
+惯,在利用量子规律时思维容易受到限制,这也是在
+量子计算研究中普遍存在的困难,是真正能体现量
+子计算优越性的算法少之又少的原因之一．如何设
+计好的硬件和软件,充分利用量子计算的能力,是广
+大科研工作者面临的重要挑战之一．
+基于量子力学机制,量子密码学有着先天的优
+势．从理论上来讲,量子密码学有着无条件安全性的
+特点,这是信息安全领域理想的目标之一．然而在实
+际应用时,由于设备缺陷、噪声影响等因素,还存在
+许多安全问题,需要人们从理论和实践２个层面去
+解决．此外在效率、易用性、健壮性等方面也存在诸
+多问题有待解决．在量子密码学安全方案设计方面,
+同经典密码一样,由于很难穷举所有攻击方式,仅进
+行启发式分析是远远不够的,必须考虑可证安全理
+论．量子力学有其独特的机制,如量子纠缠、未知量
+子态不可克隆等,利用这些特有的机制设计与经典
+密码学中没有显式对应的安全应用,也是一个重要
+的方向．同量子计算一样,由于受经典思维方式的影
+响,这一方面的工作也面临重要挑战．
+６　结束语
+本文简单介绍了量子计算及其主要算法的基本
+数学思想,并对基于量子力学机制的量子密码学的
+发展状况做了简要介绍．量子密钥分发是被研究的
+最深入的一个领域,无论是从理论上还是实践上,都
+取得了丰硕的研究成果,并开始进入商用阶段．其他
+量子密码学研究领域也取得了许多成果．未来的时
+代也许是属于量子的,量子计算及量子密码学的研
+究是为人们进入量子时代的必要准备,虽面临重重
+挑战,但已指明了方向．
+参
+考
+文
+献
+[１] WiesnerS．Conjugatecoding[J]．ACM SigactNews,１９８３,
+１５(１):７８８８
+[２] Brassard C,BennettC H．Quantum cryptography:Public
+keydistributionandcointossing[C]∕∕ProcofIntConfon
+Computers,SystemsandSignalProcessing．Piscataway,NJ:
+IEEE,１９８４:１７５１７９
+[３] ShorP W．Algorithmsforquantum computation:Discrete
+logarithmsandfactoring[C]∕∕Procofthe３５thAnnualSymp
+on Foundations of Computer Science．Piscataway, NJ:
+[４] Grover L K．A fast quantum mechanical algorithm for
+databasesearch[C]∕∕Procofthe２８thAnnualACMSympon
+TheoryofComputing．New York:ACM,１９９６:２１２２１９
+[５] Nielsen M A,Chuang I L．Quantum Computation and
+Quantum Information [M]．Cambridge, UK:Cambridge
+UniversityPress,２０１０
+[６] WoottersW K,Zurek W H．A singlequantum cannotbe
+cloned[J]．Nature,１９８２,２９９(５８８６):８０２８０３
+[７] Yuen H P．Amplificationofquantum statesandnoiseless
+photonamplifiers [J]．PhysicsLetters A,１９８６,１１３(８):
+４０５４０７
+[８] Deutsch D．Quantum theory,the ChurchＧTuring principle
+andtheuniversalquantumcomputer[J]．Proceedingsofthe
+RoyalSociety of London．A: Mathematicaland Physical
+Sciences,１９８５,４００(１８１８):９７１１７
+[９] BarencoA,BennettC H,CleveR,etal．Elementarygates
+forquantumcomputation[J]．PhysicalReview A,１９９５,５２
+(５):３４５７３４６７
+[１０] DeutschD,JozsaR．Rapidsolutionofproblemsbyquantum
+computation[J]．ProceedingsoftheRoyalSocietyofLondon．
+A:MathematicalandPhysicalSciences,１９９２,４３９(１９０７):
+５５３５５８
+[１１] Simon D R．Onthepowerofquantum computation [J]．
+SIAMJournalonComputing,１９９７,２６(５):１４７４１４８３
+[１２] ShorP W,PreskillJ．SimpleproofofsecurityoftheBB８４
+quantum key distribution protocol [J]．Physical Review
+Letters,２０００,８５(２):４４１４４４
+[１３] EkertA K．QuantumcryptographybasedonBell􀆳stheorem
+[J]．PhysicalReviewLetters,１９９１,６７(６):６６１６６３
+[１４] BellJ S．On the Einstein Podolsky Rosen paradox [J]．
+PhysicsPhysiqueFizika,１９６４,１(３):１９５２００
+[１５] Bennett C H．Quantum cryptography using any two
+nonorthogonalstates[J]．PhysicalReviewLetters,１９９２,６８
+(２１):３１２１３１２４
+[１６] Bennett C H, Brassard G,Mermin N D．Quantum
+cryptography withoutBell􀆳stheorem [J]．PhysicalReview
+Letters,１９９２,６８(５):５５７５５９
+[１７] BrassardG,Lütkenhaus N,Mor T,etal．Limitationson
+practical quantum cryptography [J]．Physical Review
+Letters,２０００,８５(６):１３３０１３３３
+[１８] Hwang W Y．Quantum key distribution with highloss:
+Towardglobalsecurecommunication [J]．PhysicalReview
+Letters,２００３,９１(５):No．
+０５７９０１
+[１９] LoH K,MaXiongfeng,ChenKai．Decoystatequantumkey
+distribution[J]．PhysicalReview Letters,２００５,９４(２３):
+No．
+２３０５０４
+[２０] WangXiangbin．BeatingthephotonＧnumberＧsplittingattack
+in practical quantum cryptography [J]．Physical Review
+Letters,２００５,９４(２３):No．
+２３０５０３
+[２１] Acín A,Brunner N,Gisin N,etal．DeviceＧindependent
+securityofquantum cryptographyagainstcollectiveattacks
+
+===== PDF PAGE 10 =====
+４
+２
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+[２２] Lo H
+K, Curty
+M, Qi Bing．MeasurementＧdeviceＧ
+independentquantum keydistribution [J]．PhysicalReview
+Letters,２０１２,１０８(１３):No．
+１３０５０３
+[２３] ZhaoYijia,Zhang Yichen,Xu Bingjie,etal．ContinuousＧ
+variable
+measurementＧdeviceＧindependent quantum
+key
+distribution with virtualphoton subtraction [J]．Physical
+Review A,２０１８,９７(４):No．
+０４２３２８
+[２４] MaHongxin,HuangPeng,BaiDongyun,etal．ContinuousＧ
+variable
+measurementＧdeviceＧindependent quantum
+key
+distributionwithphotonsubtraction[J]．PhysicalReviewA,
+２０１８,９７(４):No．
+０４２３２９
+[２５] LiChunyan．FaultＧtolerantmeasurementＧdeviceＧindependent
+quantumkeydistributioninadecoherenceＧfreesubspace[J]．
+QuantumInformationProcessing,２０１８,１７(１０):No．
+２８７
+[２６] Hu Xiaolong, Yu Zongwen, Wang Xiangbin．Efficient
+measurementＧdeviceＧindependent quantum key distribution
+withoutvacuum sources[J]．PhysicalReview A,２０１８,９８
+(３):No．
+０３２３０３
+[２７] Lim C C W,Korzh B,Martin A,etal．DetectorＧdeviceＧ
+independentquantum keydistribution [J]．AppliedPhysics
+Letters,２０１４,１０５(２２):No．
+２２１１１２
+[２８] QiBing,FungC H F,LoH K,etal．TimeＧshiftattackin
+practicalquantumcryptosystems[J]．QuantumInformation
+& Computation,２００７,７(１):７３８２
+[２９] BoaronA,KorzhB,Houlmann R,etal．DetectorＧdeviceＧ
+independentquantumkeydistribution:Securityanalysisand
+fastimplementation[J]．JournalofAppliedPhysics,２０１６,
+１２０(６):No．
+０６３１０１
+[３０] LucamariniM,YuanZL,DynesJF,etal．Overcomingthe
+rateＧdistance limit of quantum key distribution without
+quantumrepeaters[J]．Nature,２０１８,５５７(７７０５):４００４０３
+[３１] DiamantiE, Takesue H, Langrock C,et al．１００km
+differentialphaseshiftquantum keydistributionexperiment
+withlowjitterupＧconversiondetectors[J]．OpticsExpress,
+２００６,１４(２６):１３０７３１３０８２
+[３２] StuckiD,Walenta N,VannelF,etal．Highrate,longＧ
+distancequantum keydistributionover２５０km ofultralow
+lossfibres[J]．NewJournalofPhysics,２００９,１１(７):No．
+０７５００３
+[３３] LiaoShengkai,CaiWenqi,Liu Weiyue,etal．SatelliteＧtoＧ
+groundquantum key distribution [J]．Nature,２０１７,５４９
+(７６７０):４３４７
+[３４] LiaoShengkai,YongHailin,LiuChang,etal．LongＧdistance
+freeＧspacequantumkeydistributionindaylighttowardsinterＧ
+satellitecommunication [J]．Nature Photonics,２０１７,１１
+(８):５０９５１３
+[３５] Vernam GS．Cipherprintingtelegraphsystems:Forsecret
+wireandradiotelegraphiccommunications[J]．Journalofthe
+AIEE,１９２６,４５(２):１０９１１５
+[３６] Boykin P O, Roychowdhury V．Optimal encryption of
+quantumbits[J]．PhysicalReview A,２００３,６７(４):No．
+[３７] BennettC H,WiesnerSJ．CommunicationviaoneＧandtwoＧ
+particle operators on EinsteinＧPodolskyＧRosen states [J]．
+PhysicalReviewLetters,１９９２,６９(２０):２８８１２８８４
+[３８] BennettC H,BrassardG,CrépeauC,etal．Teleportingan
+unknown quantum state via dualclassicaland EinsteinＧ
+PodolskyＧRosen channels [J]．Physical Review Letters,
+１９９３,７０(１３):１８９５１８９９
+[３９] GisinN,RibordyG,TittelW,etal．Quantumcryptography
+[J]．ReviewsofModernPhysics,２００２,７４(１):１４５１９５
+[４０] OkamotoT,TanakaK,UchiyamaS．Quantum publicＧkey
+cryptosystems[C]∕∕Procof AnnualIntCryptology Conf．
+Berlin:Springer,２０００:１４７１６５
+[４１] YangLi．QuantumpublicＧkeycryptosystembasedonclassical
+NPＧcompleteproblem [J]．arXivpreprint,arXiv:quantＧph∕
+０３１００７６,２００３
+[４２] NikolopoulosG M．ApplicationsofsingleＧqubitrotationsin
+quantum publicＧkeycryptography [J]．PhysicalReview A,
+２００８,７７(３):No．
+０３２３４８
+[４３] Gao Fei, Wen Qiaoyan, Qin Sujuan,et al．Quantum
+asymmetriccryptography withsymmetrickeys[J]．Science
+in China Series G:Physics, Mechanics and Astronomy,
+２００９,５２(１２):１９２５１９３１
+[４４] Liang Min,YangLi．PublicＧkeyencryptionandauthenticaＧ
+tion ofquantum information [J]．Science China Physics,
+MechanicsandAstronomy,２０１２,５５(９):１６１８１６２９
+[４５] ZhengShihui,GuLize,XiaoDa．BitＧorientedquantumpublic
+key probabilistic encryption schemes [J]．International
+JournalofTheoreticalPhysics,２０１４,５３(１):１１６１２４
+[４６] VlachouC,RodriguesJ,MateusP,etal．Quantum walk
+publicＧkeycryptographicsystem [J]．InternationalJournalof
+QuantumInformation,２０１５,１３(７):No．
+１５５００５０
+[４７] Wu Wanqing,CaiQingyu,ZhangHuanguo,etal．Quantum
+public key cryptosystem
+based on Bell states [J]．
+InternationalJournalofTheoreticalPhysics,２０１７,５６(１１):
+３４３１３４４０
+[４８] RohdeP P,FitzsimonsJF,Gilchrist A．Quantum walks
+withencrypteddata[J]．PhysicalReviewLetters,２０１２,１０９
+(１５):No．
+１５０５０１
+[４９] LiangMin．Quantumfullyhomomorphicencryptionscheme
+basedonuniversalquantumcircuit[J]．QuantumInformation
+Processing,２０１５,１４(８):２７４９２７５９
+[５０] BroadbentA,JefferyS．Quantum homomorphicencryption
+forcircuitsoflowTＧgatecomplexity[C]∕∕ProcofAnnualInt
+CryptologyConf．Berlin:Springer,２０１５:６０９６２９
+[５１] DulekY,SchaffnerC,SpeelmanF．Quantum homomorphic
+encryptionforpolynomialＧsizedcircuits[C]∕∕ProcofAnnual
+IntCryptologyConf．Berlin:Springer,２０１６:３３２
+[５２] OuyangYingkai,TanSihui,ZhaoLiming,etal．Computing
+onquantumsharedsecrets[J]．PhysicalReviewA,２０１７,９６
+(５):No．
+０５２３３３
+[５３] LaiChingyi,ChungKaimin．OnstatisticallyＧsecurequantum
+homomorphic encryption [J]．Quantum Information &
+
+===== PDF PAGE 11 =====
+５
+２
+０
+２
+王永利等:量子计算与量子密码的原理及研究进展综述
+[５４] MahadevU．Classicalhomomorphicencryptionforquantum
+circuits [C]∕∕Proc ofthe ５９th IEEE Annual Symp on
+FoundationsofComputerScience(FOCS)．Piscataway,NJ:
+IEEE,２０１８:３３２３３８
+[５５] Newman M, Shi Yaoyun．Limitations on transversal
+computationthroughquantum homomorphicencryption[J]．
+arXivpreprintarXiv:１７０４．
+０７７９８,２０１７
+[５６] Gottesman D,ChuangI．Quantum digitalsignatures [J]．
+arXivpreprintquantＧph∕０１０５０３２,２００１
+[５７] Zeng Guihua,Keitel C H．Arbitrated quantumＧsignature
+scheme[J]．PhysicalReview A,２００２,６５(４):No．
+０４２３１２
+[５８] CurtyM,LütkenhausN．Commenton“ArbitratedquantumＧ
+signaturescheme”[J]．PhysicalReviewA,２００８,７７(４):No．
+０４６３０１
+[５９] ZouXiangfu,Qiu Daowen．SecurityanalysisandimproveＧ
+mentsofarbitratedquantumsignatureschemes[J]．Physical
+Review A,２０１０,８２(４):No．
+０４２３２５
+[６０] GaoFei,QinSujuan,GuoFenzhuo,etal．Cryptanalysisof
+thearbitrated quantum signature protocols [J]．Physical
+Review A,２０１１,８４(２):No．
+０２２３４４
+[６１] LiQin,Chan W H,Long Dongyang．Arbitratedquantum
+signatureschemeusingBellstates[J]．PhysicalReview A,
+２００９,７９(５):No．
+０５４３０７
+[６２] Li Fengguang, Shi Jianhong．An arbitrated quantum
+signatureprotocolbasedonthechained CNOT operations
+encryption[J]．QuantumInformationProcessing,２０１５,１４
+(６):２１７１２１８１
+[６３] FengYanyan,ShiRonghua,GuoYing．Arbitratedquantum
+signatureschemewithcontinuousＧvariablesqueezedvacuum
+states[J]．ChinesePhysicsB,２０１８,２７(２):No．
+０２０３０２
+[６４] QiSu,Zheng Huang,Wen Qiaoyan,etal．Quantum blind
+signaturebasedontwoＧstatevectorformalism [J]．Optics
+Communications,２０１０,２８３(２１):４４０８４４１０
+[６５] WangTianyin,WenQiaoyan．Fairquantumblindsignatures
+[J]．ChinesePhysicsB,２０１０,１９(６):No．
+０６０３０７
+[６６] ShiJinjing,ShiRonghua,Guo Ying,etal．Batch proxy
+quantum blind signature scheme [J]．Science China
+InformationSciences,２０１３,５６(５):１９
+[６７] Li Wei,ShiJinjing,ShiRonghua,etal．Blind quantum
+signature with controlled FourＧParticleclusterstates [J]．
+InternationalJournalofTheoreticalPhysics,２０１７,５６(８):
+２５７９２５８７
+[６８] WenXiaojun,Niu Xiamu,JiLiping,etal．A weakblind
+signatureschemebasedonquantumcryptography[J]．Optics
+Communications,２００９,２８２(４):６６６６６９
+[６９] Wang Mingming, Chen Xiubo, Yang Yixian．A blind
+quantum signature protocol using the GHZ states [J]．
+ScienceChinaPhysics,MechanicsandAstronomy,２０１３,５６
+(９):１６３６１６４１
+[７０] LouXiaoping,ChenZhigang,GuoYing．A weakquantum
+blind signature
+with entanglement permutation
+[J]．
+InternationalJournalofTheoreticalPhysics,２０１５,５４(９):
+[７１] Yang Yuguang, Wen Qiaoyan．Quantum threshold group
+signature[J]．ScienceinChinaSeriesG:Physics,Mechanics
+andAstronomy,２００８,５１(１０):１５０５１５１４
+[７２] WenXiaojun,TianYuan,JiLiping,etal．Agroupsignature
+schemebasedonquantumteleportation[J]．PhysicaScripta,
+２０１０,８１(５):No．
+０５５００１
+[７３] XuRui,HuangLiusheng,YangWei,etal．Quantumgroup
+blindsignaturescheme withoutentanglement [J]．Optics
+Communications,２０１１,２８４(１４):３６５４３６５８
+[７４] ShiJinjing,ShiRonghua,Tang Ying,etal．A multiparty
+quantum proxygroupsignatureschemefortheentangledＧ
+statemessagewithquantumFouriertransform [J]．Quantum
+InformationProcessing,２０１１,１０(５):６５３６７０
+[７５] Xu Guangbao, Zhang Kejia．A novel quantum group
+signature scheme without using entangled states [J]．
+QuantumInformationProcessing,２０１５,１４(７):２５７７２５８７
+[７６] Yang Yugang, Wen Qiaoyan．Threshold proxy quantum
+signaturescheme with threshold shared verification [J]．
+ScienceinChinaSeriesG:Physics,MechanicsandAstronomy,
+２００８,５１(８):１０７９１０８８
+[７７] Yang Yuguang．MultiＧproxy quantum group signature
+scheme with threshold shared verification [J]．Chinese
+PhysicsB,２００８,１７(２):４１５４１８
+[７８] ShiJinjing,ShiRonghua,Tang Ying,etal．A multiparty
+quantum proxygroupsignatureschemefortheentangledＧ
+statemessagewithquantumFouriertransform [J]．Quantum
+InformationProcessing,２０１１,１０(５):６５３６７０
+[７９] WangTianyin,WeiZongli．OneＧtimeproxysignaturebased
+on quantum cryptography [J]．Quantum Information
+Processing,２０１２,１１(２):４５５４６３
+[８０] ShiJingjing,ShiRonghua,Guo Ying,etal．Batchproxy
+quantum blind signature scheme [J]．Science China
+InformationSciences,２０１３,５６(５):１９
+[８１] HilleryM,BužekV,BerthiaumeA．Quantumsecretsharing
+[J]．PhysicalReview A,１９９９,５９(３):１８２９１８３４
+[８２] HsuLY．QuantumsecretＧsharingprotocolbasedonGrover􀆳s
+algorithm [J]．PhysicalReview A,２００３,６８(２):No．
+０２２３０６
+[８３] Yan Fengli,Gao Ting．Quantum secretsharing between
+multiparty and
+multiparty without entanglement [J]．
+PhysicalReview A,２００５,７２(１):No．
+０１２３０４
+[８４] Karimipour V,Asoudeh M．Quantum secretsharing and
+randomhopping:Usingsinglestatesinsteadofentanglement
+[J]．PhysicalReview A,２０１５,９２(３):No．
+０３０３０１
+[８５] WangYu,TianCaixing,SuQi,etal．MeasurementＧdeviceＧ
+independentquantumsecretsharingandquantumconference
+based on Gaussian cluster state [J]．Science China
+InformationSciences,２０１９,６２(７):No．
+７２５０１
+[８６] BrassardG,CrépeauC．Quantum bitcommitmentandcoin
+tossingprotocols [C]∕∕Procof Confonthe Theory and
+
+===== PDF PAGE 12 =====
+６
+２
+０
+２
+计算机研究与发展　２０２０,５７(１０)
+[８７] Kent A．Quantum bitstring commitment [J]．Physical
+ReviewLetters,２００３,９０(２３):No．
+２３７９０１
+[８８] BuhrmanH,Christandl M,HaydenP,etal．Securityof
+quantumbitstringcommitmentdependsontheinformation
+measure[J]．PhysicalReview Letters,２００６,９７(２５):No．
+２５０５０１
+[８９] LunghiT,KaniewskiJ,BussièresF,etal．Experimental
+bitcommitment based on quantum communication and
+specialrelativity [J]．PhysicalReview Letters,２０１３,１１１
+(１８):No．
+１８０５０４
+[９０] Song Yaqi, Yang Li．SemiＧcounterfactual Quantum Bit
+commitmentprotocol[J]．ScientificReports,２０２０,１０(１):
+１１２
+[９１] MayersD．Quantum keydistributionandstringoblivious
+transferin noisy channels [C]∕∕Proc of Annual Int
+CryptologyConf．Berlin:Springer,１９９６:３４３３５７
+[９２] ShimizuK,ImotoN．Communicationchannelsanalogousto
+one out of two oblivious transfers based on quantum
+uncertainty [J]．PhysicalReview A,２００２,６６(５):No．
+０５２３１６
+[９３] He Guangping, Wang Z D．Oblivious transfer using
+quantumentanglement[J]．PhysicalReview A,２００６,７３
+(１):No．
+０１２３３１
+[９４] Schaffner C．Simple protocolsforoblivioustransferand
+secureidentificationin the noisyＧquantumＧstorage model
+[J]．PhysicalReview A,２０１０,８２(３):No．
+０３２３０８
+[９５] RibeiroJ, WehnerS．On bitcommitmentand oblivious
+transferin measurementＧdeviceindependentsettings [J]．
+arXivpreprintarXiv:２００４．
+１０５１５,２０２０
+[９６] Beige A, Englert B G,Kurtsiefer C, et al．Secure
+communicationwithapubliclyknownkey[J]．ActaPhysica
+PolonicaA,２００２,３(１０１):３５７３６８
+[９７] DengFuguo,LongGuilu．Securedirectcommunicationwith
+aquantumoneＧtimepad[J]．PhysicalReview A,２００４,６９
+(５):No．
+０５２３１９
+[９８] LinSong,Wen Qiaoyan,GaoFei,etal．Quantum secure
+directcommunication with χＧtype entangled states [J]．
+PhysicalReview A,２００８,７８(６):No．
+０６４３０４
+[９９] ChenShanshan,ZhouLan,Zhong Wei,etal．ThreeＧstep
+threeＧparty quantum secure direct communication [J]．
+ScienceChinaPhysics,Mechanics& Astronomy,２０１８,６１
+(９):No．
+９０３１２
+[１００] Zhou Zengrong, Sheng Yubo, Niu Penghao, et al．
+MeasurementＧdeviceＧindependent quantum secure direct
+communication [J]．Science China Physics,Mechanics &
+Astronomy,２０２０,６３(３):No．
+２３０３６２
+[１０１] Chor B, Goldreich O, Kushilevitz E, et al．Private
+information retrieval [C]∕∕Proc of IEEE ３６th Annual
+FoundationsofComputerScience．Piscataway,NJ:IEEE,
+１９９５:４１５０
+[１０２] GertnerY,IshaiY,KushilevitzE,etal．Protectingdata
+privacyinprivateinformationretrievalschemes[J]．Journal
+ofComputerandSystemSciences,２０００,６０(３):５９２６２９
+[１０３] Giovannetti V,Lloyd S,Maccone L．Quantum private
+queries[J]．PhysicalReview Letters,２００８,１００(２３):No．
+２３０５０２
+[１０４] Olejnik L．Secure quantum privateinformation retrieval
+usingphaseＧencodedqueries[J]．PhysicalReview A,２０１１,
+８４(２):No．
+０２２３１３
+[１０５] GaoFei,QinSujuan,Huang Wei,etal．Quantum private
+query:A new kind of practical quantum cryptographic
+protocol[J]．ScienceChinaPhysics,Mechanics& Astronomy,
+２０１９,６２(７):No．
+７０３０１
+[１０６] Dušek M, Haderka O, Hendrych M,et al．Quantum
+identificationsystem [J]．PhysicalReviewA,１９９９,６０(１):
+１４９１５６
+[１０７] CurtyM,SantosDJ．Quantum authenticationofclassical
+messages[J]．PhysicalReviewA,２００１,６４(６):No．
+０６２３０９
+[１０８] Yang Yuguang, Wen Qiaoyan,Zhang Xing．Multiparty
+simultaneousquantum identityauthentication with secret
+sharing[J]．ScienceinChinaSeriesG:Physics,Mechanics
+andAstronomy,２００８,５１(３):３２１３２７
+[１０９] BartkiewiczK,ĈernochA,LemrK．Usingquantumrouters
+toimplementquantum messageauthenticationandBellＧstate
+manipulation[J]．PhysicalReview A,２０１４,９０(２):No．
+０２２３３５
+[１１０] KangMS,ChoiY H,Kim YS,etal．Quantum message
+authenticationschemebased onremotestate preparation
+[J]．PhysicaScripta,２０１８,９３(１１):No．
+１１５１０２
+WangYongli,bornin１９８２．PhDcandidatein
+Shandong University．His main research
+interestisquantumcryptography．
+Xu Qiuliang,bornin １９６０．Professorand
+PhDsupervisorinShandongUniversity．His
+mainresearchinterestsinclude public key
+cryptographyand multiＧpartysecurecompuＧ
+tation．
